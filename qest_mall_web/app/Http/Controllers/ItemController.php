@@ -62,17 +62,17 @@ class ItemController extends Controller
         return view("items/shop");
     }
 
-    public function spBrand() {
+    public function spShop() {
         return view("items/shop_sp");
     }
 
     ///////////////////////////////////////////////
     // 商品詳細
-    public function itemsDetail() {
+    public function itemDetail() {
         return view("items/detail");
     }
 
-    public function spItemsDetail() {
+    public function spItemDetail() {
         return view("items/detail_sp");
     }
     

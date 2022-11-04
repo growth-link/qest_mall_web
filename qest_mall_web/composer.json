@@ -16,7 +16,7 @@
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
+        "nunomaduro/collision": "^6.3",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
     },
@@ -42,6 +42,15 @@
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "gcp-build": [
+            "npm install",
+            "npm run dev",
+            "composer install --dev",
+            "php artisan config:clear",
+            "php artisan cache:clear",
+            "php artisan config:cache",
+            "php artisan vendor:publish --tag=assets"
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"

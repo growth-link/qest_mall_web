@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\TopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,8 @@ Route::get('/', function () {
 
 
 // トップ（未ログイン）
-Route::get('/top', [ItemController::class, 'top']);
-Route::get('/sp/top', [ItemController::class, 'spTop']);
+Route::get('/top', [TopController::class, 'top']);
+Route::get('/sp/top', [TopController::class, 'spTop']);
 
 /*
 |--------------------------------------------------------------------------
@@ -84,8 +85,8 @@ Route::get('/items/shop', [ItemController::class, 'shop']);
 Route::get('/sp/items/shop', [ItemController::class, 'spShop']);
 
 // 商品詳細
-Route::get('/items/detail', [ItemController::class, 'brand']);
-Route::get('/sp/items/brand', [ItemController::class, 'spBrand']);
+Route::get('/items/detail', [ItemController::class, 'itemDetail']);
+Route::get('/sp/items/brand', [ItemController::class, 'spItemDetail']);
 
 /*
 |--------------------------------------------------------------------------
