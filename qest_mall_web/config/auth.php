@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'users',
         'passwords' => 'users',
     ],
 
@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'malladmins',
+        ],
     ],
 
     /*
@@ -64,7 +72,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'malladmins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -92,6 +103,10 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
     ],
 
