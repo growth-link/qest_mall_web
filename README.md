@@ -53,13 +53,22 @@ DBテーブル定義：migrations/
 # マイグレーションファイルをすべて削除
 $ cd qest_mall_web
 $ rm database/migrations/*
-
 # マイグレーションファイルをDBから生成
 $ php artisan migrate:generate
+# 単体の場合は以下（上書きされず新規作成されるので重複に注意）
+$ php artisan migrate:generate -t <テーブル名>
 
-# DBに紐づくモデルを更新
+# DBに紐づくモデルを削除してDBから一括更新
+$ rm app/models/*.php
 $ php artisan code:models
+# 単体の場合は以下
+$ php artisan code:models -t <テーブル名>
 
+# DBからSeederを一括作成
+$ sh iseed.sh
+
+＃単体の場合は以下
+（$ php artisan iseed <テーブル名>）
 ```
 
 
