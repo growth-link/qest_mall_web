@@ -21,12 +21,15 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        if (Auth::guard(self::GUARD_USER)->check() && $request->routeIs('user.*')) {
-            return redirect(RouteServiceProvider::HOME);
-        }
-        if (Auth::guard(self::GUARD_ADMIN)->check() && $request->routeIs('admin.*')) {
-            return redirect(RouteServiceProvider::MALL_ADMIN_HOME);
-        }
+        // if (Auth::guard(self::GUARD_USER)->check() && $request->routeIs('user.*')) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
+        // if (Auth::guard(self::GUARD_ADMIN)->check() && $request->routeIs('admin.*')) {
+        //     return redirect(RouteServiceProvider::MALL_ADMIN_HOME);
+        // }
+        if (Auth::guard($guard)->check()) {
+            return redirect('/home');
+        }   
 
         return $next($request);
     }

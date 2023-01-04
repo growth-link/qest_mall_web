@@ -32,23 +32,30 @@
 </div>
 
 <div style="width:100%;height:450px;text-align:center;margin-top:70px;">
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('admin.check_login') }}">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         @csrf
+
+        <!-- エラーメッセージ -->
+        @if ($errors->has('message'))
+            <p style="color:red;">ユーザーIDまたはパスワードが正しくありません。</p>
+            {{-- <p style="color:red;">{{$errors->first('message')}}</p> --}}
+        @endif
+
         <!-- ログインID -->
         <div style="width:640px;height:70px;margin:0 auto;">
             <p style="color:red;float:none;"></p>
-            <div style="width:400px;margin:0 auto;text-align:left;font-weight:bold;">管理者ID</div>
-            <input id="email" type="text" class="login-form-input" required autofocus><br>
+            <div style="width:400px;margin:0 auto;margin-bottom:10px;text-align:left;font-weight:bold;color:#333333;">管理者ID</div>
+            <input id="login_id" name="login_id" type="text" class="login-form-input" required autofocus><br>
         </div>
 
         <!-- パスワード -->
-        <div style="width:640px;height:70px;margin:0 auto;margin-top:30px;">
+        <div style="width:640px;height:70px;margin:0 auto;margin-top:50px;">
             {{-- <p style="color:red;float:none;">エラーメッセージ：$errors->get('email')</p> --}}
-            <div style="width:400px;margin:0 auto;text-align:left;font-weight:bold;">パスワード</div>
-            <input id="password" type="password" class="login-form-input" required autocomplete="current-password">
+            <div style="width:400px;margin:0 auto;margin-bottom:10px;text-align:left;font-weight:bold;color:#333333;">パスワード</div>
+            <input id="password" name="password" type="password" class="login-form-input" required autocomplete="current-password">
         </div>
 
         <!-- Remember Me -->
@@ -62,7 +69,7 @@
         <button class="login-btn">ログイン</button>
 
         <div style="width:640px;height:70px;margin:0 auto;margin-top:50px;">
-            <a href="{{ route('admin.password.request') }}" style="color:#1D54A7;text-decoration:none;">パスワードを忘れた場合</a>
+            <a href="{{ route('admin.password_reset') }}" style="color:#1D54A7;text-decoration:none;">パスワードを忘れた場合</a>
         </div>
     </form>
 
@@ -74,13 +81,4 @@
         <p style="font-weight:bold;font-size:28px;color:gray;margin-top:10px;">000-000-0000</p>
     </div> --}}
 </div>
-
-<!-- パスワードリセット -->
-{{-- <div class="flex items-center justify-end mt-4">
-    @if (Route::has('password.request'))
-        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" style="color:blue;" href="{{ route('password.request') }}">
-            {{ __('パスワードを忘れてしまった方はこちら') }}
-        </a>
-    @endif
-</div> --}}
 

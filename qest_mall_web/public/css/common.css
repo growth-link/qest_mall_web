@@ -1,0 +1,79 @@
+.s {
+    background-color: yellow;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.content-box {
+    width: 70%;
+    margin-left: 15%;
+    padding-top: 50px;
+}
+
+.page-title-box {
+
+}
+
+.page-title {
+    color: #555555;
+    font-weight: bold;
+    margin-left: 30px;
+    font-size:18px;
+}
+
+.primary_btn {
+    padding: 10px 30px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #FBDB5B;
+}
+
+.primary_btn_radius {
+    padding: 10px 30px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #FBDB5B;
+}
+
+.text {
+    color: #6C6C6C;
+}
+
+.search-input {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #EBEBEB;
+    background-color: #F7F7F7;
+}
+
+/* -------------------------------------------- */
+/* 検索窓 */
+.search-box {
+    display: inline-block; /* なくても大丈夫だけど、念の為 */
+    position: relative;    /* 基準値とする */
+    margin-right: 20px;
+}
+
+.search-box::before {
+    content: "";           /* 疑似要素に必須 */
+    width: 20px;           /* アイコンの横幅 */
+    height: 20px;          /* アイコンの高さ */
+    background: url(/images/user/icon_search.png) no-repeat center center / auto 100%; /* 背景にアイコン画像を配置 */
+    display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
+    position: absolute;    /* 相対位置に指定 */
+    top: 10px;              /* アイコンの位置。微調整してね */
+    right: 10px;             /* アイコンの位置。微調整してね */
+}
+
+.search-box input {
+    border: 1px solid #EBEBEB;
+    background-color: #F7F7F7;
+    border-radius: 20px;
+    padding: 10px 2.5em 10px 10px; /* アイコンを設置するため左の余白を多めに指定*/
+}

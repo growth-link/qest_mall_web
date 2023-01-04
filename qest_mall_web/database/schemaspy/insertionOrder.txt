@@ -1,0 +1,9 @@
+admins
+failed_jobs
+migrations
+notice
+password_resets
+personal_access_tokens
+sessions
+shop
+users

@@ -45,7 +45,7 @@
         <!-- メールアドレス -->
         <div style="width:640px;height:70px;margin:0 auto;margin-top:60px;">
             <p style="color:red;float:none;"></p>
-            <div style="width:400px;margin:0 auto;text-align:left;font-weight:bold;">メールアドレス</div>
+            <div style="width:400px;margin:0 auto;text-align:left;font-weight:bold;color:#333333;margin-bottom:10px;">メールアドレス</div>
             <input id="email" type="text" class="login-form-input" required autofocus><br>
         </div>
 

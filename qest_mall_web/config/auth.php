@@ -44,10 +44,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'admins' => [
-            'driver' => 'session',
-            'provider' => 'malladmins',
-        ],
     ],
 
     /*
@@ -71,10 +67,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-        'malladmins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
         ],
         // 'users' => [
         //     'driver' => 'database',
@@ -104,10 +96,6 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
-        ],
     ],
 
     /*
@@ -122,5 +110,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];
