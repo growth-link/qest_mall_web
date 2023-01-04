@@ -24,33 +24,6 @@
         <hr>
         @endforeach
     </div>
-
-    <style>
-
-        .wrap {
-          position: relative; 
-          overflow: hidden;
-          width:100%;
-        }
-        
-        .wrap ul {
-          position: relative;
-          left: 45%; 
-          float: left;
-        }
-        
-        .wrap ul li {
-          position: relative;
-          left: -45%; 
-          float: left;
-          list-style: none; 
-        }
-        
-        .cls1{
-          background-color:#ccf;
-          margin: 0 20px;
-        }
-        </style>
         <div class="wrap" style="font-size:20px;">
             <ul>
                 <li class="cls1">＜</li>

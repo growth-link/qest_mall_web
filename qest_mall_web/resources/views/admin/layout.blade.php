@@ -20,7 +20,7 @@
     </body>
     <script src="{{asset('jquery-3.6.1.min.js')}}"></script>
     <script src="{{asset('Semantic-UI-CSS-master/semantic.min.js')}}"></script>
-    <script src="{{asset('jquery-tabledit-1.2.3/jquery.tabledit.min.js')}}"></script>
+    {{-- <script src="{{asset('jquery-tabledit-1.2.3/jquery.tabledit.min.js')}}"></script> --}}
     <!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <!-- jquery-ui -->
@@ -32,6 +32,19 @@
             $.extend( $.fn.dataTable.defaults, {
                 language: {
                 url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json'
+                }
+            });
+        });
+
+        // パスワードInput用
+        $(function() {
+            $('.eye').on('click', function() {
+                $(this).toggleClass('slash');
+                var input = $(this).prev('input');
+                if (input.attr('type') == 'text') {
+                    input.attr('type','password');
+                } else {
+                    input.attr('type','text');
                 }
             });
         });
