@@ -25,7 +25,6 @@ class AdminController extends Controller
 
     // ショップ選択
     public function shops(Request $request) {
-        // TODO：ログインチェック
         \FBAuth::checkAdminLogin($request);
 
         $shops = Shop::where("deleted_at", null)->get();

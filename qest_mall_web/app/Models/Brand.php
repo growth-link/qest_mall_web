@@ -11,12 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Brand
  * 
- * @property int $id
+ * @property int $brand_id
  *
  * @package App\Models
  */
 class Brand extends Model
 {
 	protected $table = 'brands';
+	protected $primaryKey = 'brand_id';
 	public $timestamps = false;
 }

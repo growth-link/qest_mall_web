@@ -283,6 +283,186 @@ class MigrationsTableSeeder extends Seeder
                 'migration' => '2023_01_04_204238_create_users_table',
                 'batch' => 0,
             ),
+            44 => 
+            array (
+                'id' => 53,
+                'migration' => '2023_01_05_024718_create_admins_table',
+                'batch' => 0,
+            ),
+            45 => 
+            array (
+                'id' => 54,
+                'migration' => '2023_01_05_024718_create_brands_table',
+                'batch' => 0,
+            ),
+            46 => 
+            array (
+                'id' => 55,
+                'migration' => '2023_01_05_024718_create_categories_table',
+                'batch' => 0,
+            ),
+            47 => 
+            array (
+                'id' => 56,
+                'migration' => '2023_01_05_024718_create_delivery_type_table',
+                'batch' => 0,
+            ),
+            48 => 
+            array (
+                'id' => 57,
+                'migration' => '2023_01_05_024718_create_failed_jobs_table',
+                'batch' => 0,
+            ),
+            49 => 
+            array (
+                'id' => 58,
+                'migration' => '2023_01_05_024718_create_filter_colors_table',
+                'batch' => 0,
+            ),
+            50 => 
+            array (
+                'id' => 59,
+                'migration' => '2023_01_05_024718_create_filter_tags_table',
+                'batch' => 0,
+            ),
+            51 => 
+            array (
+                'id' => 60,
+                'migration' => '2023_01_05_024718_create_item_checks_table',
+                'batch' => 0,
+            ),
+            52 => 
+            array (
+                'id' => 61,
+                'migration' => '2023_01_05_024718_create_item_filter_colors_table',
+                'batch' => 0,
+            ),
+            53 => 
+            array (
+                'id' => 62,
+                'migration' => '2023_01_05_024718_create_item_images_table',
+                'batch' => 0,
+            ),
+            54 => 
+            array (
+                'id' => 63,
+                'migration' => '2023_01_05_024718_create_item_options_table',
+                'batch' => 0,
+            ),
+            55 => 
+            array (
+                'id' => 64,
+                'migration' => '2023_01_05_024718_create_item_recommends_table',
+                'batch' => 0,
+            ),
+            56 => 
+            array (
+                'id' => 65,
+                'migration' => '2023_01_05_024718_create_item_sizes_table',
+                'batch' => 0,
+            ),
+            57 => 
+            array (
+                'id' => 66,
+                'migration' => '2023_01_05_024718_create_item_variation_colors_table',
+                'batch' => 0,
+            ),
+            58 => 
+            array (
+                'id' => 67,
+                'migration' => '2023_01_05_024718_create_item_variation_sizes_table',
+                'batch' => 0,
+            ),
+            59 => 
+            array (
+                'id' => 68,
+                'migration' => '2023_01_05_024718_create_items_table',
+                'batch' => 0,
+            ),
+            60 => 
+            array (
+                'id' => 69,
+                'migration' => '2023_01_05_024718_create_notice_icons_table',
+                'batch' => 0,
+            ),
+            61 => 
+            array (
+                'id' => 70,
+                'migration' => '2023_01_05_024718_create_notices_table',
+                'batch' => 0,
+            ),
+            62 => 
+            array (
+                'id' => 71,
+                'migration' => '2023_01_05_024718_create_password_resets_table',
+                'batch' => 0,
+            ),
+            63 => 
+            array (
+                'id' => 72,
+                'migration' => '2023_01_05_024718_create_payments_table',
+                'batch' => 0,
+            ),
+            64 => 
+            array (
+                'id' => 73,
+                'migration' => '2023_01_05_024718_create_personal_access_tokens_table',
+                'batch' => 0,
+            ),
+            65 => 
+            array (
+                'id' => 74,
+                'migration' => '2023_01_05_024718_create_prefectures_table',
+                'batch' => 0,
+            ),
+            66 => 
+            array (
+                'id' => 75,
+                'migration' => '2023_01_05_024718_create_purchase_limit_conditions_table',
+                'batch' => 0,
+            ),
+            67 => 
+            array (
+                'id' => 76,
+                'migration' => '2023_01_05_024718_create_sessions_table',
+                'batch' => 0,
+            ),
+            68 => 
+            array (
+                'id' => 77,
+                'migration' => '2023_01_05_024718_create_shops_table',
+                'batch' => 0,
+            ),
+            69 => 
+            array (
+                'id' => 78,
+                'migration' => '2023_01_05_024718_create_sub_categories_table',
+                'batch' => 0,
+            ),
+            70 => 
+            array (
+                'id' => 79,
+                'migration' => '2023_01_05_024718_create_user_delivery_informations_table',
+                'batch' => 0,
+            ),
+            71 => 
+            array (
+                'id' => 80,
+                'migration' => '2023_01_05_024718_create_user_invoice_informations_table',
+                'batch' => 0,
+            ),
+            72 => 
+            array (
+                'id' => 81,
+                'migration' => '2023_01_05_024718_create_user_payment_informations_table',
+                'batch' => 0,
+            ),
+            73 => 
+            array (
+                'id' => 82,
+                'migration' => '2023_01_05_024718_create_users_table',
+                'batch' => 0,
+            ),
         ));
         
         

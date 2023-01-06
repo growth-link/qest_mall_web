@@ -36,7 +36,6 @@
             });
         });
 
-
         // パスワードInput用
         $(function() {
             $('.eye').on('click', function() {

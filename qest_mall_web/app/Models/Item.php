@@ -52,6 +52,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
+ * 
+ * @property Category|null $category
  *
  * @package App\Models
  */
@@ -129,4 +131,9 @@ class Item extends Model
 		'filter_color_id',
 		'filter_tag_id'
 	];
+
+	public function category()
+	{
+		return $this->belongsTo(Category::class);
+	}
 }

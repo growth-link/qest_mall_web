@@ -90,12 +90,12 @@ Route::get('/sp/top', [TopController::class, 'spTop'])->name('sp.top');
 */
 
 // pc
-Route::get('/shop-info', [ShopController::class, 'shopInfo']);
-Route::get('/delivery-and-postage', [ShopController::class, 'deliveryAndPostage']);
+Route::get('/shop-info', [ShopController::class, 'shopInfo'])->name('shop_info');
+Route::get('/delivery-and-postage', [ShopController::class, 'deliveryAndPostage'])->name('delivery_and_postage');
 
 // sp
-Route::get('/sp/shop-info', [ShopController::class, 'spShopInfo']);
-Route::get('/sp/delivery-and-postage', [ShopController::class, 'spDeliveryAndPostage']);
+Route::get('/sp/shop-info', [ShopController::class, 'spShopInfo'])->name('sp.shop_info');
+Route::get('/sp/delivery-and-postage', [ShopController::class, 'spDeliveryAndPostage'])->name('sp.delivery_and_postage');
 
 /*
 |--------------------------------------------------------------------------

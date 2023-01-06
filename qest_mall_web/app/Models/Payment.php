@@ -9,19 +9,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class DeliveryType
+ * Class Payment
  * 
  * @property int $id
- * @property string|null $delivery_type_name
  *
  * @package App\Models
  */
-class DeliveryType extends Model
+class Payment extends Model
 {
-	protected $table = 'delivery_type';
+	protected $table = 'payments';
 	public $timestamps = false;
-
-	protected $fillable = [
-		'delivery_type_name'
-	];
 }

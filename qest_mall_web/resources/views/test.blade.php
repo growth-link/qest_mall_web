@@ -110,7 +110,7 @@
 
 <div class="password-container">
     <input type="password" value="" placeholder="パスワード..." class="input-password">
-    <i class="eye icon">
+    <i class="eye icon"></i>
 </div>
 
 {{-- <div class="formItem">

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class CategoriesTableSeeder extends Seeder
+class PrefecturesTableSeeder extends Seeder
 {
 
     /**
@@ -16,18 +16,18 @@ class CategoriesTableSeeder extends Seeder
     {
         
 
-        \DB::table('categories')->delete();
+        \DB::table('prefectures')->delete();
         
-        \DB::table('categories')->insert(array (
+        \DB::table('prefectures')->insert(array (
             0 => 
             array (
                 'id' => 1,
-                'category_name' => 'テストカテゴリー',
+                'prefecture_name' => '北海道',
             ),
             1 => 
             array (
                 'id' => 2,
-                'category_name' => 'テストカテゴリー2',
+                'prefecture_name' => '東京',
             ),
         ));
         

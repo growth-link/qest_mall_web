@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_type', function (Blueprint $table) {
+        Schema::create('user_invoice_informations', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id');
+            $table->increments('user_id');
+            $table->integer('post_code')->nullable();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_type');
+        Schema::dropIfExists('user_invoice_informations');
     }
 };

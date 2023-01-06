@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('user_payment_informations', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id');
+            $table->increments('user_id');
+            $table->integer('creditcard_token')->nullable();
+            $table->integer('creditcard_suffix')->nullable();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('user_payment_informations');
     }
 };

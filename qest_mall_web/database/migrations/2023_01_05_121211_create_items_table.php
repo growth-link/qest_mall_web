@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('shop_id')->nullable();
             $table->string('jan_code', 13)->nullable();
             $table->integer('brand_id')->nullable();
-            $table->integer('category_id')->nullable();
+            $table->unsignedInteger('category_id')->nullable()->index('category_id');
             $table->integer('sub_category_id')->nullable();
             $table->string('name', 50)->nullable();
             $table->string('detail_title', 100)->nullable();
