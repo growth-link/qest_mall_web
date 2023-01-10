@@ -21,12 +21,12 @@ class CategoriesTableSeeder extends Seeder
         \DB::table('categories')->insert(array (
             0 => 
             array (
-                'id' => 1,
+                'category_id' => 1,
                 'category_name' => 'テストカテゴリー',
             ),
             1 => 
             array (
-                'id' => 2,
+                'category_id' => 2,
                 'category_name' => 'テストカテゴリー2',
             ),
         ));
