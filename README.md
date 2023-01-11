@@ -17,7 +17,7 @@ php -r "unlink('composer-setup.php');"
 ##起動手順
 1. $ composer install
 2. $ composer update
-3. DBを作成　DB名：qest_mall
+3. DBを作成　DB名：qest_mall_db
 4. DBテーブル作成　$ php artisan migrate:fresh
 5. テストデータ入れ込み　$ php artisan db:seed　
 6. サーバー起動　$ php artisan serve　
