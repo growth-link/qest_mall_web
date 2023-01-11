@@ -29,7 +29,7 @@ digraph "failed_jobs" {
       <TR><TD PORT="failed_at" COLSPAN="2" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="64" HEIGHT="16">failed_at</TD></TR></TABLE></TD><TD PORT="failed_at.type" ALIGN="LEFT">timestamp[19]</TD></TR>
       <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 0</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">0 rows</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">0 &gt;</TD></TR>
     </TABLE>>
-    URL="tables/failed_jobs.html"
+    URL="../../tables/failed_jobs.html"
     target="_top"
     tooltip="failed_jobs"
   ];

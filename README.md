@@ -1,8 +1,8 @@
 # qest_mall_web
 Qest Mall Web 開発用
 
-PHP 8.1.9
-Laravel 9
+PHP 8.1.9  
+Laravel 9  
 
 ## Composerインストール
 ```Shell
@@ -32,19 +32,23 @@ $ gcloud config configurations activate qest-mall-web
 ## DBドキュメント作成
 ```
 1. brew install graphviz
-2. java -jar schemaspy-6.1.0.jar
+2. cd database
+3. java -jar schemaspy-6.1.0.jar
+※3でERRORになる場合はvizjsのオプションをつけてコマンド実行
+java -jar schemaspy-6.1.0.jar -vizjs
+4. /database/schemaspy/index.htmlをWebブラウザで開くとドキュメントが見れる
 ```
 日本語対応する場合：https://dev.classmethod.jp/articles/schemaspy-docker-localize-jp/
 
 ## プロジェクト構成外観
-コントローラ：app/Http/Controllers/
-バリデーション：app/Http/Requests/
-大量テストデータ作成：database/factories/
-DBテーブル定義：migrations/
-テストデータ入れ込み：database/seeders/
-テンプレート：resources/views/
-ルーティング（WEB）：routes/web.php
-ルーティング（API）：routes/api.php
+コントローラ：app/Http/Controllers/  
+バリデーション：app/Http/Requests/  
+大量テストデータ作成：database/factories/  
+DBテーブル定義：migrations/  
+テストデータ入れ込み：database/seeders/  
+テンプレート：resources/views/  
+ルーティング（WEB）：routes/web.php  
+ルーティング（API）：routes/api.php  
 
 ## DB定義更新手順
 ```shell
