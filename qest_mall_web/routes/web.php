@@ -108,8 +108,8 @@ Route::get('/notices', [NoticeController::class, 'notices']);
 Route::get('/notices/detail', [NoticeController::class, 'noticesDetail']);
 
 // SP
-Route::get('/sp/notices', [FirebaseTestController::class, 'spNotices']);
-Route::get('/sp/notices/detail', [FirebaseTestController::class, 'spNoticesDetail']);
+Route::get('/sp/notices', [NoticeController::class, 'spNotices']);
+Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

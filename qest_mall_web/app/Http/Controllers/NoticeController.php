@@ -17,7 +17,7 @@ class NoticeController extends Controller
         $notices = Notice::get();
         \Log::Info($notices);
 
-        return view('user/notice/notices', [
+        return view('user.notice.pc.notices', [
             "notices" => $notices
         ]);
     }
@@ -25,7 +25,7 @@ class NoticeController extends Controller
     public function spNotices(Request $request) {
         $notices = Notice::get();
 
-        return view('user/notice/notices_sp', [
+        return view('user.notice.sp.notices', [
             "notices" => $notices
         ]);
     }
@@ -40,7 +40,7 @@ class NoticeController extends Controller
         $notice_id = $request->notice_id;
         $notice = Notice::where("id", $notice_id)->first();
 
-        return view('user/notice/notices_detail', [
+        return view('user.notice.pc.notices_detail', [
             "notice" => $notice
         ]);
     }
@@ -49,7 +49,7 @@ class NoticeController extends Controller
         $notice_id = $request->notice_id;
         $notice = Notice::where("id", $notice_id)->first();
 
-        return view('user/notice/notices_detail_sp', [
+        return view('user.notice.sp.notices_detail', [
             "notice" => $notice
         ]);
     }

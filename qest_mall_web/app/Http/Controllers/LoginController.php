@@ -10,18 +10,18 @@ class LoginController extends Controller
     {
         //if (!Auth::check()) { return redirect('/'); } // ログインチェック
         //return redirect('/top'); // リダイレクト
-        return view('user/login/login');
+        return view('user.login.pc.login');
     }
 
     public function checkLogin(Request $request) {
-        return view('user/login/login');
+        return view('user.login.pc.login');
     }
 
     public function spLogin() {
-        return view('user/login/login_sp');
+        return view('user.login.sp.login');
     }
 
     public function spCheckLogin(Request $request) {
-        return view('user/login/login');
+        return view('user.login.sp.login');
     }
 }
