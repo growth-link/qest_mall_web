@@ -13,11 +13,11 @@ class ShopController extends Controller
     */
 
     public function shopInfo() {
-        return view('user/shop/shop_info');
+        return view('user.shop.pc.shop_info');
     }
 
     public function spShopInfo() {
-        return view('user/shop/shop_info_sp');
+        return view('user.shop.sp.shop_info');
     }
 
     /*
@@ -27,10 +27,10 @@ class ShopController extends Controller
     */
 
     public function deliveryAndPostage() {
-        return view('user/shop/delivery_and_postage');
+        return view('user.shop.pc.delivery_and_postage');
     }
 
     public function spDeliveryAndPostage() {
-        return view('user/shop/delivery_and_postage_sp');
+        return view('user.shop.sp.delivery_and_postage');
     }
 }

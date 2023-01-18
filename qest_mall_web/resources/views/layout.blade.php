@@ -7,6 +7,11 @@
         <link rel="stylesheet" type="text/css" href="{{asset('Semantic-UI-CSS-master/semantic.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/common.css')}}">
 
+        <!-- slick.js -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+        <link rel="stylesheet" href="{{asset('css/pc/slick.css')}}">
         <!-- DataTables -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
         <!-- jquery-ui -->
@@ -20,6 +25,9 @@
     </body>
     <script src="{{asset('jquery-3.6.1.min.js')}}"></script>
     <script src="{{asset('Semantic-UI-CSS-master/semantic.min.js')}}"></script>
+    <!-- slick.js -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/js/pc/slick.js"></script>
     {{-- <script src="{{asset('jquery-tabledit-1.2.3/jquery.tabledit.min.js')}}"></script> --}}
     <!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>

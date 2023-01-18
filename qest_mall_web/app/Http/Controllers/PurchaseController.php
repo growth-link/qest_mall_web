@@ -8,28 +8,28 @@ class PurchaseController extends Controller
 {
     // カート
     public function cart () {
-        return view('user/purchase/cart');
+        return view('user.purchase.pc.cart');
     }
 
     public function spCart() {
-        return view('user/purchase/sp_cart');
+        return view('user/purchase.sp.cart');
     }
 
     // 購入前ログイン
     public function cartLogin() {
-        return view('user/purchase/cart_login');
+        return view('user.purchase.pc.cart_login');
     }
 
     public function spCartLogin() {
-        return view('user/purchase/sp_cart_login');
+        return view('user.purchase.sp.cart_login');
     }
 
     // 購入手続き
     public function cartPurchase() {
-        return view('user/purchase/cart_purchase');
+        return view('user.purchase.pc.cart_purchase');
     }
 
     public function spCartPurchase() {
-        return view('user/purchase/cart_purchase_sp');
+        return view('user.purchase.sp.cart_purchase');
     }
 }

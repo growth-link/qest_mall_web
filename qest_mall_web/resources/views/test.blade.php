@@ -3,6 +3,7 @@
 @endcomponent
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="stylesheet" href="css/pc/carousel.css">
 <select name="skills" multiple="" class="ui fluid dropdown">
     <option value="">Skills</option>
     <option value="angular">Angular</option>
@@ -122,6 +123,37 @@
     </p>
 </div> --}}
 
+<!-- メインカルーセル（https://dotinstall.com/lessons/carousel_js） -->
+<section class="carousel">
+    <div class="carousel-container">
+        <ul id="carousel_ul">
+            <li><a href="#"><img class="img" src="/images/mall_top/main_carousel.png"></a></li>
+            <li><a href="#"><img class="img" src="/images/mall_top/main_carousel2.png"></a></li>
+            <li><a href="#"><img class="img" src="/images/mall_top/main_carousel3.png"></a></li>
+        </ul>
+
+        <button id="prev"><img class="img" src="/images/carousel/carousel_left.png"></button>
+        <button id="next"><img class="img" src="/images/carousel/carousel_right.png"></button>
+    </div>
+</section>
+
+<div style="margin:0 10%">
+    <!-- 複数画像カルーセル（slick.js）ここから -->
+    <section class="five-slick qmm-slick">
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+        <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+    </section>
+    <!-- 複数画像カルーセル（slick.js）ここまで -->
+</div>
+
 <div class="wrap" style="font-size:20px;">
     <ul>
         <li class="cls1">＜</li>
@@ -144,4 +176,5 @@
             }).modal('show');
         }
     </script>
+    <script src="/js/pc/carousel.js"></script>
 @endsection
