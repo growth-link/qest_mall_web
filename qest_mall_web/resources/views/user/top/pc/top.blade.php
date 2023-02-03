@@ -1,380 +1,418 @@
 @extends("layout")
-@component('user.layouts.header')
+@component('user.layouts.pc.header')
 @endcomponent
 @section('content')
-<link rel="stylesheet" href="css/pc/carousel.css">
-<link rel="stylesheet" href="css/pc/mall_top.css">
+<link rel="stylesheet" href="{{ asset('css/pc/drop_down_menu.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pc/mall_top.css') }}">
 {{-- Main Carousel --}}
-<section class="carousel">
-    <div class="carousel-container">
-        <ul id="carousel_ul">
-            <li><a href="#"><img class="img" src="/images/mall_top/main_carousel.png"></a></li>
-            <li><a href="#"><img class="img" src="/images/mall_top/main_carousel2.png"></a></li>
-            <li><a href="#"><img class="img" src="/images/mall_top/main_carousel3.png"></a></li>
-        </ul>
-
-        <button id="prev"><img class="img" src="/images/carousel/carousel_left.png"></button>
-        <button id="next"><img class="img" src="/images/carousel/carousel_right.png"></button>
-    </div>
-</section>
+<div class="main-carousel-slick">
+    @foreach ($top_banners as $top_banner)
+        <div>
+            <a href="{{ $top_banner->url }}">
+                <img class="img" src="{{ $top_banner->image->url }}">
+            </a>
+        </div>
+    @endforeach
+</div>
 
 {{-- Content Box --}}
 <div class="content-box">
     {{-- Qest mall magazine --}}
     <div class="qmm">
-        <label class="qmm-title">Qest mall magazine</label>
-        <a href="#" style="float:right;font-size:11px;">Qest mall magazineトップへ</a>
-        {{-- Carousel --}}
-        <!-- 複数画像カルーセル（slick.js） -->
-        <section class="five-slick qmm-slick">
+        <h2 class="qmm-title">Qest mall magazine
+            <a href="#" style="float:right;font-size:11px;font-weight:normal;">
+                Qest mall magazineトップへ
+            </a>
+        </h2>
+        <div class="five-slick qmm-slick">
             @for ($i = 0; $i < 10; $i++)
-                <div><a href="#"><img class="img" src="/images/one_stories/one_stories.png"></a></div>
+                <div>
+                    <a href="#">
+                        <img class="img" src="{{ asset('/images/one_stories/one_stories.png') }}">
+                    </a>
+                </div>
             @endfor
-        </section>
+        </div>
     </div>
 
     <div style="display:flex;">
         {{-- Left Menu --}}
         <div class="left-menu">
             {{-- 広告 --}}
-            <div>
-                <a href="#">
-                    <img class="img ad-img" src="/images/advertisement/ad_top.png">
+            <aside class="ad-box">
+                <a href="{{ $ads[AdTypeConst::TOP_RECTANGLE]->url }}">
+                    <img class="img ad-img" src="{{ asset($ads[AdTypeConst::TOP_RECTANGLE]->image->url) }}">
                 </a>
-            </div>
+            </aside>
 
-            {{-- 商品カテゴリー --}}
-            <div>
-                <label class="menu-title">商品カテゴリ</label>
+            <div class="left-menu-search-box">
+                {{-- 商品カテゴリー --}}
+                <section class="left-menu-box">
+                    <h2 class="menu-title">
+                        商品カテゴリ
+                        <a href="{{ route('categories') }}" style="float:right;font-size:13px;font-weight:normal;">
+                            一覧
+                        </a>
+                    </h2>
 
-                <ul>
-                    <li>ファッション</li>
-                    <li>生活雑貨・ホビー</li>
-                    <li>インテリア</li>
-                    <li>フード・ドリンク</li>
-                    <li>美容ケア</li>
-                </ul>
-            </div>
+                    <nav>
+                        <ul>
+                            @foreach ($major_categoris as $major_category)
+                                <li class="has-child">
+                                    <a  href="{{ route('category', $major_category->category_id) }}" class="category-title">
+                                        {{ $major_category->category_name }}
+                                    </a>
+                                    <div class="sub-menu">
+                                        <div class="major-category-name">
+                                            {{ $major_category->category_name }}
+                                        </div>
+                                        <div class="sub-menu-body">
+                                            @foreach ($major_category->categories as $middle_category)
+                                                <div class="sub-menu-box">
+                                                    <div>
+                                                        <img class="category-image" src="{{ asset($middle_category->image->url) }}">
+                                                    </div>
+                                                    <div class="middle-category-name">
+                                                        <a href="{{ route('category', $middle_category->category_id) }}">
+                                                            {{ $middle_category->category_name }}
+                                                        </a>
+                                                    </div>
+                                                    <ul class="minor-category">
+                                                        @foreach ($middle_category->categories as $minor_category)
+                                                        <li class="minor-category-name">
+                                                            <a href="{{ route('category', $minor_category->category_id) }}">
+                                                                {{ $minor_category->category_name }}
+                                                            </a>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </nav>
+                </section>
 
-            {{-- ライフシーンから探す --}}
-            <div>
-                <label class="menu-title">ライフシーンから探す</label>
-                <div >
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/chill_out_banner.png">
-                    </a>
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/health_banner.png">
-                    </a>
-                    {{-- TODO:サイズがおかしい ここから --}}
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/minimal_banner.png">
-                    </a>
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/fashion_banner.png">
-                    </a>
-                    {{-- TODO:サイズがおかしい ここまで --}}
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/hobby_banner.png">
-                    </a>
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/art_banner.png">
-                    </a>
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/gift_banner.png">
-                    </a>
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/sustainability_banner.png">
-                    </a>
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/gourmet_banner.png">
-                    </a>
-                    <a href="#">
-                        <img class="img life-style-img" src="/images/life_scene_banner/opa_banner.png">
-                    </a>
-                </div>
-            </div>
+                {{-- ライフシーンから探す --}}
+                <section class="left-menu-box">
+                    <h2 class="menu-title">ライフシーンから探す</h2>
+                    <div>
+                        @foreach ($sub_categoris as $sub_category)
+                            <a href="#">
+                                <img class="img life-style-img" src="{{ asset($sub_category->image->url) }}">
+                            </a>
+                        @endforeach
+                    </div>
+                </section>
 
-            {{-- ショップ・ブランド検索 --}}
-            <div class="shop-bland-search">
-                <label class="menu-title">ショップ・ブランド</label>
-                <div style="display:flex;width:100%;">
-                    <input type="text" style="width:70%;">
-                    <button style="width:30%;">検索</button>
-                </div>
-                <div>
-                    {{-- <a href="{{ route('shops') }}">ショップ一覧へ</a> --}}
-                    <a href="/shops">ショップ一覧へ</a>
-                </div>
-                <div>
-                    {{-- <a href="{{ route('brands') }}">ブランド一覧へ</a> --}}
-                    <a href="/brands">ブランド一覧へ</a>
-                </div>
+                {{-- ショップ・ブランド検索 --}}
+                <section class="left-menu-box shop-brand-search">
+                    <h2 class="menu-title">ショップ・ブランド</h2>
+                    <div class="search-container">
+                        <form class="ui search search-container-form" action={{ route('shop_brand_search') }}  method="post">
+                            @csrf
+                            <div class="ui input">
+                                <input class="prompt" type="text" name="shop_brand_name">
+                            </div>
+                            <div class="results"></div>
+                            <button>検索</button>
+                        </form>
+                    </div>
+                    <div class="shop-brand-link">
+                        <a href="{{ route('shops') }}">ショップ一覧へ</a>
+                    </div>
+                    <div class="shop-brand-link">
+                        <a href="{{ route('brands') }}">ブランド一覧へ</a>
+                    </div>
+                </section>
             </div>
 
             {{-- 広告 --}}
-            <div>
-                <a href="#">
-                    <img class="img ad-img" src="/images/advertisement/ad_top.png">
-                </a>
-                <a href="#">
-                    <img class="img ad-img" src="/images/advertisement/ad_wow_kyoto.png">
-                </a>
-                <a href="#">
-                    <img class="img ad-img" src="/images/advertisement/ad_waon.png">
-                </a>
-            </div>
+            <aside class="ad-box bottom-ad-container">
+                <div class="bottom-ad-box">
+                    <a href="{{ $ads[AdTypeConst::BOTTOM_RECTANGLE_UPPER]->url }}">
+                        <img class="img ad-img" src="{{ asset($ads[AdTypeConst::BOTTOM_RECTANGLE_UPPER]->image->url) }}">
+                    </a>
+                </div>
+                <div class="bottom-ad-box">
+                    <a href="{{ $ads[AdTypeConst::BOTTOM_RECTANGLE_MIDDLE]->url }}">
+                        <img class="img ad-img" src="{{ asset($ads[AdTypeConst::BOTTOM_RECTANGLE_MIDDLE]->image->url) }}">
+                    </a>
+                </div>
+                <div class="bottom-ad-box">
+                    <a href="{{ $ads[AdTypeConst::BOTTOM_RECTANGLE_LOWER]->url }}">
+                        <img class="img ad-img" src="{{ asset($ads[AdTypeConst::BOTTOM_RECTANGLE_LOWER]->image->url) }}">
+                    </a>
+                </div>
+            </aside>
         </div>
 
         {{-- Main Content --}}
-        <main class="main-content">
+        <div class="main-content">
             {{-- Life Scene --}}
-            <div class="main-content-box life-scene">
-                <label class="section-title">LIFE SCENE</label>
-                <section>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/chill_out_logo.png">
-                        </a>
-                        <label class="life-scene-text">Chill Out</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/health_logo.png">
-                        </a>
-                        <label class="life-scene-text">Health</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/minimal_logo.png">
-                        </a>
-                        <label class="life-scene-text">Minimal</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/fashion_logo.png">
-                        </a>
-                        <label class="life-scene-text">Fashion</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/art_logo.png">
-                        </a>
-                        <label class="life-scene-text">Art</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/gift_logo.png">
-                        </a>
-                        <label class="life-scene-text">Gift</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/sustainability_logo.png">
-                        </a>
-                        <label class="life-scene-text">Sustainability</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/gourmet_logo.png">
-                        </a>
-                        <label class="life-scene-text">Gourmet</label>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <img class="img life-style-img" src="/images/life_scene_logo/opa_logo.png">
-                        </a>
-                        <label class="life-scene-text">Opa</label>
-                    </div>
-                </section>
-            </div>
+            <section class="main-content-box life-scene">
+                <h2 class="section-title">LIFE SCENE</h2>
+                <div class="life-scene-container">
+                    @foreach ($sub_categoris as $sub_category)
+                        <div class="life-scene-box">
+                            <a href="#">
+                                <img class="img life-scene-img" src="{{ asset($sub_category->icon_url) }}">
+                            </a>
+                            <p class="life-scene-title">{{ $sub_category->sub_category_name }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </section>
 
             {{-- おすすめ商品 --}}
-            <div class="main-content-box recommend-item">
-                <label class="section-title">おすすめ商品</label>
-                <section class="five-slick item-slick">
-                    @for ($i = 0; $i < 10; $i++)
-                        <div>
-                            <a href="#"><img class="img" src={{ $item_images[$i] }}></a>
-                            <div class="slider-text">
-                                <a class="shop-name" href="#">天のめぐみ</a><br>
-                                <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                <span class="price">
-                                    <label>1,944円</label>
-                                    <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                </span>
+            @if (!session('user_id_token'))
+                <section class="main-content-box recommend-item">
+                    <h2 class="section-title">おすすめ商品</h2>
+                    <div class="five-slick item-slick">
+                        @foreach ($recommend_items as $item)
+                            <div>
+                                <a href="{{ route('items_detail', $item->id) }}">
+                                    <div class="item-img">
+                                        <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                        @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
+                                            <div class="new-img">
+                                                <img src="{{ asset('/images/item/new_logo.png') }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                </a>
+                                <div class="slider-text">
+                                    <div class="shop-name">
+                                        <a href="{{ route('shop', $item->shop_id) }}">
+                                            {{ $item->shop->shop_name }}
+                                        </a>
+                                    </div>
+                                    <div class="item-name">
+                                        <p>{{ $item->name }}</p>
+                                    </div>
+                                    <div class="price">
+                                        <p>{{ number_format($item->normal_price) }}円
+                                            @if ($item->is_postage_free == true)
+                                                <span class="free-shipping">&nbsp;&nbsp;送料無料</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    @endfor
+                        @endforeach
+                    </div>
                 </section>
-            </div>
+            @endif
 
             {{-- 人気商品ランキング --}}
-            <div class="main-content-box item-ranking">
-                <label class="section-title">人気商品ランキング</label>
-                <section class="five-slick rank-item-slick">
-                    @for ($i = 0; $i < 10; $i++)
+            <section class="main-content-box rank-item">
+                <h2 class="section-title">人気商品ランキング</h2>
+                <div class="five-slick rank-item-slick">
+                    @php $count = 0; @endphp
+                    @foreach ($rank_items as $item)
+                        @php $count++; @endphp
                         <div>
-                            <label class="rank-title">{{$i+1}}位</label>
-                            <a href="#"><img class="img" src={{ $item_images[$i] }}></a>
+                            <p class="rank-num">{{$count}}<span class="rank-text">位</span></p>
+                            <a href="{{ route('items_detail', $item->id) }}">
+                                <div class="item-img">
+                                    <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                    @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
+                                        <div class="new-img">
+                                            <img src="{{ asset('/images/item/new_logo.png') }}">
+                                        </div>
+                                    @endif
+                                </div>
+                            </a>
                             <div class="slider-text">
-                                <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                <span class="price">
-                                    <label>1,944円</label>
-                                    <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                </span>
+                                <div class="shop-name">
+                                    <a href="{{ route('shop', $item->shop_id) }}">
+                                        {{ $item->shop->shop_name }}
+                                    </a>
+                                </div>
+                                <div class="item-name">
+                                    <p>{{ $item->name }}</p>
+                                </div>
+                                <div class="price">
+                                    <p>{{ number_format($item->normal_price) }}円
+                                        @if ($item->is_postage_free == true)
+                                            <span class="free-shipping">&nbsp;&nbsp;送料無料</span>
+                                        @endif
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    @endfor
-                </section>
-            </div>
+                    @endforeach
+                </div>
+            </section>
 
             {{-- 人気ショップランキング --}}
-            <div class="main-content-box shop-ranking">
-                <label class="section-title">人気ショップランキング</label>
-                <section class="five-slick rank-shop-slick">
-                    @for ($i = 0; $i < 10; $i++)
+            <section class="main-content-box rank-shop">
+                <h2 class="section-title">人気ショップランキング</h2>
+                <div class="five-slick rank-shop-slick">
+                    @php $count = 0; @endphp
+                    @foreach ($rank_shops as  $shop)
+                        @php $count++; @endphp
                         <div>
-                            <label class="rank-title">{{$i+1}}位</label>
-                            <a href="#"><img class="img" src={{ $shop_images[$i] }}></a>
+                            <p class="rank-num">{{$count}}<span class="rank-text">位</span></p>
+                            <a href="{{ route('shop', $shop->id) }}">
+                                <img class="img" src="{{ asset($shop->image->url) }}">
+                            </a>
                         </div>
-                    @endfor
-                </section>
-            </div>
+                    @endforeach
+                </div>
+            </section>
 
             {{-- 新着ショップ --}}
-            <div class="main-content-box new-arrival-shop">
-                <label class="section-title">新着ショップ</label>
-                <section class="five-slick shop-slick">
-                    @for ($i = 0; $i < 10; $i++)
-                        <div><a href="#"><img class="img" src={{ $shop_images[$i] }}></a></div>
-                    @endfor
-                </section>
-            </div>
+            <section class="main-content-box latest-shop">
+                <h2 class="section-title">新着ショップ</h2>
+                <div class="five-slick latest-shop-slick">
+                    @foreach ($latest_shops as  $shop)
+                        <div>
+                            <a href="{{ route('shop', $shop->id) }}">
+                                <img class="img" src="{{ asset($shop->image->url) }}">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </section>
 
             {{-- 閲覧履歴からのおすすめ商品 --}}
-            {{-- <div class="main-content-box recommend-item-from-history hidden"> --}}
-            <div class="main-content-box recommend-item-from-history">
-                <label class="section-title">閲覧履歴からのおすすめ商品</label>
-                <section class="five-slick item-slick">
-                    @for ($i = 0; $i < 10; $i++)
-                        <div>
-                            <a href="#"><img class="img" src={{ $item_images[$i] }}></a>
-                            <div class="slider-text">
-                                <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                <span class="price">
-                                    <label>1,944円</label>
-                                    <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                </span>
+            @if (session('user_id_token'))
+                <section class="main-content-box recommend-by-history-item">
+                    <h2 class="section-title">閲覧履歴からのおすすめ商品</h2>
+                    <div class="five-slick item-slick">
+                        @foreach ($recommend_by_history_items as $item)
+                            <div>
+                                <a href="{{ route('items_detail', $item->id) }}">
+                                    <div class="item-img">
+                                        <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                        @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
+                                            <div class="new-img">
+                                                <img src="{{ asset('/images/item/new_logo.png') }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                </a>
+                                <div class="slider-text">
+                                    <div class="shop-name">
+                                        <a href="{{ route('shop', $item->shop_id) }}">
+                                            {{ $item->shop->shop_name }}
+                                        </a>
+                                    </div>
+                                    <div class="item-name">
+                                        <p>{{ $item->name }}</p>
+                                    </div>
+                                    <div class="price">
+                                        <p>{{ number_format($item->normal_price) }}円
+                                            @if ($item->is_postage_free == true)
+                                                <span class="free-shipping">&nbsp;&nbsp;送料無料</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    @endfor
+                        @endforeach
+                    </div>
                 </section>
-            </div>
+            @endif
 
 
             {{-- 閲覧商品履歴 --}}
-            {{-- <div class="main-content-box browsing-item-history hidden"> --}}
-                <div class="main-content-box browsing-item-history">
-                    <label class="section-title">閲覧商品履歴</label>
-                    <section class="five-slick item-slick">
-                        @for ($i = 0; $i < 10; $i++)
+            @if (session('user_id_token'))
+                <section class="main-content-box browsing-history-item">
+                    <h2 class="section-title">閲覧商品履歴</h2>
+                    <div class="five-slick item-slick">
+                        @foreach ($browsing_history_items as $item)
                             <div>
-                                <a href="#"><img class="img" src={{ $item_images[$i] }}></a>
+                                <a href="{{ route('items_detail', $item->id) }}">
+                                    <div class="item-img">
+                                        <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                        @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
+                                            <div class="new-img">
+                                                <img src="{{ asset('/images/item/new_logo.png') }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                </a>
                                 <div class="slider-text">
-                                    <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                    <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                    <span class="price">
-                                        <label>1,944円</label>
-                                        <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                    </span>
+                                    <div class="shop-name">
+                                        <a href="{{ route('shop', $item->shop_id) }}">
+                                            {{ $item->shop->shop_name }}
+                                        </a>
+                                    </div>
+                                    <div class="item-name">
+                                        <p>{{ $item->name }}</p>
+                                    </div>
+                                    <div class="price">
+                                        <p>{{ number_format($item->normal_price) }}円
+                                            @if ($item->is_postage_free == true)
+                                                <span class="free-shipping">&nbsp;&nbsp;送料無料</span>
+                                            @endif
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        @endfor
-                    </section>
-                </div>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
 
             {{-- 新着商品 --}}
-            <div class="main-content-box new-arrival-item">
-                <label class="section-title">新着商品</label>
-                <section>
-                    @for ($i = 0; $i < 6; $i++)
-                        <ul>
-                            <li>
-                                <a href="#"><img class="img" src="/images/item/item1.png"></a>
-                                <div class="slider-text">
-                                    <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                    <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                    <span class="price">
-                                        <label>1,944円</label>
-                                        <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                    </span>
+            <section class="main-content-box latest-item">
+                <h2 class="section-title">新着商品</h2>
+                <div class="latest-item-container">
+                    @foreach ($latest_items as $item)
+                        <div class="latest-item-box">
+                            <a href="{{ route('items_detail', $item->id) }}">
+                                <div class="item-img">
+                                    <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
                                 </div>
-                            </li>
-                            <li>
-                                <a href="#"><img class="img" src="/images/item/item2.png"></a>
-                                <div class="slider-text">
-                                    <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                    <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                    <span class="price">
-                                        <label>1,944円</label>
-                                        <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                    </span>
+                            </a>
+                            <div class="slider-text">
+                                <div class="shop-name">
+                                    <a href="{{ route('shop', $item->shop_id) }}">
+                                        {{ $item->shop->shop_name }}
+                                    </a>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="#"><img class="img" src="/images/item/item3.png"></a>
-                                <div class="slider-text">
-                                    <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                    <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                    <span class="price">
-                                        <label>1,944円</label>
-                                        <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                    </span>
+                                <div class="item-name">
+                                    <p>{{ $item->name }}</p>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="#"><img class="img" src="/images/item/item4.png"></a>
-                                <div class="slider-text">
-                                    <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                    <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                    <span class="price">
-                                        <label>1,944円</label>
-                                        <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                    </span>
+                                <div class="price">
+                                    <p>{{ number_format($item->normal_price) }}円
+                                        @if ($item->is_postage_free == true)
+                                            <span class="free-shipping">&nbsp;&nbsp;送料無料</span>
+                                        @endif
+                                    </p>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="#"><img class="img" src="/images/item/item5.png"></a>
-                                <div class="slider-text">
-                                    <label><a class="shop-name" href="#">天のめぐみ</a></label><br>
-                                    <label class="item-name">天然水 ミネラルウォーター 500ml 1セット(6本) </label><br>
-                                    <span class="price">
-                                        <label>1,944円</label>
-                                        <label class="free-shipping">&nbsp;&nbsp;送料無料</label>
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-
-                    @endfor
-                </section>
-            </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </section>
 
             {{-- クーポン --}}
-            <div class="main-content-box coupon">
-                <section class="coupon-slick">
+            <section class="main-content-box coupon">
+                <div class="coupon-slick">
                     @for ($i = 0; $i < 10; $i++)
-                        <div><a href="#"><img class="img" src="/images/coupon/SPECIAL-COUPON-2021-1-1024x512.png"></a></div>
+                        @foreach ($coupons as $coupon)
+                            <div>
+                                <a href="{{ route('coupons', $coupon->coupon_id) }}">
+                                    <img class="img" src="{{ asset($coupon->image->url) }}">
+                                </a>
+                            </div>
+                        @endforeach
                     @endfor
-                </section>
-            </div>
-        </main>
+                </div>
+            </section>
+        </div>
     </div>
 </div>
+@component('user.layouts.pc.footer')
+@endcomponent
 @endsection
 @section("script")
-    <script src="/js/pc/carousel.js"></script>
+    <script src="{{ asset('/js/pc/drop_down_menu.js') }}"></script>
 @endsection

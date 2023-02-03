@@ -1,6 +1,6 @@
 <!-- 管理画面ログイン -->
 @extends("layout")
-@component('user.layouts.header')
+@component('user.layouts.pc.header')
 @endcomponent
 @section('content')
 <style>

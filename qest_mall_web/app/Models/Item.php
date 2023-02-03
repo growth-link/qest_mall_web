@@ -7,12 +7,13 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Item
- * 
+ *
  * @property int $id
  * @property int|null $shop_id
  * @property string|null $jan_code
@@ -52,8 +53,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * 
+ *
+ * @property Brand|null $brand
  * @property Category|null $category
+ * @property Shop|null $shop
+ * @property Collection|ItemImage[] $item_images
  *
  * @package App\Models
  */
@@ -132,8 +136,28 @@ class Item extends Model
 		'filter_tag_id'
 	];
 
+	public function brand()
+	{
+		return $this->belongsTo(Brand::class);
+	}
+
 	public function category()
 	{
 		return $this->belongsTo(Category::class);
+	}
+
+	public function shop()
+	{
+		return $this->belongsTo(Shop::class);
+	}
+
+	public function item_images()
+	{
+		return $this->hasMany(ItemImage::class);
+	}
+
+	public function is_sumbnail_image()
+	{
+		return $this->hasOne(ItemImage::class)->where('is_sumbnail', true);
 	}
 }

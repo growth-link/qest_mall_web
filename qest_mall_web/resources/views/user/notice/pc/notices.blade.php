@@ -1,5 +1,5 @@
 @extends("layout")
-@component('user.layouts.header')
+@component('user.layouts.pc.header')
 @endcomponent
 @section('content')
     <div class="content-box">

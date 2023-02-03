@@ -6,9 +6,12 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FirebaseTestController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\TopController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\NoticeController;
-use App\Http\Controllers\TopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,15 +76,67 @@ Route::get('/sp/register/confirm', [LoginController::class, 'spRegisterConfirm']
 
 /*
 |--------------------------------------------------------------------------
+| Ajax用
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/shop-brand-name', [AjaxController::class, 'shopBrandName'])->name('shop_brand_name'); // ショップ・ブランド名一覧取得
+
+/*
+|--------------------------------------------------------------------------
 | Qest mall Top
 |--------------------------------------------------------------------------
 */
 
 // pc
 Route::get('/top', [TopController::class, 'top'])->name('top');
+Route::get('/', [TopController::class, 'top'])->name('top');
 
 // sp
 Route::get('/sp/top', [TopController::class, 'spTop'])->name('sp.top');
+
+/*
+|--------------------------------------------------------------------------
+| 商品
+|--------------------------------------------------------------------------
+*/
+
+// pc
+Route::get('/categories', [ItemController::class, 'categories'])->name('categories'); // カテゴリ一覧
+Route::get('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
+Route::get('/items/frag-category', [ItemController::class, 'flagCategory'])->name('frag_category'); // 商品一覧(フラグカテゴリ検索)
+Route::get('/items/category/{category}', [ItemController::class, 'category'])->name('category'); // 商品一覧(カテゴリ検索)
+Route::get('/items/brand/{brand}', [ItemController::class, 'brand'])->name('brand'); // 商品一覧(ブランド検索)
+Route::get('/items/shop/{shop}', [ItemController::class, 'shop'])->name('shop'); // 商品一覧(ショップ)
+Route::get('/items', [ItemController::class, 'itemFilter'])->name('items_filter'); // 商品検索(絞り込み)
+Route::get('/items/detail/{item}', [ItemController::class, 'itemDetail'])->name('items_detail'); // 商品詳細
+Route::get('/shops', [ItemController::class, 'shops'])->name('shops'); // ショップ一覧
+Route::get('/brands', [ItemController::class, 'brands'])->name('brands'); // ブランド一覧
+Route::post('/shop-brand-search', [ItemController::class, 'shopBrandSearch'])->name('shop_brand_search'); // ショップ・ブランド検索
+
+// sp
+Route::get('/sp/categories', [ItemController::class, 'spCategories'])->name('sp.categories'); // カテゴリ一覧
+Route::get('/sp/items/keyword', [ItemController::class, 'spItemKeyword'])->name('sp.item_keyword'); // 商品一覧(キーワード検索)
+Route::get('/sp/items/frag-category', [ItemController::class, 'spFlagCategory'])->name('sp.frag_category'); // 商品一覧(フラグカテゴリ検索)
+Route::get('/sp/items/category', [ItemController::class, 'spCategory'])->name('sp.category'); // 商品一覧(カテゴリ検索)
+Route::get('/sp/items/brand', [ItemController::class, 'spBrand'])->name('sp.brand'); // 商品一覧(ブランド検索)
+Route::get('/sp/items/shop/{shop}', [ItemController::class, 'spShop'])->name('sp.shop'); // 商品一覧(ショップ)
+Route::get('/sp/items', [ItemController::class, 'spItemFilter'])->name('sp.items_filter'); // 商品検索(絞り込み)
+Route::get('/sp/items/detail/{item}', [ItemController::class, 'spItemDetail'])->name('sp.items_detail'); // 商品詳細
+Route::get('/sp/shops', [ItemController::class, 'spShops'])->name('sp.shops'); // ショップ一覧
+Route::get('/sp/brands', [ItemController::class, 'spBrands'])->name('sp.brands'); // ブランド一覧
+
+/*
+|--------------------------------------------------------------------------
+| クーポン
+|--------------------------------------------------------------------------
+*/
+
+// pc
+Route::get('/coupons/{coupon}', [CouponController::class, 'coupons'])->name('coupons');
+
+// sp
+Route::get('/sp/coupons/{coupon}', [CouponController::class, 'spCoupons'])->name('sp.coupons');
 
 /*
 |--------------------------------------------------------------------------

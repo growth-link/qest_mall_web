@@ -1,0 +1,78 @@
+/* 全体 */
+a {
+    color: #1F53A7
+}
+.img {
+    width:100%;
+}
+.img:hover {
+    opacity: .8;
+}
+.content-box {
+    padding-top: 40px;
+}
+
+/* 広告 */
+.ad-img {
+    padding: 15px 30px;
+}
+
+/* メインコンテンツ */
+.main-content {
+    width: 100%;
+}
+.main-content-box {
+    margin-bottom: 30px;
+}
+.section-title {
+    color: #6C6C6C;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size:16px;
+}
+
+/* LIFE SCENE */
+.life-scene-container {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.life-scene-box {
+    display: flex;
+    width: 20%;
+    text-align: center;
+    flex-flow: column;
+    padding-top: 10px;
+}
+.life-scene-img {
+    width: 80%;
+}
+.life-scene-title {
+    text-align: center;
+    color: #666666;
+    font-weight: bold;
+    font-size: 11px;
+    overflow-wrap: break-word;
+}
+
+/* 新着商品 */
+.latest-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+    row-gap: 30px;
+}
+.latest-item-box {
+    width: calc(100% / 2 - 10px);
+}
+.latest-item-box img {
+    max-height: 163px;
+    margin: 0 auto;
+    object-fit: cover;
+}

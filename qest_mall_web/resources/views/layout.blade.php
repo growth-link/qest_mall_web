@@ -33,7 +33,9 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <!-- jquery-ui -->
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-    
+    <!-- ショップ・ブランド検索 -->
+    <script src="/js/search_shop_brand.js"></script>
+
     <script>
         $(document).ready( function () {
             //日本語ローカライズ
@@ -57,5 +59,6 @@
             });
         });
     </script>
+
     @yield('script')
 </html>

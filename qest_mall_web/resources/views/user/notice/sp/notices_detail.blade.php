@@ -1,5 +1,5 @@
 @extends("layout")
-@component('user.layouts.header')
+@component('user.layouts.sp.header')
 @endcomponent
 @section('content')
     detail

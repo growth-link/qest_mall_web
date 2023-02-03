@@ -18,6 +18,58 @@ class BrandsTableSeeder extends Seeder
 
         \DB::table('brands')->delete();
         
+        \DB::table('brands')->insert(array (
+            0 => 
+            array (
+                'brand_id' => 1,
+                'brand_name' => '天のめぐみブランド1',
+                'visibility_status' => 1,
+                'image_id' => NULL,
+                'created_at' => '2023-01-31 11:53:18',
+                'updated_at' => '2023-01-31 11:53:18',
+                'deleted_at' => NULL,
+            ),
+            1 => 
+            array (
+                'brand_id' => 2,
+                'brand_name' => 'ブランド2',
+                'visibility_status' => 1,
+                'image_id' => NULL,
+                'created_at' => '2023-01-31 11:53:18',
+                'updated_at' => '2023-01-31 11:53:18',
+                'deleted_at' => NULL,
+            ),
+            2 => 
+            array (
+                'brand_id' => 3,
+                'brand_name' => 'ブランド3',
+                'visibility_status' => 1,
+                'image_id' => NULL,
+                'created_at' => '2023-01-31 11:53:18',
+                'updated_at' => '2023-01-31 11:53:18',
+                'deleted_at' => NULL,
+            ),
+            3 => 
+            array (
+                'brand_id' => 4,
+                'brand_name' => 'ブランド4',
+                'visibility_status' => 1,
+                'image_id' => NULL,
+                'created_at' => '2023-01-31 11:53:18',
+                'updated_at' => '2023-01-31 11:53:18',
+                'deleted_at' => NULL,
+            ),
+            4 => 
+            array (
+                'brand_id' => 5,
+                'brand_name' => 'ブランド5',
+                'visibility_status' => 1,
+                'image_id' => NULL,
+                'created_at' => '2023-01-31 11:53:18',
+                'updated_at' => '2023-01-31 11:53:18',
+                'deleted_at' => NULL,
+            ),
+        ));
         
         
     }

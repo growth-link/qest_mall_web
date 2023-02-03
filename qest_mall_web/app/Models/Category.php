@@ -11,10 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Category
- * 
+ *
  * @property int $category_id
+ * @property int|null $parent_id
  * @property string|null $category_name
- * 
+ * @property int|null $image_id
+ *
+ * @property Image|null $image
+ * @property Category|null $category
+ * @property Collection|Category[] $categories
  * @property Collection|Item[] $items
  *
  * @package App\Models
@@ -25,9 +30,31 @@ class Category extends Model
 	protected $primaryKey = 'category_id';
 	public $timestamps = false;
 
-	protected $fillable = [
-		'category_name'
+	protected $casts = [
+		'parent_id' => 'int',
+		'image_id' => 'int'
 	];
+
+	protected $fillable = [
+		'parent_id',
+		'category_name',
+		'image_id'
+	];
+
+	public function image()
+	{
+		return $this->belongsTo(Image::class, 'image_id');
+	}
+
+	public function category()
+	{
+		return $this->belongsTo(Category::class, 'parent_id');
+	}
+
+	public function categories()
+	{
+		return $this->hasMany(Category::class, 'parent_id');
+	}
 
 	public function items()
 	{
