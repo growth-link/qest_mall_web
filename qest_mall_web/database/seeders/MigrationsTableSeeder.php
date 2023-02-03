@@ -463,6 +463,660 @@ class MigrationsTableSeeder extends Seeder
                 'migration' => '2023_01_05_024718_create_users_table',
                 'batch' => 0,
             ),
+            74 => 
+            array (
+                'id' => 83,
+                'migration' => '2023_01_20_032328_create_major_categories_table',
+                'batch' => 0,
+            ),
+            75 => 
+            array (
+                'id' => 84,
+                'migration' => '2023_01_20_154545_create_major_categories_table',
+                'batch' => 0,
+            ),
+            76 => 
+            array (
+                'id' => 85,
+                'migration' => '2023_01_20_160314_create_middle_categories_table',
+                'batch' => 0,
+            ),
+            77 => 
+            array (
+                'id' => 86,
+                'migration' => '2023_01_20_160448_create_minor_categories_table',
+                'batch' => 0,
+            ),
+            78 => 
+            array (
+                'id' => 87,
+                'migration' => '2023_01_20_170104_create_major_categories_table',
+                'batch' => 0,
+            ),
+            79 => 
+            array (
+                'id' => 88,
+                'migration' => '2023_01_20_170232_create_middle_categories_table',
+                'batch' => 0,
+            ),
+            80 => 
+            array (
+                'id' => 89,
+                'migration' => '2023_01_20_170233_add_foreign_keys_to_middle_categories_table',
+                'batch' => 0,
+            ),
+            81 => 
+            array (
+                'id' => 90,
+                'migration' => '2023_01_20_170236_create_minor_categories_table',
+                'batch' => 0,
+            ),
+            82 => 
+            array (
+                'id' => 91,
+                'migration' => '2023_01_20_170237_add_foreign_keys_to_minor_categories_table',
+                'batch' => 0,
+            ),
+            83 => 
+            array (
+                'id' => 92,
+                'migration' => '2023_01_20_170334_create_items_table',
+                'batch' => 0,
+            ),
+            84 => 
+            array (
+                'id' => 93,
+                'migration' => '2023_01_20_170335_add_foreign_keys_to_items_table',
+                'batch' => 0,
+            ),
+            85 => 
+            array (
+                'id' => 94,
+                'migration' => '2023_01_25_114659_create_categories_table',
+                'batch' => 0,
+            ),
+            86 => 
+            array (
+                'id' => 95,
+                'migration' => '2023_01_25_134919_create_categories_table',
+                'batch' => 0,
+            ),
+            87 => 
+            array (
+                'id' => 96,
+                'migration' => '2023_01_25_134920_add_foreign_keys_to_categories_table',
+                'batch' => 0,
+            ),
+            88 => 
+            array (
+                'id' => 97,
+                'migration' => '2023_01_25_170642_create_categories_table',
+                'batch' => 0,
+            ),
+            89 => 
+            array (
+                'id' => 98,
+                'migration' => '2023_01_25_170643_add_foreign_keys_to_categories_table',
+                'batch' => 0,
+            ),
+            90 => 
+            array (
+                'id' => 99,
+                'migration' => '2023_01_25_170909_create_images_table',
+                'batch' => 0,
+            ),
+            91 => 
+            array (
+                'id' => 100,
+                'migration' => '2023_01_25_171034_create_sub_categories_table',
+                'batch' => 0,
+            ),
+            92 => 
+            array (
+                'id' => 101,
+                'migration' => '2023_01_25_171035_add_foreign_keys_to_sub_categories_table',
+                'batch' => 0,
+            ),
+            93 => 
+            array (
+                'id' => 102,
+                'migration' => '2023_01_26_170435_create_admins_table',
+                'batch' => 0,
+            ),
+            94 => 
+            array (
+                'id' => 103,
+                'migration' => '2023_01_26_170435_create_brands_table',
+                'batch' => 0,
+            ),
+            95 => 
+            array (
+                'id' => 104,
+                'migration' => '2023_01_26_170435_create_categories_table',
+                'batch' => 0,
+            ),
+            96 => 
+            array (
+                'id' => 105,
+                'migration' => '2023_01_26_170435_create_delivery_type_table',
+                'batch' => 0,
+            ),
+            97 => 
+            array (
+                'id' => 106,
+                'migration' => '2023_01_26_170435_create_failed_jobs_table',
+                'batch' => 0,
+            ),
+            98 => 
+            array (
+                'id' => 107,
+                'migration' => '2023_01_26_170435_create_filter_colors_table',
+                'batch' => 0,
+            ),
+            99 => 
+            array (
+                'id' => 108,
+                'migration' => '2023_01_26_170435_create_filter_tags_table',
+                'batch' => 0,
+            ),
+            100 => 
+            array (
+                'id' => 109,
+                'migration' => '2023_01_26_170435_create_images_table',
+                'batch' => 0,
+            ),
+            101 => 
+            array (
+                'id' => 110,
+                'migration' => '2023_01_26_170435_create_item_checks_table',
+                'batch' => 0,
+            ),
+            102 => 
+            array (
+                'id' => 111,
+                'migration' => '2023_01_26_170435_create_item_filter_colors_table',
+                'batch' => 0,
+            ),
+            103 => 
+            array (
+                'id' => 112,
+                'migration' => '2023_01_26_170435_create_item_images_table',
+                'batch' => 0,
+            ),
+            104 => 
+            array (
+                'id' => 113,
+                'migration' => '2023_01_26_170435_create_item_options_table',
+                'batch' => 0,
+            ),
+            105 => 
+            array (
+                'id' => 114,
+                'migration' => '2023_01_26_170435_create_item_recommends_table',
+                'batch' => 0,
+            ),
+            106 => 
+            array (
+                'id' => 115,
+                'migration' => '2023_01_26_170435_create_item_sizes_table',
+                'batch' => 0,
+            ),
+            107 => 
+            array (
+                'id' => 116,
+                'migration' => '2023_01_26_170435_create_item_variation_colors_table',
+                'batch' => 0,
+            ),
+            108 => 
+            array (
+                'id' => 117,
+                'migration' => '2023_01_26_170435_create_item_variation_sizes_table',
+                'batch' => 0,
+            ),
+            109 => 
+            array (
+                'id' => 118,
+                'migration' => '2023_01_26_170435_create_items_table',
+                'batch' => 0,
+            ),
+            110 => 
+            array (
+                'id' => 119,
+                'migration' => '2023_01_26_170435_create_notice_icons_table',
+                'batch' => 0,
+            ),
+            111 => 
+            array (
+                'id' => 120,
+                'migration' => '2023_01_26_170435_create_notices_table',
+                'batch' => 0,
+            ),
+            112 => 
+            array (
+                'id' => 121,
+                'migration' => '2023_01_26_170435_create_password_resets_table',
+                'batch' => 0,
+            ),
+            113 => 
+            array (
+                'id' => 122,
+                'migration' => '2023_01_26_170435_create_payments_table',
+                'batch' => 0,
+            ),
+            114 => 
+            array (
+                'id' => 123,
+                'migration' => '2023_01_26_170435_create_personal_access_tokens_table',
+                'batch' => 0,
+            ),
+            115 => 
+            array (
+                'id' => 124,
+                'migration' => '2023_01_26_170435_create_prefectures_table',
+                'batch' => 0,
+            ),
+            116 => 
+            array (
+                'id' => 125,
+                'migration' => '2023_01_26_170435_create_purchase_limit_conditions_table',
+                'batch' => 0,
+            ),
+            117 => 
+            array (
+                'id' => 126,
+                'migration' => '2023_01_26_170435_create_sessions_table',
+                'batch' => 0,
+            ),
+            118 => 
+            array (
+                'id' => 127,
+                'migration' => '2023_01_26_170435_create_shops_table',
+                'batch' => 0,
+            ),
+            119 => 
+            array (
+                'id' => 128,
+                'migration' => '2023_01_26_170435_create_sub_categories_table',
+                'batch' => 0,
+            ),
+            120 => 
+            array (
+                'id' => 129,
+                'migration' => '2023_01_26_170435_create_user_delivery_informations_table',
+                'batch' => 0,
+            ),
+            121 => 
+            array (
+                'id' => 130,
+                'migration' => '2023_01_26_170435_create_user_invoice_informations_table',
+                'batch' => 0,
+            ),
+            122 => 
+            array (
+                'id' => 131,
+                'migration' => '2023_01_26_170435_create_user_payment_informations_table',
+                'batch' => 0,
+            ),
+            123 => 
+            array (
+                'id' => 132,
+                'migration' => '2023_01_26_170435_create_users_table',
+                'batch' => 0,
+            ),
+            124 => 
+            array (
+                'id' => 133,
+                'migration' => '2023_01_26_170436_add_foreign_keys_to_categories_table',
+                'batch' => 0,
+            ),
+            125 => 
+            array (
+                'id' => 134,
+                'migration' => '2023_01_26_170436_add_foreign_keys_to_item_images_table',
+                'batch' => 0,
+            ),
+            126 => 
+            array (
+                'id' => 135,
+                'migration' => '2023_01_26_170436_add_foreign_keys_to_items_table',
+                'batch' => 0,
+            ),
+            127 => 
+            array (
+                'id' => 136,
+                'migration' => '2023_01_26_170436_add_foreign_keys_to_shops_table',
+                'batch' => 0,
+            ),
+            128 => 
+            array (
+                'id' => 137,
+                'migration' => '2023_01_26_170436_add_foreign_keys_to_sub_categories_table',
+                'batch' => 0,
+            ),
+            129 => 
+            array (
+                'id' => 138,
+                'migration' => '2023_01_26_174245_create_items_table',
+                'batch' => 0,
+            ),
+            130 => 
+            array (
+                'id' => 139,
+                'migration' => '2023_01_26_174246_add_foreign_keys_to_items_table',
+                'batch' => 0,
+            ),
+            131 => 
+            array (
+                'id' => 140,
+                'migration' => '2023_01_27_110653_create_coupons_table',
+                'batch' => 0,
+            ),
+            132 => 
+            array (
+                'id' => 141,
+                'migration' => '2023_01_27_110654_add_foreign_keys_to_coupons_table',
+                'batch' => 0,
+            ),
+            133 => 
+            array (
+                'id' => 142,
+                'migration' => '2023_01_27_132821_create_ads_table',
+                'batch' => 0,
+            ),
+            134 => 
+            array (
+                'id' => 143,
+                'migration' => '2023_01_27_140326_create_ads_table',
+                'batch' => 0,
+            ),
+            135 => 
+            array (
+                'id' => 144,
+                'migration' => '2023_01_27_140327_add_foreign_keys_to_ads_table',
+                'batch' => 0,
+            ),
+            136 => 
+            array (
+                'id' => 145,
+                'migration' => '2023_01_27_143634_create_item_images_table',
+                'batch' => 0,
+            ),
+            137 => 
+            array (
+                'id' => 146,
+                'migration' => '2023_01_27_143635_add_foreign_keys_to_item_images_table',
+                'batch' => 0,
+            ),
+            138 => 
+            array (
+                'id' => 147,
+                'migration' => '2023_01_27_190310_create_brands_table',
+                'batch' => 0,
+            ),
+            139 => 
+            array (
+                'id' => 148,
+                'migration' => '2023_01_27_190311_add_foreign_keys_to_brands_table',
+                'batch' => 0,
+            ),
+            140 => 
+            array (
+                'id' => 149,
+                'migration' => '2023_02_03_154530_create_admins_table',
+                'batch' => 0,
+            ),
+            141 => 
+            array (
+                'id' => 150,
+                'migration' => '2023_02_03_154530_create_ads_table',
+                'batch' => 0,
+            ),
+            142 => 
+            array (
+                'id' => 151,
+                'migration' => '2023_02_03_154530_create_brands_table',
+                'batch' => 0,
+            ),
+            143 => 
+            array (
+                'id' => 152,
+                'migration' => '2023_02_03_154530_create_categories_table',
+                'batch' => 0,
+            ),
+            144 => 
+            array (
+                'id' => 153,
+                'migration' => '2023_02_03_154530_create_coupons_table',
+                'batch' => 0,
+            ),
+            145 => 
+            array (
+                'id' => 154,
+                'migration' => '2023_02_03_154530_create_delivery_type_table',
+                'batch' => 0,
+            ),
+            146 => 
+            array (
+                'id' => 155,
+                'migration' => '2023_02_03_154530_create_failed_jobs_table',
+                'batch' => 0,
+            ),
+            147 => 
+            array (
+                'id' => 156,
+                'migration' => '2023_02_03_154530_create_filter_colors_table',
+                'batch' => 0,
+            ),
+            148 => 
+            array (
+                'id' => 157,
+                'migration' => '2023_02_03_154530_create_filter_tags_table',
+                'batch' => 0,
+            ),
+            149 => 
+            array (
+                'id' => 158,
+                'migration' => '2023_02_03_154530_create_images_table',
+                'batch' => 0,
+            ),
+            150 => 
+            array (
+                'id' => 159,
+                'migration' => '2023_02_03_154530_create_item_checks_table',
+                'batch' => 0,
+            ),
+            151 => 
+            array (
+                'id' => 160,
+                'migration' => '2023_02_03_154530_create_item_filter_colors_table',
+                'batch' => 0,
+            ),
+            152 => 
+            array (
+                'id' => 161,
+                'migration' => '2023_02_03_154530_create_item_images_table',
+                'batch' => 0,
+            ),
+            153 => 
+            array (
+                'id' => 162,
+                'migration' => '2023_02_03_154530_create_item_options_table',
+                'batch' => 0,
+            ),
+            154 => 
+            array (
+                'id' => 163,
+                'migration' => '2023_02_03_154530_create_item_recommends_table',
+                'batch' => 0,
+            ),
+            155 => 
+            array (
+                'id' => 164,
+                'migration' => '2023_02_03_154530_create_item_sizes_table',
+                'batch' => 0,
+            ),
+            156 => 
+            array (
+                'id' => 165,
+                'migration' => '2023_02_03_154530_create_item_variation_colors_table',
+                'batch' => 0,
+            ),
+            157 => 
+            array (
+                'id' => 166,
+                'migration' => '2023_02_03_154530_create_item_variation_sizes_table',
+                'batch' => 0,
+            ),
+            158 => 
+            array (
+                'id' => 167,
+                'migration' => '2023_02_03_154530_create_items_table',
+                'batch' => 0,
+            ),
+            159 => 
+            array (
+                'id' => 168,
+                'migration' => '2023_02_03_154530_create_notice_icons_table',
+                'batch' => 0,
+            ),
+            160 => 
+            array (
+                'id' => 169,
+                'migration' => '2023_02_03_154530_create_notices_table',
+                'batch' => 0,
+            ),
+            161 => 
+            array (
+                'id' => 170,
+                'migration' => '2023_02_03_154530_create_password_resets_table',
+                'batch' => 0,
+            ),
+            162 => 
+            array (
+                'id' => 171,
+                'migration' => '2023_02_03_154530_create_payments_table',
+                'batch' => 0,
+            ),
+            163 => 
+            array (
+                'id' => 172,
+                'migration' => '2023_02_03_154530_create_personal_access_tokens_table',
+                'batch' => 0,
+            ),
+            164 => 
+            array (
+                'id' => 173,
+                'migration' => '2023_02_03_154530_create_prefectures_table',
+                'batch' => 0,
+            ),
+            165 => 
+            array (
+                'id' => 174,
+                'migration' => '2023_02_03_154530_create_purchase_limit_conditions_table',
+                'batch' => 0,
+            ),
+            166 => 
+            array (
+                'id' => 175,
+                'migration' => '2023_02_03_154530_create_sessions_table',
+                'batch' => 0,
+            ),
+            167 => 
+            array (
+                'id' => 176,
+                'migration' => '2023_02_03_154530_create_shops_table',
+                'batch' => 0,
+            ),
+            168 => 
+            array (
+                'id' => 177,
+                'migration' => '2023_02_03_154530_create_sub_categories_table',
+                'batch' => 0,
+            ),
+            169 => 
+            array (
+                'id' => 178,
+                'migration' => '2023_02_03_154530_create_top_banners_table',
+                'batch' => 0,
+            ),
+            170 => 
+            array (
+                'id' => 179,
+                'migration' => '2023_02_03_154530_create_user_delivery_informations_table',
+                'batch' => 0,
+            ),
+            171 => 
+            array (
+                'id' => 180,
+                'migration' => '2023_02_03_154530_create_user_invoice_informations_table',
+                'batch' => 0,
+            ),
+            172 => 
+            array (
+                'id' => 181,
+                'migration' => '2023_02_03_154530_create_user_payment_informations_table',
+                'batch' => 0,
+            ),
+            173 => 
+            array (
+                'id' => 182,
+                'migration' => '2023_02_03_154530_create_users_table',
+                'batch' => 0,
+            ),
+            174 => 
+            array (
+                'id' => 183,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_ads_table',
+                'batch' => 0,
+            ),
+            175 => 
+            array (
+                'id' => 184,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_brands_table',
+                'batch' => 0,
+            ),
+            176 => 
+            array (
+                'id' => 185,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_categories_table',
+                'batch' => 0,
+            ),
+            177 => 
+            array (
+                'id' => 186,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_coupons_table',
+                'batch' => 0,
+            ),
+            178 => 
+            array (
+                'id' => 187,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_item_images_table',
+                'batch' => 0,
+            ),
+            179 => 
+            array (
+                'id' => 188,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_items_table',
+                'batch' => 0,
+            ),
+            180 => 
+            array (
+                'id' => 189,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_shops_table',
+                'batch' => 0,
+            ),
+            181 => 
+            array (
+                'id' => 190,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_sub_categories_table',
+                'batch' => 0,
+            ),
+            182 => 
+            array (
+                'id' => 191,
+                'migration' => '2023_02_03_154531_add_foreign_keys_to_top_banners_table',
+                'batch' => 0,
+            ),
         ));
         
         

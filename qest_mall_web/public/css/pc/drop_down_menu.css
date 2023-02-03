@@ -1,0 +1,154 @@
+/*========= ナビゲーションドロップダウンのためのCSS ===============*/
+
+/*ナビゲーション全体の設定*/
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+/*下の階層のulや矢印の基点にするためliにrelativeを指定*/
+nav ul li {
+    position: relative;
+}
+
+/*ナビゲーションのタイトル設定*/
+.category-title {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    padding: 10px 15px;
+    transition:all .3s;
+}
+
+/*ナビゲーションのタイトルホバー時*/
+nav li.has-child:hover,
+nav li.has-child:active {
+	background:#ECECEC;
+}
+
+/* aタグホバー時 */
+nav ul li a:hover {
+    color:#333;
+}
+
+/* サブメニューの設定 */
+.sub-menu {
+    /*絶対配置で位置を指定*/
+    position: absolute;
+    margin-left: 15px;
+    left: 100%;
+    top: -100px;
+    z-index: 4;
+    /*形状を指定*/
+    background: #FFFFFF;
+    width: 900px;
+    height: auto;
+    padding: 30px;
+    border-radius: 5px;
+    filter: drop-shadow(0px 6px 12px #cccccc);
+    /*はじめは非表示*/
+    visibility: hidden;
+    opacity: 0;
+    /*アニメーション設定*/
+    transition: all .3s;
+    /* 文字 */
+    color: #6C6C6C;
+}
+
+/* 吹き出しの三角 */
+.sub-menu:before {
+    content: "";
+    position: absolute;
+    top: 120px;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #ffffff;
+}
+
+/*hoverしたら表示*/
+nav li.has-child:hover > .sub-menu,
+nav li.has-child:active > .sub-menu {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*サブメニューのaタグ*/
+.sub-menu a {
+    color: #6C6C6C;
+}
+
+/* メジャーカテゴリーの子要素 */
+.sub-menu-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 段組 */
+.sub-menu-box {
+    width: 25%;
+    min-height: 200px;
+    margin-bottom: 10px;
+}
+
+.major-category-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.middle-category-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+
+}
+
+.minor-category-name {
+    font-size: 13px;
+    line-height: 1.8em;
+}
+
+.category-image {
+    max-height: 30%;
+    width: auto;
+}
+
+/*768px以下の形状*/
+
+@media screen and (max-width:768px) {
+    nav {
+        background: #333;
+        color: #fff;
+    }
+
+    nav li.has-child ul,
+    nav li.has-child ul ul {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        visibility: visible;/*JSで制御するため一旦表示*/
+        opacity: 1;/*JSで制御するため一旦表示*/
+        display: none;/*JSのslidetoggleで表示させるため非表示に*/
+        transition: none;/*JSで制御するためCSSのアニメーションを切る*/
+    }
+
+    nav ul li a {
+        border-bottom: 1px solid #ccc;
+        color: #fff;
+    }
+
+    /*矢印の向き*/
+    nav ul li.has-child::before,
+    nav ul ul li.has-child::before {
+        transform: rotate(135deg);
+        left:20px;
+    }
+
+    nav ul li.has-child.active::before {
+        transform: rotate(-45deg);
+    }
+}

@@ -18,25 +18,73 @@ a {
 /* 左メニュー */
 .left-menu {
     width: 20%;
+}
+.left-menu-search-box {
     background-color: #FCFCFC;
     padding: 10px;
 }
-.menu-title {
-    color: #555555;
-    font-weight: bold;
+.left-menu-box {
+    margin-bottom: 40px;
 }
-.ad-img {
-    margin: 5px 0;
+.menu-title {
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 広告 */
+.ad-box {
+    padding: 0 10px;
+}
+.bottom-ad-container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+.bottom-ad-box {
+    width: 100%;
+}
+
+/* ショップ・ブランド */
+.shop-brand-link {
+    padding: 10px;
+    font-size: 13px;
+}
+.search-container {
+    margin-bottom: 20px;
+}
+.search-container-form {
+    display: flex;
+    width: 100%;
+    height: 30px;
+}
+.search-container input[type="text"] {
+    width: 70%;
+    border: solid #707070 1px;
+    border-radius: 3px 0 0 3px !important;
+    padding: 2px 4px !important;
+}
+.search-container input[type="text"]:focus {
+    outline: 0;
+}
+.search-container button {
+    width: 30%;
+    border: solid #707070 1px;
+    border-radius: 0 3px 3px 0;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: #707070;
 }
 
 /* メインコンテンツ */
 .main-content {
-    padding: 10px;
+    padding: 10px 10px 10px 30px;
     width: 80%;
-    /* background-color: aquamarine; */
 }
 .main-content-box {
-    margin: 40px 0;
+    margin-bottom: 40px;
 }
 .qmm {
     padding: 10px;
@@ -44,49 +92,55 @@ a {
 .qmm-title {
     color: #6C6C6C;
     font-weight: bold;
-    font-size:18px;
+    font-size:16px;
 }
 .section-title {
     color: #6C6C6C;
     font-weight: bold;
-    margin-left: 20px;
-    font-size:18px;
-}
-.new-arrival-item ul{
-    display: flex;
-    list-style: none;
-    height: 210px;
-    width: 100%;
-    padding: 0;
-    margin-left: 4px;
-    margin-bottom: 24px;
-    /* background-color: darkkhaki; */
-}
-.new-arrival-item li {
-    padding: 5px;
-}
-.new-arrival-item li img{
-    height: 70%;
-    max-height: 140px;
-    margin:0 auto;
-    object-fit: cover;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size:16px;
 }
 
-.life-scene section {
+/* LIFE SCENE */
+.life-scene-container {
+    margin: 10px;
     display: flex;
-    margin: 5px;
     justify-content: space-between;
-    column-gap: 10px;
 }
-
-.life-scene section div{
+.life-scene-box {
     display: flex;
+    width: 10%;
+    text-align: center;
     flex-flow: column;
 }
-
-.life-scene-text {
+.life-scene-img {
+    width: 90%;
+}
+.life-scene-title {
     text-align: center;
     color: #666666;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 11px;
+    overflow-wrap: break-word;
+}
+
+/* 新着商品 */
+.latest-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+    row-gap: 30px;
+}
+.latest-item-box {
+    width: calc(100% / 5 - 10px);
+}
+.latest-item-box img {
+    max-height: 140px;
+    margin:0 auto;
+    object-fit: cover;
 }

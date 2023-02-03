@@ -12,13 +12,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class ItemImage
- * 
- * @property int|null $item_id
- * @property int|null $image_url
+ *
+ * @property int $item_image_id
+ * @property int $item_id
+ * @property string|null $image_url
  * @property bool|null $is_sumbnail
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
+ *
+ * @property Item $item
  *
  * @package App\Models
  */
@@ -26,11 +29,10 @@ class ItemImage extends Model
 {
 	use SoftDeletes;
 	protected $table = 'item_images';
-	public $incrementing = false;
+	protected $primaryKey = 'item_image_id';
 
 	protected $casts = [
 		'item_id' => 'int',
-		'image_url' => 'int',
 		'is_sumbnail' => 'bool'
 	];
 
@@ -39,4 +41,9 @@ class ItemImage extends Model
 		'image_url',
 		'is_sumbnail'
 	];
+
+	public function item()
+	{
+		return $this->belongsTo(Item::class);
+	}
 }
