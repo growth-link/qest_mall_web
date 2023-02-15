@@ -21,7 +21,7 @@ class TopBannersTableSeeder extends Seeder
         \DB::table('top_banners')->insert(array (
             0 => 
             array (
-                'top_banner_id' => 1,
+                'id' => 1,
                 'display_order' => 2,
                 'top_banner_type' => 3,
                 'image_id' => 55,
@@ -33,7 +33,7 @@ class TopBannersTableSeeder extends Seeder
             ),
             1 => 
             array (
-                'top_banner_id' => 2,
+                'id' => 2,
                 'display_order' => 3,
                 'top_banner_type' => 3,
                 'image_id' => 56,
@@ -45,7 +45,7 @@ class TopBannersTableSeeder extends Seeder
             ),
             2 => 
             array (
-                'top_banner_id' => 3,
+                'id' => 3,
                 'display_order' => 1,
                 'top_banner_type' => 3,
                 'image_id' => 54,

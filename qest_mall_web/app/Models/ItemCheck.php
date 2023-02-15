@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class ItemCheck
  * 
- * @property int $item_id
+ * @property int $id
  * @property int|null $is_required
  *
  * @package App\Models
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
 class ItemCheck extends Model
 {
 	protected $table = 'item_checks';
-	protected $primaryKey = 'item_id';
 	public $timestamps = false;
 
 	protected $casts = [

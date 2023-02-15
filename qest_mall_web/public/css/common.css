@@ -2,6 +2,10 @@ body {
     margin: 0 auto;
 }
 
+form {
+    margin: 0;
+}
+
 .content-box {
     width: 70%;
     margin-left: 15%;
@@ -95,7 +99,7 @@ body {
     position: absolute;
     right: 0px;
     top: 1rem;
-} 
+}
 
 /* -------------------------------------------- */
 /* 検索窓 Search */
@@ -165,22 +169,22 @@ body {
 /* -------------------------------------------- */
 /* ページャー　Pager */
 .wrap {
-    position: relative; 
+    position: relative;
     overflow: hidden;
     width:100%;
 }
 
 .wrap ul {
     position: relative;
-    left: 45%; 
+    left: 45%;
     float: left;
 }
 
 .wrap ul li {
     position: relative;
-    left: -45%; 
+    left: -45%;
     float: left;
-    list-style: none; 
+    list-style: none;
 }
 
 .cls1 {
@@ -258,17 +262,17 @@ body {
     cursor: pointer;
     padding-left: 30px;
 }
-  
+
 .radio-label::before,
  .radio-label::after {
     content: "";
-    display: block; 
+    display: block;
     border-radius: 50%;
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
 }
-  
+
 .radio-label::before {
     background-color: #fff;
     border: 1px solid #CECECE;
@@ -277,7 +281,7 @@ body {
     height: 20px;
     left: 5px;
 }
-  
+
 .radio-label::after {
     background-color: #1D54A7;
     border-radius: 50%;
@@ -286,7 +290,7 @@ body {
     height: 12px;
     left: 9px
 }
-  
+
 input:checked + .radio-label::after {
     opacity: 1;
 }
@@ -295,7 +299,7 @@ input:checked + .radio-label::before {
     opacity: 1;
     border: 2px solid #1D54A7;
 }
-  
+
 .visually-hidden {
    position: absolute;
    white-space: nowrap;
@@ -309,4 +313,3 @@ input:checked + .radio-label::before {
    padding: 0;
 }
 
-  

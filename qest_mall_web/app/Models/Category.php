@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Category
- *
- * @property int $category_id
+ * 
+ * @property int $id
  * @property int|null $parent_id
  * @property string|null $category_name
  * @property int|null $image_id
- *
+ * 
  * @property Image|null $image
  * @property Category|null $category
  * @property Collection|Category[] $categories
@@ -27,7 +27,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 	protected $table = 'categories';
-	protected $primaryKey = 'category_id';
 	public $timestamps = false;
 
 	protected $casts = [
@@ -43,7 +42,7 @@ class Category extends Model
 
 	public function image()
 	{
-		return $this->belongsTo(Image::class, 'image_id');
+		return $this->belongsTo(Image::class);
 	}
 
 	public function category()

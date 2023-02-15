@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Coupon
- *
- * @property int $coupon_id
+ * 
+ * @property int $id
  * @property string|null $url
  * @property int|null $image_id
- *
+ * 
  * @property Image|null $image
  *
  * @package App\Models
@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
 class Coupon extends Model
 {
 	protected $table = 'coupons';
-	protected $primaryKey = 'coupon_id';
 	public $timestamps = false;
 
 	protected $casts = [
@@ -36,6 +35,6 @@ class Coupon extends Model
 
 	public function image()
 	{
-		return $this->belongsTo(Image::class, 'image_id');
+		return $this->belongsTo(Image::class);
 	}
 }

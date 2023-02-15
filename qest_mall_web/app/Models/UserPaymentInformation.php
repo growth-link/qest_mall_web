@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class UserPaymentInformation
  * 
- * @property int $user_id
+ * @property int $id
  * @property int|null $creditcard_token
  * @property int|null $creditcard_suffix
  *
@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserPaymentInformation extends Model
 {
 	protected $table = 'user_payment_informations';
-	protected $primaryKey = 'user_id';
 	public $timestamps = false;
 
 	protected $casts = [

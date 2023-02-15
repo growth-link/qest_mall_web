@@ -57,8 +57,8 @@ a {
     overflow-wrap: break-word;
 }
 
-/* 新着商品 */
-.latest-item-container {
+/* 商品一覧 */
+.item-container {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -68,10 +68,10 @@ a {
     justify-content: space-between;
     row-gap: 30px;
 }
-.latest-item-box {
+.item-box {
     width: calc(100% / 2 - 10px);
 }
-.latest-item-box img {
+.item-box img {
     max-height: 163px;
     margin: 0 auto;
     object-fit: cover;

@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class SubCategory
- *
- * @property int $sub_category_id
+ * 
+ * @property int $id
  * @property string|null $sub_category_name
  * @property string|null $url
  * @property int|null $image_id
  * @property string|null $icon_url
- *
+ * 
  * @property Image|null $image
  *
  * @package App\Models
@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Model;
 class SubCategory extends Model
 {
 	protected $table = 'sub_categories';
-	protected $primaryKey = 'sub_category_id';
 	public $timestamps = false;
 
 	protected $casts = [
@@ -40,6 +39,6 @@ class SubCategory extends Model
 
 	public function image()
 	{
-		return $this->belongsTo(Image::class, 'image_id');
+		return $this->belongsTo(Image::class);
 	}
 }

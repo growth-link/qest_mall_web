@@ -251,9 +251,9 @@
                 {{-- 新着商品 --}}
                 <section class="main-content-box latest-item">
                     <h2 class="section-title">新着商品</h2>
-                    <div class="latest-item-container">
+                    <div class="item-container">
                         @foreach ($latest_items as $item)
-                            <div class="latest-item-box">
+                            <div class="item-box">
                                 <a href="{{ route('sp.items_detail', $item->id) }}">
                                     <div class="item-img">
                                         <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
@@ -287,7 +287,7 @@
                         @for ($i = 0; $i < 10; $i++)
                             @foreach ($coupons as $coupon)
                                 <div>
-                                    <a href="{{ route('sp.coupons', $coupon->coupon_id) }}">
+                                    <a href="{{ route('sp.coupons', $coupon->id) }}">
                                         <img class="img" src="{{ asset($coupon->image->url) }}">
                                     </a>
                                 </div>

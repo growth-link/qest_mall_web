@@ -5,7 +5,10 @@
 
     <div style="float:right;">
         <div class="search-box" style="float:left;">
-            <input type="text" style="width:300px;" placeholder="キーワード検索">
+            <form action={{ route('item_keyword') }}  method="get">
+                {{-- <input type="text" style="width:300px;" name="keyword" placeholder="キーワード検索" @if (isset($keyword)) value="{{ $keyword }}" @endif> --}}
+                <input type="text" style="width:300px;" name="keyword" placeholder="キーワード検索">
+            </form>
         </div>
         <div style="float:left;text-align:center;width:70px;" onclick="location.href='#'">
             <img src="/images/user/icon_cart.png">

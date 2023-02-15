@@ -55,5 +55,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CouponsTableSeeder::class);
         $this->call(AdsTableSeeder::class);
         $this->call(TopBannersTableSeeder::class);
+        $this->call(TagsTableSeeder::class);
     }
 }

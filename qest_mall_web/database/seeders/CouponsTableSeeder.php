@@ -21,7 +21,7 @@ class CouponsTableSeeder extends Seeder
         \DB::table('coupons')->insert(array (
             0 => 
             array (
-                'coupon_id' => 1,
+                'id' => 1,
                 'url' => NULL,
                 'image_id' => 49,
             ),
