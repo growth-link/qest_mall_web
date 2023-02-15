@@ -21,7 +21,7 @@ class BrandsTableSeeder extends Seeder
         \DB::table('brands')->insert(array (
             0 => 
             array (
-                'brand_id' => 1,
+                'id' => 1,
                 'brand_name' => '天のめぐみブランド1',
                 'visibility_status' => 1,
                 'image_id' => NULL,
@@ -31,7 +31,7 @@ class BrandsTableSeeder extends Seeder
             ),
             1 => 
             array (
-                'brand_id' => 2,
+                'id' => 2,
                 'brand_name' => 'ブランド2',
                 'visibility_status' => 1,
                 'image_id' => NULL,
@@ -41,7 +41,7 @@ class BrandsTableSeeder extends Seeder
             ),
             2 => 
             array (
-                'brand_id' => 3,
+                'id' => 3,
                 'brand_name' => 'ブランド3',
                 'visibility_status' => 1,
                 'image_id' => NULL,
@@ -51,7 +51,7 @@ class BrandsTableSeeder extends Seeder
             ),
             3 => 
             array (
-                'brand_id' => 4,
+                'id' => 4,
                 'brand_name' => 'ブランド4',
                 'visibility_status' => 1,
                 'image_id' => NULL,
@@ -61,7 +61,7 @@ class BrandsTableSeeder extends Seeder
             ),
             4 => 
             array (
-                'brand_id' => 5,
+                'id' => 5,
                 'brand_name' => 'ブランド5',
                 'visibility_status' => 1,
                 'image_id' => NULL,

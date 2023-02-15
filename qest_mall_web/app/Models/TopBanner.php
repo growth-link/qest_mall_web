@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TopBanner
- *
- * @property int $top_banner_id
+ * 
+ * @property int $id
  * @property int|null $display_order
  * @property int $top_banner_type
  * @property int|null $image_id
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $display_start_time
  * @property Carbon|null $display_end_time
  * @property string|null $url
- *
+ * 
  * @property Image|null $image
  *
  * @package App\Models
@@ -29,7 +29,6 @@ use Illuminate\Database\Eloquent\Model;
 class TopBanner extends Model
 {
 	protected $table = 'top_banners';
-	protected $primaryKey = 'top_banner_id';
 	public $timestamps = false;
 
 	protected $casts = [
@@ -58,6 +57,6 @@ class TopBanner extends Model
 
 	public function image()
 	{
-		return $this->belongsTo(Image::class, 'image_id');
+		return $this->belongsTo(Image::class);
 	}
 }

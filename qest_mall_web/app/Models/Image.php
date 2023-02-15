@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Image
  * 
- * @property int $image_id
+ * @property int $id
  * @property string|null $url
  * 
  * @property Collection|Ad[] $ads
@@ -28,7 +28,6 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
 	protected $table = 'images';
-	protected $primaryKey = 'image_id';
 	public $timestamps = false;
 
 	protected $fillable = [

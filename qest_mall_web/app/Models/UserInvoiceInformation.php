@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class UserInvoiceInformation
  * 
- * @property int $user_id
+ * @property int $id
  * @property int|null $post_code
  *
  * @package App\Models
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserInvoiceInformation extends Model
 {
 	protected $table = 'user_invoice_informations';
-	protected $primaryKey = 'user_id';
 	public $timestamps = false;
 
 	protected $casts = [

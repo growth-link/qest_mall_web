@@ -43,7 +43,7 @@ class TopController extends Controller
         $rank_shops = Shop::where('deleted_at', null)->take(10)->get();
 
         $latest_shops = Shop::latest()->take(10)->get(); // 新着ショップ取得
-        $latest_items = Item::latest()->take(30)->get(); // 新着商品取得
+        $items = Item::latest()->take(30)->get(); // 新着商品取得
         $coupons = Coupon::all(); // クーポン取得
 
         // 広告取得
@@ -63,7 +63,7 @@ class TopController extends Controller
             'rank_items',
             'rank_shops',
             'latest_shops',
-            'latest_items',
+            'items',
             'coupons',
             'ads',
             'major_categoris',

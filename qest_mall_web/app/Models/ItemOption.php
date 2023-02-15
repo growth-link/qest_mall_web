@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class ItemOption
  * 
- * @property int $item_id
+ * @property int $id
  * @property string|null $option_name
  * @property string|null $type_name
  * @property int|null $is_minus_price
@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
 class ItemOption extends Model
 {
 	protected $table = 'item_options';
-	protected $primaryKey = 'item_id';
 	public $timestamps = false;
 
 	protected $casts = [

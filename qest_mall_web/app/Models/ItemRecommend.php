@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class ItemRecommend
  * 
- * @property int $item_id
+ * @property int $id
  * @property int|null $recommend_item_id
  *
  * @package App\Models
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
 class ItemRecommend extends Model
 {
 	protected $table = 'item_recommends';
-	protected $primaryKey = 'item_id';
 	public $timestamps = false;
 
 	protected $casts = [

@@ -68,6 +68,10 @@ a {
 .search-container input[type="text"]:focus {
     outline: 0;
 }
+.search-container input[type="text"]::placeholder {
+    /* TODO:見切れる */
+    font-size: 1px;
+}
 .search-container button {
     width: 30%;
     border: solid #707070 1px;
@@ -125,22 +129,123 @@ a {
     overflow-wrap: break-word;
 }
 
-/* 新着商品 */
-.latest-item-container {
+/* 商品一覧 */
+.item-container {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     width: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
     margin-bottom: 24px;
-    justify-content: space-between;
     row-gap: 30px;
 }
-.latest-item-box {
+.item-box {
     width: calc(100% / 5 - 10px);
+    margin: 0 5px;
 }
-.latest-item-box img {
+.item-box img {
     max-height: 140px;
     margin:0 auto;
     object-fit: cover;
+}
+
+/* モーダル */
+.ui.modal > .close {
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    top: 2rem;
+    right: 2rem;
+}
+.ui.modal > .content {
+    padding: 60px 21px 21px;
+    border-radius: 0.28571429rem;
+}
+.ui.modal > .content section {
+    margin-bottom: 30px;
+}
+.modal-section-title {
+    color: #6C6C6C;
+    font-size: 11px;
+    margin: 10px 0;
+}
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+.ECM_CheckboxInput {
+    padding: 10px 12px;
+}
+.ECM_CheckboxInput-LabelText {
+    color: #333333;
+    font-size: 13px;
+}
+.switch-input {
+    color: #333333;
+    font-size: 13px;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    width: 50%;
+    padding: 10px 0;
+}
+.switch_LabelText {
+    width: 30%;
+}
+.toggle_switch {
+    width: 70%;
+}
+.switch_TextInput {
+    height: 40px;
+    border: solid 1px #CECECE;
+    border-radius: 4px;
+    padding: 10px;
+}
+.ui.modal>.actions {
+    background: #FFFFFF;
+    border-top: none;
+    text-align: center;
+    padding: 5rem 1rem 3rem;
+}
+.ui.icon.button {
+    padding: 0.78571429em 1.5em;
+}
+.clear-button {
+    color: #6C6C6C !important;
+    font-size: 13px !important;
+    background-color: #FFFFFF !important;
+    border: 1px solid #DEDEDE !important;
+}
+.search-button {
+    color: #6C6C6C !important;
+    font-size: 13px !important;
+    background-color: #FBDB5B !important;
+}
+
+/* アコーディオン */
+.accordion-nav {
+    display: none;
+}
+.nav-open{
+	padding: 4px 15px;
+	background-color: #F7F7F7;
+    border-radius: 4px;
+	position: relative;
+    margin: 4px 0;
+}
+.nav-open .ECM_CheckboxInput-DummyInput {
+    background: #FFFFFF;
+}
+.nav-open .ECM_CheckboxInput-LabelText {
+    color: #6C6C6C;
+    font-size: 13px;
+}
+.nav-open::before{/* 閉じている時 */
+	position: absolute;
+	right: 20px;
+    top: 20px;
+    content: url(/images/user/icon_arrow_down.png)!important;
+}
+.nav-open.active::before{/* 開いている時 */
+    content: url(/images/user/icon_arrow_down.png)!important;
 }

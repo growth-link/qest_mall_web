@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Shop
- *
+ * 
  * @property int $id
  * @property string|null $shop_name
  * @property string|null $shop_tt_code
@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- *
+ * 
  * @property Image|null $image
  * @property Collection|Item[] $items
  *
@@ -47,7 +47,7 @@ class Shop extends Model
 
 	public function image()
 	{
-		return $this->belongsTo(Image::class, 'image_id');
+		return $this->belongsTo(Image::class);
 	}
 
 	public function items()

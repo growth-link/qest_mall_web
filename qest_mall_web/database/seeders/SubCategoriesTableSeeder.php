@@ -21,7 +21,7 @@ class SubCategoriesTableSeeder extends Seeder
         \DB::table('sub_categories')->insert(array (
             0 => 
             array (
-                'sub_category_id' => 1,
+                'id' => 1,
                 'sub_category_name' => 'Chill Out',
                 'url' => NULL,
                 'image_id' => 34,
@@ -29,7 +29,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             1 => 
             array (
-                'sub_category_id' => 2,
+                'id' => 2,
                 'sub_category_name' => 'Health',
                 'url' => NULL,
                 'image_id' => 35,
@@ -37,7 +37,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             2 => 
             array (
-                'sub_category_id' => 3,
+                'id' => 3,
                 'sub_category_name' => 'Minimal',
                 'url' => NULL,
                 'image_id' => 36,
@@ -45,7 +45,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             3 => 
             array (
-                'sub_category_id' => 4,
+                'id' => 4,
                 'sub_category_name' => 'Fashion',
                 'url' => NULL,
                 'image_id' => 37,
@@ -53,7 +53,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             4 => 
             array (
-                'sub_category_id' => 5,
+                'id' => 5,
                 'sub_category_name' => 'Hobby',
                 'url' => NULL,
                 'image_id' => 38,
@@ -61,7 +61,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             5 => 
             array (
-                'sub_category_id' => 6,
+                'id' => 6,
                 'sub_category_name' => 'Art',
                 'url' => NULL,
                 'image_id' => 39,
@@ -69,7 +69,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             6 => 
             array (
-                'sub_category_id' => 7,
+                'id' => 7,
                 'sub_category_name' => 'Gift',
                 'url' => NULL,
                 'image_id' => 40,
@@ -77,7 +77,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             7 => 
             array (
-                'sub_category_id' => 8,
+                'id' => 8,
                 'sub_category_name' => 'Sustainability',
                 'url' => NULL,
                 'image_id' => 41,
@@ -85,7 +85,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             8 => 
             array (
-                'sub_category_id' => 9,
+                'id' => 9,
                 'sub_category_name' => 'Gourmet',
                 'url' => NULL,
                 'image_id' => 42,
@@ -93,7 +93,7 @@ class SubCategoriesTableSeeder extends Seeder
             ),
             9 => 
             array (
-                'sub_category_id' => 10,
+                'id' => 10,
                 'sub_category_name' => 'OPA',
                 'url' => NULL,
                 'image_id' => 43,
