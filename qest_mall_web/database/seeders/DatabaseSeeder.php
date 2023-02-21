@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         $this->call(AdminsTableSeeder::class);
         $this->call(FailedJobsTableSeeder::class);
         $this->call(BrandsTableSeeder::class);
@@ -56,5 +57,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdsTableSeeder::class);
         $this->call(TopBannersTableSeeder::class);
         $this->call(TagsTableSeeder::class);
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
