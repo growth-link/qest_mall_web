@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
+/* カルーセル全体 */
+.main-carousel-slick {
+    height: 117px;
+}
+.qmm-slick,
+.item-slick,
+.rank-item-slick,
+.rank-shop-slick,
+.latest-shop-slick,
+.coupon-slick {
+    margin: 10px 0 10px 10px;
+}
+
+/* スライドリスト */
+.three-slick .slick-list,
+.coupon-slick .slick-list {
+    padding: 0 80px 0 0;
+}
+
+/* スライドされるカラム */
+.main-carousel-slick .slick-slide {
+    margin: 0;
+}
+.three-slick .slick-slide,
+.coupon-slick .slick-slide {
+    margin: 0 5px;
+}
+
+/* 子要素 */
+.rank-num {
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    display:block;
+    margin-bottom: 10px;
+}
+.rank-text {
+    font-size: 9px;
+}
+.slick-slide img {
+    height: 100%;
+    max-height: 140px;
+    object-fit: cover;
+}
+.main-carousel-slick .slick-slide img {
+    max-height: 140px;
+}
+.item-img {
+    position: relative;
+}
+.item-img:hover {
+    opacity: .8;
+}
+.item-img .img {
+    opacity: 1!important;
+}
+.new-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+}
+.new-img img {
+    width: 44px;
+}
+.slider-text {
+    line-height: 1.3em;
+}
+.shop-name {
+    font-size: 10px;
+}
+.shop-name a {
+    color: #888888;
+}
+.shop-name a:hover {
+    color: #666666;
+}
+.item-name {
+    color: #666666;
+    font-size: 11px;
+}
+.price {
+    font-weight: bold;
+    font-size: 11px;
+}

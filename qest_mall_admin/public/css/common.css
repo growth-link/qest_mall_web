@@ -1,0 +1,315 @@
+body {
+    margin: 0 auto;
+}
+
+form {
+    margin: 0;
+}
+
+.content-box {
+    width: 70%;
+    margin-left: 15%;
+    padding-top: 50px;
+}
+
+.page-title-box {
+
+}
+
+.page-title {
+    color: #555555;
+    font-weight: bold;
+    margin-left: 30px;
+    font-size:18px;
+}
+
+.primary_btn {
+    padding: 10px 30px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #FBDB5B;
+}
+
+.primary_btn_radius {
+    padding: 10px 30px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #FBDB5B;
+}
+
+.secondary_btn_radius {
+    color: #6C6C6C;
+    padding: 10px 30px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #EFEFEF;
+}
+
+.text {
+    color: #6C6C6C;
+}
+
+.search-input {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #EBEBEB;
+    background-color: #F7F7F7;
+}
+
+/* -------------------------------------------- */
+/* text input 下線 */
+.input-text {
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #707070;
+    padding: 10px 15px;
+}
+.input-text:focus{
+    border-bottom-color: #707070;
+}
+
+/* -------------------------------------------- */
+/* password input 下線 */
+
+.password-container {
+    position: relative;
+    display: flex;
+    width: 260px;
+    height: 50px;
+}
+.input-password {
+    position: absolute;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #707070;
+    padding: 10px 30px 10px 15px;
+}
+.input-password:focus{
+    border-bottom-color: #707070;
+}
+.eye {
+    position: absolute;
+    right: 0px;
+    top: 1rem;
+}
+
+/* -------------------------------------------- */
+/* 検索窓 Search */
+.search-box {
+    display: inline-block; /* なくても大丈夫だけど、念の為 */
+    position: relative;    /* 基準値とする */
+    margin-right: 20px;
+}
+
+.search-box::before {
+    content: "";           /* 疑似要素に必須 */
+    width: 20px;           /* アイコンの横幅 */
+    height: 20px;          /* アイコンの高さ */
+    background: url(/images/user/icon_search.png) no-repeat center center / auto 100%; /* 背景にアイコン画像を配置 */
+    display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
+    position: absolute;    /* 相対位置に指定 */
+    top: 10px;              /* アイコンの位置。微調整してね */
+    right: 10px;             /* アイコンの位置。微調整してね */
+}
+
+.search-box input {
+    border: 1px solid #EBEBEB;
+    background-color: #F7F7F7;
+    border-radius: 20px;
+    padding: 10px 2.5em 10px 10px; /* アイコンを設置するため左の余白を多めに指定*/
+}
+
+
+/* -------------------------------------------- */
+/* トグルスイッチ Toggle */
+.toggle_switch {
+    display: table;
+    font-size: 30px; /* 全体の大きさはこちらを指定 */
+}
+
+.toggle_switch > input {
+    display: none;
+}
+
+.toggle_switch > label {
+    display: block;
+    position: relative;
+    width: 1.8em;
+    height: 1em;
+    border-radius: 1em;
+    background-color: #2b2a2f;
+    cursor: pointer;
+}
+.toggle_switch > input:checked + label {
+    background-color: #4093D0;
+}
+.toggle_switch > label::before {
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    width: calc(1em - 0.2em);
+    height: calc(1em - 0.2em);
+    border-radius: calc(1em - 0.2em);
+    background-color: #fff;
+    transition: 0.5s;
+    content: "";
+}
+.toggle_switch > input:checked + label::before {
+    left: calc(100% - 1em + 0.05em);
+}
+
+/* -------------------------------------------- */
+/* ページャー　Pager */
+.wrap {
+    position: relative;
+    overflow: hidden;
+    width:100%;
+}
+
+.wrap ul {
+    position: relative;
+    left: 45%;
+    float: left;
+}
+
+.wrap ul li {
+    position: relative;
+    left: -45%;
+    float: left;
+    list-style: none;
+}
+
+.cls1 {
+    margin: 0 20px;
+}
+
+/* -------------------------------------------- */
+/* チェックボックス + テキスト */
+.ECM_CheckboxInput {
+    padding: 10px 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.ECM_CheckboxInput-Input {
+    margin: 0;
+    width: 0;
+    opacity: 0;
+}
+/* .ECM_CheckboxInput-Input:focus + .ECM_CheckboxInput-DummyInput{
+    border: solid 2px #CECECE;
+} */
+.ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput {
+    background: #1D54A7;
+}
+.ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 56%;
+    width: 35%;
+    height: 4px;
+    border-radius: 2px;
+    transform: translate(-6px, 5px) rotateZ(-135deg);
+    transform-origin: 2px 2px;
+    background: #FFFFFF;
+}
+.ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 56%;
+    width: 70%;
+    height: 4px;
+    border-radius: 2px;
+    transform: translate(-6px, 5px) rotateZ(-45deg);
+    transform-origin: 2px 2px;
+    background: #FFFFFF;
+}
+.ECM_CheckboxInput-DummyInput {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 25px;
+    height: 25px;
+    border: solid 1px #CECECE;
+    /* background: rgba(0,0,0, .1); */
+    border-radius: 4px;
+}
+.ECM_CheckboxInput-LabelText {
+    margin-left: 12px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* -------------------------------------------- */
+/* ラジオボタン */
+.radio-label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+}
+
+.radio-label::before,
+ .radio-label::after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.radio-label::before {
+    background-color: #fff;
+    border: 1px solid #CECECE;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    left: 5px;
+}
+
+.radio-label::after {
+    background-color: #1D54A7;
+    border-radius: 50%;
+    opacity: 0;
+    width: 12px;
+    height: 12px;
+    left: 9px
+}
+
+input:checked + .radio-label::after {
+    opacity: 1;
+}
+
+input:checked + .radio-label::before {
+    opacity: 1;
+    border: 2px solid #1D54A7;
+}
+
+.visually-hidden {
+   position: absolute;
+   white-space: nowrap;
+   border: 0;
+   clip: rect(0 0 0 0);
+   clip-path: inset(50%);
+   overflow: hidden;
+   height: 1px;
+   width: 1px;
+   margin: -1px;
+   padding: 0;
+}
+
