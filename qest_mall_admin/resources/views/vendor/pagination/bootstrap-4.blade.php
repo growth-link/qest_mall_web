@@ -1,0 +1,52 @@
+<style>
+    .pagination a {
+        color: #333333;
+    }
+</style>
+
+@if ($paginator->hasPages())
+    <nav class="wrap" style="font-size:20px;color:#333333;">
+        <ul class="pagination">
+            {{-- Previous Page Link --}}
+            @if ($paginator->onFirstPage())
+                <li class="page-item disabled cls1" aria-disabled="true" aria-label="@lang('pagination.previous')" style="font-weight:bold;">
+                    <span class="page-link" aria-hidden="true">＜</span>
+                </li>
+            @else
+                <li class="page-item cls1" style="font-weight:bold;">
+                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">＜</a>
+                </li>
+            @endif
+
+            {{-- Pagination Elements --}}
+            @foreach ($elements as $element)
+                {{-- "Three Dots" Separator --}}
+                @if (is_string($element))
+                    <li class="page-item disabled cls1" aria-disabled="true"><span class="page-link">{{ $element }}</span></li>
+                @endif
+
+                {{-- Array Of Links --}}
+                @if (is_array($element))
+                    @foreach ($element as $page => $url)
+                        @if ($page == $paginator->currentPage())
+                            <li class="page-item active cls1" aria-current="page" style="font-weight:bold;"><span class="page-link">{{ $page }}</span></li>
+                        @else
+                            <li class="page-item cls1"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
+
+            {{-- Next Page Link --}}
+            @if ($paginator->hasMorePages())
+                <li class="page-item cls1" style="font-weight:bold;">
+                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">＞</a>
+                </li>
+            @else
+                <li class="page-item disabled cls1" aria-disabled="true" aria-label="@lang('pagination.next')"  style="font-weight:bold;">
+                    <span class="page-link" aria-hidden="true">＞</span>
+                </li>
+            @endif
+        </ul>
+    </nav>
+@endif

@@ -1,0 +1,37 @@
+.section-title-box {
+    display: flex;
+    margin: 0 15px 14px;
+}
+
+.fit-content {
+    width: fit-content;
+    margin: 0;
+}
+
+.filter-bar {
+    margin-left: auto;
+    font-size: 9px;
+}
+
+.filter-bar select {
+    color: #6C6C6C;
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    width: 120px;
+    height: 24px;
+}
+
+.filter-bar button {
+    margin-left: 4px;
+    color: #6C6C6C;
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    background-color: #ffffff;
+    width: 116px;
+    height: 24px;
+}
+
+.filter-bar button img {
+    width: 12px;
+    margin: 0 4px;
+}

@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+/* カルーセル全体 */
+.main-carousel-slick {
+    height: 450px;
+}
+.qmm-slick {
+    height: 140px;
+    margin: 10px;
+}
+.item-slick {
+    height: 210px;
+    margin: 10px;
+}
+.rank-item-slick {
+    height: 260px;
+    margin: 10px;
+}
+.rank-shop-slick {
+    height: 177px;
+    margin: 10px;
+}
+.latest-shop-slick,
+.coupon-slick {
+    height: 150px;
+    margin: 10px;
+}
+
+/* スライドされる要素 */
+.main-carousel-slick .slick-slide {
+    margin: 0;
+}
+.five-slick .slick-slide,
+.coupon-slick .slick-slide {
+    margin: 0 5px;
+}
+
+/* 子要素 */
+.rank-num {
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    display:block;
+    margin-bottom: 10px;
+}
+.rank-text {
+    font-size: 9px;
+}
+.slick-slide img {
+    height: 100%;
+    max-height: 140px;
+    object-fit: cover;
+}
+.main-carousel-slick .slick-slide img {
+    max-height: 450px;
+}
+.item-img {
+    position: relative;
+}
+.item-img:hover {
+    opacity: .8;
+}
+.item-img .img {
+    opacity: 1!important;
+}
+.new-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+}
+.new-img img {
+    width: 44px;
+}
+.slider-text {
+    line-height: 1.3em;
+}
+.shop-name {
+    font-size: 10px;
+}
+.shop-name a {
+    color: #888888;
+}
+.shop-name a:hover {
+    color: #666666;
+}
+.item-name {
+    color: #666666;
+    font-size: 11px;
+}
+.price {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* 矢印 */
+.slick-arrow:before {
+    content:"";
+    width: 180%;
+    height: 180%;
+    position: absolute;
+    top: 0;
+}
+.main-carousel-slick .slick-arrow:before {
+    width: 190%;
+    height: 190%;
+    opacity: 1;
+}
+.main-carousel-slick .slick-arrow:hover {
+    opacity: .8;
+}
+.five-slick .slick-prev.slick-arrow:before,
+.coupon-slick .slick-prev.slick-arrow:before {
+    left: -60%;
+}
+.five-slick .slick-next.slick-arrow:before,
+.coupon-slick .slick-next.slick-arrow:before {
+    left: -20%;
+}
+.main-carousel-slick .slick-prev {
+    left: 15%;
+}
+.main-carousel-slick .slick-next {
+    right: 15%;
+}
+.slick-arrow {
+    z-index: 2!important;
+}
+.slick-next:before {
+    background: url(/images/carousel/carousel_right.png)!important;
+    background-size: contain!important;
+
+}
+.slick-prev:before {
+    background: url(/images/carousel/carousel_left.png)!important;
+    background-size: contain!important;
+}

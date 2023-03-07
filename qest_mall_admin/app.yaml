@@ -1,0 +1,29 @@
+runtime: php81
+
+service: default
+
+handlers:
+- url: /(.*\.(gif|png|jpg|jpeg|css|js|woff|woff2|ttf))$
+  static_files: public/\1
+  upload: public/.*\.(gif|png|jpg|jpeg|css|js|woff|woff2|ttf)$
+
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+
+env_variables:
+  ## Put production environment variables here.
+  APP_ENV: local
+  APP_DEBUG: true
+  APP_KEY: base64:emjhInrkE361oacv2IWyhYnUGRV7ZbLKElPlz25NBtQ=
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
+  SESSION_DRIVER: database
+  LOG_CHANNEL: stdout
+  DB_DATABASE: qest-mall-db
+  DB_USERNAME: root
+  DB_PASSWORD: 5GPef23c1
+  DB_SOCKET: "/cloudsql/qest-mall-dev:us-central1:qest-mall-db"
+  BUCKET_NAME: "qest-mall-dev.appspot.com"
+
