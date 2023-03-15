@@ -12,6 +12,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -175,5 +176,13 @@ Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+/*
+|--------------------------------------------------------------------------
+| PDF
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/pdf', [PdfController::class, 'index']);
 
 require __DIR__ . '/admin.php';
