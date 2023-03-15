@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $url
  * @property int|null $image_id
  * @property string|null $icon_url
+ * @property string|null $top_banner_url
+ * @property string|null $sp_top_banner_url
  * 
  * @property Image|null $image
  *
@@ -34,7 +36,9 @@ class SubCategory extends Model
 		'sub_category_name',
 		'url',
 		'image_id',
-		'icon_url'
+		'icon_url',
+		'top_banner_url',
+		'sp_top_banner_url'
 	];
 
 	public function image()

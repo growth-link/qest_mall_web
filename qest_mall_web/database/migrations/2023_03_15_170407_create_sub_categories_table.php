@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->unsignedInteger('image_id')->nullable()->index('sub_categories_image_id_foreign');
             $table->string('icon_url')->nullable();
+            $table->string('top_banner_url')->nullable();
+            $table->string('sp_top_banner_url')->nullable();
         });
     }
 

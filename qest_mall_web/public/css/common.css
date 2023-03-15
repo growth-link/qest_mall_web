@@ -176,13 +176,14 @@ form {
 
 .wrap ul {
     position: relative;
-    left: 45%;
-    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
 }
 
 .wrap ul li {
     position: relative;
-    left: -45%;
     float: left;
     list-style: none;
 }

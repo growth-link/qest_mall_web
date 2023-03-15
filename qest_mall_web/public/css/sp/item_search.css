@@ -1,0 +1,169 @@
+.section-title-box {
+    display: flex;
+    margin: 0 15px 14px;
+}
+
+.fit-content {
+    width: fit-content;
+    margin: 0;
+}
+
+.filter-bar {
+    font-size: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    gap: 8px 0;
+    margin: 0 15px 20px;
+}
+
+.filter-bar select {
+    color: #6C6C6C;
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    width: 120px;
+    height: 24px;
+    margin-left: calc(100% - 120px);
+}
+
+.filter-bar button {
+    color: #6C6C6C;
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    background-color: #ffffff;
+    width: 116px;
+    height: 24px;
+    margin-left: calc(100% - 116px);
+}
+
+.filter-bar button img {
+    width: 12px;
+    margin: 0 4px;
+}
+
+.filter-bar .next-page-title {
+    margin: 0;
+    float: left;
+    color: #BABABA;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filter-bar .selected {
+    color: #6C6C6C;
+}
+
+.filter-bar  .ECM_CheckboxInput-LabelText {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.sub-category-top-banner img {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.shop-info {
+    margin: 0 15px;
+}
+
+.shop-info .shop-info-top {
+    display: flex;
+}
+
+.shop-info .shop-banner {
+    width: 40%;
+}
+
+.shop-info .shop-banner img {
+    width: 100%;
+    max-height: 108px;
+    object-fit: contain;
+}
+
+.shop-info .shop-text {
+    width: 60%;
+}
+
+.shop-info .section-title {
+    font-size: 14px;
+    margin: 0 0 10px 15px;
+}
+
+.shop-info .inquiry_btn_radius {
+    color: #6C6C6C;
+    margin: 14px 0;
+    padding: 6px 30px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #E5E5E5;
+}
+
+.shop-info .flex-box {
+    padding-left: 15px;
+}
+
+.shop-info .ECM_CheckboxInput {
+    padding: 0px;
+}
+
+.shop-info .ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::before,
+.shop-info .ECM_CheckboxInput-Input:checked + .ECM_CheckboxInput-DummyInput::after {
+    top: 30%;
+    left: 70%;
+    transform-origin: 1px 1px;
+}
+
+.shop-info .ECM_CheckboxInput-DummyInput {
+    width: 16px;
+    height: 16px;
+}
+
+.shop-info .ECM_CheckboxInput-LabelText {
+    color: #6C6C6C;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.shop-info .shop-info-link {
+    list-style: none;
+    margin: 0 0 10px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 40px;
+}
+
+.shop-info .shop-info-link li:last-child {
+    border-right: none;
+}
+
+.shop-info .shop-info-link a {
+    color: #004EFF;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.shop-info .shop-info-link a:hover {
+    color: #1e70bf;
+}
+
+.shop-info .shop-info-bottom {
+    text-align: center;
+}
+
+.shop-info .shop-info-bottom p {
+    color: #333333;
+    text-align: left;
+    padding: 10px 0;
+    line-height: 24px;
+}
+
+.no-result {
+    margin: 0 15px;
+    height: 400px;
+}

@@ -5,7 +5,7 @@
 </style>
 
 @if ($paginator->hasPages())
-    <nav class="wrap" style="font-size:20px;color:#333333;">
+    <nav class="wrap" style="font-size:20px;">
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())

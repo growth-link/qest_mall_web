@@ -8,8 +8,9 @@ a {
 .img:hover {
     opacity: .8;
 }
-.content-box {
-    padding-top: 40px;
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* 広告 */
@@ -27,9 +28,11 @@ a {
 .section-title {
     color: #6C6C6C;
     font-weight: bold;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 0 15px 14px;
     font-size:16px;
+}
+.flag-category-qmm-title {
+    margin: 0 15px 7px;
 }
 
 /* LIFE SCENE */
@@ -75,4 +78,25 @@ a {
     max-height: 163px;
     margin: 0 auto;
     object-fit: cover;
+}
+
+/* input */
+.switch_TextInput {
+    border: solid 1px #CECECE;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+/* button */
+.clear-button {
+    color: #6C6C6C !important;
+    font-size: 13px !important;
+    background-color: #FFFFFF !important;
+    border: 1px solid #DEDEDE !important;
+}
+.search-button,
+.add-button {
+    color: #6C6C6C !important;
+    font-size: 13px !important;
+    background-color: #FBDB5B !important;
 }

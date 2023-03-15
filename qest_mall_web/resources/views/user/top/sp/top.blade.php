@@ -40,20 +40,7 @@
                     </div>
                 </section>
 
-                {{-- Life Scene --}}
-                <section class="main-content-box life-scene">
-                    <h2 class="section-title">LIFE SCENE</h2>
-                    <div class="life-scene-container">
-                        @foreach ($sub_categoris as $sub_category)
-                            <div class="life-scene-box">
-                                <a href="#">
-                                    <img class="img life-scene-img" src="{{ asset($sub_category->icon_url) }}">
-                                </a>
-                                <p class="life-scene-title">{{ $sub_category->sub_category_name }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-                </section>
+                @include('user.layouts.sp.components.item.life_scene')
 
                 {{-- おすすめ商品 --}}
                 @if (!session('user_id_token'))
@@ -64,7 +51,11 @@
                                 <div>
                                     <a href="{{ route('sp.items_detail', $item->id) }}">
                                         <div class="item-img">
-                                            <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                            @empty($item->is_sumbnail_image->image_url)
+                                                <img class="img" src="{{ asset('/images/item/no_image_logo.png') }}">
+                                            @else
+                                                <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                            @endempty
                                             @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
                                                 <div class="new-img">
                                                     <img src="{{ asset('/images/item/new_logo.png') }}">
@@ -98,42 +89,7 @@
                 {{-- 人気商品ランキング --}}
                 <section class="main-content-box rank-item">
                     <h2 class="section-title">人気商品ランキング</h2>
-                    <div class="three-slick rank-item-slick">
-                        @php $count = 0; @endphp
-                        @foreach ($rank_items as $item)
-                            @php $count++; @endphp
-                            <div>
-                                <p class="rank-num">{{$count}}<span class="rank-text">位</span></p>
-                                <a href="{{ route('sp.items_detail', $item->id) }}">
-                                    <div class="item-img">
-                                        <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
-                                        @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
-                                            <div class="new-img">
-                                                <img src="{{ asset('/images/item/new_logo.png') }}">
-                                            </div>
-                                        @endif
-                                    </div>
-                                </a>
-                                <div class="slider-text">
-                                    <div class="shop-name">
-                                        <a href="{{ route('sp.shop', $item->shop_id) }}">
-                                            {{ $item->shop->shop_name }}
-                                        </a>
-                                    </div>
-                                    <div class="item-name">
-                                        <p>{{ $item->name }}</p>
-                                    </div>
-                                    <div class="price">
-                                        <p>{{ number_format($item->normal_price) }}円
-                                            @if ($item->is_postage_free == true)
-                                                <span class="free-shipping">&nbsp;&nbsp;送料無料</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+                    @include('user.layouts.sp.components.item.rank_items')
                 </section>
 
                 {{-- 人気ショップランキング --}}
@@ -176,7 +132,11 @@
                                 <div>
                                     <a href="{{ route('sp.items_detail', $item->id) }}">
                                         <div class="item-img">
-                                            <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                            @empty($item->is_sumbnail_image->image_url)
+                                                <img class="img" src="{{ asset('/images/item/no_image_logo.png') }}">
+                                            @else
+                                                <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                            @endempty
                                             @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
                                                 <div class="new-img">
                                                     <img src="{{ asset('/images/item/new_logo.png') }}">
@@ -217,7 +177,11 @@
                                 <div>
                                     <a href="{{ route('sp.items_detail', $item->id) }}">
                                         <div class="item-img">
-                                            <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                            @empty($item->is_sumbnail_image->image_url)
+                                                <img class="img" src="{{ asset('/images/item/no_image_logo.png') }}">
+                                            @else
+                                                <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                            @endempty
                                             @if ($item->created_at > \Carbon\Carbon::now()->subDays(14))
                                                 <div class="new-img">
                                                     <img src="{{ asset('/images/item/new_logo.png') }}">
@@ -252,32 +216,7 @@
                 <section class="main-content-box latest-item">
                     <h2 class="section-title">新着商品</h2>
                     <div class="item-container">
-                        @foreach ($latest_items as $item)
-                            <div class="item-box">
-                                <a href="{{ route('sp.items_detail', $item->id) }}">
-                                    <div class="item-img">
-                                        <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
-                                    </div>
-                                </a>
-                                <div class="slider-text">
-                                    <div class="shop-name">
-                                        <a href="{{ route('sp.shop', $item->shop_id) }}">
-                                            {{ $item->shop->shop_name }}
-                                        </a>
-                                    </div>
-                                    <div class="item-name">
-                                        <p>{{ $item->name }}</p>
-                                    </div>
-                                    <div class="price">
-                                        <p>{{ number_format($item->normal_price) }}円
-                                            @if ($item->is_postage_free == true)
-                                                <span class="free-shipping">&nbsp;&nbsp;送料無料</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                        @include('user.layouts.sp.components.item.items')
                     </div>
                 </section>
 
@@ -305,11 +244,11 @@
             </div>
         </div>
     </div>
-</main>
-@component('user.layouts.sp.footer')
-@endcomponent
-@component('user.layouts.sp.menu')
-@endcomponent
+    @component('user.layouts.sp.footer')
+    @endcomponent
+    @component('user.layouts.sp.menu')
+    @endcomponent
+</div>
 @endsection
 @section("script")
     <script src="{{ asset('js/sp/hamburger_menu.js') }}"></script>

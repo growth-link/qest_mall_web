@@ -5,6 +5,7 @@
         width: 100%;
         position: fixed;
     }
+
     .overlay {
         position: fixed;
         top: 0;
@@ -20,17 +21,33 @@
         overflow: scroll;
     }
 
+    #overlay_filter {
+        bottom: 140px;
+    }
+
     .overlay.show {
         opacity: 1;
         pointer-events: auto;
     }
 
-    .overlay #close {
+    .overlay .close {
         position: absolute;
         top: 24px;
         right: 24px;
         font-size: 32px;
         cursor: pointer;
+    }
+
+    .overlay .prev-page {
+        position: absolute;
+        top: 24px;
+        display: flex;
+    }
+
+    .overlay .prev-page p {
+        color: #6C6C6C;
+        font-size: 13px;
+        margin-left: 10px;
     }
 
     .overlay ul {
@@ -43,15 +60,16 @@
         height: 57px;
         padding: 20px;
         opacity: 0;
-        transform: translateY(16px);
-        transition: opacity .3s, transform .3s;
         color: #6C6C6C;
         font-size: 13px;
         display: flex;
     }
 
-    .overlay li img{
+    .overlay li .next-page {
         margin-left: auto;
+    }
+
+    .overlay li img{
         width: 10px;
         object-fit: contain;
     }
@@ -60,39 +78,136 @@
         opacity: 1;
         transform: none;
     }
+
+    .overlay .icon-arrow-right {
+        margin-left: 20px;
+    }
+
+    .overlay .search-container {
+        height: 78px;
+    }
+
+    .overlay .search-box {
+        margin: 0;
+        width: 100%;
+    }
+
+    .overlay .text-input {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: 110px;
+    }
+
+    .overlay .modal-section-title {
+        width: 100%;
+    }
+
+    .overlay .switch_TextInput {
+        height: 50px;
+    }
+
+    .overlay input[type="number"] {
+        width: 44%;
+    }
+
+    .overlay .switch-input {
+        height: 70px;
+    }
+
+    .overlay .switch_LabelText {
+        color: #6C6C6C;
+        font-size: 13px;
+    }
+
+    .overlay .flex-box {
+        justify-content: space-between;
+    }
+
+    .overlay input[type="text"] {
+        width: 100%;
+    }
+
+    /* 絞りこみ検索ボタンなど */
+    .actions {
+        position: fixed;
+        top: auto;
+        bottom: 70px;
+        right: 0;
+        left: 0;
+        padding: 20px;
+        background: rgba(255,255,255,0.95);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .6s;
+        z-index: 999;
+        height: 90px;
+        justify-content: space-between;
+    }
+
+    .actions.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .actions .clear-button {
+        width: 30%;
+        margin: 0;
+        height: 50px;
+    }
+
+    .actions .search-button,
+    .actions .add-button {
+        width: 68%;
+        margin: 0;
+        height: 50px;
+    }
 </style>
 
-<div class="overlay">
-    <img id="close" src="/images/user/icon_close.png">
+<div id="overlay_see_more" class="overlay">
+    <img class="close" src="/images/user/icon_close.png">
     <nav>
         <ul>
             <li onclick="location.href='#'">
                 <p>マイメニュー</p>
-                <img src="/images/user/icon_arrow_right.png">
+                <div class="next-page">
+                    <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
+                </div>
             </li>
             <li onclick="location.href='#'">
                 <p>お知らせ</p>
-                <img src="/images/user/icon_arrow_right.png">
+                <div class="next-page">
+                    <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
+                </div>
             </li>
-            <li onclick="location.href='#'">
+            <li onclick="location.href='{{ route('sp.categories') }}'">
                 <p>カテゴリ一覧</p>
-                <img src="/images/user/icon_arrow_right.png">
+                <div class="next-page">
+                    <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
+                </div>
             </li>
             <li onclick="location.href='#'">
                 <p>ショップ一覧</p>
-                <img src="/images/user/icon_arrow_right.png">
+                <div class="next-page">
+                    <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
+                </div>
             </li>
             <li onclick="location.href='#'">
                 <p>ブランド一覧</p>
-                <img src="/images/user/icon_arrow_right.png">
+                <div class="next-page">
+                    <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
+                </div>
             </li>
             <li onclick="location.href='#'">
                 <p>Qest mall magazine</p>
-                <img src="/images/user/icon_arrow_right.png">
+                <div class="next-page">
+                    <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
+                </div>
             </li>
             <li onclick="location.href='#'">
                 <p>ヘルプ</p>
-                <img src="/images/user/icon_arrow_right.png">
+                <div class="next-page">
+                    <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
+                </div>
             </li>
         </ul>
     </nav>

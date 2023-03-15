@@ -8,9 +8,21 @@ a {
 .img:hover {
     opacity: .8;
 }
-.life-style-img {
-    margin: 5px 0;
+
+.left-menu-box .life-scene-container {
+    flex-wrap: wrap;
+    margin: 0;
+    gap: 10px 0;
 }
+
+.left-menu-box .life-scene-container a {
+    display:flex;
+}
+
+.left-menu-box .life-scene-container img {
+    width: 100%;
+}
+
 .content-box {
     padding: 16px 0;
 }
@@ -180,6 +192,21 @@ a {
     color: #333333;
     font-size: 13px;
 }
+.accordion-nav > .flex-box {
+    gap: 20px 0;
+}
+.accordion-nav .ECM_CheckboxInput-LabelText {
+    color: #6C6C6C;
+    font-size: 12px;
+    font-weight: normal;
+}
+.accordion-nav .ECM_CheckboxInput {
+    padding: 2px 12px;
+}
+.middle-category-box {
+    width: calc(100% / 3);
+}
+
 .switch-input {
     color: #333333;
     font-size: 13px;
@@ -225,6 +252,7 @@ a {
 /* アコーディオン */
 .accordion-nav {
     display: none;
+    padding: 0 40px;
 }
 .nav-open{
 	padding: 4px 15px;

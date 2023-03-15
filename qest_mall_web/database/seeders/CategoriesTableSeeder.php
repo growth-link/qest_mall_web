@@ -1573,6 +1573,1385 @@ class CategoriesTableSeeder extends Seeder
                 'category_name' => 'その他美容・ケア',
                 'image_id' => NULL,
             ),
+            222 => 
+            array (
+                'id' => 223,
+                'parent_id' => 42,
+                'category_name' => 'Tシャツ・カットソー',
+                'image_id' => NULL,
+            ),
+            223 => 
+            array (
+                'id' => 224,
+                'parent_id' => 42,
+                'category_name' => 'シャツ・ブラウス',
+                'image_id' => NULL,
+            ),
+            224 => 
+            array (
+                'id' => 225,
+                'parent_id' => 42,
+                'category_name' => 'ポロシャツ',
+                'image_id' => NULL,
+            ),
+            225 => 
+            array (
+                'id' => 226,
+                'parent_id' => 42,
+                'category_name' => 'ニット・セーター',
+                'image_id' => NULL,
+            ),
+            226 => 
+            array (
+                'id' => 227,
+                'parent_id' => 42,
+                'category_name' => 'カーディガン',
+                'image_id' => NULL,
+            ),
+            227 => 
+            array (
+                'id' => 228,
+                'parent_id' => 42,
+                'category_name' => 'パーカー・スウェット',
+                'image_id' => NULL,
+            ),
+            228 => 
+            array (
+                'id' => 229,
+                'parent_id' => 42,
+                'category_name' => 'ベスト',
+                'image_id' => NULL,
+            ),
+            229 => 
+            array (
+                'id' => 230,
+                'parent_id' => 42,
+                'category_name' => 'タンクトップ・キャミソール',
+                'image_id' => NULL,
+            ),
+            230 => 
+            array (
+                'id' => 231,
+                'parent_id' => 42,
+                'category_name' => 'その他トップス',
+                'image_id' => NULL,
+            ),
+            231 => 
+            array (
+                'id' => 232,
+                'parent_id' => 43,
+                'category_name' => 'デニムジャケット',
+                'image_id' => NULL,
+            ),
+            232 => 
+            array (
+                'id' => 233,
+                'parent_id' => 43,
+                'category_name' => 'テーラードジャケット',
+                'image_id' => NULL,
+            ),
+            233 => 
+            array (
+                'id' => 234,
+                'parent_id' => 43,
+                'category_name' => 'ノーカラージャケット',
+                'image_id' => NULL,
+            ),
+            234 => 
+            array (
+                'id' => 235,
+                'parent_id' => 43,
+                'category_name' => 'MA-1',
+                'image_id' => NULL,
+            ),
+            235 => 
+            array (
+                'id' => 236,
+                'parent_id' => 43,
+                'category_name' => 'ミリタリージャケット',
+                'image_id' => NULL,
+            ),
+            236 => 
+            array (
+                'id' => 237,
+                'parent_id' => 43,
+                'category_name' => 'ブルゾン',
+                'image_id' => NULL,
+            ),
+            237 => 
+            array (
+                'id' => 238,
+                'parent_id' => 43,
+                'category_name' => 'スタジャン',
+                'image_id' => NULL,
+            ),
+            238 => 
+            array (
+                'id' => 239,
+                'parent_id' => 43,
+                'category_name' => 'ムートンコート',
+                'image_id' => NULL,
+            ),
+            239 => 
+            array (
+                'id' => 240,
+                'parent_id' => 43,
+                'category_name' => 'ライダースジャケット',
+                'image_id' => NULL,
+            ),
+            240 => 
+            array (
+                'id' => 241,
+                'parent_id' => 43,
+                'category_name' => 'ダウンジャケット・ダウンベスト',
+                'image_id' => NULL,
+            ),
+            241 => 
+            array (
+                'id' => 242,
+                'parent_id' => 43,
+                'category_name' => 'チェスターコート',
+                'image_id' => NULL,
+            ),
+            242 => 
+            array (
+                'id' => 243,
+                'parent_id' => 43,
+                'category_name' => 'トレンチ・ステンカラーコート',
+                'image_id' => NULL,
+            ),
+            243 => 
+            array (
+                'id' => 244,
+                'parent_id' => 43,
+                'category_name' => 'ノーカラーコート',
+                'image_id' => NULL,
+            ),
+            244 => 
+            array (
+                'id' => 245,
+                'parent_id' => 43,
+                'category_name' => 'ダッフルコート',
+                'image_id' => NULL,
+            ),
+            245 => 
+            array (
+                'id' => 246,
+                'parent_id' => 43,
+                'category_name' => 'モッズ・ミリタリーコート',
+                'image_id' => NULL,
+            ),
+            246 => 
+            array (
+                'id' => 247,
+                'parent_id' => 43,
+                'category_name' => 'ピーコート',
+                'image_id' => NULL,
+            ),
+            247 => 
+            array (
+                'id' => 248,
+                'parent_id' => 43,
+                'category_name' => 'マウンテンパーカー',
+                'image_id' => NULL,
+            ),
+            248 => 
+            array (
+                'id' => 249,
+                'parent_id' => 43,
+                'category_name' => 'ナイロンジャケット',
+                'image_id' => NULL,
+            ),
+            249 => 
+            array (
+                'id' => 250,
+                'parent_id' => 43,
+                'category_name' => 'セットアップ',
+                'image_id' => NULL,
+            ),
+            250 => 
+            array (
+                'id' => 251,
+                'parent_id' => 43,
+                'category_name' => 'その他ジャケット・アウター',
+                'image_id' => NULL,
+            ),
+            251 => 
+            array (
+                'id' => 252,
+                'parent_id' => 44,
+                'category_name' => 'デニムパンツ',
+                'image_id' => NULL,
+            ),
+            252 => 
+            array (
+                'id' => 253,
+                'parent_id' => 44,
+                'category_name' => 'チノパンツ',
+                'image_id' => NULL,
+            ),
+            253 => 
+            array (
+                'id' => 254,
+                'parent_id' => 44,
+                'category_name' => 'スウェットパンツ',
+                'image_id' => NULL,
+            ),
+            254 => 
+            array (
+                'id' => 255,
+                'parent_id' => 44,
+                'category_name' => 'スラックス',
+                'image_id' => NULL,
+            ),
+            255 => 
+            array (
+                'id' => 256,
+                'parent_id' => 44,
+                'category_name' => 'オールインワン・サロペット',
+                'image_id' => NULL,
+            ),
+            256 => 
+            array (
+                'id' => 257,
+                'parent_id' => 44,
+                'category_name' => 'その他パンツ',
+                'image_id' => NULL,
+            ),
+            257 => 
+            array (
+                'id' => 258,
+                'parent_id' => 45,
+                'category_name' => 'ルームウェア',
+                'image_id' => NULL,
+            ),
+            258 => 
+            array (
+                'id' => 259,
+                'parent_id' => 45,
+                'category_name' => 'ルームシューズ',
+                'image_id' => NULL,
+            ),
+            259 => 
+            array (
+                'id' => 260,
+                'parent_id' => 45,
+                'category_name' => 'その他ルームウェア',
+                'image_id' => NULL,
+            ),
+            260 => 
+            array (
+                'id' => 261,
+                'parent_id' => 46,
+                'category_name' => 'トートバッグ',
+                'image_id' => NULL,
+            ),
+            261 => 
+            array (
+                'id' => 262,
+                'parent_id' => 46,
+                'category_name' => 'ショルダーバッグ',
+                'image_id' => NULL,
+            ),
+            262 => 
+            array (
+                'id' => 263,
+                'parent_id' => 46,
+                'category_name' => 'ボディバッグ',
+                'image_id' => NULL,
+            ),
+            263 => 
+            array (
+                'id' => 264,
+                'parent_id' => 46,
+                'category_name' => 'ハンドバッグ',
+                'image_id' => NULL,
+            ),
+            264 => 
+            array (
+                'id' => 265,
+                'parent_id' => 46,
+                'category_name' => 'クラッチバッグ',
+                'image_id' => NULL,
+            ),
+            265 => 
+            array (
+                'id' => 266,
+                'parent_id' => 46,
+                'category_name' => 'リュックサック・バックパック',
+                'image_id' => NULL,
+            ),
+            266 => 
+            array (
+                'id' => 267,
+                'parent_id' => 46,
+                'category_name' => 'かごバッグ',
+                'image_id' => NULL,
+            ),
+            267 => 
+            array (
+                'id' => 268,
+                'parent_id' => 46,
+                'category_name' => 'エコバッグ',
+                'image_id' => NULL,
+            ),
+            268 => 
+            array (
+                'id' => 269,
+                'parent_id' => 46,
+                'category_name' => 'その他バッグ',
+                'image_id' => NULL,
+            ),
+            269 => 
+            array (
+                'id' => 270,
+                'parent_id' => 47,
+                'category_name' => 'スニーカー',
+                'image_id' => NULL,
+            ),
+            270 => 
+            array (
+                'id' => 271,
+                'parent_id' => 47,
+                'category_name' => 'スリッポン',
+                'image_id' => NULL,
+            ),
+            271 => 
+            array (
+                'id' => 272,
+                'parent_id' => 47,
+                'category_name' => 'サンダル',
+                'image_id' => NULL,
+            ),
+            272 => 
+            array (
+                'id' => 273,
+                'parent_id' => 47,
+                'category_name' => 'パンプス',
+                'image_id' => NULL,
+            ),
+            273 => 
+            array (
+                'id' => 274,
+                'parent_id' => 47,
+                'category_name' => 'ブーツ',
+                'image_id' => NULL,
+            ),
+            274 => 
+            array (
+                'id' => 275,
+                'parent_id' => 47,
+                'category_name' => 'ドレスシューズ',
+                'image_id' => NULL,
+            ),
+            275 => 
+            array (
+                'id' => 276,
+                'parent_id' => 47,
+                'category_name' => 'ローファー',
+                'image_id' => NULL,
+            ),
+            276 => 
+            array (
+                'id' => 277,
+                'parent_id' => 47,
+                'category_name' => 'バレエシューズ',
+                'image_id' => NULL,
+            ),
+            277 => 
+            array (
+                'id' => 278,
+                'parent_id' => 47,
+                'category_name' => 'モカシン/デッキシューズ',
+                'image_id' => NULL,
+            ),
+            278 => 
+            array (
+                'id' => 279,
+                'parent_id' => 47,
+                'category_name' => 'レインシューズ',
+                'image_id' => NULL,
+            ),
+            279 => 
+            array (
+                'id' => 280,
+                'parent_id' => 47,
+                'category_name' => 'その他シューズ',
+                'image_id' => NULL,
+            ),
+            280 => 
+            array (
+                'id' => 281,
+                'parent_id' => 47,
+                'category_name' => 'シューズ小物/雑貨',
+                'image_id' => NULL,
+            ),
+            281 => 
+            array (
+                'id' => 282,
+                'parent_id' => 48,
+                'category_name' => 'ニット帽',
+                'image_id' => NULL,
+            ),
+            282 => 
+            array (
+                'id' => 283,
+                'parent_id' => 48,
+                'category_name' => 'キャップ',
+                'image_id' => NULL,
+            ),
+            283 => 
+            array (
+                'id' => 284,
+                'parent_id' => 48,
+                'category_name' => 'ハット',
+                'image_id' => NULL,
+            ),
+            284 => 
+            array (
+                'id' => 285,
+                'parent_id' => 48,
+                'category_name' => 'キャスケット',
+                'image_id' => NULL,
+            ),
+            285 => 
+            array (
+                'id' => 286,
+                'parent_id' => 48,
+                'category_name' => 'ベレー帽',
+                'image_id' => NULL,
+            ),
+            286 => 
+            array (
+                'id' => 287,
+                'parent_id' => 48,
+                'category_name' => 'その他キャップ・ハット',
+                'image_id' => NULL,
+            ),
+            287 => 
+            array (
+                'id' => 288,
+                'parent_id' => 49,
+                'category_name' => 'ストール・マフラー',
+                'image_id' => NULL,
+            ),
+            288 => 
+            array (
+                'id' => 289,
+                'parent_id' => 49,
+                'category_name' => 'ベルト',
+                'image_id' => NULL,
+            ),
+            289 => 
+            array (
+                'id' => 290,
+                'parent_id' => 49,
+                'category_name' => '手袋',
+                'image_id' => NULL,
+            ),
+            290 => 
+            array (
+                'id' => 291,
+                'parent_id' => 49,
+                'category_name' => '腕時計',
+                'image_id' => NULL,
+            ),
+            291 => 
+            array (
+                'id' => 292,
+                'parent_id' => 49,
+                'category_name' => '眼鏡・サングラス',
+                'image_id' => NULL,
+            ),
+            292 => 
+            array (
+                'id' => 293,
+                'parent_id' => 49,
+                'category_name' => '傘・レイングッズ',
+                'image_id' => NULL,
+            ),
+            293 => 
+            array (
+                'id' => 294,
+                'parent_id' => 49,
+                'category_name' => '財布・コインケース',
+                'image_id' => NULL,
+            ),
+            294 => 
+            array (
+                'id' => 295,
+                'parent_id' => 49,
+                'category_name' => 'カードケース・名刺入れ',
+                'image_id' => NULL,
+            ),
+            295 => 
+            array (
+                'id' => 296,
+                'parent_id' => 49,
+                'category_name' => 'キーケース・ホルダー',
+                'image_id' => NULL,
+            ),
+            296 => 
+            array (
+                'id' => 297,
+                'parent_id' => 49,
+                'category_name' => 'ポーチ',
+                'image_id' => NULL,
+            ),
+            297 => 
+            array (
+                'id' => 298,
+                'parent_id' => 49,
+                'category_name' => 'ハンカチ',
+                'image_id' => NULL,
+            ),
+            298 => 
+            array (
+                'id' => 299,
+                'parent_id' => 49,
+                'category_name' => 'その他ファション雑貨',
+                'image_id' => NULL,
+            ),
+            299 => 
+            array (
+                'id' => 300,
+                'parent_id' => 50,
+                'category_name' => 'ネックレス',
+                'image_id' => NULL,
+            ),
+            300 => 
+            array (
+                'id' => 301,
+                'parent_id' => 50,
+                'category_name' => '指輪',
+                'image_id' => NULL,
+            ),
+            301 => 
+            array (
+                'id' => 302,
+                'parent_id' => 50,
+                'category_name' => 'ピアス・イヤリング',
+                'image_id' => NULL,
+            ),
+            302 => 
+            array (
+                'id' => 303,
+                'parent_id' => 50,
+                'category_name' => 'ブローチ・コサージュ',
+                'image_id' => NULL,
+            ),
+            303 => 
+            array (
+                'id' => 304,
+                'parent_id' => 50,
+                'category_name' => 'ブレスレット',
+                'image_id' => NULL,
+            ),
+            304 => 
+            array (
+                'id' => 305,
+                'parent_id' => 50,
+                'category_name' => 'ヘアアクセサリー',
+                'image_id' => NULL,
+            ),
+            305 => 
+            array (
+                'id' => 306,
+                'parent_id' => 50,
+                'category_name' => 'その他アクセサリー',
+                'image_id' => NULL,
+            ),
+            306 => 
+            array (
+                'id' => 307,
+                'parent_id' => 51,
+                'category_name' => 'ソックス/靴下',
+                'image_id' => NULL,
+            ),
+            307 => 
+            array (
+                'id' => 308,
+                'parent_id' => 51,
+                'category_name' => 'タイツ/ストッキング',
+                'image_id' => NULL,
+            ),
+            308 => 
+            array (
+                'id' => 309,
+                'parent_id' => 51,
+                'category_name' => 'レギンス/スパッツ',
+                'image_id' => NULL,
+            ),
+            309 => 
+            array (
+                'id' => 310,
+                'parent_id' => 51,
+                'category_name' => 'レッグウォーマー',
+                'image_id' => NULL,
+            ),
+            310 => 
+            array (
+                'id' => 311,
+                'parent_id' => 51,
+                'category_name' => 'その他レッグウェア',
+                'image_id' => NULL,
+            ),
+            311 => 
+            array (
+                'id' => 312,
+                'parent_id' => 52,
+                'category_name' => 'ボクサーパンツ',
+                'image_id' => NULL,
+            ),
+            312 => 
+            array (
+                'id' => 313,
+                'parent_id' => 52,
+                'category_name' => 'トランクス/ブリーフ',
+                'image_id' => NULL,
+            ),
+            313 => 
+            array (
+                'id' => 314,
+                'parent_id' => 52,
+                'category_name' => 'インナーウェア/肌着',
+                'image_id' => NULL,
+            ),
+            314 => 
+            array (
+                'id' => 315,
+                'parent_id' => 52,
+                'category_name' => 'その他アンダーウェア',
+                'image_id' => NULL,
+            ),
+            315 => 
+            array (
+                'id' => 316,
+                'parent_id' => 53,
+                'category_name' => 'その他ファッション',
+                'image_id' => NULL,
+            ),
+            316 => 
+            array (
+                'id' => 317,
+                'parent_id' => 54,
+                'category_name' => 'Tシャツ・カットソー',
+                'image_id' => NULL,
+            ),
+            317 => 
+            array (
+                'id' => 318,
+                'parent_id' => 54,
+                'category_name' => 'シャツ・ブラウス',
+                'image_id' => NULL,
+            ),
+            318 => 
+            array (
+                'id' => 319,
+                'parent_id' => 54,
+                'category_name' => 'ポロシャツ',
+                'image_id' => NULL,
+            ),
+            319 => 
+            array (
+                'id' => 320,
+                'parent_id' => 54,
+                'category_name' => 'ニット・セーター',
+                'image_id' => NULL,
+            ),
+            320 => 
+            array (
+                'id' => 321,
+                'parent_id' => 54,
+                'category_name' => 'カーディガン',
+                'image_id' => NULL,
+            ),
+            321 => 
+            array (
+                'id' => 322,
+                'parent_id' => 54,
+                'category_name' => 'パーカー・スウェット',
+                'image_id' => NULL,
+            ),
+            322 => 
+            array (
+                'id' => 323,
+                'parent_id' => 54,
+                'category_name' => 'ベスト',
+                'image_id' => NULL,
+            ),
+            323 => 
+            array (
+                'id' => 324,
+                'parent_id' => 54,
+                'category_name' => 'タンクトップ・キャミソール',
+                'image_id' => NULL,
+            ),
+            324 => 
+            array (
+                'id' => 325,
+                'parent_id' => 54,
+                'category_name' => 'その他トップス',
+                'image_id' => NULL,
+            ),
+            325 => 
+            array (
+                'id' => 326,
+                'parent_id' => 55,
+                'category_name' => 'デニムジャケット',
+                'image_id' => NULL,
+            ),
+            326 => 
+            array (
+                'id' => 327,
+                'parent_id' => 55,
+                'category_name' => 'テーラードジャケット',
+                'image_id' => NULL,
+            ),
+            327 => 
+            array (
+                'id' => 328,
+                'parent_id' => 55,
+                'category_name' => 'ノーカラージャケット',
+                'image_id' => NULL,
+            ),
+            328 => 
+            array (
+                'id' => 329,
+                'parent_id' => 55,
+                'category_name' => 'MA-1',
+                'image_id' => NULL,
+            ),
+            329 => 
+            array (
+                'id' => 330,
+                'parent_id' => 55,
+                'category_name' => 'ミリタリージャケット',
+                'image_id' => NULL,
+            ),
+            330 => 
+            array (
+                'id' => 331,
+                'parent_id' => 55,
+                'category_name' => 'ブルゾン',
+                'image_id' => NULL,
+            ),
+            331 => 
+            array (
+                'id' => 332,
+                'parent_id' => 55,
+                'category_name' => 'スタジャン',
+                'image_id' => NULL,
+            ),
+            332 => 
+            array (
+                'id' => 333,
+                'parent_id' => 55,
+                'category_name' => 'ムートンコート',
+                'image_id' => NULL,
+            ),
+            333 => 
+            array (
+                'id' => 334,
+                'parent_id' => 55,
+                'category_name' => 'ライダースジャケット',
+                'image_id' => NULL,
+            ),
+            334 => 
+            array (
+                'id' => 335,
+                'parent_id' => 55,
+                'category_name' => 'ダウンジャケット・ダウンベスト',
+                'image_id' => NULL,
+            ),
+            335 => 
+            array (
+                'id' => 336,
+                'parent_id' => 55,
+                'category_name' => 'チェスターコート',
+                'image_id' => NULL,
+            ),
+            336 => 
+            array (
+                'id' => 337,
+                'parent_id' => 55,
+                'category_name' => 'トレンチ・ステンカラーコート',
+                'image_id' => NULL,
+            ),
+            337 => 
+            array (
+                'id' => 338,
+                'parent_id' => 55,
+                'category_name' => 'ノーカラーコート',
+                'image_id' => NULL,
+            ),
+            338 => 
+            array (
+                'id' => 340,
+                'parent_id' => 55,
+                'category_name' => 'モッズ・ミリタリーコート',
+                'image_id' => NULL,
+            ),
+            339 => 
+            array (
+                'id' => 341,
+                'parent_id' => 55,
+                'category_name' => 'ピーコート',
+                'image_id' => NULL,
+            ),
+            340 => 
+            array (
+                'id' => 342,
+                'parent_id' => 55,
+                'category_name' => 'マウンテンパーカー',
+                'image_id' => NULL,
+            ),
+            341 => 
+            array (
+                'id' => 343,
+                'parent_id' => 55,
+                'category_name' => 'ナイロンジャケット',
+                'image_id' => NULL,
+            ),
+            342 => 
+            array (
+                'id' => 344,
+                'parent_id' => 55,
+                'category_name' => 'セットアップ',
+                'image_id' => NULL,
+            ),
+            343 => 
+            array (
+                'id' => 345,
+                'parent_id' => 55,
+                'category_name' => 'その他ジャケット・アウター',
+                'image_id' => NULL,
+            ),
+            344 => 
+            array (
+                'id' => 346,
+                'parent_id' => 56,
+                'category_name' => 'デニムパンツ',
+                'image_id' => NULL,
+            ),
+            345 => 
+            array (
+                'id' => 347,
+                'parent_id' => 56,
+                'category_name' => 'チノパンツ',
+                'image_id' => NULL,
+            ),
+            346 => 
+            array (
+                'id' => 348,
+                'parent_id' => 56,
+                'category_name' => 'スウェットパンツ',
+                'image_id' => NULL,
+            ),
+            347 => 
+            array (
+                'id' => 349,
+                'parent_id' => 56,
+                'category_name' => 'スラックス',
+                'image_id' => NULL,
+            ),
+            348 => 
+            array (
+                'id' => 350,
+                'parent_id' => 56,
+                'category_name' => 'オールインワン・サロペット',
+                'image_id' => NULL,
+            ),
+            349 => 
+            array (
+                'id' => 351,
+                'parent_id' => 56,
+                'category_name' => 'その他パンツ',
+                'image_id' => NULL,
+            ),
+            350 => 
+            array (
+                'id' => 352,
+                'parent_id' => 57,
+                'category_name' => 'ワンピース',
+                'image_id' => NULL,
+            ),
+            351 => 
+            array (
+                'id' => 353,
+                'parent_id' => 57,
+                'category_name' => 'シャツワンピース',
+                'image_id' => NULL,
+            ),
+            352 => 
+            array (
+                'id' => 354,
+                'parent_id' => 57,
+                'category_name' => 'チュニック',
+                'image_id' => NULL,
+            ),
+            353 => 
+            array (
+                'id' => 355,
+                'parent_id' => 57,
+                'category_name' => 'ドレス',
+                'image_id' => NULL,
+            ),
+            354 => 
+            array (
+                'id' => 356,
+                'parent_id' => 57,
+                'category_name' => 'その他ワンピース',
+                'image_id' => NULL,
+            ),
+            355 => 
+            array (
+                'id' => 357,
+                'parent_id' => 58,
+                'category_name' => 'スカート',
+                'image_id' => NULL,
+            ),
+            356 => 
+            array (
+                'id' => 358,
+                'parent_id' => 58,
+                'category_name' => 'デニムスカート',
+                'image_id' => NULL,
+            ),
+            357 => 
+            array (
+                'id' => 359,
+                'parent_id' => 59,
+                'category_name' => 'ルームウェア',
+                'image_id' => NULL,
+            ),
+            358 => 
+            array (
+                'id' => 360,
+                'parent_id' => 59,
+                'category_name' => 'ルームシューズ',
+                'image_id' => NULL,
+            ),
+            359 => 
+            array (
+                'id' => 361,
+                'parent_id' => 59,
+                'category_name' => 'その他ルームウェア',
+                'image_id' => NULL,
+            ),
+            360 => 
+            array (
+                'id' => 362,
+                'parent_id' => 60,
+                'category_name' => 'トートバッグ',
+                'image_id' => NULL,
+            ),
+            361 => 
+            array (
+                'id' => 363,
+                'parent_id' => 60,
+                'category_name' => 'ショルダーバッグ',
+                'image_id' => NULL,
+            ),
+            362 => 
+            array (
+                'id' => 364,
+                'parent_id' => 60,
+                'category_name' => 'ボディバッグ',
+                'image_id' => NULL,
+            ),
+            363 => 
+            array (
+                'id' => 365,
+                'parent_id' => 60,
+                'category_name' => 'ハンドバッグ',
+                'image_id' => NULL,
+            ),
+            364 => 
+            array (
+                'id' => 366,
+                'parent_id' => 60,
+                'category_name' => 'クラッチバッグ',
+                'image_id' => NULL,
+            ),
+            365 => 
+            array (
+                'id' => 367,
+                'parent_id' => 60,
+                'category_name' => 'リュックサック・バックパック',
+                'image_id' => NULL,
+            ),
+            366 => 
+            array (
+                'id' => 368,
+                'parent_id' => 60,
+                'category_name' => 'かごバッグ',
+                'image_id' => NULL,
+            ),
+            367 => 
+            array (
+                'id' => 369,
+                'parent_id' => 60,
+                'category_name' => 'エコバッグ',
+                'image_id' => NULL,
+            ),
+            368 => 
+            array (
+                'id' => 370,
+                'parent_id' => 60,
+                'category_name' => 'その他バッグ',
+                'image_id' => NULL,
+            ),
+            369 => 
+            array (
+                'id' => 371,
+                'parent_id' => 61,
+                'category_name' => 'スニーカー',
+                'image_id' => NULL,
+            ),
+            370 => 
+            array (
+                'id' => 372,
+                'parent_id' => 61,
+                'category_name' => 'スリッポン',
+                'image_id' => NULL,
+            ),
+            371 => 
+            array (
+                'id' => 373,
+                'parent_id' => 61,
+                'category_name' => 'サンダル',
+                'image_id' => NULL,
+            ),
+            372 => 
+            array (
+                'id' => 374,
+                'parent_id' => 61,
+                'category_name' => 'パンプス',
+                'image_id' => NULL,
+            ),
+            373 => 
+            array (
+                'id' => 375,
+                'parent_id' => 61,
+                'category_name' => 'ブーツ',
+                'image_id' => NULL,
+            ),
+            374 => 
+            array (
+                'id' => 376,
+                'parent_id' => 61,
+                'category_name' => 'ドレスシューズ',
+                'image_id' => NULL,
+            ),
+            375 => 
+            array (
+                'id' => 377,
+                'parent_id' => 61,
+                'category_name' => 'ローファー',
+                'image_id' => NULL,
+            ),
+            376 => 
+            array (
+                'id' => 378,
+                'parent_id' => 61,
+                'category_name' => 'バレエシューズ',
+                'image_id' => NULL,
+            ),
+            377 => 
+            array (
+                'id' => 379,
+                'parent_id' => 61,
+                'category_name' => 'モカシン/デッキシューズ',
+                'image_id' => NULL,
+            ),
+            378 => 
+            array (
+                'id' => 380,
+                'parent_id' => 61,
+                'category_name' => 'レインシューズ',
+                'image_id' => NULL,
+            ),
+            379 => 
+            array (
+                'id' => 381,
+                'parent_id' => 61,
+                'category_name' => 'その他シューズ',
+                'image_id' => NULL,
+            ),
+            380 => 
+            array (
+                'id' => 382,
+                'parent_id' => 61,
+                'category_name' => 'シューズ小物/雑貨',
+                'image_id' => NULL,
+            ),
+            381 => 
+            array (
+                'id' => 383,
+                'parent_id' => 62,
+                'category_name' => 'ニット帽',
+                'image_id' => NULL,
+            ),
+            382 => 
+            array (
+                'id' => 384,
+                'parent_id' => 62,
+                'category_name' => 'キャップ',
+                'image_id' => NULL,
+            ),
+            383 => 
+            array (
+                'id' => 385,
+                'parent_id' => 62,
+                'category_name' => 'ハット',
+                'image_id' => NULL,
+            ),
+            384 => 
+            array (
+                'id' => 386,
+                'parent_id' => 62,
+                'category_name' => 'キャスケット',
+                'image_id' => NULL,
+            ),
+            385 => 
+            array (
+                'id' => 387,
+                'parent_id' => 62,
+                'category_name' => 'ベレー帽',
+                'image_id' => NULL,
+            ),
+            386 => 
+            array (
+                'id' => 388,
+                'parent_id' => 62,
+                'category_name' => 'その他キャップ・ハット',
+                'image_id' => NULL,
+            ),
+            387 => 
+            array (
+                'id' => 389,
+                'parent_id' => 63,
+                'category_name' => 'ストール・マフラー',
+                'image_id' => NULL,
+            ),
+            388 => 
+            array (
+                'id' => 390,
+                'parent_id' => 63,
+                'category_name' => 'ベルト',
+                'image_id' => NULL,
+            ),
+            389 => 
+            array (
+                'id' => 391,
+                'parent_id' => 63,
+                'category_name' => '手袋',
+                'image_id' => NULL,
+            ),
+            390 => 
+            array (
+                'id' => 392,
+                'parent_id' => 63,
+                'category_name' => '腕時計',
+                'image_id' => NULL,
+            ),
+            391 => 
+            array (
+                'id' => 393,
+                'parent_id' => 63,
+                'category_name' => '眼鏡・サングラス',
+                'image_id' => NULL,
+            ),
+            392 => 
+            array (
+                'id' => 394,
+                'parent_id' => 63,
+                'category_name' => '傘・レイングッズ',
+                'image_id' => NULL,
+            ),
+            393 => 
+            array (
+                'id' => 395,
+                'parent_id' => 63,
+                'category_name' => '財布・コインケース',
+                'image_id' => NULL,
+            ),
+            394 => 
+            array (
+                'id' => 396,
+                'parent_id' => 63,
+                'category_name' => 'カードケース・名刺入れ',
+                'image_id' => NULL,
+            ),
+            395 => 
+            array (
+                'id' => 397,
+                'parent_id' => 63,
+                'category_name' => 'キーケース・ホルダー',
+                'image_id' => NULL,
+            ),
+            396 => 
+            array (
+                'id' => 398,
+                'parent_id' => 63,
+                'category_name' => 'ポーチ',
+                'image_id' => NULL,
+            ),
+            397 => 
+            array (
+                'id' => 399,
+                'parent_id' => 63,
+                'category_name' => 'ハンカチ',
+                'image_id' => NULL,
+            ),
+            398 => 
+            array (
+                'id' => 400,
+                'parent_id' => 63,
+                'category_name' => 'その他ファション雑貨',
+                'image_id' => NULL,
+            ),
+            399 => 
+            array (
+                'id' => 401,
+                'parent_id' => 64,
+                'category_name' => 'ネックレス',
+                'image_id' => NULL,
+            ),
+            400 => 
+            array (
+                'id' => 402,
+                'parent_id' => 64,
+                'category_name' => '指輪',
+                'image_id' => NULL,
+            ),
+            401 => 
+            array (
+                'id' => 403,
+                'parent_id' => 64,
+                'category_name' => 'ピアス・イヤリング',
+                'image_id' => NULL,
+            ),
+            402 => 
+            array (
+                'id' => 404,
+                'parent_id' => 64,
+                'category_name' => 'ブローチ・コサージュ',
+                'image_id' => NULL,
+            ),
+            403 => 
+            array (
+                'id' => 405,
+                'parent_id' => 64,
+                'category_name' => 'ブレスレット',
+                'image_id' => NULL,
+            ),
+            404 => 
+            array (
+                'id' => 406,
+                'parent_id' => 64,
+                'category_name' => 'ヘアアクセサリー',
+                'image_id' => NULL,
+            ),
+            405 => 
+            array (
+                'id' => 407,
+                'parent_id' => 64,
+                'category_name' => 'その他アクセサリー',
+                'image_id' => NULL,
+            ),
+            406 => 
+            array (
+                'id' => 408,
+                'parent_id' => 65,
+                'category_name' => 'ソックス/靴下',
+                'image_id' => NULL,
+            ),
+            407 => 
+            array (
+                'id' => 409,
+                'parent_id' => 65,
+                'category_name' => 'タイツ/ストッキング',
+                'image_id' => NULL,
+            ),
+            408 => 
+            array (
+                'id' => 410,
+                'parent_id' => 65,
+                'category_name' => 'レギンス/スパッツ',
+                'image_id' => NULL,
+            ),
+            409 => 
+            array (
+                'id' => 411,
+                'parent_id' => 65,
+                'category_name' => 'レッグウォーマー',
+                'image_id' => NULL,
+            ),
+            410 => 
+            array (
+                'id' => 412,
+                'parent_id' => 65,
+                'category_name' => 'その他レッグウェア',
+                'image_id' => NULL,
+            ),
+            411 => 
+            array (
+                'id' => 413,
+                'parent_id' => 66,
+                'category_name' => 'ブラジャー',
+                'image_id' => NULL,
+            ),
+            412 => 
+            array (
+                'id' => 414,
+                'parent_id' => 66,
+                'category_name' => 'ショーツ',
+                'image_id' => NULL,
+            ),
+            413 => 
+            array (
+                'id' => 415,
+                'parent_id' => 66,
+                'category_name' => 'ブラ&ショーツ',
+                'image_id' => NULL,
+            ),
+            414 => 
+            array (
+                'id' => 416,
+                'parent_id' => 66,
+                'category_name' => 'インナーウェア/肌着',
+                'image_id' => NULL,
+            ),
+            415 => 
+            array (
+                'id' => 417,
+                'parent_id' => 66,
+                'category_name' => 'インナーウェア/肌着',
+                'image_id' => NULL,
+            ),
+            416 => 
+            array (
+                'id' => 418,
+                'parent_id' => 67,
+                'category_name' => 'その他ファッション',
+                'image_id' => NULL,
+            ),
+            417 => 
+            array (
+                'id' => 419,
+                'parent_id' => 68,
+                'category_name' => 'キッズファッション',
+                'image_id' => NULL,
+            ),
+            418 => 
+            array (
+                'id' => 420,
+                'parent_id' => 68,
+                'category_name' => 'ベビーファッション',
+                'image_id' => NULL,
+            ),
         ));
         
         

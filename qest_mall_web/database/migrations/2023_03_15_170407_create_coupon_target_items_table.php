@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shops', function (Blueprint $table) {
+        Schema::create('coupon_target_items', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id');
-            $table->string('shop_name')->nullable();
-            $table->string('shop_tt_code', 10)->nullable();
-            $table->integer('visibility_status')->nullable();
-            $table->unsignedInteger('image_id')->nullable()->index('shops_image_id_foreign');
+            $table->integer('coupon_id')->nullable();
+            $table->integer('item_id')->nullable();
             $table->dateTime('created_at')->nullable()->useCurrent();
-            $table->dateTime('updated_at')->nullable()->useCurrent();
+            $table->dateTime('updaated_at')->nullable()->useCurrent();
             $table->dateTime('deleted_at')->nullable();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('coupon_target_items');
     }
 };

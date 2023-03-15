@@ -2,7 +2,11 @@
                     <div class="item-box">
                         <a href="{{ route('items_detail', $item->id) }}">
                             <div class="item-img">
-                                <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                @empty($item->is_sumbnail_image->image_url)
+                                    <img class="img" src="{{ asset('/images/item/no_image_logo.png') }}">
+                                @else
+                                    <img class="img" src="{{ asset($item->is_sumbnail_image->image_url) }}">
+                                @endempty
                             </div>
                         </a>
                         <div class="slider-text">
