@@ -9,7 +9,7 @@
 
                     <nav>
                         <ul>
-                            @foreach ($major_categoris as $major_category)
+                            @foreach ($major_categories as $major_category)
                                 <li class="has-child">
                                     <a  href="{{ route('category', $major_category->id) }}" class="category-title">
                                         {{ $major_category->category_name }}

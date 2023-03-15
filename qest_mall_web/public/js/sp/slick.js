@@ -9,7 +9,7 @@ $(document).ready(() => {
     });
     $(".three-slick").slick({
         infinite: true,
-        slidesToShow: 2,
+        slidesToShow: 2, //3つ目はcssで見切れて表示させている
         touchMove: true,
         arrows: false,
     });

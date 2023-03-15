@@ -10,6 +10,10 @@
     height: 140px;
     margin: 10px;
 }
+.shop-qmm-slick {
+    height: 140px;
+    margin: 10px;
+}
 .item-slick {
     height: 210px;
     margin: 10px;
@@ -28,11 +32,17 @@
     margin: 10px;
 }
 
-/* スライドされる要素 */
+/* スライドリスト */
+.four-slick .slick-list {
+    padding: 0 20% 0 0;
+}
+
+/* スライドされるカラム */
 .main-carousel-slick .slick-slide {
     margin: 0;
 }
 .five-slick .slick-slide,
+.four-slick .slick-slide,
 .coupon-slick .slick-slide {
     margin: 0 5px;
 }
@@ -55,6 +65,9 @@
 }
 .main-carousel-slick .slick-slide img {
     max-height: 450px;
+}
+.slick-track {
+    margin-left: 0;
 }
 .item-img {
     position: relative;
@@ -112,10 +125,12 @@
     opacity: .8;
 }
 .five-slick .slick-prev.slick-arrow:before,
+.four-slick .slick-prev.slick-arrow:before,
 .coupon-slick .slick-prev.slick-arrow:before {
     left: -60%;
 }
 .five-slick .slick-next.slick-arrow:before,
+.four-slick .slick-next.slick-arrow:before,
 .coupon-slick .slick-next.slick-arrow:before {
     left: -20%;
 }

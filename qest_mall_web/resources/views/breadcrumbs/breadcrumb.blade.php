@@ -22,7 +22,11 @@
     <ol class="breadcrumb">
         @foreach ($breadcrumbs as $breadcrumb)
             @if (!is_null($breadcrumb->url) && !$loop->last)
-                <li class="breadcrumb-item"><a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a></li>
+                <li class="breadcrumb-item">
+                    @if ($breadcrumbs->count() >= 3 && !$loop->first)
+                        <span class="breadcrumb-partition">＞</span>
+                    @endif
+                    <a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a></li>
             @else
                 <li class="breadcrumb-item active"><span class="breadcrumb-partition">＞</span>{{ $breadcrumb->title }}</li>
             @endif

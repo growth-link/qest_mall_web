@@ -5,6 +5,7 @@
 /* カルーセル全体 */
 .main-carousel-slick {
     height: 117px;
+    margin-bottom: 40px;
 }
 .qmm-slick,
 .item-slick,

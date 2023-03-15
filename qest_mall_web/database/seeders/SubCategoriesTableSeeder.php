@@ -26,6 +26,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 34,
                 'icon_url' => '/images/life_scene_icon/chill_out_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/chill_out_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_chill_out_top_banner.png',
             ),
             1 => 
             array (
@@ -34,6 +36,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 35,
                 'icon_url' => '/images/life_scene_icon/health_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/health_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_health_top_banner.png',
             ),
             2 => 
             array (
@@ -42,6 +46,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 36,
                 'icon_url' => '/images/life_scene_icon/minimal_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/minimal_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_minimal_top_banner.png',
             ),
             3 => 
             array (
@@ -50,6 +56,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 37,
                 'icon_url' => '/images/life_scene_icon/fashion_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/fashion_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_fashion_top_banner.png',
             ),
             4 => 
             array (
@@ -58,6 +66,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 38,
                 'icon_url' => '/images/life_scene_icon/hobby_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/hobby_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_hobby_top_banner.png',
             ),
             5 => 
             array (
@@ -66,6 +76,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 39,
                 'icon_url' => '/images/life_scene_icon/art_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/art_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_art_top_banner.png',
             ),
             6 => 
             array (
@@ -74,6 +86,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 40,
                 'icon_url' => '/images/life_scene_icon/gift_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/gift_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_gift_top_banner.png',
             ),
             7 => 
             array (
@@ -82,6 +96,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 41,
                 'icon_url' => '/images/life_scene_icon/sustainability_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/sustainability_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_sustainability_top_banner.png',
             ),
             8 => 
             array (
@@ -90,6 +106,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 42,
                 'icon_url' => '/images/life_scene_icon/gourmet_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/gourmet_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_gourmet_top_banner.png',
             ),
             9 => 
             array (
@@ -98,6 +116,8 @@ class SubCategoriesTableSeeder extends Seeder
                 'url' => NULL,
                 'image_id' => 43,
                 'icon_url' => '/images/life_scene_icon/opa_icon.png',
+                'top_banner_url' => '/images/life_scene_top_banner/opa_top_banner.png',
+                'sp_top_banner_url' => '/images/life_scene_top_banner/sp_opa_top_banner.png',
             ),
         ));
         

@@ -1,7 +1,7 @@
                 {{-- ショップ・ブランド検索 --}}
                 <section class="left-menu-box shop-brand-search">
                     <div class="search-container">
-                        <form class="ui search search-container-form" action={{ route('shop_brand_search') }}  method="post">
+                        <form class="ui search search-container-form" action={{ route('shop_brand_search') }}  method="get">
                             @csrf
                             <div class="ui input">
                                 <input class="prompt" type="text" name="shop_brand_name" placeholder="ショップ・ブランド名から探す">

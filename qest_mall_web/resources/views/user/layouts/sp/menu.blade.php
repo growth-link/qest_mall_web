@@ -1,8 +1,10 @@
 <style>
     .menu {
         position: sticky;
+        top: auto;
         bottom: 0;
         left: 0;
+        right: 0;
         display: table;
         width: 100%;
         height: 70px;
@@ -47,7 +49,7 @@
         <img src="/images/user/icon_history_sp.png">
         <p>購入履歴</p>
     </div>
-    <div class="menu-box" id="open">
+    <div class="menu-box open-see-more">
         <img src="/images/user/icon_see_more.png">
         <p>もっとみる</p>
     </div>

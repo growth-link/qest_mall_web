@@ -52,8 +52,8 @@ class TopController extends Controller
             $ads[$key] = Ad::where('ad_type', $key)->inRandomOrder()->first();
         }
 
-        $major_categoris = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
-        $sub_categoris = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
 
         return view('user.top.pc.top',compact(
             'recommend_items',
@@ -66,8 +66,8 @@ class TopController extends Controller
             'items',
             'coupons',
             'ads',
-            'major_categoris',
-            'sub_categoris',
+            'major_categories',
+            'sub_categories',
         ));
     }
 
@@ -100,14 +100,14 @@ class TopController extends Controller
         $rank_shops = Shop::where('deleted_at', null)->take(10)->get();
 
         $latest_shops = Shop::latest()->take(10)->get(); // 新着ショップ取得
-        $latest_items = Item::latest()->take(10)->get(); // 新着商品取得
+        $items = Item::latest()->take(10)->get(); // 新着商品取得
         $coupons = Coupon::all(); // クーポン取得
 
         // モバイル広告取得
         $ads = [];
         $ads[AdTypeConst::MOBILE] = Ad::where('ad_type', AdTypeConst::MOBILE)->inRandomOrder()->first();
 
-        $sub_categoris = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
 
         return view('user.top.sp.top',compact(
             'recommend_items',
@@ -117,10 +117,10 @@ class TopController extends Controller
             'rank_items',
             'rank_shops',
             'latest_shops',
-            'latest_items',
+            'items',
             'coupons',
             'ads',
-            'sub_categoris',
+            'sub_categories',
         ));
     }
 }

@@ -11,7 +11,7 @@
         <h2 class="section-title">カテゴリ一覧</h2>
         <div class="index-container" id="page-link">
             @php $count = 0; @endphp
-            @foreach ($major_categoris as $major_category)
+            @foreach ($major_categories as $major_category)
                 @php $count++; @endphp
                 <a class="index" href='#category{{ $count }}'">
                     <p>{{ $major_category->category_name }}</p>
@@ -26,7 +26,7 @@
 
 <div class="content-box">
     <div class="main-content">
-        @foreach ($major_categoris as $major_category)
+        @foreach ($major_categories as $major_category)
             <div class="major-category-name" id="category{{ $major_category->id }}">
                 <a href="{{ route('category', $major_category->id) }}">
                 {{ $major_category->category_name }}

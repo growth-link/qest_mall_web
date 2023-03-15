@@ -50,6 +50,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $one_stories_url
  * @property int|null $filter_color_id
  * @property int|null $filter_tag_id
+ * @property int $stock
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
@@ -89,7 +90,8 @@ class Item extends Model
 		'has_option' => 'bool',
 		'has_check' => 'bool',
 		'filter_color_id' => 'int',
-		'filter_tag_id' => 'int'
+		'filter_tag_id' => 'int',
+		'stock' => 'int'
 	];
 
 	protected $dates = [
@@ -133,7 +135,8 @@ class Item extends Model
 		'has_check',
 		'one_stories_url',
 		'filter_color_id',
-		'filter_tag_id'
+		'filter_tag_id',
+		'stock'
 	];
 
 	public function brand()
@@ -160,4 +163,180 @@ class Item extends Model
 	{
 		return $this->hasOne(ItemImage::class)->where('is_sumbnail', true);
 	}
+
+    // 並べ替え
+    public function scopeSortItem($query, $sort){
+        if(isset($sort)) {
+            if($sort=='recommend'){
+                $query->where('deleted_at', null);
+            }
+            if($sort=='low_price'){
+                $query->where('deleted_at', null)->orderBy('normal_price');
+            }
+            if($sort=='high_price'){
+                $query->where('deleted_at', null)->orderBy('normal_price', 'desc');
+            }
+            if($sort=='start_datetime'){
+                $query->where('deleted_at', null)->orderBy('start_datetime');
+            }
+        }
+        return $query;
+    }
+
+    // キーワード検索（$condition='NOT LIKE'で除外キーワード検索）
+    public function scopeSearchKeyword($query, $keyword, $condition='LIKE'){
+        if(isset($keyword)){
+            // 複数キーワード検索
+            $space_conversion = mb_convert_kana($keyword, 's'); // 全角スペースを半角に変換
+            $word_array_searched = preg_split('/[\s,]+/', $space_conversion, -1, PREG_SPLIT_NO_EMPTY); // 単語を半角スペースで区切って配列に
+
+            $columns = ['shop_name','brand_name','name','detail_title','detail']; //検索項目
+
+            $query->select('items.*')
+                ->leftJoin('shops','items.shop_id','=','shops.id')
+                ->leftJoin('brands','items.brand_id','=','brands.id');
+
+            if($condition == 'LIKE'){
+                $where_condition = 'orWhere';
+            } else {
+                // TODO:条件要確認
+                $where_condition = 'where';
+            }
+
+            foreach($columns as $column) {
+                $query->$where_condition(function($query) use($word_array_searched,$column,$condition){
+                    foreach($word_array_searched as $value) {
+                        $query->where($column,$condition,'%'.$value.'%');
+                    }
+                });
+            }
+        }
+        return $query;
+    }
+
+    // フラグカテゴリ検索
+    // TODO:whereInにする
+    public function scopeSearchFlagCategory($query, $id){
+        if(isset($id)){
+            $query->select('items.*')
+                ->leftJoin('sub_categories','items.sub_category_id','=','sub_categories.id')
+                ->where('sub_categories.id', $id);
+        }
+        return $query;
+    }
+
+    // カテゴリ検索
+    public function scopeSearchCategory($query, $id, $category){
+        if(isset($id)){
+            $query->select('items.*')
+                ->leftJoin('categories','items.category_id','=','categories.id');
+
+            $ids = collect();
+            $search_ids = collect();
+
+            // major_categoryの場合
+            if($category->parent_id === null){
+                $middle_categories = $category->categories;
+                foreach($middle_categories as $middle_category){
+                    if($middle_category->categories->first()->categories->count() == 0){
+                        // 最下層が小項目までの場合
+                        $ids->push($middle_category->categories->pluck('id'));
+                    } else {
+                        // 最下層が細項目までの場合
+                        foreach($middle_category->categories as $minor_category){
+                            $ids->push($minor_category->categories->pluck('id'));
+                        }
+                    }
+                }
+                $search_ids = $ids->collapse();
+            } else {
+                // 子カテゴリがある場合
+                if($category->categories->count() > 0){
+                    if($category->categories->first()->categories->count() > 0){
+                        // 子カテゴリが最下層ではない場合
+                        foreach($category->categories as $minor_category){
+                            $ids->push($minor_category->categories->pluck('id'));
+                        }
+                        $search_ids = $ids->collapse();
+                    } else {
+                        // 子カテゴリが最下層の場合
+                        $search_ids = $category->categories->pluck('id');
+                    }
+                } else {
+                    // 最下層カテゴリの場合
+                    $search_ids->push($id);
+                }
+            }
+            $query->whereIn('categories.id',$search_ids);
+        }
+        return $query;
+    }
+
+    // ブランド検索
+    public function scopeSearchBrand($query, $id){
+        return $query->select('items.*')
+                    ->leftJoin('brands','items.brand_id','=','brands.id')
+                    ->where('brands.id', $id);
+    }
+
+    // ショップ検索
+    public function scopeSearchShop($query, $id){
+        return $query->select('items.*')
+                    ->leftJoin('shops','items.shop_id','=','shops.id')
+                    ->where('shops.id', $id);
+    }
+
+    // タグ検索
+    // TODO:whereInにする
+    public function scopeSearchTag($query, $id){
+        if(isset($id)){
+            $query->select('items.*')
+                ->leftJoin('tags','items.filter_tag_id','=','tags.id')
+                ->where('tags.id', $id);
+        }
+        return $query;
+    }
+
+    // 価格帯（最小値）検索
+    public function scopeSearchStartPrice($query, $start_price){
+        if(isset($start_price)){
+            $query->where('normal_price', '>=', $start_price);
+        }
+        return $query;
+    }
+
+    // 価格帯（最大値）検索
+    public function scopeSearchEndPrice($query, $end_price){
+        if(isset($end_price)){
+            $query->where('normal_price', '<=', $end_price);
+        }
+        return $query;
+    }
+
+    // 送料無料検索
+    public function scopeSearchIsPostageFree($query, $is_postage_free){
+        if(isset($is_postage_free)){
+            $query->where('is_postage_free', true);
+        }
+        return $query;
+    }
+
+    // TODO:クーポン対象検索
+    public function scopeSearchIsCoupon($query, $is_coupon){
+        if(isset($is_coupon)){
+            $query->where('is_coupon', true);
+        }
+        return $query;
+    }
+
+    // 在庫なしを含む検索
+    public function scopeSearchIncludingOutOfStock($query, $including_out_of_stock){
+        if(isset($including_out_of_stock)){
+            $query->where('stock', '>=', 0);
+        } else {
+            $query->where('stock', '>', 0);
+        }
+        return $query;
+    }
+
 }

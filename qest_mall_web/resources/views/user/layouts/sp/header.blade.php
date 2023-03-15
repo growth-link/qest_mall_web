@@ -82,7 +82,7 @@
 </style>
 <header>
     <div class="top-container">
-        <a href="{{ route('top') }}">
+        <a href="{{ route('sp.top') }}">
             <img src="/images/qest_mall_gray.png" style="height:24px;">
         </a>
         <nav>
@@ -134,7 +134,10 @@
 
     <div class="search-container">
         <div class="search-box">
-            <input type="text" style="width:100%;" placeholder="キーワード検索">
+            <form action={{ route('sp.item_keyword') }}  method="get">
+                {{-- <input type="text" style="width:100%;" name="keyword" placeholder="キーワード検索" @if (isset($keyword)) value="{{ $keyword }}" @endif> --}}
+                <input type="text" style="width:100%;" name="keyword" placeholder="キーワード検索">
+            </form>
         </div>
     </div>
 

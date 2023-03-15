@@ -27,7 +27,7 @@ class ItemImagesTableSeeder extends Seeder
                 'is_sumbnail' => 1,
                 'created_at' => '2023-01-31 11:52:12',
                 'updated_at' => '2023-01-31 11:52:12',
-                'deleted_at' => NULL,
+                'deleted_at' => '2023-03-15 10:58:24',
             ),
             1 => 
             array (
