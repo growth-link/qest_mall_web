@@ -167,9 +167,97 @@ class PdfController extends Controller
     // ご利用明細書（返品対応）作成
     public function createPaymentStatement()
     {
-        $data = [];
+        // タイトル
+        $title = '支払明細書';
 
-        $pdf = PDF::loadView('pdf.payment', $data, [], 'utf-8');
+        // ヘッダ
+        $header = [
+            'issue_date' => date("Y年n月j日"),
+            'order_number' => '6943692569473895',
+        ];
+
+        // 売上高
+        $product_price_10_percent = 0;  // 商品代金(10%)
+        $product_price_8_percent = 0;   // 商品代金(8%)
+        $shipping_fee = 0;              // 配送料
+        $wrapping_packaging_fee = 0;    // ラッピング包装代
+        $options_fee = 0;               // オプション
+        $tax_amount_10_percent = 0;     // 消費税額(10%)
+        $tax_amount_8_percent = 0;      // 消費税額(8%)
+        $total_amount = 0;              // 合計
+        $sales = [
+            'product_price_10_percent' => $product_price_10_percent,
+            'product_price_8_percent' => $product_price_8_percent,
+            'shipping_fee' => $shipping_fee,
+            'wrapping_packaging_fee' => $wrapping_packaging_fee,
+            'options_fee' => $options_fee,
+            'tax_amount_10_percent' => $tax_amount_10_percent,
+            'tax_amount_8_percent' => $tax_amount_8_percent,
+            'total_amount' => $total_amount,
+        ];
+
+        // 手数料
+        $sales_commission = 0;      // 販売営業料
+        $system_fee = 0;            // システム手数料
+        $promotion_cost = 0;        // 販促費
+        $ion_card_fee = 0;          // イオンカード手数料
+        $other_credit_card_fee = 0; // その他クレジットカード手数料
+        $point_fee = 0;             // WAONPOINT手数料
+        $coupon_cost = 0;           // クーポン負担金
+        $event_point_cost = 0;      // イベント用WAONPOINT負担金
+        $other_promotion_cost = 0;  // その他販促協力金
+        $commission_subtotal = 0;
+        $commission_tax = 0;
+        $commission_total = 0;
+        $commission = [
+            'sales_commission' => $sales_commission,
+            'system_fee' => $system_fee,
+            'promotion_cost' => $promotion_cost,
+            'ion_card_fee' => $ion_card_fee,
+            'other_credit_card_fee' => $other_credit_card_fee,
+            'point_fee' => $point_fee,
+            'coupon_cost' => $coupon_cost,
+            'event_point_cost' => $event_point_cost,
+            'other_promotion_cost' => $other_promotion_cost,
+            'subtotal' => $commission_subtotal,
+            'tax' => $commission_tax,
+            'total' => $commission_total,
+        ];
+
+        // 決済種別内訳
+        $aeon_card_payment_amount = 0;
+        $other_card_payment_amount = 0;
+        $point_usage_amount = 0;
+        $coupon_usage_amount = 0;
+        $payment_type_total = 0;
+        $payment_type = [
+            'aeon_card' => $aeon_card_payment_amount,
+            'other_card' => $other_card_payment_amount,
+            'point' => $point_usage_amount,
+            'coupon' => $coupon_usage_amount,
+            'total' => $payment_type_total,
+        ];
+
+        // 合計
+        $total_sales = 0;
+        $total_commission = 0;
+        $total_payment_amount = 0;
+        $total = [
+            'total_sales' => $total_sales,
+            'total_commission' => $total_commission,
+            'total_payment_amount' => $total_payment_amount,
+        ];
+
+        $data = [
+            'title' => $title,
+            'header' => $header,
+            'sales' => $sales,
+            'commission' => $commission,
+            'payment_type' => $payment_type,
+            'total' => $total,
+        ];
+
+        $pdf = PDF::loadView('pdf.payment-statement', $data, [], 'utf-8');
         $pdf->setPaper('A4', 'portrait');
 
         return $pdf->stream();

@@ -1,6 +1,7 @@
-@php
+{{-- HTML出力したい場合はコメントアウト外す(1番下も) --}}
+{{-- @php
     ob_start();
-@endphp
+@endphp --}}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -374,8 +375,9 @@
     </main>
 </body>
 </html>
-@php
+{{-- HTML出力したい場合はコメントアウト外す(localhost:ポート番号/statement.html) --}}
+{{-- @php
     $out = ob_get_contents();
     ob_end_flush();
-    file_put_contents('styled.html', $out);
-@endphp
+    file_put_contents('statement.html', $out);
+@endphp --}}

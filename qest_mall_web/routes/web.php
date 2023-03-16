@@ -184,5 +184,6 @@ Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
 */
 
 Route::get('/pdf/statement', [PdfController::class, 'createStatement']);
+Route::get('/pdf/payment-statement', [PdfController::class, 'createPaymentStatement']);
 
 require __DIR__ . '/admin.php';
