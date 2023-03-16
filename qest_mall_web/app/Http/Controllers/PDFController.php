@@ -6,60 +6,170 @@ use PDF;
 
 class PdfController extends Controller
 {
-    public function index()
+    // ご利用明細書作成
+    // TODO: DBへの繋ぎ込み必要
+    public function createStatement()
     {
         // タイトル
         $title = 'ご利用明細書';
 
+        $orderNumber = '1-2208-00000000001';// 注文番号
+
         // ヘッダ
-        $issue_date = date("Y年n月j日");
-        $order_number = '1-2208-00000000001';
+        $header = [
+            'issue_date' => date("Y年n月j日"),
+            'order_number' => $orderNumber,
+        ];
 
         // 利用明細
-        $payment_method = 'クレジットカード（VISA）';
-        $purchase_date = '2022年8月30日';
-        $shipping_date = '2022年9月1日';
+        $details = [
+            'order_number' => $orderNumber,
+            'payment_method' => 'クレジットカード（VISA）',
+            'purchase_date' => '2022年8月30日',
+            'shipping_date' => '2022年9月1日',
+        ];
 
         // 商品明細
+        $items = [
+            [
+                'id' => 3,
+                'name' => '天然水ミネラルウォーター 500ml 1セット(6本)',
+                'quantity' => 2,
+                'price' => 1100,
+                'tax_rate' => 0.08,
+                'subtotal' => 1100 * 2,
+            ],
+            [
+                'id' => 4,
+                'name' => 'コットンベース Tシャツ',
+                'quantity' => 1,
+                'price' => 4900,
+                'tax_rate' => 0.10,
+                'subtotal' => 4900 * 1,
+            ],
+        ];
 
-        // 請求情報
-        $subtotal = '7,100';
-        $shipping_fee = '0';
-        $used_points = '-1,000';
-        $discount_amount = '100';
-        $total_amount = '6,000';
+        // 返品商品明細
+        $returned_items = [
+            [
+                'id' => 3,
+                'name' => '返品：天然水ミネラルウォーター 500ml 1セット(6本)',
+                'quantity' => 1,
+                'price' => 1100,
+                'tax_rate' => 0.08,
+                'subtotal' => -1 * 1100 * 1,
+            ],
+        ];
+        $is_returned = count($returned_items) > 0;
 
-        // ショップ情報
-        $shop_name = 'LIBRE クエストモール店';
-        $sales_person = '田中 太郎';
-        $phone_number = '0123-45-6789';
-        $address = '〒115-0001 東京都中央区銀座１−１−１銀座ビル２F';
+        // 商品明細(結合)
+        $merged_items = array_merge($items, $returned_items);
+        array_multisort(array_column($merged_items, 'id'), SORT_ASC, $merged_items);
 
-        // 配送情報
-        $delivery_method = 'ヤマト宅配便';
-        $shipping_address = '〒261-7122 千葉県千葉市美浜区中瀬2-6-1　WBGマリブイースト22F';
-
-        $data = [
-            'title' => $title,
-            'issue_date' => $issue_date,
-            'order_number' => $order_number,
-            'payment_method' => $payment_method,
-            'purchase_date' => $purchase_date,
-            'shipping_date' => $shipping_date,
+        // 請求情報作成(消費税が8%, 10%どちらも存在するか確認)
+        $subtotal = 0;
+        $subtotal_8per = 0;
+        $subtotal_10per = 0;
+        foreach ($items as $item) {
+            $subtotal += $item['subtotal'];
+            if ($item['tax_rate'] == 0.08) {
+                $subtotal_8per += $item['subtotal'];
+            } elseif ($item['tax_rate'] == 0.10) {
+                $subtotal_10per += $item['subtotal'];
+            }
+        }
+        $shipping_fee = 0;
+        $discount_amount = 1000;
+        $used_points = 100;
+        $total_amount = $subtotal + $shipping_fee - $discount_amount - $used_points;
+        $invoice = [
             'subtotal' => $subtotal,
             'shipping_fee' => $shipping_fee,
             'discount_amount' => $discount_amount,
             'used_points' => $used_points,
             'total_amount' => $total_amount,
-            'shop_name' => $shop_name,
-            'sales_person' => $sales_person,
-            'phone_number' => $phone_number,
-            'address' => $address,
-            'delivery_method' => $delivery_method,
-            'shipping_address' => $shipping_address,
         ];
 
-        $pdf = PDF::loadView('pdf.document', $data, [], 'utf-8');
+        // 返品対応情報作成
+        if ($is_returned) {
+            $returned_subtotal = array_reduce($returned_items, function ($carry, $item) {
+                    return $carry + $item['subtotal'];
+                }, 0);
+
+            foreach ($returned_items as $item) {
+                if ($item['tax_rate'] == 0.08) {
+                    $subtotal_8per += $item['subtotal'];
+                } elseif ($item['tax_rate'] == 0.10) {
+                    $subtotal_10per += $item['subtotal'];
+                }
+            }
+
+            $returned_shipping_fee = 0;
+            $returned_discount_amount = 0;
+            $returned_used_points = 0;
+            $returned_total_amount = $total_amount + $returned_subtotal + $returned_shipping_fee - $returned_discount_amount - $returned_used_points;
+        } else {
+            $returned_subtotal = 0;
+            $returned_shipping_fee = 0;
+            $returned_discount_amount = 0;
+            $returned_used_points = 0;
+            $returned_total_amount = 0;
+        }
+        $returned = [
+            'is_returned' => $is_returned,
+            'subtotal' => $returned_subtotal,
+            'shipping_fee' => $returned_shipping_fee,
+            'discount_amount' => $returned_discount_amount,
+            'used_points' => $returned_used_points,
+            'total_amount' => $returned_total_amount,
+        ];
+
+        // TODO: ここで按分処理を行う(共通メソッド完成後に入れる)
+
+        $subtotal_with_tax = [
+            '8per' => $subtotal_8per,
+            '10per' => $subtotal_10per,
+        ];
+
+
+        // ショップ情報
+        $shop_info = [
+            'shop_name' => 'LIBRE クエストモール店',
+            'sales_person' => '田中 太郎',
+            'phone_number' => '0123-45-6789',
+            'address' => '〒115-0001 東京都中央区銀座１−１−１銀座ビル２F',
+        ];
+
+        // 配送情報
+        $delivery_info = [
+            'delivery_method' => 'ヤマト宅配便',
+            'shipping_address' => '〒261-7122 千葉県千葉市美浜区中瀬2-6-1　WBGマリブイースト22F',
+        ];
+
+        $data = [
+            'title' => $title,
+            'header' => $header,
+            'details' => $details,
+            'items' => $merged_items,
+            'invoice' => $invoice,
+            'returned' => $returned,
+            'subtotal_with_tax' => $subtotal_with_tax,
+            'shop_info' => $shop_info,
+            'delivery_info' => $delivery_info,
+        ];
+
+        $pdf = PDF::loadView('pdf.statement', $data, [], 'utf-8');
+        $pdf->setPaper('A4', 'portrait');
+
+        return $pdf->stream();
+    }
+
+    // ご利用明細書（返品対応）作成
+    public function createPaymentStatement()
+    {
+        $data = [];
+
+        $pdf = PDF::loadView('pdf.payment', $data, [], 'utf-8');
         $pdf->setPaper('A4', 'portrait');
 
         return $pdf->stream();

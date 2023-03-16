@@ -157,6 +157,9 @@
             border: none;
             border-bottom: solid #707070 1px;
         }
+        .bill-invoice > h2 {
+            margin-top: 11px;
+        }
         .bill-invoice__key {
             float: left;
         }
@@ -223,8 +226,8 @@
             <img src="{{ public_path('images/qestmall_logo.png') }}">
         </div>
         <div class="bill-header__right">
-            <p>発行日：{{ $issue_date }}</p>
-            <p>注文番号：{{ $order_number }}</p>
+            <p>発行日：{{ $header['issue_date'] }}</p>
+            <p>注文番号：{{ $header['order_number'] }}</p>
         </div>
     </header>
     <main class="cf">
@@ -234,19 +237,18 @@
         <div class="bill-usage-detail cf">
             <h2>利用明細</h2>
             <div class="bill-usage-detail__left">
-                <p>注文番号：{{ $order_number }}</p>
-                <p>お支払い方法：{{ $payment_method }}</p>
+                <p>注文番号：{{ $details['order_number'] }}</p>
+                <p>お支払い方法：{{ $details['payment_method'] }}</p>
             </div>
             <div class="bill-usage-detail__right">
-                <p>購入日：{{ $purchase_date }}</p>
-                <p>発送日：{{ $shipping_date }}</p>
+                <p>購入日：{{ $details['purchase_date'] }}</p>
+                <p>発送日：{{ $details['shipping_date'] }}</p>
             </div>
         </div>
         {{-- 利用明細 END --}}
 
         {{-- 商品明細 START --}}
-        {{-- Todo: 商品明細が20件以上は改ページ page-break-after: always; を使用 --}}
-        <div class="bill-item-detail cf">
+        <div class="bill-item-detail cf" <?php if (count($items) >= 20 || ($returned['is_returned'] && count($items) >= 16)) : ?>style="page-break-after: always;"<?php endif; ?>>
             <h2>商品明細</h2>
             <table>
                 <thead>
@@ -259,20 +261,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($items as $item): ?>
                     <tr>
-                        <td class="td--name tal">天然水ミネラルウォーター 500ml 1セット(6本)</td>
-                        <td class="td--num tac">2</td>
-                        <td class="td--uprice tar">1,100円</td>
-                        <td class="td--tax tac">8%</td>
-                        <td class="td--price tar">2,200円</td>
+                        <td class="td--name tal"><?php echo $item['name']; ?></td>
+                        <td class="td--num tac"><?php echo $item['quantity']; ?></td>
+                        <td class="td--uprice tar"><?php echo number_format($item['price']); ?>円</td>
+                        <td class="td--tax tac"><?php echo $item['tax_rate'] * 100; ?>%</td>
+                        <td class="td--price tar"><?php echo number_format($item['subtotal']); ?>円</td>
                     </tr>
-                    <tr>
-                        <td class="td--name tal">天然水ミネラルウォーター 500ml 1セット(6本)</td>
-                        <td class="td--num tac">2</td>
-                        <td class="td--uprice tar">1,100円</td>
-                        <td class="td--tax tac">8%</td>
-                        <td class="td--price tar">2,200円</td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -284,39 +281,71 @@
                 <div class="bill-invoice-summary">
                     <p>
                         <span class="bill-invoice__key">商品小計(税込)</span>
-                        <span class="bill-invoice__value">{{ $subtotal }}円</span>
+                        <span class="bill-invoice__value">{{ number_format($invoice['subtotal']) }}円</span>
                     </p>
                     <p>
                         <span class="bill-invoice__key">送料(税込)</span>
-                        <span class="bill-invoice__value">{{ $shipping_fee }}円</span>
+                        <span class="bill-invoice__value">{{ number_format($invoice['shipping_fee']) }}円</span>
                     </p>
                     <p>
                         <span class="bill-invoice__key">割引額(クーポン利用)</span>
-                        <span class="bill-invoice__value">{{ $discount_amount }}円</span>
+                        <span class="bill-invoice__value">-{{ number_format($invoice['discount_amount']) }}円</span>
                     </p>
                     <p>
                         <span class="bill-invoice__key">WAON POINT利用</span>
-                        <span class="bill-invoice__value">{{ $used_points }}円</span>
+                        <span class="bill-invoice__value">{{ number_format($invoice['used_points']) }}P</span>
                     </p>
                 </div>
                 <hr>
                 <div class="bill-invoice-sum">
                     <p>
                         <span class="bill-invoice__key">お支払い金額</span>
-                        <span class="bill-invoice__value">{{ $total_amount }}円</span>
+                        <span class="bill-invoice__value">{{ number_format($invoice['total_amount']) }}円</span>
                     </p>
                 </div>
-                 <div class="bill-invoice-tax">
+
+                <?php if ($returned['is_returned']): ?>
+                <h2>返品依頼分</h2>
+                <div class="bill-invoice-summary">
                     <p>
-                        <span class="bill-invoice__key">8%対象(税込)</span>
-                        <span class="bill-invoice__value">1,100円</span>
+                        <span class="bill-invoice__key">商品小計差額(税込)</span>
+                        <span class="bill-invoice__value">{{ number_format($returned['subtotal']) }}円</span>
                     </p>
                     <p>
-                        <span class="bill-invoice__key">10%対象(税込)</span>
-                        <span class="bill-invoice__value">4,900円</span>
+                        <span class="bill-invoice__key">送料差額(税込)</span>
+                        <span class="bill-invoice__value">{{ number_format($returned['shipping_fee']) }}円</span>
+                    </p>
+                    <p>
+                        <span class="bill-invoice__key">割引額(クーポン利用)</span>
+                        <span class="bill-invoice__value">{{ number_format($returned['discount_amount']) }}円</span>
+                    </p>
+                    <p>
+                        <span class="bill-invoice__key">WAON POINT利用差額</span>
+                        <span class="bill-invoice__value">{{ number_format($returned['used_points']) }}P</span>
                     </p>
                 </div>
                 <hr>
+                <div class="bill-invoice-sum">
+                    <p>
+                        <span class="bill-invoice__key">お支払い金額</span>
+                        <span class="bill-invoice__value">{{ number_format($returned['total_amount']) }}円</span>
+                    </p>
+                </div>
+                <?php endif; ?>
+
+                <?php if ($subtotal_with_tax['8per'] > 0 && $subtotal_with_tax['10per'] > 0): ?>
+                 <div class="bill-invoice-tax">
+                    <p>
+                        <span class="bill-invoice__key">8%対象(税込)</span>
+                        <span class="bill-invoice__value"><?= number_format($subtotal_with_tax['8per']) ?>円</span>
+                    </p>
+                    <p>
+                        <span class="bill-invoice__key">10%対象(税込)</span>
+                        <span class="bill-invoice__value"><?= number_format($subtotal_with_tax['10per']) ?>円</span>
+                    </p>
+                </div>
+                <hr>
+                <?php endif; ?>
             </div>
         </div>
         {{-- 請求情報 END --}}
@@ -325,12 +354,12 @@
         <div class="bill-shop cf">
             <h2>ショップ情報</h2>
             <div class="bill-shop__row cf">
-                <p class="bill-shop__shop">ショップ名：{{ $shop_name }}</p>
-                <p class="bill-shop__sales">販売責任者：{{ $sales_person }}</p>
+                <p class="bill-shop__shop">ショップ名：{{ $shop_info['shop_name'] }}</p>
+                <p class="bill-shop__sales">販売責任者：{{ $shop_info['sales_person'] }}</p>
             </div>
             <div class="bill-shop__row cf">
-                <p class="bill-shop__phone">電話番号：{{  $phone_number }}</p>
-                <p class="bill-shop__address">住所：{{ $address }}</p>
+                <p class="bill-shop__phone">電話番号：{{  $shop_info['phone_number'] }}</p>
+                <p class="bill-shop__address">住所：{{ $shop_info['address'] }}</p>
             </div>
         </div>
         {{-- ショップ情報 END --}}
@@ -338,8 +367,8 @@
         {{-- 配送情報 START --}}
         <div class="bill-shipping cf">
             <h2>配送情報</h2>
-            <p class="bill-shipping__delivery">配送方法：{{ $delivery_method }}</p>
-            <p class="bill-shipping__address">お届け先住所：{{ $shipping_address }}</p>
+            <p class="bill-shipping__delivery">配送方法：{{ $delivery_info['delivery_method'] }}</p>
+            <p class="bill-shipping__address">お届け先住所：{{ $delivery_info['shipping_address'] }}</p>
         </div>
         {{-- 配送情報 END --}}
     </main>
