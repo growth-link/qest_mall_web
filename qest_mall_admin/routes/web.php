@@ -1,29 +1,101 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\Admin\TopController;
 use App\Http\Controllers\TestController;
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FirebaseTestController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AjaxController;
-use App\Http\Controllers\TopController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\NoticeController;
+/*
+|--------------------------------------------------------------------------
+| 管理画面ログイン
+|--------------------------------------------------------------------------
+*/
+Route::get('/', function () { return redirect()->to('/admin/login'); });
+
+// Route::name('admin.')->group(['prefix'=>'admin'], function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('/', [AdminController::class, 'index'] )->name('index');
+    Route::get('/login', [AuthController::class, 'login'])->name('login'); // ログイン
+    Route::post('/login', [AuthController::class, 'checkLogin'])->name('check_login');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/password-reset', [AuthController::class, 'passwordReset'])->name('password_reset'); // パスワード再設定
+});
+
+/*
+|--------------------------------------------------------------------------
+| 管理画面選択
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('/mode-select', [AdminController::class, 'modeSelect'] )->name('mode_select');
+    Route::get('/shops', [AdminController::class, 'shops'] )->name('shops');
+});
+
+/*
+|--------------------------------------------------------------------------
+| 管理画面TOP
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('/mall/top', [TopController::class, 'topMall'] )->name('mall_top');
+    Route::get('/shop/top', [TopController::class, 'topShop'] )->name('shop_top');
+});
+
+/*
+|--------------------------------------------------------------------------
+| お知らせ
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('/notices', [NoticeController::class, 'notices'])->name('notices'); // お知らせ一覧
+    Route::get('/notices/detail', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // お知らせ詳細
+    
+    Route::get('/customer-mng/notices/create', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ作成
+    Route::get('/customer-mng/notices/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ編集
+    Route::get('/customer-mng/notice-historys', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ配信履歴
+    Route::get('/customer-mng/notice-send-lists', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ配信リスト
+    Route::get('/customer-mng/notice-send-lists/create', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ配信リスト追加
+    Route::get('/customer-mng/notice-send-lists/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ配信リスト編集
+    Route::get('/customer-mng/notice-send-lists', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ配信リスト削除
+
+    Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト
+    Route::get('/shop-mng/notice-send-lists/create', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト追加
+    Route::get('/shop-mng/notice-send-lists/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト編集
+    Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト削除
+    Route::get('/shop-mng/notices/create', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ作成
+    Route::get('/shop-mng/notices/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ編集
+    Route::get('/shop-mng/notice-historys', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信履歴
+});
+
+/*
+|--------------------------------------------------------------------------
+| ショップ
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('/shop-mng/shops', [ShopController::class, 'notices'])->name('mall.notices'); // ショップ一覧
+    Route::get('/shop-mng/shops/items', [ShopController::class, 'notices'])->name('mall.notices'); // 商品一覧
+    Route::get('/shop-mng/shops/contract', [ShopController::class, 'notices'])->name('mall.notices'); // 契約情報
+    Route::get('/shop-mng/shops/contract/corporate-info/edit', [ShopController::class, 'notices'])->name('mall.notices'); // 登録法人情報編集
+    Route::get('/shop-mng/shops/contract/contract-info/edit', [ShopController::class, 'notices'])->name('mall.notices'); // 契約情報編集
+    Route::get('/shop-mng/release-requests', [ShopController::class, 'notices'])->name('mall.notices'); // 公開申請一覧
+    Route::get('/shop-mng/change-requests', [ShopController::class, 'notices'])->name('mall.notices'); // 変更申請一覧
+});
 
 /*
 |--------------------------------------------------------------------------
 | ユーザー画面定義
 |--------------------------------------------------------------------------
 */
-
-Route::get('/firebase/test', [FirebaseTestController::class, 'loginAnonymous']);
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // 全ルート確認
 Route::get('routes', function () {
@@ -52,30 +124,6 @@ Route::get('/test', [TestController::class, 'test'])->name('test');
 
 /*
 |--------------------------------------------------------------------------
-| ログイン
-|--------------------------------------------------------------------------
-*/
-
-// pc
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'checkLogin'])->name('check_login');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/password-reset', [LoginController::class, 'passwordReset'])->name('password_reset');
-Route::get('/register/send-mail', [LoginController::class, 'registerSendMail'])->name('register.send_mail');
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::get('/register/confirm', [LoginController::class, 'registerConfirm'])->name('register.confirm');
-
-// sp
-Route::get('/sp/login', [LoginController::class, 'spLogin'])->name('sp.login');
-Route::post('/sp/login', [LoginController::class, 'spCheckLogin'])->name('sp.check_login');
-Route::get('/sp/logout', [LoginController::class, 'spLogout'])->name('sp.logout');
-Route::get('/sp/password-reset', [LoginController::class, 'spPasswordReset'])->name('sp.password_reset');
-Route::get('/sp/register/send-mail', [LoginController::class, 'spRegisterSendMail'])->name('sp.register.send_mail');
-Route::get('/sp/register/', [LoginController::class, 'spRegisterConfirm'])->name('sp.register');
-Route::get('/sp/register/confirm', [LoginController::class, 'spRegisterConfirm'])->name('sp.register.confirm');
-
-/*
-|--------------------------------------------------------------------------
 | Ajax用
 |--------------------------------------------------------------------------
 */
@@ -84,47 +132,13 @@ Route::get('/shop-brand-name', [AjaxController::class, 'shopBrandName'])->name('
 
 /*
 |--------------------------------------------------------------------------
-| Qest mall Top
+| ショップ基本管理
 |--------------------------------------------------------------------------
 */
 
-// pc
-Route::get('/top', [TopController::class, 'top'])->name('top');
-Route::get('/', [TopController::class, 'top'])->name('top');
+// Route::get('/basic-mng/contract', [CouponController::class, 'coupons']); // 契約情報　
+// Route::get('/basic-mng/shop-info', [CouponController::class, 'coupons']);
 
-// sp
-Route::get('/sp/top', [TopController::class, 'spTop'])->name('sp.top');
-
-/*
-|--------------------------------------------------------------------------
-| 商品
-|--------------------------------------------------------------------------
-*/
-
-// pc
-Route::get('/categories', [ItemController::class, 'categories'])->name('categories'); // カテゴリ一覧
-Route::get('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
-Route::get('/items/frag-category', [ItemController::class, 'flagCategory'])->name('frag_category'); // 商品一覧(フラグカテゴリ検索)
-Route::get('/items/category/{category}', [ItemController::class, 'category'])->name('category'); // 商品一覧(カテゴリ検索)
-Route::get('/items/brand/{brand}', [ItemController::class, 'brand'])->name('brand'); // 商品一覧(ブランド検索)
-Route::get('/items/shop/{shop}', [ItemController::class, 'shop'])->name('shop'); // 商品一覧(ショップ)
-Route::get('/items', [ItemController::class, 'itemFilter'])->name('items_filter'); // 商品検索(絞り込み)
-Route::get('/items/detail/{item}', [ItemController::class, 'itemDetail'])->name('items_detail'); // 商品詳細
-Route::get('/shops', [ItemController::class, 'shops'])->name('shops'); // ショップ一覧
-Route::get('/brands', [ItemController::class, 'brands'])->name('brands'); // ブランド一覧
-Route::post('/shop-brand-search', [ItemController::class, 'shopBrandSearch'])->name('shop_brand_search'); // ショップ・ブランド検索
-
-// sp
-Route::get('/sp/categories', [ItemController::class, 'spCategories'])->name('sp.categories'); // カテゴリ一覧
-Route::get('/sp/items/keyword', [ItemController::class, 'spItemKeyword'])->name('sp.item_keyword'); // 商品一覧(キーワード検索)
-Route::get('/sp/items/frag-category', [ItemController::class, 'spFlagCategory'])->name('sp.frag_category'); // 商品一覧(フラグカテゴリ検索)
-Route::get('/sp/items/category', [ItemController::class, 'spCategory'])->name('sp.category'); // 商品一覧(カテゴリ検索)
-Route::get('/sp/items/brand', [ItemController::class, 'spBrand'])->name('sp.brand'); // 商品一覧(ブランド検索)
-Route::get('/sp/items/shop/{shop}', [ItemController::class, 'spShop'])->name('sp.shop'); // 商品一覧(ショップ)
-Route::get('/sp/items', [ItemController::class, 'spItemFilter'])->name('sp.items_filter'); // 商品検索(絞り込み)
-Route::get('/sp/items/detail/{item}', [ItemController::class, 'spItemDetail'])->name('sp.items_detail'); // 商品詳細
-Route::get('/sp/shops', [ItemController::class, 'spShops'])->name('sp.shops'); // ショップ一覧
-Route::get('/sp/brands', [ItemController::class, 'spBrands'])->name('sp.brands'); // ブランド一覧
 
 /*
 |--------------------------------------------------------------------------
@@ -132,11 +146,15 @@ Route::get('/sp/brands', [ItemController::class, 'spBrands'])->name('sp.brands')
 |--------------------------------------------------------------------------
 */
 
-// pc
-Route::get('/coupons/{coupon}', [CouponController::class, 'coupons'])->name('coupons');
-
-// sp
-Route::get('/sp/coupons/{coupon}', [CouponController::class, 'spCoupons'])->name('sp.coupons');
+Route::get('/sale-mng/coupons', [CouponController::class, 'coupons']); // クーポン一覧編集
+Route::get('/sale-mng/entry-shops', [CouponController::class, 'entryShops']); // 参加ショップ一覧・編集
+Route::get('/sale-mng/entry-items', [CouponControoler::class, 'entryItems']); // 参加申請一覧
+Route::get('/sale-mng/coupons/create', [CouponControoler::class, 'createCoupon']); // 新規クーポン追加
+Route::get('/sale-mng/coupon-lps/create', [CouponControoler::class, 'createLp']); // LP作成・編集
+Route::get('/sale-mng/coupon-lps/preview', [CouponControoler::class, 'createLp']); // LPプレビュー
+Route::get('/sale-mng/coupons/detail', [CouponController::class, 'detail']); // クーポン利用条件詳細
+Route::get('/sale-mng/coupons/edit', [CouponController::class, 'edit']); // クーポン詳細編集
+Route::get('/sale-mng/coupons/items', [CouponController::class, 'edit']); // クーポン対象商品編集
 
 /*
 |--------------------------------------------------------------------------
@@ -144,36 +162,10 @@ Route::get('/sp/coupons/{coupon}', [CouponController::class, 'spCoupons'])->name
 |--------------------------------------------------------------------------
 */
 
-// pc
-Route::get('/shop-info', [ShopController::class, 'shopInfo'])->name('shop_info');
-Route::get('/delivery-and-postage', [ShopController::class, 'deliveryAndPostage'])->name('delivery_and_postage');
 
-// sp
-Route::get('/sp/shop-info', [ShopController::class, 'spShopInfo'])->name('sp.shop_info');
-Route::get('/sp/delivery-and-postage', [ShopController::class, 'spDeliveryAndPostage'])->name('sp.delivery_and_postage');
 
 /*
 |--------------------------------------------------------------------------
 | お知らせ
 |--------------------------------------------------------------------------
 */
-
-// PC
-Route::get('/notices', [NoticeController::class, 'notices']);
-Route::get('/notices/detail', [NoticeController::class, 'noticesDetail']);
-
-// SP
-Route::get('/sp/notices', [NoticeController::class, 'spNotices']);
-Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-require __DIR__ . '/admin.php';

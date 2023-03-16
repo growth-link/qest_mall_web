@@ -16,20 +16,20 @@ class FirebaseAuth
         // Firebaseのユーザー登録処理（パスワード）
         Log::Info("test");
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         return true;
     }
 
     public function adminAuth($id, $password) {
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         return true;
     }
 
     public function login($id, $password) {
         // TODO Firebaseログイン処理
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         $signInResult = $auth->signInWithEmailAndPassword($email, $clearTextPassword);
         return true;
     }
@@ -43,7 +43,7 @@ class FirebaseAuth
     public function adminLogin(Request $request, string $login_id, string $password) {
         // TODO Firebase登録処理
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         $this->auth = $factory->createAuth();
         try {
             $signInResult = $this->auth->signInWithEmailAndPassword($login_id, $password);
@@ -71,7 +71,7 @@ class FirebaseAuth
     // ログイン確認：true or false
     public function isAdminLogin(Request $request) {
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         $this->auth = $factory->createAuth();
         
         if($request->session()->has("id_token")) {
@@ -93,7 +93,7 @@ class FirebaseAuth
     // 管理画面ログインチェック
     public function checkAdminLogin(Request $request, $redirectName = null) {
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         $this->auth = $factory->createAuth();
         
         if($request->session()->has("id_token")) {
@@ -123,7 +123,7 @@ class FirebaseAuth
     public function createAuthAnonymous(Request $request) {
         Log::Info("匿名アカウント作成");
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         $this->auth = $factory->createAuth();
         $signInResult = $this->auth->signInAnonymously();
         Log::Info($signInResult->data());
@@ -140,7 +140,7 @@ class FirebaseAuth
     {
         Log::Info("匿名ログイン");
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
 
         $this->auth = $factory->createAuth();
         

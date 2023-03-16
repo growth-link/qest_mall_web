@@ -434,6 +434,10 @@ class ItemController extends Controller
     ///////////////////////////////////////////////
     // 商品詳細
     public function itemDetail(Item $item) {
+        \Log::Info("====================================");
+        \Log::Info("itemDetail");
+        \Log::Info($item);
+
         return view('user.item.pc.items_detail', compact('item'));
     }
 

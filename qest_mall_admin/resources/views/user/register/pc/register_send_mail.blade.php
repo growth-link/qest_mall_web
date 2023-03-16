@@ -1,1 +1,0 @@
-register_send_mail

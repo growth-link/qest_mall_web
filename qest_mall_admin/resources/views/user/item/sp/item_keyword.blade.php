@@ -1,1 +1,0 @@
-item_keyword_sp

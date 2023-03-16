@@ -2,6 +2,166 @@
 @component('admin.layouts.header')
 @endcomponent
 @section('content')
+<style>
+.navbar {
+  background-color: white;
+  color: #333333;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin-right: 20px;
+  position: relative;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.menu li a {
+  color: #333333;
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border-radius: 5px;
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+}
+
+.dropdown-menu li a {
+  color: #333;
+  display: block;
+  margin: 5px 0;
+  text-decoration: none;
+}
+
+.dropdown i {
+  margin-left: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown:hover i {
+  transform: rotate(180deg);
+}
+
+
+
+
+
+.sidebar {
+  background-color: #f2f2f2;
+  width: 200px;
+  height: 100%;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: #333;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #ccc;
+}
+
+.sidebar a.selected {
+  background-color: #ccc;
+}
+</style>
+
+<nav class="navbar">
+    <ul class="menu">
+        <li class="dropdown">
+            <a href="#">ショップ基本管理<i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Product 1</a></li>
+            <li><a href="#">Product 2</a></li>
+            <li><a href="#">Product 3</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#">商品情報<i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Product 1</a></li>
+            <li><a href="#">Product 2</a></li>
+            <li><a href="#">Product 3</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#">クーポン管理<i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Service 1</a></li>
+            <li><a href="#">Service 2</a></li>
+            <li><a href="#">Service 3</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#">売上・会計管理<i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Service 1</a></li>
+            <li><a href="#">Service 2</a></li>
+            <li><a href="#">Service 3</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#">顧客管理<i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+            <li><a href="#">Service 1</a></li>
+            <li><a href="#">Service 2</a></li>
+            <li><a href="#">Service 3</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+
+<nav class="sidebar">
+    <ul>
+        <li><a href="#" class="selected">項目1</a></li>
+        <li><a href="#">項目2</a></li>
+        <li><a href="#">項目3</a></li>
+    </ul>
+</nav>
+
+
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <select name="skills" multiple="" class="ui fluid dropdown">
     <option value="">Skills</option>
@@ -43,29 +203,40 @@
 <div>
     <button onclick="showModal();">モーダルを表示</button>
 </div>
-<div class="ui modal">
-    <i class="close icon"></i>
-    <div class="header">
-      Profile Picture
-    </div>
-    <div class="image content">
-      <div class="ui medium image">
-        {{-- <img src="/images/avatar/large/chris.jpg"> --}}
-      </div>
-      <div class="description">
-        <div class="ui header">We've auto-chosen a profile image for you.</div>
-        <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-        <p>Is it okay to use this photo?</p>
-      </div>
-    </div>
-    <div class="actions">
-      <div class="ui black deny button">
-        Nope
-      </div>
-      <div class="ui positive right labeled icon button">
-        Yep, that's me
-        <i class="checkmark icon"></i>
-      </div>
+<div id="password_modal" class="ui modal mini">
+    <img src="/images/user/icon_modal_close.png" style="position:absolute;right:10px;top:10px;" onclick="closeModal();">
+    <div class="content">
+        <section>
+            <span class="ECM_CheckboxInput-LabelText">2段階認証</span>
+        </section>
+
+
+        <section style="margin-top:20px;">
+        </section>
+
+        <section style="margin-top:20px;">
+            <div class="ui input">
+                <input type="text" placeholder="Search...">
+            </div>
+        </section>
+
+        <section style="margin-top:20px;">
+            <div class="ui input">
+                <input type="text" placeholder="Search...">
+            </div>
+        </section>
+
+
+        <section>
+            <div class="modal-section-title">除外キーワード</div>
+            <input type="text" class="switch_TextInput" placeholder="指定なし" style="width:50%;">
+        </section>
+
+        <section style="text-align:center;">
+            <button class="primary_btn_radius">
+                認証してログインする
+            </button>
+        </section>
     </div>
 </div>
 
@@ -163,9 +334,27 @@
 @section("script")
     <script>
         function showModal() {
-            $('.modal').modal({
+            $('#password_modal').modal({
                 centered: false
             }).modal('show');
         }
+
+        function closeModal() {
+            $('#password_modal').modal('hide');
+        }
+
+        // const dropdowns = document.querySelectorAll('.dropdown');
+
+        // dropdowns.forEach((dropdown) => {
+        //     const menu = dropdown.querySelector('.dropdown-menu');
+
+        //     dropdown.addEventListener('mouseenter', () => {
+        //         menu.style.display = 'block';
+        //     });
+
+        //     dropdown.addEventListener('mouseleave', () => {
+        //         menu.style.display = 'none';
+        //     });
+        // });
     </script>
 @endsection
