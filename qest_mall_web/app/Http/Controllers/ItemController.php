@@ -433,12 +433,68 @@ class ItemController extends Controller
 
     ///////////////////////////////////////////////
     // 商品詳細
-    public function itemDetail(Item $item) {
-        \Log::Info("====================================");
-        \Log::Info("itemDetail");
-        \Log::Info($item);
+    public function itemDetail(Request $request) {
+        // \Log::Info("====================================");
+        // \Log::Info("itemDetail");
+        // \Log::Info($item);
 
-        return view('user.item.pc.items_detail', compact('item'));
+
+        $keyword = $request->keyword;
+        $sort = $request->sort;
+        $query = Item::query();
+
+        if(isset($sort)) {
+            if($sort=='recommend'){
+                $query->where("deleted_at", null);
+            }
+            if($sort=='low_price'){
+                $query->where("deleted_at", null)->orderBy('normal_price');
+            }
+            if($sort=='high_price'){
+                $query->where("deleted_at", null)->orderBy('normal_price', 'desc');
+            }
+            if($sort=='start_datetime'){
+                $query->where("deleted_at", null)->orderBy('start_datetime');
+            }
+        } else {
+            $sort = null;
+        }
+
+        if(isset($keyword)){
+            // 複数キーワード検索
+            $space_conversion = mb_convert_kana($keyword, 's'); // 全角スペースを半角に変換
+            $word_array_searched = preg_split('/[\s,]+/', $space_conversion, -1, PREG_SPLIT_NO_EMPTY); // 単語を半角スペースで区切って配列に
+
+            $columns = ['shop_name','brand_name','name','detail_title','detail']; //検索項目
+
+            $query->select('items.*')
+            ->leftJoin('shops','items.shop_id','=','shops.id')
+            ->leftJoin('brands','items.brand_id','=','brands.id');
+            foreach($columns as $column) {
+                $query->orWhere(function($query) use($word_array_searched,$column){
+                    foreach($word_array_searched as $value) {
+                        $query->where($column,'LIKE','%'.$value.'%');
+                    }
+                });
+            }
+            $items = $query->latest()->paginate(60); // 商品取得
+        } else {
+            $keyword = '全て';
+            $items = $query->latest()->paginate(60); // 全件取得
+        }
+
+        $major_categoris = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categoris = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
+
+        return view('user.item.pc.items_detail',compact(
+            'items',
+            'sort',
+            'keyword',
+            'major_categoris',
+            'sub_categoris',
+            'tags',
+        ));
     }
 
     public function spItemDetail(Item $item) {

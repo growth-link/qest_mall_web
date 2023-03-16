@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NoticeController extends Controller
+class ItemController extends Controller
 {
-    public function notices() {
-        return view("admin/notice/notices");
+    public function itemsCreate() {
+        return view("admin/items/");
     }
 
     public function noticesDetail() {

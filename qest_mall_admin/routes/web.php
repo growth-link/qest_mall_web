@@ -66,13 +66,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/customer-mng/notice-send-lists/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ配信リスト編集
     Route::get('/customer-mng/notice-send-lists', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // 顧客管理 - お知らせ配信リスト削除
 
-    Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト
-    Route::get('/shop-mng/notice-send-lists/create', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト追加
-    Route::get('/shop-mng/notice-send-lists/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト編集
-    Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト削除
-    Route::get('/shop-mng/notices/create', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ作成
-    Route::get('/shop-mng/notices/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ編集
-    Route::get('/shop-mng/notice-historys', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ配信履歴
+    // ショップ管理
+    Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticeSendLists'])->name('notices.send_lists'); // ショップ管理 - お知らせ配信リスト
+    Route::get('/shop-mng/notice-send-lists/create', [NoticeController::class, 'noticeSendListsCreate'])->name('notices.send_lists.create'); // ショップ管理 - お知らせ配信リスト追加
+    Route::get('/shop-mng/notice-send-lists/edit', [NoticeController::class, 'noticeSendListsEdit'])->name('notices.send_lists.edit'); // ショップ管理 - お知らせ配信リスト編集
+    // Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticeSendLists'])->name('notices.detail'); // ショップ管理 - お知らせ配信リスト削除
+    // Route::get('/shop-mng/notices/create', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ作成
+    // Route::get('/shop-mng/notices/edit', [NoticeController::class, 'noticesDetail'])->name('notices.detail'); // ショップ管理 - お知らせ編集
+    Route::get('/shop-mng/notice-histories', [NoticeController::class, 'noticeHistories'])->name('notices.histories'); // ショップ管理 - お知らせ配信履歴
 });
 
 /*
@@ -82,15 +83,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
 */
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
-    Route::get('/shop-mng/shops', [ShopController::class, 'notices'])->name('mall.notices'); // ショップ一覧
-    Route::get('/shop-mng/shops/items', [ShopController::class, 'notices'])->name('mall.notices'); // 商品一覧
-    Route::get('/shop-mng/shops/contract', [ShopController::class, 'notices'])->name('mall.notices'); // 契約情報
-    Route::get('/shop-mng/shops/contract/corporate-info/edit', [ShopController::class, 'notices'])->name('mall.notices'); // 登録法人情報編集
-    Route::get('/shop-mng/shops/contract/contract-info/edit', [ShopController::class, 'notices'])->name('mall.notices'); // 契約情報編集
-    Route::get('/shop-mng/release-requests', [ShopController::class, 'notices'])->name('mall.notices'); // 公開申請一覧
-    Route::get('/shop-mng/change-requests', [ShopController::class, 'notices'])->name('mall.notices'); // 変更申請一覧
+    Route::get('/shop-mng/shops', [ShopController::class, 'shopManageShops'])->name('mall.notices'); // ショップ一覧
+    Route::get('/shop-mng/shops/items', [ShopController::class, 'shopManageShopsItems'])->name('mall.notices'); // 商品一覧
+    Route::get('/shop-mng/shops/contract', [ShopController::class, 'shopManageShopsContract'])->name('mall.notices'); // 契約情報
+    Route::get('/shop-mng/shops/contract/corporate-info/edit', [ShopController::class, 'shopManageShopsContractCorporateInfoEdit'])->name('mall.notices'); // 登録法人情報編集
+    Route::get('/shop-mng/shops/contract/contract-info/edit', [ShopController::class, 'shopManageShopsContractContractInfoEdit'])->name('mall.notices'); // 契約情報編集
+    Route::get('/shop-mng/release-requests', [ShopController::class, 'shopManageChangeRequests'])->name('mall.notices'); // 公開申請一覧
+    Route::get('/shop-mng/change-requests', [ShopController::class, 'shopManageChangeRequests'])->name('mall.notices'); // 変更申請一覧
+    Route::get('/shop-mng/shops/create', [ShopController::class, 'shopShopsCreate'])->name('shop.shops.create'); // 新規ショップ追加
 });
-
 /*
 |--------------------------------------------------------------------------
 | ユーザー画面定義
@@ -139,7 +140,6 @@ Route::get('/shop-brand-name', [AjaxController::class, 'shopBrandName'])->name('
 // Route::get('/basic-mng/contract', [CouponController::class, 'coupons']); // 契約情報　
 // Route::get('/basic-mng/shop-info', [CouponController::class, 'coupons']);
 
-
 /*
 |--------------------------------------------------------------------------
 | クーポン
@@ -166,6 +166,7 @@ Route::get('/sale-mng/coupons/items', [CouponController::class, 'edit']); // ク
 
 /*
 |--------------------------------------------------------------------------
-| お知らせ
+| 商品
 |--------------------------------------------------------------------------
 */
+Route::get('/item-info/items/create', [ItemController::class, 'edit']); // 新規商品登録

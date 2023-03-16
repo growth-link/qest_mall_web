@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class ProceedController extends Controller
+{
+    public function proceedsMngMonthlyCumulative() {
+        return view("admin/notice/send_lists");
+    }
+
+    public function proceedsMngByMonth(Request $request) {
+        return view("admin/proceeds/by_month");
+    }
+
+    public function proceedsMngAccountingHistory1(Request $request) {
+        return view("admin/proceeds/accounting_history_1");
+    }
+
+    public function proceedsMngAccountingHistory2(Request $request) {
+        return view("admin/proceeds/accounting_history_2");
+    }
+
+    public function proceedsMngAccountingHistory3(Request $request) {
+        return view("admin/proceeds/accounting_history_3");
+    }
+
+    public function proceedsMngMonthlyAccounting(Request $request) {
+        return view("admin/proceeds/monthly_accounting");
+    }
+
+    public function proceedsMngPaymentStatement1(Request $request) {
+        return view("admin/proceeds/payment_statement_1");
+    }
+
+    public function proceedsMngMonthlyCumulative2(Request $request) {
+        return view("admin/proceeds/monthly_cumulative_2");
+    }
+
+    public function proceedsMngByMonth2(Request $request) {
+        return view("admin/proceeds/by_month_2");
+    }
+
+    public function proceedsMngMonthlyAccounting2(Request $request) {
+        return view("admin/proceeds/monthly_accounting_2");
+    }
+
+    public function proceedsMngPaymentStatement2(Request $request) {
+        return view("admin/proceeds/payment_statement_2");
+    }
+}
