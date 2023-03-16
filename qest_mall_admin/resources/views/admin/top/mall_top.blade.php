@@ -91,7 +91,7 @@
     <div style="background: #F7F7F7; width: 320px; height: 36px; position: relative; right: 1px; bottom: 1px; margin-bottom: 14px;">
       <p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 16px; font-weight: bold;">商品一覧</p>
     </div>
-    <a href="" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">出品商品一覧</a>
+    <a href="{{ route('admin.item.items'); }}" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">出品商品一覧</a>
   </div>
 
   <div style="width: 320px; height: 240px; border: 1px solid #CECECE; margin-top: 30px; margin-left: 16px; background: #FEFEFE;">

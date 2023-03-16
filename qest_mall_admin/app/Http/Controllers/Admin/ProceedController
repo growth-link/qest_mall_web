@@ -7,47 +7,18 @@ use Illuminate\Http\Request;
 
 class ProceedController extends Controller
 {
-    public function proceedsMngMonthlyCumulative() {
-        return view("admin/notice/send_lists");
+    // 統計情報
+    public function proceedStatistics(Request $request) {
+        return view("admin/proceed/statistics");
     }
 
-    public function proceedsMngByMonth(Request $request) {
-        return view("admin/proceeds/by_month");
+    // 会計履歴
+    public function proceedStatistics(Request $request) {
+        return view("admin/proceed/histories");
     }
 
-    public function proceedsMngAccountingHistory1(Request $request) {
-        return view("admin/proceeds/accounting_history_1");
-    }
-
-    public function proceedsMngAccountingHistory2(Request $request) {
-        return view("admin/proceeds/accounting_history_2");
-    }
-
-    public function proceedsMngAccountingHistory3(Request $request) {
-        return view("admin/proceeds/accounting_history_3");
-    }
-
-    public function proceedsMngMonthlyAccounting(Request $request) {
-        return view("admin/proceeds/monthly_accounting");
-    }
-
-    public function proceedsMngPaymentStatement1(Request $request) {
-        return view("admin/proceeds/payment_statement_1");
-    }
-
-    public function proceedsMngMonthlyCumulative2(Request $request) {
-        return view("admin/proceeds/monthly_cumulative_2");
-    }
-
-    public function proceedsMngByMonth2(Request $request) {
-        return view("admin/proceeds/by_month_2");
-    }
-
-    public function proceedsMngMonthlyAccounting2(Request $request) {
-        return view("admin/proceeds/monthly_accounting_2");
-    }
-
-    public function proceedsMngPaymentStatement2(Request $request) {
-        return view("admin/proceeds/payment_statement_2");
+    // 月別精算明細
+    public function proceedMonthly(Request $request) {
+        return view("admin/proceed/monthly");
     }
 }

@@ -41,6 +41,16 @@ form {
     background-color: #FBDB5B;
 }
 
+.primary_btn_radius_gray {
+    padding: 10px 30px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #707070;
+    color: #f2f2f2;
+}
+
 .secondary_btn_radius {
     color: #6C6C6C;
     padding: 10px 30px;
@@ -321,8 +331,10 @@ input:checked + .radio-label::before {
     background-color: white;
     color: #333333;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 10px 20px;
+    box-shadow: 5px 5px 10px lightgray;
+    margin-bottom: 10px;
 }
 
 .menu {
@@ -379,9 +391,17 @@ input:checked + .radio-label::before {
     transform: rotate(180deg);
 }
 
+.primary_btn_radius_menu {
+    padding: 5px 30px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: bold;
+    background-color: #FBDB5B;
+}
+
 /* -------------------------------------------- */
 /* サイドメニュー side_menu */
-
 
 .sidebar {
     background-color: #f2f2f2;
@@ -429,4 +449,36 @@ a:hover {
 
 .sidebar a.selected {
     background-color: #ccc;
+}
+
+
+/* -------------------------------------------- */
+/* 入力系 */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-left {
+    width: 15%;
+    margin: 10px;
+    /* background-color: #ccc; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.box-right {
+    width: 80%;
+    margin: 10px;
+    /* background-color: #ccc; */
+    padding: 5px;
+}
+
+.required-badge {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
 }

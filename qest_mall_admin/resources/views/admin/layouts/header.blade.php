@@ -10,5 +10,5 @@
     <a href="{{ route('admin.notices') }}">
         <i class="bell outline icon" style="color:white;float:right;font-size:20px;margin-top:3px;margin-left:20px;"></i>
     </a>
-    <p style="margin:0;margin-top:3px;font-weight:bold;color:white;float:right;margin-left:20px;">LIBREクエストモール店</p>
+    {{-- <p style="margin:0;margin-top:3px;font-weight:bold;color:white;float:right;margin-left:20px;">LIBREクエストモール店</p> --}}
 </div>

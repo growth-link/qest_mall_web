@@ -31,7 +31,14 @@ class ShopController extends Controller
         return view('admin/shop/manage_change_requests');
     }
 
+
+    // 新規ショップ追加
     public function shopShopsCreate(Request $request) {
         return view('admin/shop/shops_create');
+    }
+
+    // 新規ショップ追加(入力内容確認)
+    public function shopShopsCreateConfirm(Request $request) {
+        return view('admin/shop/shops_create_confirm');
     }
 }
