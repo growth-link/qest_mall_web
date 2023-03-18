@@ -3,6 +3,9 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/fonts/*.ttf
+/storage/fonts/*.ufm
+/storage/fonts/*.json
 /vendor
 .env
 .env.backup

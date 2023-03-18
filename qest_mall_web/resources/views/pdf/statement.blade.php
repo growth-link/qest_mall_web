@@ -52,6 +52,7 @@
         }
         table {
             border: solid #707070 1px;
+            border-collapse: collapse;
             border-spacing: 0;
         }
         table > thead {
