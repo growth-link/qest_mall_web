@@ -165,6 +165,7 @@ class PdfController extends Controller
     }
 
     // ご利用明細書（返品対応）作成
+    // TODO: DBへの繋ぎ込み必要
     public function createPaymentStatement()
     {
         // タイトル
@@ -176,39 +177,81 @@ class PdfController extends Controller
             'order_number' => '6943692569473895',
         ];
 
+        // ショップ情報
+        $shop =[
+            'company_name' => '株式会社○○○○○○',
+            'shop_name' => 'ショップ名',
+        ];
+
+        // OPA会社情報
+        // TODO: 連絡先聞く、電子印もらう
+        $opa = [
+            'company_name' => '株式会社OPA',
+            'zip_code' => '〒261-7122',
+            'address' => '千葉県千葉市美浜区中瀬2-6-1',
+            'apartment_name' => 'WBGマリブイースト22F',
+            'phone_number' => '0123456789',
+        ];
+
         // 売上高
-        $product_price_10_percent = 0;  // 商品代金(10%)
-        $product_price_8_percent = 0;   // 商品代金(8%)
-        $shipping_fee = 0;              // 配送料
-        $wrapping_packaging_fee = 0;    // ラッピング包装代
-        $options_fee = 0;               // オプション
-        $tax_amount_10_percent = 0;     // 消費税額(10%)
-        $tax_amount_8_percent = 0;      // 消費税額(8%)
-        $total_amount = 0;              // 合計
+        $product_price_10_percent = 500000;  // 商品代金(10%)
+        $product_price_8_percent = 300000;   // 商品代金(8%)
+        $shipping_fee = 28370;              // 配送料
+        $wrapping_packaging_fee = 1500;    // ラッピング包装代
+        $options_fee = 2000;               // オプション
+
+        // 配送料、ラッピング包装代、オプションは消費税を分割しておく
+        $shipping_fee_ex_tax = $shipping_fee / 1.1;
+        $tax_shipping_fee = $shipping_fee - $shipping_fee_ex_tax;
+        $wrapping_packaging_fee_ex_tax = $wrapping_packaging_fee / 1.1;
+        $tax_wrapping_packaging_fee = $wrapping_packaging_fee - $wrapping_packaging_fee_ex_tax;
+        $options_fee_ex_tax = $options_fee / 1.1;
+        $tax_options_fee = $options_fee - $options_fee_ex_tax;
+
+        // 小計
+        $subtotal = $product_price_10_percent + $product_price_8_percent + $shipping_fee_ex_tax + $wrapping_packaging_fee_ex_tax + $options_fee_ex_tax;
+
+        // 消費税額(10%)
+        $tax_amount_10_percent = $product_price_10_percent * 0.1 + $tax_shipping_fee + $tax_wrapping_packaging_fee + $tax_options_fee;
+
+        // 消費税額(8%)
+        $tax_amount_8_percent = $product_price_8_percent * 0.08;
+
+        // 合計
+        $total_amount = $subtotal + $tax_amount_10_percent + $tax_amount_8_percent;
         $sales = [
             'product_price_10_percent' => $product_price_10_percent,
             'product_price_8_percent' => $product_price_8_percent,
-            'shipping_fee' => $shipping_fee,
-            'wrapping_packaging_fee' => $wrapping_packaging_fee,
-            'options_fee' => $options_fee,
+            'shipping_fee' => $shipping_fee_ex_tax,
+            'wrapping_packaging_fee' => $wrapping_packaging_fee_ex_tax,
+            'options_fee' => $options_fee_ex_tax,
+            'subtotal' => $subtotal,
             'tax_amount_10_percent' => $tax_amount_10_percent,
             'tax_amount_8_percent' => $tax_amount_8_percent,
-            'total_amount' => $total_amount,
+            'total' => $total_amount,
         ];
 
         // 手数料
-        $sales_commission = 0;      // 販売営業料
-        $system_fee = 0;            // システム手数料
-        $promotion_cost = 0;        // 販促費
-        $ion_card_fee = 0;          // イオンカード手数料
-        $other_credit_card_fee = 0; // その他クレジットカード手数料
-        $point_fee = 0;             // WAONPOINT手数料
-        $coupon_cost = 0;           // クーポン負担金
-        $event_point_cost = 0;      // イベント用WAONPOINT負担金
-        $other_promotion_cost = 0;  // その他販促協力金
-        $commission_subtotal = 0;
-        $commission_tax = 0;
-        $commission_total = 0;
+        // TODO: 手数料の%が変わるのでショップ毎で計算ロジック必要？
+        $sales_commission = 99404;  // 販売営業料
+        $system_fee = 8284; // システム手数料
+        $promotion_cost = 16567;    // 販促費
+        $ion_card_fee = 432;    // イオンカード手数料
+        $other_credit_card_fee = 7688;  // その他クレジットカード手数料
+        $point_fee = 9050;  // WAONPOINT手数料
+        $coupon_cost = 0;   // クーポン負担金
+        $event_point_cost = 0;  // イベント用WAONPOINT負担金
+        $other_promotion_cost = 100000;  // その他販促協力金
+
+        // 小計
+        $commission_subtotal = $sales_commission + $system_fee + $promotion_cost + $ion_card_fee + $other_credit_card_fee + $point_fee + $coupon_cost + $event_point_cost + $other_promotion_cost;
+
+        // 消費税
+        $commission_tax = $commission_subtotal * 0.1;
+
+        // 合計
+        $commission_total = $commission_subtotal + $commission_tax;
+
         $commission = [
             'sales_commission' => $sales_commission,
             'system_fee' => $system_fee,
@@ -225,11 +268,13 @@ class PdfController extends Controller
         ];
 
         // 決済種別内訳
-        $aeon_card_payment_amount = 0;
-        $other_card_payment_amount = 0;
-        $point_usage_amount = 0;
-        $coupon_usage_amount = 0;
-        $payment_type_total = 0;
+        $aeon_card_payment_amount = 502360;  // イオンカード決済金額
+        $other_card_payment_amount = 200500; // その他カード決済金額
+        $point_usage_amount = 10800;        // WAONポイント利用金額
+        $coupon_usage_amount = 192210;       // クーポン
+
+        // 合計
+        $payment_type_total = $aeon_card_payment_amount + $other_card_payment_amount + $point_usage_amount + $coupon_usage_amount;
         $payment_type = [
             'aeon_card' => $aeon_card_payment_amount,
             'other_card' => $other_card_payment_amount,
@@ -238,19 +283,19 @@ class PdfController extends Controller
             'total' => $payment_type_total,
         ];
 
-        // 合計
-        $total_sales = 0;
-        $total_commission = 0;
-        $total_payment_amount = 0;
+        // お支払い金額
+        $total_payment_amount = $total_amount + $commission_total;  // お支払い金額
         $total = [
-            'total_sales' => $total_sales,
-            'total_commission' => $total_commission,
-            'total_payment_amount' => $total_payment_amount,
+            'sales' => $total_amount,
+            'commission' => $commission_total,
+            'payment_amount' => $total_payment_amount,
         ];
 
         $data = [
             'title' => $title,
             'header' => $header,
+            'shop' => $shop,
+            'opa' => $opa,
             'sales' => $sales,
             'commission' => $commission,
             'payment_type' => $payment_type,
