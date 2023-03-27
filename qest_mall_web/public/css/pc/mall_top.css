@@ -268,12 +268,13 @@ a {
     color: #6C6C6C;
     font-size: 13px;
 }
-.nav-open::before{/* 閉じている時 */
+.nav-open .nav-switch{/* 閉じている時 */
 	position: absolute;
 	right: 20px;
     top: 20px;
     content: url(/images/user/icon_arrow_down.png)!important;
+    cursor: pointer;
 }
-.nav-open.active::before{/* 開いている時 */
-    content: url(/images/user/icon_arrow_down.png)!important;
+.nav-open.active .nav-switch{/* 開いている時 */
+    content: url(/images/user/icon_arrow_up.png)!important;
 }

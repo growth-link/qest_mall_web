@@ -13,19 +13,23 @@
 
         {{-- Main Content --}}
         <div class="main-content">
-            {{-- 商品一覧 --}}
-            <section class="main-content-box latest-item">
-                <div class="section-title-box">
-                    <h2 class="section-title fit-content">
-                        商品一覧
-                    </h2>
-                    @include('user.layouts.pc.components.item.filter_bar')
-                </div>
-                <div class="item-container">
-                    @include('user.layouts.pc.components.item.items')
-                    {{ $items->links() }}
-                </div>
-            </section>
+            @if($items->isNotEmpty())
+                {{-- 商品一覧 --}}
+                <section class="main-content-box latest-item">
+                    <div class="section-title-box">
+                        <h2 class="section-title fit-content">
+                            商品一覧
+                        </h2>
+                        @include('user.layouts.pc.components.item.filter_bar')
+                    </div>
+                    <div class="item-container">
+                        @include('user.layouts.pc.components.item.items')
+                        {{ $items->appends(request()->query())->links() }}
+                    </div>
+                </section>
+            @else
+                <p>ご指定の検索条件に該当する商品はみつかりませんでした</p>
+            @endif
         </div>
     </div>
 </div>

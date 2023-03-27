@@ -9,6 +9,7 @@ use App\Models\Tag;
 use App\Models\Item;
 use App\Models\Shop;
 use App\Models\Brand;
+use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
@@ -29,9 +30,9 @@ class ItemController extends Controller
     public function itemKeyword(Request $request) {
         $sort = $request->sort;
         $keyword = $request->keyword;
-        $category_id = $request->category_id;
-        $life_scene_id = $request->life_scene_id;
-        $tag_id = $request->tag_id;
+        $category_ids = $request->category_ids; //複数カテゴリ
+        $life_scene_ids = $request->life_scene_ids;
+        $tag_ids = $request->tag_ids;
         $start_price = $request->start_price;
         $end_price = $request->end_price;
         $is_postage_free = $request->is_postage_free;
@@ -39,20 +40,23 @@ class ItemController extends Controller
         $including_out_of_stock = $request->including_out_of_stock;
         $exclude_keyword = $request->exclude_keyword;
 
-        $category = Category::find($category_id);
-        $items = Item::sortItem($sort)
-                    ->searchKeyword($keyword)
-                    ->searchCategory($category_id, $category) //複数カテゴリ検索
-                    ->searchFlagCategory($life_scene_id)
-                    ->searchTag($tag_id)
-                    ->searchStartPrice($start_price)
-                    ->searchEndPrice($end_price)
-                    ->searchIsPostageFree($is_postage_free)
-                    ->searchIsCoupon($is_coupon)
-                    ->searchIncludingOutOfStock($including_out_of_stock)
-                    ->searchKeyword($exclude_keyword, 'NOT LIKE')
-                    ->latest()
-                    ->paginate(60);
+        \DB::enableQueryLog();
+        $items = Item::query()
+            ->select('items.*')
+            ->sortItem($sort)
+            ->searchKeyword($keyword)
+            ->searchCategoryHP($category_ids) //複数カテゴリ検索
+            ->searchFlagCategory($life_scene_ids)
+            ->searchTag($tag_ids)
+            ->searchStartPrice($start_price)
+            ->searchEndPrice($end_price)
+            ->searchIsPostageFree($is_postage_free)
+            ->searchIsCoupon($is_coupon)
+            ->searchIncludingOutOfStock($including_out_of_stock)
+            ->searchKeyword($exclude_keyword, 'NOT LIKE')
+            ->latest()
+            ->paginate(60);
+        Log::Info(\DB::getQueryLog());
 
         if(!isset($keyword)){
             $keyword = '全て';
@@ -66,9 +70,9 @@ class ItemController extends Controller
             'items',
             'sort',
             'keyword',
-            'category_id',
-            'life_scene_id',
-            'tag_id',
+            'category_ids',
+            'life_scene_ids',
+            'tag_ids',
             'start_price',
             'end_price',
             'is_postage_free',
@@ -85,8 +89,8 @@ class ItemController extends Controller
         $sort = $request->sort;
         $keyword = $request->keyword;
         $category_id = $request->category_id;
-        $life_scene_id = $request->life_scene_id;
-        $tag_id = $request->tag_id;
+        $life_scene_ids = $request->life_scene_ids;
+        $tag_ids = $request->tag_ids;
         $start_price = $request->start_price;
         $end_price = $request->end_price;
         $is_postage_free = $request->is_postage_free;
@@ -94,24 +98,31 @@ class ItemController extends Controller
         $including_out_of_stock = $request->including_out_of_stock;
         $exclude_keyword = $request->exclude_keyword;
 
+        // 絞り込みモーダルに表示する名前を項目ごとに取得する
         $category = Category::find($category_id);
-        // TODO:配列で取得する
-        $life_scene = SubCategory::find($life_scene_id);
-        // TODO:配列で取得する
-        $tag = Tag::find($tag_id);
-        $items = Item::sortItem($sort)
-                    ->searchKeyword($keyword)
-                    ->searchCategory($category_id, $category) //カテゴリ1件のみ検索
-                    ->searchFlagCategory($life_scene_id)
-                    ->searchTag($tag_id)
-                    ->searchStartPrice($start_price)
-                    ->searchEndPrice($end_price)
-                    ->searchIsPostageFree($is_postage_free)
-                    ->searchIsCoupon($is_coupon)
-                    ->searchIncludingOutOfStock($including_out_of_stock)
-                    ->searchKeyword($exclude_keyword, 'NOT LIKE')
-                    ->latest()
-                    ->paginate(60);
+        $life_scene_names = implode(',',SubCategory::whereIn('id', explode(',', $life_scene_ids))
+            ->pluck('sub_category_name')->toArray());
+        $tag_names = implode(',', Tag::whereIn('id', explode(',', $tag_ids))
+            ->pluck('tag_name')->toArray());
+
+        // 商品検索
+        \DB::enableQueryLog();
+        $items = Item::query()
+            ->select('items.*')
+            ->sortItem($sort)
+            ->searchKeyword($keyword)
+            ->searchCategorySP($category_id, $category) //カテゴリ1件のみ検索
+            ->searchFlagCategory($life_scene_ids)
+            ->searchTag($tag_ids)
+            ->searchStartPrice($start_price)
+            ->searchEndPrice($end_price)
+            ->searchIsPostageFree($is_postage_free)
+            ->searchIsCoupon($is_coupon)
+            ->searchIncludingOutOfStock($including_out_of_stock)
+            ->searchKeyword($exclude_keyword, 'NOT LIKE')
+            ->latest()
+            ->paginate(60);
+        Log::Info(\DB::getQueryLog());
 
         if(!isset($keyword)){
             if(!empty($category)){
@@ -130,8 +141,10 @@ class ItemController extends Controller
             'sort',
             'keyword',
             'category',
-            'life_scene',
-            'tag_id',
+            'life_scene_ids',
+            'life_scene_names',
+            'tag_ids',
+            'tag_names',
             'start_price',
             'end_price',
             'is_postage_free',
@@ -148,7 +161,9 @@ class ItemController extends Controller
     // 商品一覧(フラグカテゴリ検索)
     public function flagCategory(SubCategory $sub_category) {
         $sort = null;
-        $items = Item::searchFlagCategory($sub_category->id)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchFlagCategory($sub_category->id)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -170,7 +185,9 @@ class ItemController extends Controller
 
     public function spFlagCategory(SubCategory $sub_category) {
         $sort = null;
-        $items = Item::searchFlagCategory($sub_category->id)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchFlagCategory($sub_category->id)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -195,7 +212,9 @@ class ItemController extends Controller
     public function category($id) {
         $sort = null;
         $category = Category::find($id);
-        $items = Item::searchCategory($id, $category)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchCategorySP($id, $category)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -218,7 +237,9 @@ class ItemController extends Controller
     public function spCategory($id) {
         $sort = null;
         $category = Category::find($id);
-        $items = Item::searchCategory($id, $category)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchCategorySP($id, $category)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -242,7 +263,9 @@ class ItemController extends Controller
     // 商品一覧(ブランド検索)
     public function brand(Brand $brand) {
         $sort = null;
-        $items = Item::searchBrand($brand->id)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchBrand($brand->id)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -264,7 +287,9 @@ class ItemController extends Controller
 
     public function spBrand(Brand $brand) {
         $sort = null;
-        $items = Item::searchBrand($brand->id)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchBrand($brand->id)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -288,7 +313,9 @@ class ItemController extends Controller
     // 商品一覧(ショップ)
     public function shop(Shop $shop) {
         $sort = null;
-        $items = Item::searchShop($shop->id)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchShop($shop->id)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -310,7 +337,9 @@ class ItemController extends Controller
 
     public function spShop(Shop $shop) {
         $sort = null;
-        $items = Item::searchShop($shop->id)->latest()->paginate(60);
+        $items = Item::query()
+            ->select('items.*')
+            ->searchShop($shop->id)->latest()->paginate(60);
 
         // TODO:人気商品ランキング取得
         $rank_items = $items->take(10);
@@ -363,8 +392,10 @@ class ItemController extends Controller
     ///////////////////////////////////////////////
     // ショップ・ブランド検索
     public function shopBrandSearch(Request $request) {
-        if(isset($request->shop_brand_name)){
-            $keyword = $request->shop_brand_name;
+        $items = collect();
+        $keyword = $request->shop_brand_name;
+
+        if(isset($keyword)){
             // 完全一致するショップがあるか
             $shop = Shop::query()
                 ->where('shop_name', $keyword)
@@ -383,25 +414,35 @@ class ItemController extends Controller
                 return redirect()->route('brand',$brand);
             }
 
-            // 部分一致するショップ・ブランドがあるか
+            // ブランド・ショップ名で部分一致検索
             $items = Item::query()
                 ->select('items.*')
-                ->leftJoin('shops','items.shop_id','=','shops.id')
-                ->leftJoin('brands','items.brand_id','=','brands.id')
-                ->orWhere('shop_name','LIKE','%'.$keyword.'%')
-                ->orWhere('brand_name','LIKE','%'.$keyword.'%')
-                ->get();
-            if($items->isNotEmpty()){
-                // 商品一覧(キーワード検索)にリダイレクト
-                return redirect()->route('item_keyword',compact(
-                    'items',
-                    'keyword'
-                ));
-            }
+                ->searchBrandShopPartialMatch($keyword)
+                ->latest()
+                ->paginate(60);
         }
-        // TODO:検索結果0件の時
-        // TODO:検索結果0件にリダイレクト
-        return redirect()->route('top');
-    }
 
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
+
+        //商品一覧(キーワード検索)に遷移
+        return view('user.item.pc.item_keyword')->with([
+            'items' => $items,
+            'sort' => null,
+            'keyword' => 'ショップ・ブランド検索：'.$keyword,
+            'category_ids' => null,
+            'life_scene_ids' => null,
+            'tag_ids' => null,
+            'start_price' => null,
+            'end_price' => null,
+            'is_postage_free' => null,
+            'is_coupon' => null,
+            'including_out_of_stock' => null,
+            'exclude_keyword' => null,
+            'major_categories' => $major_categories,
+            'sub_categories' => $sub_categories,
+            'tags' => $tags,
+        ]);
+    }
 }

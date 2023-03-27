@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -168,16 +169,16 @@ class Item extends Model
     public function scopeSortItem($query, $sort){
         if(isset($sort)) {
             if($sort=='recommend'){
-                $query->where('deleted_at', null);
+                $query;
             }
             if($sort=='low_price'){
-                $query->where('deleted_at', null)->orderBy('normal_price');
+                $query->orderBy('normal_price');
             }
             if($sort=='high_price'){
-                $query->where('deleted_at', null)->orderBy('normal_price', 'desc');
+                $query->orderBy('normal_price', 'desc');
             }
             if($sort=='start_datetime'){
-                $query->where('deleted_at', null)->orderBy('start_datetime');
+                $query->orderBy('start_datetime');
             }
         }
         return $query;
@@ -190,46 +191,70 @@ class Item extends Model
             $space_conversion = mb_convert_kana($keyword, 's'); // 全角スペースを半角に変換
             $word_array_searched = preg_split('/[\s,]+/', $space_conversion, -1, PREG_SPLIT_NO_EMPTY); // 単語を半角スペースで区切って配列に
 
-            $columns = ['shop_name','brand_name','name','detail_title','detail']; //検索項目
-
-            $query->select('items.*')
-                ->leftJoin('shops','items.shop_id','=','shops.id')
+            if($condition == 'LIKE'){
+                $query->leftJoin('shops','items.shop_id','=','shops.id')
                 ->leftJoin('brands','items.brand_id','=','brands.id');
 
-            if($condition == 'LIKE'){
-                $where_condition = 'orWhere';
+                $columns = ['shop_name','brand_name','name','detail_title','detail']; //検索項目
+
+                foreach($columns as $column) {
+                    $query->orWhere(function($query) use($word_array_searched,$column,$condition){
+                        foreach($word_array_searched as $value) {
+                            $query->where($column,$condition,'%'.$value.'%');
+                        }
+                    });
+                }
+
             } else {
-                // TODO:条件要確認
-                $where_condition = 'where';
+                // NOT LIKE検索を行うのはnameのみとする
+                foreach($word_array_searched as $value) {
+                    $query->where('name',$condition,'%'.$value.'%');
+                }
             }
 
-            foreach($columns as $column) {
-                $query->$where_condition(function($query) use($word_array_searched,$column,$condition){
-                    foreach($word_array_searched as $value) {
-                        $query->where($column,$condition,'%'.$value.'%');
-                    }
-                });
-            }
         }
         return $query;
     }
 
     // フラグカテゴリ検索
-    // TODO:whereInにする
     public function scopeSearchFlagCategory($query, $id){
         if(isset($id)){
-            $query->select('items.*')
-                ->leftJoin('sub_categories','items.sub_category_id','=','sub_categories.id')
-                ->where('sub_categories.id', $id);
+            $query->leftJoin('sub_categories','items.sub_category_id','=','sub_categories.id')
+                ->whereIn('sub_categories.id', explode(',', $id));
         }
         return $query;
     }
 
-    // カテゴリ検索
-    public function scopeSearchCategory($query, $id, $category){
+    // カテゴリ検索（PC版）
+    public function scopeSearchCategoryHP($query, $id){
         if(isset($id)){
-            $query->select('items.*')
-                ->leftJoin('categories','items.category_id','=','categories.id');
+            // ファッションカテゴリ（小項目）のリストを配列で取得
+            $fashion_minor_categories = Category::where('fashion_minor_category_flag', true)
+                ->pluck('id')->toArray();
+
+            $search_ids = collect(); //検索用配列初期化
+            $ids = explode(',', $id);
+            $search_ids->push($ids); //検索用配列にrequestデータ格納
+
+            foreach($ids as $value){
+                // ファッションカテゴリ（小項目）の場合
+                if(array_search($value, $fashion_minor_categories)){
+                    // 最下層のidを取得して検索用配列に追加
+                    $quaternary_ids = Category::find($value)->categories->pluck('id')->toArray();
+                    $search_ids->push($quaternary_ids);
+                }
+            }
+
+            $query->leftJoin('categories','items.category_id','=','categories.id')
+                ->whereIn('categories.id', $search_ids->collapse());
+        }
+        return $query;
+    }
+
+    // カテゴリ検索（SP版）
+    public function scopeSearchCategorySP($query, $id, $category){
+        if(isset($id)){
+            $query->leftJoin('categories','items.category_id','=','categories.id');
 
             $ids = collect();
             $search_ids = collect();
@@ -274,25 +299,21 @@ class Item extends Model
 
     // ブランド検索
     public function scopeSearchBrand($query, $id){
-        return $query->select('items.*')
-                    ->leftJoin('brands','items.brand_id','=','brands.id')
+        return $query->leftJoin('brands','items.brand_id','=','brands.id')
                     ->where('brands.id', $id);
     }
 
     // ショップ検索
     public function scopeSearchShop($query, $id){
-        return $query->select('items.*')
-                    ->leftJoin('shops','items.shop_id','=','shops.id')
+        return $query->leftJoin('shops','items.shop_id','=','shops.id')
                     ->where('shops.id', $id);
     }
 
     // タグ検索
-    // TODO:whereInにする
     public function scopeSearchTag($query, $id){
         if(isset($id)){
-            $query->select('items.*')
-                ->leftJoin('tags','items.filter_tag_id','=','tags.id')
-                ->where('tags.id', $id);
+            $query->leftJoin('tags','items.filter_tag_id','=','tags.id')
+                ->whereIn('tags.id', explode(',', $id));
         }
         return $query;
     }
@@ -321,10 +342,11 @@ class Item extends Model
         return $query;
     }
 
-    // TODO:クーポン対象検索
+    // クーポン対象検索
     public function scopeSearchIsCoupon($query, $is_coupon){
         if(isset($is_coupon)){
-            $query->where('is_coupon', true);
+            $query->join('coupon_target_items','items.id','=','coupon_target_items.item_id')
+                ->where('coupon_target_items.deleted_at', null);
         }
         return $query;
     }
@@ -339,4 +361,14 @@ class Item extends Model
         return $query;
     }
 
+    // ショップ・ブランド検索（部分一致）
+    public function scopeSearchBrandShopPartialMatch($query, $keyword){
+        if(isset($keyword)){
+            $query->leftJoin('shops','items.shop_id','=','shops.id')
+            ->leftJoin('brands','items.brand_id','=','brands.id')
+            ->orWhere('shop_name','LIKE','%'.$keyword.'%')
+            ->orWhere('brand_name','LIKE','%'.$keyword.'%');
+        }
+        return $query;
+    }
 }

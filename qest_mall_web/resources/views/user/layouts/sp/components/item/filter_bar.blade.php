@@ -1,4 +1,4 @@
-                <form id="filter_form" class="filter-bar" action={{ route('sp.item_keyword') }} method="get">
+                <form class="filter-bar" action={{ route('sp.item_keyword') }} method="get">
                     <select name="sort" id="sort" onchange="submit(this.form)">
                         <option value="recommend" @if($sort == "recommend") selected @endif>おすすめ順</option>
                         <option value="low_price" @if($sort == "low_price") selected @endif>価格の安い順</option>
@@ -17,7 +17,13 @@
                             <ul>
                                 <li class="search-container">
                                     <div class="search-box">
-                                        <input type="text" name="keyword" class="filter" placeholder="キーワード検索">
+                                        <input type="text" name="keyword" class="filter" placeholder="キーワード検索"
+                                        @isset($keyword)
+                                            @unless ($keyword==='全て' || $category)
+                                                value="{{ $keyword }}"
+                                            @endunless
+                                        @endisset
+                                        >
                                     </div>
                                 </li>
 
@@ -40,14 +46,18 @@
                                 <li class="open-life-scene">
                                     <p>ライフシーンから探す</p>
                                     <div class="next-page">
-                                        @isset($life_scene)
-                                            <div class="next-page-title seleted-life-scene selected">{{ $life_scene->sub_category_name }}</div>
+                                        @isset($life_scene_names)
+                                            @if($life_scene_names)
+                                                <div class="next-page-title seleted-life-scene selected">{{ $life_scene_names }}</div>
+                                            @else
+                                                <div class="next-page-title seleted-life-scene"></div>
+                                            @endif
                                         @else
                                             <div class="next-page-title seleted-life-scene"></div>
                                         @endisset
-                                        <input type="hidden" name="life_scene_id"
-                                        @isset($life_scene)
-                                            value="{{ $life_scene->id }}"
+                                        <input type="hidden" name="life_scene_ids"
+                                        @isset($life_scene_ids)
+                                            value="{{ $life_scene_ids }}"
                                         @endisset
                                         >
                                         <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
@@ -56,10 +66,18 @@
                                 <li class="open-tag">
                                     <p>タグ</p>
                                     <div class="next-page">
-                                        <div class="next-page-title seleted-tag">すべてのタグ</div>
-                                        <input type="hidden" name="tag_id"
-                                        @isset($tag_id)
-                                            value="{{ $tag_id }}"
+                                        @isset($tag_names)
+                                            @if($tag_names)
+                                                <div class="next-page-title seleted-tag selected">{{ $tag_names }}</div>
+                                            @else
+                                            <div class="next-page-title seleted-tag">すべてのタグ</div>
+                                            @endif
+                                        @else
+                                            <div class="next-page-title seleted-tag">すべてのタグ</div>
+                                        @endisset
+                                        <input type="hidden" name="tag_ids"
+                                        @isset($tag_ids)
+                                            value="{{ $tag_ids }}"
                                         @endisset
                                         >
                                         <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
@@ -87,7 +105,7 @@
                                             <input type="checkbox" name="is_postage_free" id="is_postage_free_switch" class="switch_button"
                                             @isset($is_postage_free)
                                                 @if($is_postage_free = "on")
-                                                checked
+                                                    checked
                                                 @endif
                                             @endisset
                                             >
@@ -100,7 +118,7 @@
                                             <input type="checkbox" name="is_coupon" id="is_coupon_switch" class="switch_button"
                                             @isset($is_coupon)
                                                 @if($is_coupon = "on")
-                                                checked
+                                                    checked
                                                 @endif
                                             @endisset
                                             >
@@ -113,7 +131,7 @@
                                         <input type="checkbox" name="including_out_of_stock" id="including_out_of_stock_switch" class="switch_button"
                                         @isset($including_out_of_stock)
                                             @if($including_out_of_stock = "on")
-                                            checked
+                                                checked
                                             @endif
                                         @endisset
                                         >
@@ -261,7 +279,7 @@
                                 @foreach ($sub_categories as $sub_category)
                                     <li class="flex-box">
                                         <label class="ECM_CheckboxInput">
-                                            <input name="sub_categories[]" value="{{ $sub_category->id }}" class="ECM_CheckboxInput-Input" type="checkbox" data-life-scene-name="{{ $sub_category->sub_category_name }}">
+                                            <input name="life_scenes[]" value="{{ $sub_category->id }}" class="ECM_CheckboxInput-Input" type="checkbox" data-life-scene-name="{{ $sub_category->sub_category_name }}">
                                             <span class="ECM_CheckboxInput-DummyInput"></span>
                                             <span class="ECM_CheckboxInput-LabelText">{{ $sub_category->sub_category_name }}</span>
                                         </label>
@@ -281,7 +299,7 @@
 
                         <nav>
                             <ul>
-                                <li class="flex-box">
+                                <li>
                                     <label class="ECM_CheckboxInput">
                                         <input name="tags[]" value="" class="ECM_CheckboxInput-Input all-tag" type="checkbox" data-tag-name="すべてのタグ" checked>
                                         <span class="ECM_CheckboxInput-DummyInput"></span>
@@ -289,7 +307,7 @@
                                     </label>
                                 </li>
                                 @foreach ($tags as $tag)
-                                    <li class="flex-box">
+                                    <li>
                                         <label class="ECM_CheckboxInput">
                                             <input name="tags[]" value="{{ $tag->id }}" class="ECM_CheckboxInput-Input child-tag" type="checkbox" data-tag-name="{{ $tag->tag_name }}" checked>
                                             <span class="ECM_CheckboxInput-DummyInput"></span>
