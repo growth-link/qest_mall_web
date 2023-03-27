@@ -65,6 +65,16 @@
         display: flex;
     }
 
+    .overlay li:has(.ECM_CheckboxInput) {
+        padding: 0px;
+        height: auto;
+        display: inline;
+    }
+
+    .overlay .ECM_CheckboxInput {
+        padding: 20px 16px;
+    }
+
     .overlay li .next-page {
         margin-left: auto;
     }

@@ -31,6 +31,10 @@
     margin: 0 5px;
 }
 
+.slick-track {
+    margin-left: 0;
+}
+
 /* 子要素 */
 .rank-num {
     color: black;

@@ -41,7 +41,7 @@
                     @include('user.layouts.sp.components.item.filter_bar')
                     <div class="item-container">
                         @include('user.layouts.sp.components.item.items')
-                        {{ $items->links() }}
+                        {{ $items->appends(request()->query())->links() }}
                     </div>
                 </section>
             @else

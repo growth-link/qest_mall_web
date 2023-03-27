@@ -104,7 +104,7 @@ Route::get('/sp/top', [TopController::class, 'spTop'])->name('sp.top');
 // pc
 Route::get('/categories', [ItemController::class, 'categories'])->name('categories'); // カテゴリ一覧
 Route::get('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
-Route::post('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
+Route::get('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
 Route::get('/items/flag-category/{sub_category}', [ItemController::class, 'flagCategory'])->name('flag_category'); // 商品一覧(フラグカテゴリ検索)
 Route::get('/items/category/{category}', [ItemController::class, 'category'])->name('category'); // 商品一覧(カテゴリ検索)
 Route::get('/items/brand/{brand}', [ItemController::class, 'brand'])->name('brand'); // 商品一覧(ブランド検索)

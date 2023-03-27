@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('parent_id')->nullable()->index('categories_parent_id_foreign');
             $table->string('category_name')->nullable();
             $table->unsignedInteger('image_id')->nullable()->index('categories_image_id_foreign');
+            $table->boolean('fashion_minor_category_flag')->nullable();
         });
     }
 

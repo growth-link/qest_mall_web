@@ -14,6 +14,8 @@
     // 絞り込みを開く
     $(document).on('click', '.open-filter', function(e){
         removeOverLay();
+        holdChecked('life_scene');
+        holdChecked('tag');
         $('.search-actions').addClass('show');
         $('#overlay_filter').addClass('show');
         $('#main_container').addClass('fixed');
@@ -84,16 +86,16 @@
 
     // LIFE SCENE追加
     $(document).on('click', '.add-life-scene', function(e){
-        // チェックされているタグのidとnameを配列で取得
-        const life_scene_ids = $('input[name="sub_categories[]"]:checked').map(function() {
+        // チェックされているライフシーンのidとnameを配列で取得
+        const life_scene_ids = $('input[name="life_scenes[]"]:checked').map(function() {
             return $(this).val();
         }).get();
 
-        const life_scene_names_str = $('input[name="sub_categories[]"]:checked').map(function() {
+        const life_scene_names_str = $('input[name="life_scenes[]"]:checked').map(function() {
             return $(this).data('life-scene-name');
         }).get().join(',');
         // 絞り込みモーダルの選択済み項目を書き換え
-        $('input[name="life_scene_id"]').val(life_scene_ids);
+        $('input[name="life_scene_ids"]').val(life_scene_ids);
         $('.seleted-life-scene').html(life_scene_names_str);
         if(life_scene_ids.length = 0){
             $('.seleted-life-scene').removeClass('selected');
@@ -159,7 +161,7 @@
             $('.seleted-tag').addClass('selected');
         }
         // 絞り込みモーダルの選択済み項目を書き換え
-        $('input[name="tag_id"]').val(tag_ids);
+        $('input[name="tag_ids"]').val(tag_ids);
         $('.seleted-tag').html(tag_names_str);
 
         removeOverLay();
@@ -171,7 +173,7 @@
         // クリア状態でタグ追加した場合またはすべてのタグが含まれている場合（必ずモーダル切り替え後に設定する）
         if($.inArray('', tag_ids) >= 0){
             // 全タグをcheckedにする
-            $('.all-tag').prop("checked", true);
+            $('.all-tag').prop('checked', true);
             reflectAllTag();
         }
     })
@@ -203,39 +205,13 @@
             $('#overlay_minor_category' + $(this).data('parent-id')).addClass('show');
         }
         if(overlay_id.match(/overlay_life_scene/)){
-            // チェック状態を保持する
-            const checked_ids = $('input[name="life_scene_id"]').val().split(',');
-            $('input[name="sub_categories[]"]').each(function(index, element) {
-                if($.inArray($(element).val(), checked_ids) >= 0){
-                    $(element).prop("checked", true);
-                }else{
-                    $(element).prop("checked", false);
-                }
-            });
+            holdChecked('life_scene');
             $('.life-scene-actions').removeClass('show');
             $('.search-actions').addClass('show');
             $('#overlay_filter').addClass('show');
         }
         if(overlay_id.match(/overlay_tag/)){
-            // チェック状態を保持する
-            const checked_ids = $('input[name="tag_id"]').val().split(',');
-
-            if($.inArray('', checked_ids) >= 0){
-                // 「すべてのタグ」にチェックがある場合
-                $('input[name="tags[]"]').each(function(index, element) {
-                    $(element).prop("checked", true);
-                });
-            }else{
-                // 「すべてのタグ」にチェックがない場合
-                $('input[name="tags[]"]').each(function(index, element) {
-                    if($.inArray($(element).val(), checked_ids) >= 0){
-                        $(element).prop("checked", true);
-                    }else{
-                        $(element).prop("checked", false);
-                    }
-                });
-            }
-
+            holdChecked('tag');
             $('.tag-actions').removeClass('show');
             $('.search-actions').addClass('show');
             $('#overlay_filter').addClass('show');
@@ -252,16 +228,17 @@
             });
             $('.seleted-category').html('すべてのカテゴリ');
             $('.seleted-category').removeClass('selected');
+            // スイッチクリア
             $('.switch_button').each(function(index, element) {
-                $(element).prop("checked", false);
+                $(element).prop('checked', false);
             });
         }
         if(button_id.match(/all-clear/) || button_id.match(/life-scene-clear/)){
             // LIFE SCENEクリア
-            $('input[name="sub_categories[]"]:checked').each(function(index, element) {
-                $(element).prop("checked", false);
+            $('input[name="life_scenes[]"]:checked').each(function(index, element) {
+                $(element).prop('checked', false);
             });
-            $('input[name="life_scene_id"]').val('');
+            $('input[name="life_scene_ids"]').val('');
             $('.seleted-life-scene').html('');
             $('.seleted-life-scene').removeClass('selected');
 
@@ -275,9 +252,9 @@
         if(button_id.match(/all-clear/) || button_id.match(/tag-clear/)){
             // タグクリア
             $('input[name="tags[]"]:checked').each(function(index, element) {
-                $(element).prop("checked", false);
+                $(element).prop('checked', false);
             });
-            $('input[name="tag_id"]').val('');
+            $('input[name="tag_ids"]').val('');
             $('.seleted-tag').html('すべてのタグ');
             $('.seleted-tag').removeClass('selected');
 
@@ -289,7 +266,7 @@
             $('#main_container').addClass('fixed');
 
             // 全タグをcheckedにする（必ずモーダル切り替え後に設定する）
-            $('.all-tag').prop("checked", true);
+            $('.all-tag').prop('checked', true);
             reflectAllTag();
         }
     })
@@ -304,10 +281,30 @@
     // 「すべてのタグ」のチェック状態を全タグに反映
     function reflectAllTag(){
         const t = $('#overlay_tag').find('input');
-        const flag = $('.all-tag').prop("checked");
+        const flag = $('.all-tag').prop('checked');
         for(let i = 0; i < t.length; i++) {
             t[i].checked = flag;
         }
     }
 
+    // チェック状態を保持する
+    function holdChecked(input_name){
+        const checked_ids = $('input[name="' + input_name + '_ids"]').val().split(',');
+
+        if(input_name == 'tag' && $.inArray('', checked_ids) >= 0){
+            // 「すべてのタグ」にチェックがある場合
+            $('input[name="' + input_name + 's[]"]').each(function(index, element) {
+                $(element).prop('checked', true);
+            });
+        }else{
+            // 「すべてのタグ」にチェックがない場合
+            $('input[name="' + input_name + 's[]"]').each(function(index, element) {
+                if($.inArray($(element).val(), checked_ids) >= 0){
+                    $(element).prop('checked', true);
+                }else{
+                    $(element).prop('checked', false);
+                }
+            });
+        }
+    }
 }
