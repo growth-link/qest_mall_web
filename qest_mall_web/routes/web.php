@@ -12,6 +12,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\FAQController;
 
 /*
 |--------------------------------------------------------------------------
@@ -176,3 +177,15 @@ Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
 // });
 
 require __DIR__ . '/admin.php';
+
+/*
+|--------------------------------------------------------------------------
+| FAQ
+|--------------------------------------------------------------------------
+*/
+
+// PC
+Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
+
+// SP
+Route::get('/sp/faq', [FAQController::class, 'spFaq'])->name('sp.faq');

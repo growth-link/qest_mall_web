@@ -254,27 +254,32 @@ a {
     display: none;
     padding: 0 40px;
 }
-.nav-open{
+.nav-open,
+.nav-open-checkbox {
 	padding: 4px 15px;
 	background-color: #F7F7F7;
     border-radius: 4px;
 	position: relative;
     margin: 4px 0;
 }
-.nav-open .ECM_CheckboxInput-DummyInput {
+.nav-open .ECM_CheckboxInput-DummyInput,
+.nav-open-checkbox .ECM_CheckboxInput-DummyInput {
     background: #FFFFFF;
 }
-.nav-open .ECM_CheckboxInput-LabelText {
+.nav-open .ECM_CheckboxInput-LabelText,
+.nav-open-checkbox .ECM_CheckboxInput-LabelText {
     color: #6C6C6C;
     font-size: 13px;
 }
-.nav-open .nav-switch{/* 閉じている時 */
+.nav-open .nav-switch-checkbox,
+.nav-open-checkbox .nav-switch-checkbox {/* 閉じている時 */
 	position: absolute;
 	right: 20px;
     top: 20px;
     content: url(/images/user/icon_arrow_down.png)!important;
     cursor: pointer;
 }
-.nav-open.active .nav-switch{/* 開いている時 */
+.nav-open.active .nav-switch-checkbox,
+.nav-open-checkbox.active .nav-switch-checkbox {/* 開いている時 */
     content: url(/images/user/icon_arrow_up.png)!important;
 }

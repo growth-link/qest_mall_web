@@ -37,6 +37,7 @@
 @endcomponent
 @endsection
 @section("script")
+    <script src="{{ asset('/js/pc/accordion.js') }}"></script>
     <script src="{{ asset('/js/pc/drop_down_menu.js') }}"></script>
     <script src="{{ asset('/js/pc/modal.js') }}"></script>
 @endsection
