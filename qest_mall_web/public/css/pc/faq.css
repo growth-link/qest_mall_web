@@ -1,0 +1,87 @@
+.content-box {
+    width: 70%;
+    margin-left: 15%;
+    padding-top: 50px;
+}
+
+.main-content {
+    padding: 0 15px;
+    width: 100%;
+}
+
+.faq-title {
+    color: #6C6C6C;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.faq-section-title {
+    color: #888888;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* アコーディオン */
+.nav-open {
+    padding: 4px 0;
+    background-color: #FFFFFF;
+    margin: 0;
+    position: static;
+    display: flex;
+    border-bottom: 1px #DDDDDD dashed;
+    cursor: pointer;
+}
+
+.faq-section-title + .nav-open {
+    border-top: 1px #DDDDDD dashed;
+}
+
+.nav-open .nav-icon {
+    position: static;
+    display: flex;
+    width: 5%;
+    justify-content: end;
+}
+
+.nav-open .nav-switch {/* 閉じている時 */
+	position: static;
+    width: 17px;
+    object-fit: contain;
+    content: url(/images/faq/icon_arrow_down.png)!important;
+}
+.nav-open.active .nav-switch {/* 開いている時 */
+    content: url(/images/faq/icon_arrow_up.png)!important;
+}
+
+.accordion-nav {
+    padding: 4px 0;
+    border-bottom: 1px #DDDDDD dashed;
+}
+
+.nav-body {
+    display: flex;
+    justify-content: left;
+}
+
+.main-content p {
+    color: #888888;
+    margin: 0;
+    line-height: 2.4em;
+}
+
+.initial {
+    width: 5%;
+}
+
+.sentence {
+    width: 90%;
+    font-size: 13px;
+}
+
+.img {
+    max-width: 460px;
+}
+
+.img:hover {
+    opacity: 1;
+}

@@ -16,12 +16,6 @@ function showModal() {
     }).modal('show');
 }
 
-// アコーディオンを開く
-$('.nav-switch').click(function(){
-    $(this).closest('.nav-open').toggleClass('active');
-    $(this).closest('.nav-open').next('nav').slideToggle();
-});
-
 // 「すべてのカテゴリ」押下時
 $(document).on('click', '.chg-grand-parent', function(){
     reflectAllCategory();

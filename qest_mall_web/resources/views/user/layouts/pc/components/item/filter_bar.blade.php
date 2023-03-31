@@ -44,13 +44,13 @@
 
                                 @foreach ($major_categories as $major_category)
                                 <div class="major-category-box">
-                                    <div class="nav-open flex-box">
+                                    <div class="nav-open-checkbox flex-box">
                                         <label class="ECM_CheckboxInput">
                                             <input class="ECM_CheckboxInput-Input chg-parent" type="checkbox" id="checkbox_major_category" name="ostensible_category_ids[]" value="{{ $major_category->id }}">
                                             <span class="ECM_CheckboxInput-DummyInput"></span>
                                             <span class="ECM_CheckboxInput-LabelText">すべての{{ $major_category->category_name }}</span>
                                         </label>
-                                        <div class="nav-switch"></div>
+                                        <div class="nav-switch-checkbox"></div>
                                     </div>
                                     <nav class="accordion-nav">
                                         <ul class="flex-box">

@@ -100,3 +100,8 @@ a {
     font-size: 13px !important;
     background-color: #FBDB5B !important;
 }
+
+/* アコーディオン */
+.accordion-nav {
+    display: none;
+}
