@@ -372,21 +372,61 @@ class ItemController extends Controller
     ///////////////////////////////////////////////
     // ショップ一覧
     public function shops() {
-        return view('user.item.pc.shops');
+        $shops = Shop::orderBy('shop_name')->get();
+        return view('user.item.pc.shops', compact('shops'));
     }
 
     public function spShops() {
-        return view('user.item.sp.shops');
+        $shops = Shop::orderBy('shop_name')->get();
+        return view('user.item.sp.shops', compact('shops'));
     }
 
     ///////////////////////////////////////////////
     // ブランド一覧
     public function brands() {
-        return view('user.item.pc.brands');
+        $indexes = range('A','Z');
+        $indexes[] = 'その他';
+        $brands = Brand::orderBy('brand_name')->get();
+
+        $brands_array = array();
+        // 各アルファベットをキーとする連想配列を作成する
+        foreach($indexes as $index){
+            if($index != 'その他'){
+                $brands_array[$index] = $brands->filter(function ($brand) use ($index) {
+                    $lower_index = strtolower($index);
+                    return str_starts_with($brand->brand_name, $index) !== false || str_starts_with($brand->brand_name, $lower_index) !== false;
+                });
+            } else {
+                $collapsed = collect($brands_array)->collapse();
+                $others = $brands->diff($collapsed); //その他を取得
+                $brands_array[$index] = $others;
+            }
+        }
+
+        return view('user.item.pc.brands', compact('brands_array'));
     }
 
     public function spBrands() {
-        return view('user.item.sp.brands');
+        $indexes = range('A','Z');
+        $indexes[] = 'その他';
+        $brands = Brand::orderBy('brand_name')->get();
+
+        $brands_array = array();
+        // 各アルファベットをキーとする連想配列を作成する
+        foreach($indexes as $index){
+            if($index != 'その他'){
+                $brands_array[$index] = $brands->filter(function ($brand) use ($index) {
+                    $lower_index = strtolower($index);
+                    return str_starts_with($brand->brand_name, $index) !== false || str_starts_with($brand->brand_name, $lower_index) !== false;
+                });
+            } else {
+                $collapsed = collect($brands_array)->collapse();
+                $others = $brands->diff($collapsed); //その他を取得
+                $brands_array[$index] = $others;
+            }
+        }
+
+        return view('user.item.sp.brands', compact('brands_array'));
     }
 
     ///////////////////////////////////////////////
@@ -410,7 +450,7 @@ class ItemController extends Controller
                 ->where('brand_name', $keyword)
                 ->first();
             if(isset($brand)){
-                // 商品一覧(ショップ)にリダイレクト
+                // 商品一覧(ブランド)にリダイレクト
                 return redirect()->route('brand',$brand);
             }
 
@@ -430,7 +470,196 @@ class ItemController extends Controller
         return view('user.item.pc.item_keyword')->with([
             'items' => $items,
             'sort' => null,
-            'keyword' => 'ショップ・ブランド検索：'.$keyword,
+            'keyword' => $keyword,
+            'category_ids' => null,
+            'life_scene_ids' => null,
+            'tag_ids' => null,
+            'start_price' => null,
+            'end_price' => null,
+            'is_postage_free' => null,
+            'is_coupon' => null,
+            'including_out_of_stock' => null,
+            'exclude_keyword' => null,
+            'major_categories' => $major_categories,
+            'sub_categories' => $sub_categories,
+            'tags' => $tags,
+        ]);
+    }
+
+    ///////////////////////////////////////////////
+    // ショップ検索
+    public function shopSearch(Request $request) {
+        $items = collect();
+        $keyword = $request->shop_name;
+
+        if(isset($keyword)){
+            // 完全一致するショップがあるか
+            $shop = Shop::query()
+                ->where('shop_name', $keyword)
+                ->first();
+            if(isset($shop)){
+                // 商品一覧(ショップ)にリダイレクト
+                return redirect()->route('shop',$shop);
+            }
+
+            // ショップ名で部分一致検索
+            $items = Item::query()
+                ->select('items.*')
+                ->searchShopPartialMatch($keyword)
+                ->latest()
+                ->paginate(60);
+        }
+
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
+
+        //商品一覧(キーワード検索)に遷移
+        return view('user.item.pc.item_keyword')->with([
+            'items' => $items,
+            'sort' => null,
+            'keyword' => $keyword,
+            'category_ids' => null,
+            'life_scene_ids' => null,
+            'tag_ids' => null,
+            'start_price' => null,
+            'end_price' => null,
+            'is_postage_free' => null,
+            'is_coupon' => null,
+            'including_out_of_stock' => null,
+            'exclude_keyword' => null,
+            'major_categories' => $major_categories,
+            'sub_categories' => $sub_categories,
+            'tags' => $tags,
+        ]);
+    }
+
+    public function spShopSearch(Request $request) {
+        $items = collect();
+        $keyword = $request->shop_name;
+
+        if(isset($keyword)){
+            // 完全一致するショップがあるか
+            $shop = Shop::query()
+                ->where('shop_name', $keyword)
+                ->first();
+            if(isset($shop)){
+                // 商品一覧(ショップ)にリダイレクト
+                return redirect()->route('sp.shop',$shop);
+            }
+
+            // ショップ名で部分一致検索
+            $items = Item::query()
+                ->select('items.*')
+                ->searchShopPartialMatch($keyword)
+                ->latest()
+                ->paginate(60);
+        }
+
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
+
+        //商品一覧(キーワード検索)に遷移
+        return view('user.item.sp.item_keyword')->with([
+            'items' => $items,
+            'sort' => null,
+            'keyword' => $keyword,
+            'category' => null,
+            'category_ids' => null,
+            'life_scene_ids' => null,
+            'tag_ids' => null,
+            'start_price' => null,
+            'end_price' => null,
+            'is_postage_free' => null,
+            'is_coupon' => null,
+            'including_out_of_stock' => null,
+            'exclude_keyword' => null,
+            'major_categories' => $major_categories,
+            'sub_categories' => $sub_categories,
+            'tags' => $tags,
+        ]);
+    }
+
+    ///////////////////////////////////////////////
+    // ブランド検索
+    public function brandSearch(Request $request) {
+        $items = collect();
+        $keyword = $request->brand_name;
+
+        if(isset($keyword)){
+            // 完全一致するブランドがあるか
+            $brand = Brand::query()
+                ->where('brand_name', $keyword)
+                ->first();
+            if(isset($brand)){
+                // 商品一覧(ブランド)にリダイレクト
+                return redirect()->route('brand',$brand);
+            }
+
+            // ブランド名で部分一致検索
+            $items = Item::query()
+                ->select('items.*')
+                ->searchBrandPartialMatch($keyword)
+                ->latest()
+                ->paginate(60);
+        }
+
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
+
+        //商品一覧(キーワード検索)に遷移
+        return view('user.item.pc.item_keyword')->with([
+            'items' => $items,
+            'sort' => null,
+            'keyword' => $keyword,
+            'category_ids' => null,
+            'life_scene_ids' => null,
+            'tag_ids' => null,
+            'start_price' => null,
+            'end_price' => null,
+            'is_postage_free' => null,
+            'is_coupon' => null,
+            'including_out_of_stock' => null,
+            'exclude_keyword' => null,
+            'major_categories' => $major_categories,
+            'sub_categories' => $sub_categories,
+            'tags' => $tags,
+        ]);
+    }
+
+    public function spBrandSearch(Request $request) {
+        $items = collect();
+        $keyword = $request->brand_name;
+
+        if(isset($keyword)){
+            // 完全一致するブランドがあるか
+            $brand = Brand::query()
+                ->where('brand_name', $keyword)
+                ->first();
+            if(isset($brand)){
+                // 商品一覧(ブランド)にリダイレクト
+                return redirect()->route('sp.brand',$brand);
+            }
+
+            // ブランド名で部分一致検索
+            $items = Item::query()
+                ->select('items.*')
+                ->searchBrandPartialMatch($keyword)
+                ->latest()
+                ->paginate(60);
+        }
+
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
+
+        //商品一覧(キーワード検索)に遷移
+        return view('user.item.sp.item_keyword')->with([
+            'items' => $items,
+            'sort' => null,
+            'keyword' => $keyword,
             'category_ids' => null,
             'life_scene_ids' => null,
             'tag_ids' => null,

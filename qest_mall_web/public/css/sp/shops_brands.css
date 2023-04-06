@@ -1,0 +1,141 @@
+.content-box a {
+    color: #888888;
+}
+
+.content-box a:hover {
+    color: #333;
+}
+
+/* 検索フォーム */
+#main_container .search-container {
+    margin-top: 40px;
+}
+#main_container .search-container-form {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
+#main_container .search-container input[type="text"] {
+    border: solid #707070 1px;
+    width: 260px;
+    border-radius: 3px 0 0 3px !important;
+    padding: 2px 4px !important;
+}
+#main_container .search-container input[type="text"]:focus {
+    outline: 0;
+}
+#main_container .search-container input[type="text"]::placeholder {
+    font-size: 14px;
+}
+#main_container .search-container button {
+    width: 76px;
+    border: solid #707070 1px;
+    border-radius: 0 3px 3px 0;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: #707070;
+}
+
+/* メインコンテンツ */
+.section-title {
+    color: #6C6C6C;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size:16px;
+}
+
+.main-content {
+    padding: 0;
+    width: 100%;
+    margin-bottom: 240px;
+}
+
+/* ショップ */
+.shop-list {
+    margin: 40px 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 0;
+}
+
+.shop-box {
+    width: 100%;
+    display: flex;
+    gap: 0 10px;
+}
+
+.shop-box:hover {
+    opacity: .8;
+}
+
+.shop-box img {
+    width: 80px;
+    height: 80px;
+}
+
+.shop-text {
+    color: #333333;
+    height: 100px;
+}
+
+.shop-name{
+    font-weight: bold;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.shop-text .shop-introduction{
+    font-size: 11px;
+    height: 6.4em;
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+/* ブランド */
+.index-container {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    padding: 0 10%;
+    margin: 40px 0;
+    text-align: center;
+    font-size: 12px;
+    gap: 20px 10px;
+}
+
+.index {
+    width: calc((100% - 60px) / 7);
+}
+
+.index:last-child {
+    white-space: nowrap;
+}
+
+.index-name {
+    color: #6C6C6C;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px 15px 4px;
+}
+
+.index-box {
+    font-size: 12px;
+    min-height: 40px;
+    padding: 10px 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    white-space: nowrap;
+}
+
+.brand-box {
+    width: 100%;
+    line-height: 2.4em;
+}
+
+.img:hover {
+    opacity: 1;
+}
+

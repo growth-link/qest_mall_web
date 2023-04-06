@@ -42,28 +42,28 @@
             @include('user.layouts.pc.components.item.life_scene')
 
             @if($items->isNotEmpty())
-            {{-- 人気商品ランキング --}}
-            <section class="main-content-box rank-item">
-                <h2 class="section-title">{{ $sub_category->sub_category_name }}の人気商品ランキング</h2>
-                @include('user.layouts.pc.components.item.rank_items')
-            </section>
+                {{-- 人気商品ランキング --}}
+                <section class="main-content-box rank-item">
+                    <h2 class="section-title">{{ $sub_category->sub_category_name }}の人気商品ランキング</h2>
+                    @include('user.layouts.pc.components.item.rank_items')
+                </section>
 
-            {{-- 商品一覧 --}}
-            <section class="main-content-box latest-item">
-                <div class="section-title-box">
-                    <h2 class="section-title fit-content">
-                        {{ $sub_category->sub_category_name }}の商品一覧
-                    </h2>
-                    @include('user.layouts.pc.components.item.filter_bar')
-                </div>
-                <div class="item-container">
-                    @include('user.layouts.pc.components.item.items')
-                    {{ $items->appends(request()->query())->links() }}
-                </div>
-            </section>
-        @else
-            <p>ご指定の検索条件に該当する商品はみつかりませんでした</p>
-        @endif
+                {{-- 商品一覧 --}}
+                <section class="main-content-box latest-item">
+                    <div class="section-title-box">
+                        <h2 class="section-title fit-content">
+                            {{ $sub_category->sub_category_name }}の商品一覧
+                        </h2>
+                        @include('user.layouts.pc.components.item.filter_bar')
+                    </div>
+                    <div class="item-container">
+                        @include('user.layouts.pc.components.item.items')
+                        {{ $items->appends(request()->query())->links() }}
+                    </div>
+                </section>
+            @else
+                <p>ご指定の検索条件に該当する商品はみつかりませんでした</p>
+            @endif
         </div>
     </div>
 </div>

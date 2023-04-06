@@ -195,13 +195,13 @@
                     <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
                 </div>
             </li>
-            <li onclick="location.href='#'">
+            <li onclick="location.href='{{ route('sp.shops') }}'">
                 <p>ショップ一覧</p>
                 <div class="next-page">
                     <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
                 </div>
             </li>
-            <li onclick="location.href='#'">
+            <li onclick="location.href='{{ route('sp.brands') }}'">
                 <p>ブランド一覧</p>
                 <div class="next-page">
                     <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">
