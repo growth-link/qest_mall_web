@@ -193,7 +193,7 @@ class Item extends Model
 
             if($condition == 'LIKE'){
                 $query->leftJoin('shops','items.shop_id','=','shops.id')
-                ->leftJoin('brands','items.brand_id','=','brands.id');
+                    ->leftJoin('brands','items.brand_id','=','brands.id');
 
                 $columns = ['shop_name','brand_name','name','detail_title','detail']; //検索項目
 
@@ -365,9 +365,27 @@ class Item extends Model
     public function scopeSearchBrandShopPartialMatch($query, $keyword){
         if(isset($keyword)){
             $query->leftJoin('shops','items.shop_id','=','shops.id')
-            ->leftJoin('brands','items.brand_id','=','brands.id')
-            ->orWhere('shop_name','LIKE','%'.$keyword.'%')
-            ->orWhere('brand_name','LIKE','%'.$keyword.'%');
+                ->leftJoin('brands','items.brand_id','=','brands.id')
+                ->orWhere('shop_name','LIKE','%'.$keyword.'%')
+                ->orWhere('brand_name','LIKE','%'.$keyword.'%');
+        }
+        return $query;
+    }
+
+    // ショップ検索（部分一致）
+    public function scopeSearchShopPartialMatch($query, $keyword){
+        if(isset($keyword)){
+            $query->leftJoin('shops','items.shop_id','=','shops.id')
+                ->orWhere('shop_name','LIKE','%'.$keyword.'%');
+        }
+        return $query;
+    }
+
+    // ブランド検索（部分一致）
+    public function scopeSearchBrandPartialMatch($query, $keyword){
+        if(isset($keyword)){
+            $query->leftJoin('brands','items.brand_id','=','brands.id')
+                ->Where('brand_name','LIKE','%'.$keyword.'%');
         }
         return $query;
     }

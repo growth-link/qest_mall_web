@@ -82,6 +82,8 @@ Route::get('/sp/register/confirm', [LoginController::class, 'spRegisterConfirm']
 */
 
 Route::get('/shop-brand-name', [AjaxController::class, 'shopBrandName'])->name('shop_brand_name'); // ショップ・ブランド名一覧取得
+Route::get('/shop-name', [AjaxController::class, 'shopName'])->name('shop_name'); // ショップ名一覧取得
+Route::get('/brand-name', [AjaxController::class, 'brandName'])->name('brand_name'); // ブランド名一覧取得
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +116,8 @@ Route::get('/items/detail/{item}', [ItemController::class, 'itemDetail'])->name(
 Route::get('/shops', [ItemController::class, 'shops'])->name('shops'); // ショップ一覧
 Route::get('/brands', [ItemController::class, 'brands'])->name('brands'); // ブランド一覧
 Route::get('/shop-brand-search', [ItemController::class, 'shopBrandSearch'])->name('shop_brand_search'); // ショップ・ブランド検索
+Route::get('/shop-search', [ItemController::class, 'shopSearch'])->name('shop_search'); // ショップ検索
+Route::get('/brand-search', [ItemController::class, 'brandSearch'])->name('brand_search'); // ブランド検索
 
 // sp
 Route::get('/sp/categories', [ItemController::class, 'spCategories'])->name('sp.categories'); // カテゴリ一覧
@@ -125,6 +129,8 @@ Route::get('/sp/items/shop/{shop}', [ItemController::class, 'spShop'])->name('sp
 Route::get('/sp/items/detail/{item}', [ItemController::class, 'spItemDetail'])->name('sp.items_detail'); // 商品詳細
 Route::get('/sp/shops', [ItemController::class, 'spShops'])->name('sp.shops'); // ショップ一覧
 Route::get('/sp/brands', [ItemController::class, 'spBrands'])->name('sp.brands'); // ブランド一覧
+Route::get('/sp/shop-search', [ItemController::class, 'spShopSearch'])->name('sp.shop_search'); // ショップ検索
+Route::get('/sp/brand-search', [ItemController::class, 'spBrandSearch'])->name('sp.brand_search'); // ブランド検索
 
 /*
 |--------------------------------------------------------------------------

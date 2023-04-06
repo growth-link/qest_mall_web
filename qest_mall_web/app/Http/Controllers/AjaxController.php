@@ -19,4 +19,24 @@ class AjaxController extends Controller
         $name_list['brand'] = Brand::select('brand_name')->get();
         return response()->json($name_list);
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | ショップ一覧取得
+    |--------------------------------------------------------------------------
+    */
+    public function shopName() {
+        $name_list['shop'] = Shop::select('shop_name')->get();
+        return response()->json($name_list);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | ブランド一覧取得
+    |--------------------------------------------------------------------------
+    */
+    public function brandName() {
+        $name_list['brand'] = Brand::select('brand_name')->get();
+        return response()->json($name_list);
+    }
 }
