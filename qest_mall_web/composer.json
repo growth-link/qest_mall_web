@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1.9",
         "diglactic/laravel-breadcrumbs": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "kreait/firebase-php": "^6.9",
@@ -53,7 +53,8 @@
         "gcp-build": [
             "npm install",
             "npm run dev",
-            "composer install --dev",
+            "composer install --dev --ignore-platform-req=ext-sodium",
+            "composer update",
             "php artisan config:clear",
             "php artisan cache:clear",
             "php artisan config:cache",
