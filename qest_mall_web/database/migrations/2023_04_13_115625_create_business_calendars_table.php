@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prefectures', function (Blueprint $table) {
+        Schema::create('business_calendars', function (Blueprint $table) {
             $table->comment('');
-            $table->increments('id');
-            $table->string('prefecture_name', 20)->nullable();
+            $table->increments('shop_id');
+            $table->string('business_hours')->nullable();
+            $table->string('basic_holiday')->nullable();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prefectures');
+        Schema::dropIfExists('business_calendars');
     }
 };

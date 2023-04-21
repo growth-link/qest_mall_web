@@ -1,6 +1,14 @@
 'use strict';
 
 {
+    // 検索を開く
+    $(document).on('click', '.open-search', function(e){
+        removeOverLay();
+        $('.search-actions').addClass('show');
+        $('#overlay_filter').addClass('show');
+        $('#main_container').addClass('fixed');
+    })
+
     // もっとみるを開く
     $(document).on('click', '.open-see-more', function(e){
         removeOverLay();
@@ -8,6 +16,26 @@
         $('.life-scene-actions').removeClass('show');
         $('.tag-actions').removeClass('show');
         $('#overlay_see_more').addClass('show');
+        $('#main_container').addClass('fixed');
+    })
+
+    // マイメニューのハンバーガーメニューを開く
+    $(document).on('click', '.open-my-menu-hamburger', function(e){
+        removeOverLay();
+        $('.search-actions').removeClass('show');
+        $('.life-scene-actions').removeClass('show');
+        $('.tag-actions').removeClass('show');
+        $('#overlay_my_menu_hamburger').addClass('show');
+        $('#main_container').addClass('fixed');
+    })
+
+    // 退会手続きを開く
+    $(document).on('click', '.open-quit', function(e){
+        removeOverLay();
+        $('.search-actions').removeClass('show');
+        $('.life-scene-actions').removeClass('show');
+        $('.tag-actions').removeClass('show');
+        $('#overlay_quit').addClass('show');
         $('#main_container').addClass('fixed');
     })
 
@@ -180,6 +208,15 @@
 
     // モーダルを閉じる
     $(document).on('click', '.close', function(e){
+        removeOverLay();
+        $('.search-actions').removeClass('show');
+        $('.life-scene-actions').removeClass('show');
+        $('.tag-actions').removeClass('show');
+        $('#main_container').removeClass('fixed');
+    })
+
+    // キャンセルボタン押下時
+    $(document).on('click', '.deny_btn', function(e){
         removeOverLay();
         $('.search-actions').removeClass('show');
         $('.life-scene-actions').removeClass('show');

@@ -33,7 +33,7 @@
         <img src="/images/user/icon_home.png">
         <p>ホーム</p>
     </div>
-    <div class="menu-box" onclick="location.href='#'">
+    <div class="menu-box open-search">
         <img src="/images/user/icon_search_sp.png">
         <p>検索</p>
     </div>
@@ -54,3 +54,8 @@
         <p>もっとみる</p>
     </div>
 </nav>
+
+<form class="filter-bar" action={{ route('sp.item_keyword') }} method="get">
+    <!-- 絞り込み -->
+    @include('user.layouts.sp.components.item.overlay_filter')
+</form>

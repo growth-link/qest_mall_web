@@ -13,6 +13,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\MyMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,12 +152,14 @@ Route::get('/sp/coupons/{coupon}', [CouponController::class, 'spCoupons'])->name
 */
 
 // pc
-Route::get('/shop-info', [ShopController::class, 'shopInfo'])->name('shop_info');
-Route::get('/delivery-and-postage', [ShopController::class, 'deliveryAndPostage'])->name('delivery_and_postage');
+Route::get('/shop-info/{shop}', [ShopController::class, 'shopInfo'])->name('shop_info');
+Route::get('/delivery-and-postage/{shop}', [ShopController::class, 'deliveryAndPostage'])->name('delivery_and_postage');
+Route::get('/contract', [ShopController::class, 'contract'])->name('contract');
 
 // sp
-Route::get('/sp/shop-info', [ShopController::class, 'spShopInfo'])->name('sp.shop_info');
-Route::get('/sp/delivery-and-postage', [ShopController::class, 'spDeliveryAndPostage'])->name('sp.delivery_and_postage');
+Route::get('/sp/shop-info/{shop}', [ShopController::class, 'spShopInfo'])->name('sp.shop_info');
+Route::get('/sp/delivery-and-postage/{shop}', [ShopController::class, 'spDeliveryAndPostage'])->name('sp.delivery_and_postage');
+Route::get('/sp/contract', [ShopController::class, 'spContract'])->name('sp.contract');
 
 /*
 |--------------------------------------------------------------------------
@@ -195,3 +198,19 @@ Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
 
 // SP
 Route::get('/sp/faq', [FAQController::class, 'spFaq'])->name('sp.faq');
+
+/*
+|--------------------------------------------------------------------------
+| マイメニュー
+|--------------------------------------------------------------------------
+*/
+
+// PC
+Route::get('/mypage/user-info', [MyMenuController::class, 'userInfo'])->name('user_info');
+Route::post('/mypage/quit', [MyMenuController::class, 'quit'])->name('quit');
+Route::get('/mypage/quit/done', [MyMenuController::class, 'quitDone'])->name('quit_done');
+
+// SP
+Route::get('/sp/mypage/user-info', [MyMenuController::class, 'spUserInfo'])->name('sp.user_info');
+Route::post('/sp/mypage/quit', [MyMenuController::class, 'spQuit'])->name('sp.quit');
+Route::get('/sp/mypage/quit/done', [MyMenuController::class, 'spQuitDone'])->name('sp.quit_done');

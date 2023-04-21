@@ -1,0 +1,32 @@
+.page-title {
+    color: #6C6C6C;
+    font-size: 14px;
+    margin: 0 15px 40px;
+    padding-top: 20px;
+}
+.item-title {
+    color: #6C6C6C;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+.item-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px 40px;
+}
+.item-content p {
+    color: #6C6C6C;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 2em;
+}
+.item-content img {
+    width: 40px;
+    object-fit: contain;
+}
+.add-addressee {
+    margin: 0 auto 40px;
+}
+
+

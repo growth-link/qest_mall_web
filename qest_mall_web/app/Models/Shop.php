@@ -19,12 +19,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $shop_name_kana
  * @property string|null $shop_tt_code
  * @property int|null $visibility_status
+ * @property string|null $distributor
  * @property string|null $officer_name
  * @property string|null $officer_name_kana
  * @property int $is_same_officer
  * @property string|null $personal_info_officer_name
  * @property string|null $personal_info_officer_name_kana
- * @property int|null $tel
+ * @property string|null $tel
  * @property string|null $mail
  * @property int|null $zip_code
  * @property int|null $prefecture_id
@@ -41,7 +42,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $deleted_at
  * 
  * @property Image|null $image
+ * @property Prefecture|null $prefecture
+ * @property BusinessCalendar $business_calendar
  * @property Collection|Item[] $items
+ * @property Collection|ShopDeliveryArea[] $shop_delivery_areas
+ * @property Collection|ShopDeliveryCharge[] $shop_delivery_charges
+ * @property SpecifiedCommercialTransaction $specified_commercial_transaction
  *
  * @package App\Models
  */
@@ -53,7 +59,6 @@ class Shop extends Model
 	protected $casts = [
 		'visibility_status' => 'int',
 		'is_same_officer' => 'int',
-		'tel' => 'int',
 		'zip_code' => 'int',
 		'prefecture_id' => 'int',
 		'industry_id' => 'int',
@@ -65,6 +70,7 @@ class Shop extends Model
 		'shop_name_kana',
 		'shop_tt_code',
 		'visibility_status',
+		'distributor',
 		'officer_name',
 		'officer_name_kana',
 		'is_same_officer',
@@ -89,8 +95,33 @@ class Shop extends Model
 		return $this->belongsTo(Image::class);
 	}
 
+	public function prefecture()
+	{
+		return $this->belongsTo(Prefecture::class);
+	}
+
+	public function business_calendar()
+	{
+		return $this->hasOne(BusinessCalendar::class);
+	}
+
 	public function items()
 	{
 		return $this->hasMany(Item::class);
+	}
+
+	public function shop_delivery_areas()
+	{
+		return $this->hasMany(ShopDeliveryArea::class);
+	}
+
+	public function shop_delivery_charges()
+	{
+		return $this->hasMany(ShopDeliveryCharge::class);
+	}
+
+	public function specified_commercial_transaction()
+	{
+		return $this->hasOne(SpecifiedCommercialTransaction::class);
 	}
 }

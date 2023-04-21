@@ -1,0 +1,16 @@
+/* メインコンテンツ */
+.main-content {
+    padding: 10px;
+    width: 70%;
+}
+.page-title {
+    color: #333333;
+    font-size: 16px;
+    margin-left: 0;
+}
+.main-content-box {
+    border: 1px solid #EBEBEB;
+    border-radius: 5px;
+    height: 800px;
+    margin-bottom: 40px;
+}

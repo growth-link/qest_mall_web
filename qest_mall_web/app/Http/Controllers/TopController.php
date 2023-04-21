@@ -11,6 +11,7 @@ use App\Models\Shop;
 use App\Models\Item;
 use App\Models\Coupon;
 use App\Models\Ad;
+use App\Models\Tag;
 
 class TopController extends Controller
 {
@@ -107,7 +108,9 @@ class TopController extends Controller
         $ads = [];
         $ads[AdTypeConst::MOBILE] = Ad::where('ad_type', AdTypeConst::MOBILE)->inRandomOrder()->first();
 
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
         $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
 
         return view('user.top.sp.top',compact(
             'recommend_items',
@@ -120,7 +123,9 @@ class TopController extends Controller
             'items',
             'coupons',
             'ads',
+            'major_categories',
             'sub_categories',
+            'tags'
         ));
     }
 }

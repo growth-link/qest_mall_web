@@ -1,17 +1,4 @@
 /*========= ナビゲーションドロップダウンのためのCSS ===============*/
-
-/*ナビゲーション全体の設定*/
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-}
-
-/*下の階層のulや矢印の基点にするためliにrelativeを指定*/
-nav ul li {
-    position: relative;
-}
-
 /*ナビゲーションのタイトル設定*/
 .category-title {
     display: block;

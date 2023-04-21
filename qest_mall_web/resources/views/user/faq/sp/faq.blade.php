@@ -2,7 +2,6 @@
 @section('content')
 @component('user.layouts.sp.header')
 @endcomponent
-<link rel="stylesheet" href="{{ asset('css/sp/mall_top.css') }}">
 <link rel="stylesheet" href="{{ asset('css/sp/faq.css') }}">
 @component('user.layouts.sp.see_more')
 @endcomponent
@@ -41,8 +40,7 @@
     </div>
     @component('user.layouts.sp.footer')
     @endcomponent
-    @component('user.layouts.sp.menu')
-    @endcomponent
+    @include('user.layouts.sp.menu')
 </div>
 @endsection
 @section("script")

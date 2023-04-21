@@ -35,10 +35,8 @@
     </div>
     @component('user.layouts.sp.footer')
     @endcomponent
-    @component('user.layouts.sp.menu')
-    @endcomponent
+    @include('user.layouts.sp.menu')
 </div>
 @endsection
 @section("script")
-    <script src="{{ asset('js/sp/hamburger_menu.js') }}"></script>
 @endsection

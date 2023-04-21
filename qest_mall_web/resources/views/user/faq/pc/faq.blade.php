@@ -24,10 +24,10 @@
                         <div class="nav-body">
                             <p class="initial">A.</p>
                             <p class="sentence">{!! nl2br(e($sentence['answer'])) !!}</p>
-                            @if (($sentence['image']))
+                            @if ($sentence['image'])
                                 <input type="hidden" name="image" value="{{ $sentence['image'] }}">
                             @endif
-                            @if (($sentence['link']))
+                            @if ($sentence['link'])
                                 <input type="hidden" name="link" value="{{ $sentence['link'] }}">
                             @endif
                         </div>

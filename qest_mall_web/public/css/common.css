@@ -12,15 +12,11 @@ form {
     padding-top: 50px;
 }
 
-.page-title-box {
-
-}
-
 .page-title {
     color: #555555;
     font-weight: bold;
     margin-left: 30px;
-    font-size:18px;
+    font-size: 18px;
 }
 
 .primary_btn {
@@ -33,22 +29,22 @@ form {
 }
 
 .primary_btn_radius {
-    padding: 10px 30px;
-    border: 0px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #FBDB5B;
+    padding: 10px 30px !important;
+    border: 0px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    background-color: #FBDB5B !important;
 }
 
 .secondary_btn_radius {
-    color: #6C6C6C;
-    padding: 10px 30px;
-    border: 0px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #EFEFEF;
+    color: #6C6C6C !important;
+    padding: 10px 30px !important;
+    border: 0px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    background-color: #EFEFEF !important;
 }
 
 .text {
@@ -314,3 +310,51 @@ input:checked + .radio-label::before {
    padding: 0;
 }
 
+/* -------------------------------------------- */
+/* モーダルコンポーネント */
+.ui.modal.modal-component {
+    width: 400px;
+    color: #333333;
+}
+.ui.modal.modal-component > .close {
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    top: 2rem;
+    right: 2rem;
+}
+.ui.modal.modal-component > .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    min-height: 400px;
+}
+.ui.modal.modal-component > .content * {
+    width: 100%;
+}
+.ui.modal.modal-component .modal-title {
+    font-size: 16px;
+    padding: 30px 40px;
+}
+.ui.modal.modal-component .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 40px 30px;
+}
+.ui.modal.modal-component form {
+    width: 100% !important;
+}
+.ui.modal.modal-component .primary_btn_radius,
+.ui.modal.modal-component .secondary_btn_radius {
+    width: 100% !important;
+}
+.ui.modal.modal-component .ui.button {
+    color: #333333 !important;
+    margin: 0 !important;
+    height: 40px;
+}

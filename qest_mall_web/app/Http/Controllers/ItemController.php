@@ -22,7 +22,13 @@ class ItemController extends Controller
 
     public function spCategories() {
         $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
-        return view('user.item.sp.categories',compact('major_categories'));
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $tags = Tag::all(); // タグ取得
+        return view('user.item.sp.categories',compact(
+            'major_categories',
+            'sub_categories',
+            'tags',
+        ));
     }
 
     ///////////////////////////////////////////////
@@ -378,7 +384,13 @@ class ItemController extends Controller
 
     public function spShops() {
         $shops = Shop::orderBy('shop_name')->get();
-        return view('user.item.sp.shops', compact('shops'));
+
+        return view('user.item.sp.shops', compact(
+            'shops',
+            'major_categories',
+            'sub_categories',
+            'tags',
+        ));
     }
 
     ///////////////////////////////////////////////
@@ -426,7 +438,12 @@ class ItemController extends Controller
             }
         }
 
-        return view('user.item.sp.brands', compact('brands_array'));
+        return view('user.item.sp.brands', compact(
+            'brands_array',
+            'major_categories',
+            'sub_categories',
+            'tags',
+        ));
     }
 
     ///////////////////////////////////////////////
