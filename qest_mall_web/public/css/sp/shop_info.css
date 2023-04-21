@@ -1,0 +1,110 @@
+.main-content a {
+    color: #365EE3;
+    font-weight: bold;
+}
+.main-content a:hover {
+    color: #1d54a7;
+}
+
+.part-title {
+    color: #555555;
+    font-weight: bold;
+    margin: 15px;
+    font-size: 14px;
+}
+
+.section-title {
+    color: #555555;
+    margin: 15px;
+    font-size: 13px;
+}
+
+.main-content {
+    min-height: 400px;
+}
+
+.main-content p {
+    color: #707070;
+    font-size: 11px;
+    margin: 15px;
+}
+
+.main-content section {
+    margin-bottom: 80px;
+}
+
+/* 営業カレンダー */
+.business-calendar {
+    color: #555555;
+    margin: 15px;
+}
+.business-calendar td {
+    padding-bottom: 20px;
+}
+.td-title {
+    width: 160px;
+    font-weight: bold;
+}
+.td-body {
+    font-size: 11px;
+    width: 300px;
+}
+
+/* 配送表 */
+.scroll-box {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    margin-left: 15px;
+    margin-bottom: 80px;
+}
+/*スクロールバー全体の高さ*/
+.scroll-box::-webkit-scrollbar {
+    height: 4px;
+}
+/*スクロールバー全体の背景*/
+.scroll-box::-webkit-scrollbar-track {
+    background: #eee;
+}
+/*スクロールバーの動く部分*/
+.scroll-box::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border: none;
+}
+/*スクロールバーの動く部分のホバー（マウスオーバー）*/
+.scroll-box::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+.shipping-table {
+    font-size: 11px;
+    white-space: nowrap;
+    table-layout: fixed;
+    width: 100%;
+    min-width: 950px;
+}
+.shipping-table thead {
+    color: #000000;
+    font-weight: bold;
+    background-color: #F5F5F5;
+}
+.shipping-table th {
+    border-right: 1px solid #C7C7C7;
+    padding: 10px 0;
+}
+.shipping-table th:last-child {
+    border-right: none;
+}
+.shipping-table tbody {
+    color: #555555;
+    font-weight: bold;
+    text-align: center;
+}
+.shipping-table tr {
+    border-left: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+}
+.shipping-table td {
+    border-left: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+}

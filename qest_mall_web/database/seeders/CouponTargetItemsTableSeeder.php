@@ -25,7 +25,7 @@ class CouponTargetItemsTableSeeder extends Seeder
                 'item_id' => 1,
                 'created_at' => '2023-03-15 16:53:15',
                 'updaated_at' => '2023-03-15 16:53:15',
-                'deleted_at' => NULL,
+                'deleted_at' => '2023-03-15 16:53:15',
             ),
         ));
         

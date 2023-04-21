@@ -3,6 +3,52 @@
 @endcomponent
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<style>
+/*ベース*/
+.toggle {
+	display: none;
+}
+.Label {		/*タイトル*/
+	padding: 1em;
+	display: block;
+	color: #fff;
+	background:#019ac6;
+}
+.Label::before{		/*タイトル横の矢印*/
+	content:"";
+	width: 6px;
+	height: 6px;
+	border-top: 2px solid #fff;
+	border-right: 2px solid #fff;
+	-webkit-transform: rotate(45deg);
+	position: absolute;
+	top:calc( 50% - 3px );
+	right: 20px;
+	transform: rotate(135deg);
+}
+.Label,
+.content {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	transform: translateZ(0);
+	transition: all 0.3s;
+}
+.content {		/*本文*/
+	height: 0;
+	margin-bottom:10px;
+	padding:0 20px;
+	overflow: hidden;
+}
+.toggle:checked + .Label + .content {	/*開閉時*/
+	height: auto;
+	padding:20px ;
+	transition: all .3s;
+}
+.toggle:checked + .Label::before {
+	transform: rotate(-45deg) !important;
+}
+</style>
+
 <select name="skills" multiple="" class="ui fluid dropdown">
     <option value="">Skills</option>
     <option value="angular">Angular</option>
@@ -157,6 +203,28 @@
         <li class="cls1">＞</li>
     </ul>
 </div>
+
+<!-- cssのみで作るアコーディオン -->
+<section class="accordion">
+    <input id="block-01" type="checkbox" class="toggle">
+    <label class="Label" for="block-01">不思議の国のアリス</label>
+    <div class="content">
+        <p>【不思議の国のアリスの内容が表示します。】<br>
+        アリスは川辺でおねえさんのよこにすわって、なんにもすることがないのでとても退屈（たいくつ）しはじめていました。一、二回はおねえさんの読んでいる本をのぞいてみたけれど、そこには絵も会話もないのです。「絵や会話のない本なんて、なんの役にもたたないじゃないの」とアリスは思いました。</p>
+    </div>
+    <input id="block-02" type="checkbox" class="toggle">
+    <label class="Label" for="block-02">坊ちゃん</label>
+    <div class="content">
+        <p>【坊ちゃんの内容が表示します。】<br>
+        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰を抜かす奴があるかと云ったから、この次は抜かさずに飛んで見せますと答えた。（青空文庫より）</p>
+    </div>
+    <input id="block-03" type="checkbox" class="toggle">
+    <label class="Label" for="block-03">徒然草</label>
+    <div class="content">
+        <p>【徒然草の内容が表示します。】<br>
+        つれづれなるまゝに、日暮らし、硯にむかひて、心にうつりゆくよしなし事を、そこはかとなく書きつくれば、あやしうこそものぐるほしけれ。（Wikipediaより）</p>
+    </div>
+</section>
 
 
 @endsection

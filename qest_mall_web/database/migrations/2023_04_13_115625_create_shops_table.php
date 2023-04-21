@@ -20,15 +20,16 @@ return new class extends Migration
             $table->string('shop_name_kana', 100)->nullable();
             $table->string('shop_tt_code', 10)->nullable();
             $table->integer('visibility_status')->nullable();
+            $table->string('distributor', 100)->nullable();
             $table->string('officer_name', 40)->nullable();
             $table->string('officer_name_kana', 40)->nullable();
             $table->tinyInteger('is_same_officer')->default(0);
             $table->string('personal_info_officer_name', 40)->nullable();
             $table->string('personal_info_officer_name_kana', 40)->nullable();
-            $table->unsignedInteger('tel')->nullable();
+            $table->string('tel', 15)->nullable();
             $table->string('mail', 50)->nullable();
             $table->unsignedInteger('zip_code')->nullable();
-            $table->unsignedInteger('prefecture_id')->nullable();
+            $table->unsignedInteger('prefecture_id')->nullable()->index('shops_prefecture_id_foreign');
             $table->string('city', 100)->nullable();
             $table->string('address', 100)->nullable();
             $table->string('building', 100)->nullable();

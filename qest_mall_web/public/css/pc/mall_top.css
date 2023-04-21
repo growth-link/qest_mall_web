@@ -38,11 +38,48 @@ a {
 .left-menu-box {
     margin-bottom: 40px;
 }
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+/*下の階層のulや矢印の基点にするためliにrelativeを指定*/
+nav ul li {
+    position: relative;
+}
+
+/* マイメニューの左メニュー */
+.mymenu-left-menu {
+    width: 30%;
+}
+.my-menu-left-box {
+    padding: 10px;
+}
+.mymenu-left-menu nav li {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    cursor: pointer;
+}
+.mymenu-left-menu nav li:hover,
+.mymenu-left-menu nav li:active {
+	background:#ECECEC;
+}
+.mymenu-left-menu nav li:last-child {
+    margin-top: 100px;
+}
 .menu-title {
+    display: block;
+    text-decoration: none;
     color: #333333;
     font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 20px;
+}
+.menu-title:hover {
+    color: #333333;
+}
+.mymenu-left-menu .icon-arrow-right {
+    height: 12px;
 }
 
 /* 広告 */

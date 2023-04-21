@@ -2,7 +2,6 @@
 @section('content')
 @component('user.layouts.sp.header')
 @endcomponent
-<link rel="stylesheet" href="{{ asset('css/sp/mall_top.css') }}">
 <link rel="stylesheet" href="{{ asset('css/sp/item_search.css') }}">
 @component('user.layouts.sp.see_more')
 @endcomponent
@@ -69,7 +68,7 @@
                 <div class="shop-info-bottom">
                     <button class="inquiry_btn_radius">ショップに問い合わせる</button>
                     <ul class="shop-info-link">
-                        <li><a>店舗情報</a></li>
+                        <li><a href="{{ route('sp.shop_info', $shop) }}">店舗情報</a></li>
                         <li><a>返品特約について</a></li>
                     </ul>
                     <ul class="shop-info-link">
@@ -83,10 +82,8 @@
     </div>
     @component('user.layouts.sp.footer')
     @endcomponent
-    @component('user.layouts.sp.menu')
-    @endcomponent
+    @include('user.layouts.sp.menu')
 </div>
 @endsection
 @section("script")
-    <script src="{{ asset('js/sp/hamburger_menu.js') }}"></script>
 @endsection

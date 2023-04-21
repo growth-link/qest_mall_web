@@ -177,7 +177,7 @@
     <img class="close" src="/images/user/icon_close.png">
     <nav>
         <ul>
-            <li onclick="location.href='#'">
+            <li onclick="location.href='{{ route('sp.user_info') }}'">
                 <p>マイメニュー</p>
                 <div class="next-page">
                     <img class="icon-arrow-right" src="/images/user/icon_arrow_right.png">

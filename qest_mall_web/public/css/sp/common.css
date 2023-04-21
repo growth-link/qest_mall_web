@@ -1,21 +1,100 @@
+/* -------------------------------------------- */
+/* 全体 */
 body {
     margin: 0 auto;
 }
+a {
+    color: #1F53A7
+}
+.img {
+    width:100%;
+}
+.img:hover {
+    opacity: .8;
+}
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+/* -------------------------------------------- */
+/* メインコンテンツ */
+.main-content {
+    width: 100%;
+}
+.main-content-box {
+    margin-bottom: 30px;
+}
 .content-box {
 }
-
-.page-title-box {
-
-}
-
 .page-title {
     color: #555555;
     font-weight: bold;
     margin-left: 30px;
-    font-size:18px;
+    font-size: 18px;
+}
+.section-title {
+    color: #6C6C6C;
+    font-weight: bold;
+    margin: 0 15px 14px;
+    font-size: 16px;
 }
 
+/* -------------------------------------------- */
+/* フラグカテゴリ */
+.flag-category-qmm-title {
+    margin: 0 15px 7px;
+}
+
+/* -------------------------------------------- */
+/* LIFE SCENE */
+.life-scene-container {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.life-scene-box {
+    display: flex;
+    width: 20%;
+    text-align: center;
+    flex-flow: column;
+    padding-top: 10px;
+}
+.life-scene-img {
+    width: 80%;
+}
+.life-scene-title {
+    text-align: center;
+    color: #666666;
+    font-weight: bold;
+    font-size: 11px;
+    overflow-wrap: break-word;
+}
+
+/* -------------------------------------------- */
+/* 商品一覧 */
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+    row-gap: 30px;
+}
+.item-box {
+    width: calc(100% / 2 - 10px);
+}
+.item-box img {
+    max-height: 163px;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+/* -------------------------------------------- */
+/* ボタン */
 .primary_btn {
     padding: 10px 30px;
     border: 0px;
@@ -44,6 +123,21 @@ body {
     background-color: #EFEFEF;
 }
 
+.clear-button {
+    color: #6C6C6C !important;
+    font-size: 13px !important;
+    background-color: #FFFFFF !important;
+    border: 1px solid #DEDEDE !important;
+}
+
+.search-button,
+.add-button {
+    color: #6C6C6C !important;
+    font-size: 13px !important;
+    background-color: #FBDB5B !important;
+}
+
+/* -------------------------------------------- */
 .text {
     color: #6C6C6C;
 }
@@ -158,6 +252,11 @@ body {
 .toggle_switch > input:checked + label::before {
     left: calc(100% - 1em + 0.05em);
 }
+.switch_TextInput {
+    border: solid 1px #CECECE;
+    border-radius: 4px;
+    padding: 10px;
+}
 
 /* -------------------------------------------- */
 /* ページャー　Pager */
@@ -258,7 +357,7 @@ body {
 }
 
 .radio-label::before,
- .radio-label::after {
+    .radio-label::after {
     content: "";
     display: block;
     border-radius: 50%;
@@ -295,15 +394,125 @@ input:checked + .radio-label::before {
 }
 
 .visually-hidden {
-   position: absolute;
-   white-space: nowrap;
-   border: 0;
-   clip: rect(0 0 0 0);
-   clip-path: inset(50%);
-   overflow: hidden;
-   height: 1px;
-   width: 1px;
-   margin: -1px;
-   padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
 }
 
+/* -------------------------------------------- */
+/* 広告 */
+.ad-img {
+    padding: 15px 30px;
+}
+
+/* -------------------------------------------- */
+/* アコーディオン */
+.accordion-nav {
+    display: none;
+}
+
+/* -------------------------------------------- */
+/* フッターメニュー */
+.section-title-box {
+    display: flex;
+    margin: 0 15px 14px;
+}
+
+.fit-content {
+    width: fit-content;
+    margin: 0;
+}
+.filter-bar {
+    font-size: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    gap: 8px 0;
+    margin: 0 15px 20px;
+}
+.filter-bar select {
+    color: #6C6C6C;
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    width: 120px;
+    height: 24px;
+    margin-left: calc(100% - 120px);
+}
+.filter-bar button {
+    color: #6C6C6C;
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    background-color: #ffffff;
+    width: 116px;
+    height: 24px;
+    margin-left: calc(100% - 116px);
+}
+.filter-bar button img {
+    width: 12px;
+    margin: 0 4px;
+}
+.filter-bar .next-page-title {
+    margin: 0;
+    float: left;
+    color: #BABABA;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.filter-bar .selected {
+    color: #6C6C6C;
+}
+.filter-bar  .ECM_CheckboxInput-LabelText {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* -------------------------------------------- */
+/* モーダルコンポーネント */
+.overlay-component {
+
+}
+
+.overlay-component > .content {
+    color: #333333;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    min-height: 400px;
+}
+.overlay-component > .content * {
+    width: 100%;
+}
+.overlay-component .overlay-title {
+    color: #6C6C6C;
+    font-size: 16px;
+    padding: 0 15px;
+}
+.overlay-component .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 15px 30px;
+}
+.overlay-component form {
+    width: 100%;
+}
+.overlay-component .primary_btn_radius,
+.overlay-component .secondary_btn_radius {
+    color: #6C6C6C;
+    margin: 10px 0;
+    width: 100%;
+    height: 50px;
+}

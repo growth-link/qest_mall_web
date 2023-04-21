@@ -26,7 +26,7 @@
             <img src="/images/user/icon_history.png">
             <p style="font-size:10px;">購入履歴</p>
         </div>
-        <button class="primary_btn" style="float:left;">
+        <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('user_info') }}'">
             マイメニュー
         </button>
         <button class="primary_btn" style="float:left;">

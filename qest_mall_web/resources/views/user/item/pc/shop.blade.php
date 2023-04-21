@@ -86,7 +86,7 @@
                             </label>
                         </div>
                         <ul class="shop-info-link">
-                            <li><a>店舗情報</a></li>
+                            <li><a href="{{ route('shop_info', $shop) }}">店舗情報</a></li>
                             <li><a>返品特約について</a></li>
                             <li><a>特商法に基づく表示</a></li>
                             <li><a>配送方法について</a></li>
