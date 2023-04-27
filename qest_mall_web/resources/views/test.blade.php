@@ -227,6 +227,31 @@
 </section>
 
 
+<div class="card m-5">
+    <div class="card-header">メール送信</div>
+    <div class="card-body">
+        <form method="post" action="{{ route('mail.send') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="email" class="form-label">メールアドレス</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="subject" class="form-label">件名</label>
+                <input type="text" class="form-control" id="subject" name="subject">
+            </div>
+            <div class="mb-3">
+                <label for="contents" class="form-label">内容</label>
+                <textarea class="form-control" id="contents" name="contents" style="min-height:15em"></textarea>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success">送信する</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 @endsection
 @section("script")
     <script>

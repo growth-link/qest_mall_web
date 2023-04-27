@@ -15,6 +15,8 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\MyMenuController;
 
+use App\Http\Controllers\MailController;
+
 /*
 |--------------------------------------------------------------------------
 | ユーザー画面定義
@@ -183,9 +185,6 @@ Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
-
-require __DIR__ . '/admin.php';
-
 /*
 |--------------------------------------------------------------------------
 | FAQ
@@ -213,3 +212,5 @@ Route::get('/mypage/quit/done', [MyMenuController::class, 'quitDone'])->name('qu
 Route::get('/sp/mypage/user-info', [MyMenuController::class, 'spUserInfo'])->name('sp.user_info');
 Route::post('/sp/mypage/quit', [MyMenuController::class, 'spQuit'])->name('sp.quit');
 Route::get('/sp/mypage/quit/done', [MyMenuController::class, 'spQuitDone'])->name('sp.quit_done');
+
+Route::post('/mail/send', [MailController::class, 'send'])->name('mail.send');

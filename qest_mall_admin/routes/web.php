@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TopController;
 use App\Http\Controllers\Admin\ItemController;
 
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -223,3 +224,6 @@ Route::get('/sp/mypage/quit/done', [AccountController::class, 'spMypageQuitDone'
 Route::get('/proceeds-mng/statistics', [ProceedController::class, 'proceedStatistics']); // 統計情報
 Route::get('/proceeds-mng/histories', [ProceedController::class, 'proceedHistories']); // 会計履歴
 Route::get('/proceeds-mng/monthly', [ProceedController::class, 'proceedMonthly']); // 月別精算明細
+
+
+Route::post('/mail/send', [MailController::class, 'send'])->name('mail.send');
