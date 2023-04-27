@@ -1,6 +1,6 @@
-runtime: php81
+runtime: php82
 
-service: default
+service: web
 
 handlers:
 - url: /(.*\.(gif|png|jpg|jpeg|css|js|woff|woff2|ttf))$

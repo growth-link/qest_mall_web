@@ -13,7 +13,8 @@
         "laravel/breeze": "^1.15",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "ext-sodium": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -51,9 +52,10 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "gcp-build": [
+            "composer update",
             "npm install",
             "npm run dev",
-            "composer install --dev",
+            "composer install --dev`",
             "php artisan config:clear",
             "php artisan cache:clear",
             "php artisan config:cache",
@@ -74,6 +76,10 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true
+        },
+        "platform": {
+            "php": "8.2",
+            "ext-sodium": "7.4"
         }
     },
     "minimum-stability": "dev",
