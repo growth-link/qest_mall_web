@@ -12,6 +12,6 @@ class TopController extends Controller
     }
 
     public function topShop() {
-        return view("admin/top/shop");
+        return view("admin/top/shop_top");
     }
 }
