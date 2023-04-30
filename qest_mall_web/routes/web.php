@@ -54,163 +54,168 @@ Route::get('routes', function () {
 // コンポーネントや動作テスト用
 Route::get('/test', [TestController::class, 'test'])->name('test');
 
-/*
-|--------------------------------------------------------------------------
-| ログイン
-|--------------------------------------------------------------------------
-*/
+Route::group(['middleware' => 'basicauth'], function() {
 
-// pc
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'checkLogin'])->name('check_login');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/password-reset', [LoginController::class, 'passwordReset'])->name('password_reset');
-Route::get('/register/send-mail', [LoginController::class, 'registerSendMail'])->name('register.send_mail');
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::get('/register/confirm', [LoginController::class, 'registerConfirm'])->name('register.confirm');
+    /*
+    |--------------------------------------------------------------------------
+    | ログイン
+    |--------------------------------------------------------------------------
+    */
 
-// sp
-Route::get('/sp/login', [LoginController::class, 'spLogin'])->name('sp.login');
-Route::post('/sp/login', [LoginController::class, 'spCheckLogin'])->name('sp.check_login');
-Route::get('/sp/logout', [LoginController::class, 'spLogout'])->name('sp.logout');
-Route::get('/sp/password-reset', [LoginController::class, 'spPasswordReset'])->name('sp.password_reset');
-Route::get('/sp/register/send-mail', [LoginController::class, 'spRegisterSendMail'])->name('sp.register.send_mail');
-Route::get('/sp/register/', [LoginController::class, 'spRegisterConfirm'])->name('sp.register');
-Route::get('/sp/register/confirm', [LoginController::class, 'spRegisterConfirm'])->name('sp.register.confirm');
+    // pc
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'checkLogin'])->name('check_login');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/password-reset', [LoginController::class, 'passwordReset'])->name('password_reset');
+    Route::get('/register/send-mail', [LoginController::class, 'registerSendMail'])->name('register.send_mail');
+    Route::get('/register', [LoginController::class, 'register'])->name('register');
+    Route::get('/register/confirm', [LoginController::class, 'registerConfirm'])->name('register.confirm');
 
-/*
-|--------------------------------------------------------------------------
-| Ajax用
-|--------------------------------------------------------------------------
-*/
+    // sp
+    Route::get('/sp/login', [LoginController::class, 'spLogin'])->name('sp.login');
+    Route::post('/sp/login', [LoginController::class, 'spCheckLogin'])->name('sp.check_login');
+    Route::get('/sp/logout', [LoginController::class, 'spLogout'])->name('sp.logout');
+    Route::get('/sp/password-reset', [LoginController::class, 'spPasswordReset'])->name('sp.password_reset');
+    Route::get('/sp/register/send-mail', [LoginController::class, 'spRegisterSendMail'])->name('sp.register.send_mail');
+    Route::get('/sp/register/', [LoginController::class, 'spRegisterConfirm'])->name('sp.register');
+    Route::get('/sp/register/confirm', [LoginController::class, 'spRegisterConfirm'])->name('sp.register.confirm');
 
-Route::get('/shop-brand-name', [AjaxController::class, 'shopBrandName'])->name('shop_brand_name'); // ショップ・ブランド名一覧取得
-Route::get('/shop-name', [AjaxController::class, 'shopName'])->name('shop_name'); // ショップ名一覧取得
-Route::get('/brand-name', [AjaxController::class, 'brandName'])->name('brand_name'); // ブランド名一覧取得
+    /*
+    |--------------------------------------------------------------------------
+    | Ajax用
+    |--------------------------------------------------------------------------
+    */
 
-/*
-|--------------------------------------------------------------------------
-| Qest mall Top
-|--------------------------------------------------------------------------
-*/
+    Route::get('/shop-brand-name', [AjaxController::class, 'shopBrandName'])->name('shop_brand_name'); // ショップ・ブランド名一覧取得
+    Route::get('/shop-name', [AjaxController::class, 'shopName'])->name('shop_name'); // ショップ名一覧取得
+    Route::get('/brand-name', [AjaxController::class, 'brandName'])->name('brand_name'); // ブランド名一覧取得
 
-// pc
-Route::get('/top', [TopController::class, 'top'])->name('top');
-Route::get('/', [TopController::class, 'top'])->name('top');
+    /*
+    |--------------------------------------------------------------------------
+    | Qest mall Top
+    |--------------------------------------------------------------------------
+    */
 
-// sp
-Route::get('/sp/top', [TopController::class, 'spTop'])->name('sp.top');
+    // pc
+    Route::get('/top', [TopController::class, 'top'])->name('top');
+    Route::get('/', [TopController::class, 'top'])->name('top');
 
-/*
-|--------------------------------------------------------------------------
-| 商品
-|--------------------------------------------------------------------------
-*/
+    // sp
+    Route::get('/sp/top', [TopController::class, 'spTop'])->name('sp.top');
 
-// pc
-Route::get('/categories', [ItemController::class, 'categories'])->name('categories'); // カテゴリ一覧
-Route::get('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
-Route::get('/items/flag-category/{sub_category}', [ItemController::class, 'flagCategory'])->name('flag_category'); // 商品一覧(フラグカテゴリ検索)
-Route::get('/items/category/{category}', [ItemController::class, 'category'])->name('category'); // 商品一覧(カテゴリ検索)
-Route::get('/items/brand/{brand}', [ItemController::class, 'brand'])->name('brand'); // 商品一覧(ブランド検索)
-Route::get('/items/shop/{shop}', [ItemController::class, 'shop'])->name('shop'); // 商品一覧(ショップ)
-Route::get('/items/detail/{item}', [ItemController::class, 'itemDetail'])->name('items_detail'); // 商品詳細
-Route::get('/shops', [ItemController::class, 'shops'])->name('shops'); // ショップ一覧
-Route::get('/brands', [ItemController::class, 'brands'])->name('brands'); // ブランド一覧
-Route::get('/shop-brand-search', [ItemController::class, 'shopBrandSearch'])->name('shop_brand_search'); // ショップ・ブランド検索
-Route::get('/shop-search', [ItemController::class, 'shopSearch'])->name('shop_search'); // ショップ検索
-Route::get('/brand-search', [ItemController::class, 'brandSearch'])->name('brand_search'); // ブランド検索
+    /*
+    |--------------------------------------------------------------------------
+    | 商品
+    |--------------------------------------------------------------------------
+    */
 
-// sp
-Route::get('/sp/categories', [ItemController::class, 'spCategories'])->name('sp.categories'); // カテゴリ一覧
-Route::get('/sp/items/keyword', [ItemController::class, 'spItemKeyword'])->name('sp.item_keyword'); // 商品一覧(キーワード検索)
-Route::get('/sp/items/flag-category/{sub_category}', [ItemController::class, 'spFlagCategory'])->name('sp.flag_category'); // 商品一覧(フラグカテゴリ検索)
-Route::get('/sp/items/category/{category}', [ItemController::class, 'spCategory'])->name('sp.category'); // 商品一覧(カテゴリ検索)
-Route::get('/sp/items/brand/{brand}', [ItemController::class, 'spBrand'])->name('sp.brand'); // 商品一覧(ブランド検索)
-Route::get('/sp/items/shop/{shop}', [ItemController::class, 'spShop'])->name('sp.shop'); // 商品一覧(ショップ)
-Route::get('/sp/items/detail/{item}', [ItemController::class, 'spItemDetail'])->name('sp.items_detail'); // 商品詳細
-Route::get('/sp/shops', [ItemController::class, 'spShops'])->name('sp.shops'); // ショップ一覧
-Route::get('/sp/brands', [ItemController::class, 'spBrands'])->name('sp.brands'); // ブランド一覧
-Route::get('/sp/shop-search', [ItemController::class, 'spShopSearch'])->name('sp.shop_search'); // ショップ検索
-Route::get('/sp/brand-search', [ItemController::class, 'spBrandSearch'])->name('sp.brand_search'); // ブランド検索
+    // pc
+    Route::get('/categories', [ItemController::class, 'categories'])->name('categories'); // カテゴリ一覧
+    Route::get('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
+    Route::get('/items/keyword', [ItemController::class, 'itemKeyword'])->name('item_keyword'); // 商品一覧(キーワード検索)
+    Route::get('/items/flag-category/{sub_category}', [ItemController::class, 'flagCategory'])->name('flag_category'); // 商品一覧(フラグカテゴリ検索)
+    Route::get('/items/category/{category}', [ItemController::class, 'category'])->name('category'); // 商品一覧(カテゴリ検索)
+    Route::get('/items/brand/{brand}', [ItemController::class, 'brand'])->name('brand'); // 商品一覧(ブランド検索)
+    Route::get('/items/shop/{shop}', [ItemController::class, 'shop'])->name('shop'); // 商品一覧(ショップ)
+    Route::get('/items/detail/{item}', [ItemController::class, 'itemDetail'])->name('items_detail'); // 商品詳細
+    Route::get('/shops', [ItemController::class, 'shops'])->name('shops'); // ショップ一覧
+    Route::get('/brands', [ItemController::class, 'brands'])->name('brands'); // ブランド一覧
+    Route::get('/shop-brand-search', [ItemController::class, 'shopBrandSearch'])->name('shop_brand_search'); // ショップ・ブランド検索
+    Route::get('/shop-search', [ItemController::class, 'shopSearch'])->name('shop_search'); // ショップ検索
+    Route::get('/brand-search', [ItemController::class, 'brandSearch'])->name('brand_search'); // ブランド検索
 
-/*
-|--------------------------------------------------------------------------
-| クーポン
-|--------------------------------------------------------------------------
-*/
+    // sp
+    Route::get('/sp/categories', [ItemController::class, 'spCategories'])->name('sp.categories'); // カテゴリ一覧
+    Route::get('/sp/items/keyword', [ItemController::class, 'spItemKeyword'])->name('sp.item_keyword'); // 商品一覧(キーワード検索)
+    Route::get('/sp/items/flag-category/{sub_category}', [ItemController::class, 'spFlagCategory'])->name('sp.flag_category'); // 商品一覧(フラグカテゴリ検索)
+    Route::get('/sp/items/category/{category}', [ItemController::class, 'spCategory'])->name('sp.category'); // 商品一覧(カテゴリ検索)
+    Route::get('/sp/items/brand/{brand}', [ItemController::class, 'spBrand'])->name('sp.brand'); // 商品一覧(ブランド検索)
+    Route::get('/sp/items/shop/{shop}', [ItemController::class, 'spShop'])->name('sp.shop'); // 商品一覧(ショップ)
+    Route::get('/sp/items/detail/{item}', [ItemController::class, 'spItemDetail'])->name('sp.items_detail'); // 商品詳細
+    Route::get('/sp/shops', [ItemController::class, 'spShops'])->name('sp.shops'); // ショップ一覧
+    Route::get('/sp/brands', [ItemController::class, 'spBrands'])->name('sp.brands'); // ブランド一覧
+    Route::get('/sp/shop-search', [ItemController::class, 'spShopSearch'])->name('sp.shop_search'); // ショップ検索
+    Route::get('/sp/brand-search', [ItemController::class, 'spBrandSearch'])->name('sp.brand_search'); // ブランド検索
 
-// pc
-Route::get('/coupons/{coupon}', [CouponController::class, 'coupons'])->name('coupons');
+    /*
+    |--------------------------------------------------------------------------
+    | クーポン
+    |--------------------------------------------------------------------------
+    */
 
-// sp
-Route::get('/sp/coupons/{coupon}', [CouponController::class, 'spCoupons'])->name('sp.coupons');
+    // pc
+    Route::get('/coupons/{coupon}', [CouponController::class, 'coupons'])->name('coupons');
 
-/*
-|--------------------------------------------------------------------------
-| ショップ
-|--------------------------------------------------------------------------
-*/
+    // sp
+    Route::get('/sp/coupons/{coupon}', [CouponController::class, 'spCoupons'])->name('sp.coupons');
 
-// pc
-Route::get('/shop-info/{shop}', [ShopController::class, 'shopInfo'])->name('shop_info');
-Route::get('/delivery-and-postage/{shop}', [ShopController::class, 'deliveryAndPostage'])->name('delivery_and_postage');
-Route::get('/contract', [ShopController::class, 'contract'])->name('contract');
+    /*
+    |--------------------------------------------------------------------------
+    | ショップ
+    |--------------------------------------------------------------------------
+    */
 
-// sp
-Route::get('/sp/shop-info/{shop}', [ShopController::class, 'spShopInfo'])->name('sp.shop_info');
-Route::get('/sp/delivery-and-postage/{shop}', [ShopController::class, 'spDeliveryAndPostage'])->name('sp.delivery_and_postage');
-Route::get('/sp/contract', [ShopController::class, 'spContract'])->name('sp.contract');
+    // pc
+    Route::get('/shop-info/{shop}', [ShopController::class, 'shopInfo'])->name('shop_info');
+    Route::get('/delivery-and-postage/{shop}', [ShopController::class, 'deliveryAndPostage'])->name('delivery_and_postage');
+    Route::get('/contract', [ShopController::class, 'contract'])->name('contract');
 
-/*
-|--------------------------------------------------------------------------
-| お知らせ
-|--------------------------------------------------------------------------
-*/
+    // sp
+    Route::get('/sp/shop-info/{shop}', [ShopController::class, 'spShopInfo'])->name('sp.shop_info');
+    Route::get('/sp/delivery-and-postage/{shop}', [ShopController::class, 'spDeliveryAndPostage'])->name('sp.delivery_and_postage');
+    Route::get('/sp/contract', [ShopController::class, 'spContract'])->name('sp.contract');
 
-// PC
-Route::get('/notices', [NoticeController::class, 'notices']);
-Route::get('/notices/detail', [NoticeController::class, 'noticesDetail']);
+    /*
+    |--------------------------------------------------------------------------
+    | お知らせ
+    |--------------------------------------------------------------------------
+    */
 
-// SP
-Route::get('/sp/notices', [NoticeController::class, 'spNotices']);
-Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
+    // PC
+    Route::get('/notices', [NoticeController::class, 'notices']);
+    Route::get('/notices/detail', [NoticeController::class, 'noticesDetail']);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+    // SP
+    Route::get('/sp/notices', [NoticeController::class, 'spNotices']);
+    Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-/*
-|--------------------------------------------------------------------------
-| FAQ
-|--------------------------------------------------------------------------
-*/
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->middleware(['auth', 'verified'])->name('dashboard');
 
-// PC
-Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
+    // Route::middleware('auth')->group(function () {
+    //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // });
+    /*
+    |--------------------------------------------------------------------------
+    | FAQ
+    |--------------------------------------------------------------------------
+    */
 
-// SP
-Route::get('/sp/faq', [FAQController::class, 'spFaq'])->name('sp.faq');
+    // PC
+    Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
 
-/*
-|--------------------------------------------------------------------------
-| マイメニュー
-|--------------------------------------------------------------------------
-*/
+    // SP
+    Route::get('/sp/faq', [FAQController::class, 'spFaq'])->name('sp.faq');
 
-// PC
-Route::get('/mypage/user-info', [MyMenuController::class, 'userInfo'])->name('user_info');
-Route::post('/mypage/quit', [MyMenuController::class, 'quit'])->name('quit');
-Route::get('/mypage/quit/done', [MyMenuController::class, 'quitDone'])->name('quit_done');
+    /*
+    |--------------------------------------------------------------------------
+    | マイメニュー
+    |--------------------------------------------------------------------------
+    */
 
-// SP
-Route::get('/sp/mypage/user-info', [MyMenuController::class, 'spUserInfo'])->name('sp.user_info');
-Route::post('/sp/mypage/quit', [MyMenuController::class, 'spQuit'])->name('sp.quit');
-Route::get('/sp/mypage/quit/done', [MyMenuController::class, 'spQuitDone'])->name('sp.quit_done');
+    // PC
+    Route::get('/mypage/user-info', [MyMenuController::class, 'userInfo'])->name('user_info');
+    Route::post('/mypage/quit', [MyMenuController::class, 'quit'])->name('quit');
+    Route::get('/mypage/quit/done', [MyMenuController::class, 'quitDone'])->name('quit_done');
 
-Route::post('/mail/send', [MailController::class, 'send'])->name('mail.send');
+    // SP
+    Route::get('/sp/mypage/user-info', [MyMenuController::class, 'spUserInfo'])->name('sp.user_info');
+    Route::post('/sp/mypage/quit', [MyMenuController::class, 'spQuit'])->name('sp.quit');
+    Route::get('/sp/mypage/quit/done', [MyMenuController::class, 'spQuitDone'])->name('sp.quit_done');
+
+    Route::post('/mail/send', [MailController::class, 'send'])->name('mail.send');
+
+});
