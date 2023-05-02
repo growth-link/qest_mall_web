@@ -55,7 +55,9 @@
     </div>
 </nav>
 
-<form class="filter-bar" action={{ route('sp.item_keyword') }} method="get">
-    <!-- 絞り込み -->
-    @include('user.layouts.sp.components.item.overlay_filter')
-</form>
+@empty($is_item_list)
+    <form class="filter-bar" action={{ route('sp.item_keyword') }} method="get">
+        <!-- 絞り込み -->
+        @include('user.layouts.sp.components.item.overlay_filter')
+    </form>
+@endempty

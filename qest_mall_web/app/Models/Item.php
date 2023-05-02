@@ -6,7 +6,6 @@
 
 namespace App\Models;
 
-use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -59,6 +58,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Brand|null $brand
  * @property Category|null $category
  * @property Shop|null $shop
+ * @property SubCategory|null $sub_category
+ * @property Collection|APurchaseHistory[] $a_purchase_histories
  * @property Collection|ItemImage[] $item_images
  *
  * @package App\Models
@@ -155,6 +156,16 @@ class Item extends Model
 		return $this->belongsTo(Shop::class);
 	}
 
+	public function sub_category()
+	{
+		return $this->belongsTo(SubCategory::class);
+	}
+
+	public function a_purchase_histories()
+	{
+		return $this->hasMany(APurchaseHistory::class);
+	}
+
 	public function item_images()
 	{
 		return $this->hasMany(ItemImage::class);
@@ -168,20 +179,38 @@ class Item extends Model
     // 並べ替え
     public function scopeSortItem($query, $sort){
         if(isset($sort)) {
-            if($sort=='recommend'){
-                $query;
-            }
             if($sort=='low_price'){
+                // 価格の安い順
                 $query->orderBy('normal_price');
-            }
-            if($sort=='high_price'){
+            } elseif($sort=='high_price'){
+                // 価格の高い順
                 $query->orderBy('normal_price', 'desc');
+            } elseif($sort=='start_datetime'){
+                // 発売日順
+                $query->latest('start_datetime');
+            } else {
+                // おすすめ順
+                $this->orderByReccomend($query);
             }
-            if($sort=='start_datetime'){
-                $query->orderBy('start_datetime');
-            }
+        } else {
+            // おすすめ順（デフォルト）
+            $this->orderByReccomend($query);
         }
         return $query;
+    }
+
+    // おすすめ順に並べ替え
+    private function orderByReccomend(&$query) {
+        // 商品ごとの購入数を取得するサブクエリを作成
+        $subSql =  APurchaseHistory::selectRaw('item_id, SUM(purchase_quantity) AS total_purchase_quantity')
+            ->groupBy('item_id')
+            ->toSql();
+
+        // 商品ごとの購入数が多い順に商品を取得
+        $query->select(\DB::raw('*'))
+            ->leftJoinSub($subSql, 'item_total_purchases', function ($join) {
+                $join->on('items.id', '=', 'item_total_purchases.item_id');
+            })->orderBy('total_purchase_quantity', 'desc');
     }
 
     // キーワード検索（$condition='NOT LIKE'で除外キーワード検索）
@@ -225,8 +254,8 @@ class Item extends Model
         return $query;
     }
 
-    // カテゴリ検索（PC版）
-    public function scopeSearchCategoryHP($query, $id){
+    // 複数カテゴリ検索
+    public function scopeSearchCategories($query, $id){
         if(isset($id)){
             // ファッションカテゴリ（小項目）のリストを配列で取得
             $fashion_minor_categories = Category::where('fashion_minor_category_flag', true)
@@ -251,8 +280,8 @@ class Item extends Model
         return $query;
     }
 
-    // カテゴリ検索（SP版）
-    public function scopeSearchCategorySP($query, $id, $category){
+    // カテゴリ検索
+    public function scopeSearchCategory($query, $id, $category){
         if(isset($id)){
             $query->leftJoin('categories','items.category_id','=','categories.id');
 
@@ -299,14 +328,20 @@ class Item extends Model
 
     // ブランド検索
     public function scopeSearchBrand($query, $id){
-        return $query->leftJoin('brands','items.brand_id','=','brands.id')
+        if(isset($id)){
+            $query->leftJoin('brands','items.brand_id','=','brands.id')
                     ->where('brands.id', $id);
+        }
+        return $query;
     }
 
     // ショップ検索
     public function scopeSearchShop($query, $id){
-        return $query->leftJoin('shops','items.shop_id','=','shops.id')
+        if(isset($id)){
+            $query->leftJoin('shops','items.shop_id','=','shops.id')
                     ->where('shops.id', $id);
+        }
+        return $query;
     }
 
     // タグ検索
@@ -352,10 +387,8 @@ class Item extends Model
     }
 
     // 在庫なしを含む検索
-    public function scopeSearchIncludingOutOfStock($query, $including_out_of_stock){
-        if(isset($including_out_of_stock)){
-            $query->where('stock', '>=', 0);
-        } else {
+    public function scopeSearchIncludingOutOfStock($query, $including_out_of_stock=null){
+        if(!isset($including_out_of_stock)){
             $query->where('stock', '>', 0);
         }
         return $query;
