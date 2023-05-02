@@ -1,12 +1,17 @@
 //ページを開いたとき
 $(function(){
+    holdChecked("life_scene");
+    holdChecked("tag");
     holdChecked("category");
     // すべてのカテゴリにチェックがある場合
     if($('#checkbox_all').prop("checked")){
         reflectAllCategory();
     }
-    holdChecked("life_scene");
-    holdChecked("tag");
+    //カテゴリ検索時
+    if(location.href.match("/items/category")){
+        selectCategory();
+        getHiddenCategoryIds();
+    }
 });
 
 // モーダルを開く
@@ -85,10 +90,34 @@ $(document).on('click', '.clear-button', function(e){
     });
 })
 
+// 商品一覧（カテゴリ検索）の場合はモーダルのカテゴリを選択する
+function selectCategory(){
+    // メジャーカテゴリを全て確認し、配下のカテゴリのチェック状態を判定する
+    $('.chg-parent').each(function(index, element) {
+        if($(element).prop('checked') == true){
+            const t = $(element).closest('.major-category-box').find('input');
+            for(let i = 0; i < t.length; i++) {
+                t[i].checked = true;
+            }
+        }
+    });
+
+    // ミドルカテゴリを全て確認し、配下のカテゴリのチェック状態を判定する
+    $('.chg-child').each(function(index, element) {
+        console.log($(element).prop('checked'));
+        if($(element).prop('checked') == true){
+            const t = $(element).closest('.middle-category-box').find('.chg-grand-child');
+            for(let i = 0; i < t.length; i++) {
+                t[i].checked = true;
+            }
+        }
+    });
+}
+
 // チェック状態を保持する
 function holdChecked(input_name){
-    const checked_ids = $('input[name="' + input_name + '_ids"]').val().split(',');
-    {
+    if($('input[name="' + input_name + '_ids"]').val() != null){
+        const checked_ids = $('input[name="' + input_name + '_ids"]').val().split(',');
         //すべてのカテゴリにチェックがあるとき
         $('input[name="ostensible_' + input_name + '_ids[]"]').each(function(index, element) {
             if($.inArray($(element).val(), checked_ids) >= 0){
@@ -135,13 +164,9 @@ function checkMajorCategory(majorCategory){
     majorCategory.find('.chg-parent').prop('checked', all_flag);
 }
 
-// submit時にモーダル内のinputデータをhiddenに格納
+// 絞り込み検索時
 $('.filter-bar').submit(function(){
-    // カテゴリのidを配列で取得
-    const category_ids = $('input[name="ostensible_category_ids[]"]:checked').map(function() {
-        return $(this).val();
-    }).get();
-    $('input[name="category_ids"]').val(category_ids);
+    getHiddenCategoryIds();
 
     // チェックされているライフシーンのidを配列で取得
     const life_scene_ids = $('input[name="ostensible_life_scene_ids[]"]:checked').map(function() {
@@ -162,3 +187,11 @@ $('.filter-bar').submit(function(){
     $('input[name="including_out_of_stock"]').val($('input[name="ostensible_including_out_of_stock"]:checked').val()); // 在庫なしを含む
     $('input[name="exclude_keyword"]').val($('input[name="ostensible_exclude_keyword"]').val()); // 除外キーワード
 });
+
+// モーダル内のカテゴリのidを配列で取得してhiddenに格納
+function getHiddenCategoryIds(){
+    const category_ids = $('input[name="ostensible_category_ids[]"]:checked').map(function() {
+        return $(this).val();
+    }).get();
+    $('input[name="category_ids"]').val(category_ids);
+}

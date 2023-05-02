@@ -7,7 +7,7 @@
                                     <div class="search-box">
                                         <input type="text" name="keyword" class="filter" placeholder="キーワード検索"
                                         @isset($keyword)
-                                            @unless ($keyword==='全て' || $category)
+                                            @unless ($keyword==='全て')
                                                 value="{{ $keyword }}"
                                             @endunless
                                         @endisset
@@ -324,7 +324,7 @@
                                 クリア
                             </button>
                             <button type="button" class="ui button add-button add-life-scene">
-                                上の条件を追加する
+                                この条件を追加する
                             </button>
                         </nav>
                     </div>
@@ -335,7 +335,7 @@
                                 クリア
                             </button>
                             <button type="button" class="ui button add-button add-tag">
-                                上の条件を追加する
+                                この条件を追加する
                             </button>
                         </nav>
                     </div>

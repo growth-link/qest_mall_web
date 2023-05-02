@@ -6,6 +6,11 @@
                         <option value="start_datetime" @if($sort == "start_datetime") selected @endif>発売日順</option>
                     </select>
 
+                    <input type="hidden" name="shop_id" class="filter"
+                    @isset($shop_id) value="{{ $shop_id }}" @endisset>
+                    <input type="hidden" name="brand_id" class="filter"
+                    @isset($brand_id) value="{{ $brand_id }}" @endisset>
+
                     <!-- モーダル表示 -->
                     <button type="button" class="open-filter"><img class="img" src="{{ asset('/images/item/icon_filter.png') }}">絞り込み</button>
 

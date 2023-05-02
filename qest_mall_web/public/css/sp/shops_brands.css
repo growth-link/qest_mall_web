@@ -7,27 +7,33 @@
 }
 
 /* 検索フォーム */
-#main_container .search-container {
+.brand-search,
+.shop-search {
     margin-top: 40px;
 }
-#main_container .search-container-form {
+.brand-search .search-container-form,
+.shop-search .search-container-form {
     display: flex;
     justify-content: center;
     height: 40px;
 }
-#main_container .search-container input[type="text"] {
+.brand-search input[type="text"],
+.shop-search input[type="text"] {
     border: solid #707070 1px;
     width: 260px;
     border-radius: 3px 0 0 3px !important;
     padding: 2px 4px !important;
 }
-#main_container .search-container input[type="text"]:focus {
+.brand-search input[type="text"]:focus,
+.shop-search input[type="text"]:focus {
     outline: 0;
 }
-#main_container .search-container input[type="text"]::placeholder {
+.brand-search input[type="text"]::placeholder,
+.shop-search input[type="text"]::placeholder {
     font-size: 14px;
 }
-#main_container .search-container button {
+.brand-search button,
+.shop-search button {
     width: 76px;
     border: solid #707070 1px;
     border-radius: 0 3px 3px 0;
