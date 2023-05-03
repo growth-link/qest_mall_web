@@ -1,6 +1,6 @@
 runtime: php82
 
-service: web
+service: admin
 
 handlers:
 - url: /(.*\.(gif|png|jpg|jpeg|css|js|woff|woff2|ttf))$
@@ -21,9 +21,9 @@ env_variables:
   VIEW_COMPILED_PATH: /tmp
   SESSION_DRIVER: database
   LOG_CHANNEL: stdout
-  DB_DATABASE: qest-mall-db
+  DB_DATABASE: qest-mall-stg-db
   DB_USERNAME: root
-  DB_PASSWORD: 5GPef23c1
+  DB_PASSWORD: .xf$|U,5;NZl@iJ5
   DB_SOCKET: "/cloudsql/qest-mall-dev:us-central1:qest-mall-db"
-  BUCKET_NAME: "qest-mall-dev.appspot.com"
+  BUCKET_NAME: "qest-mall-stg.appspot.com"
 

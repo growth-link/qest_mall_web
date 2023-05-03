@@ -56,6 +56,17 @@ return [
             'throw' => false,
         ],
 
+        'sftp' => [
+            'driver' => 'sftp',
+            'host' => 'bill.qest-mall.jp',
+            'username' => 'L6aHm5Ff',
+            'password' => 'RE|p/F(ngk%pUV2$',
+            'privateKey' => '../sftp/id_rsa_sftp.ppk',
+            'port' => 17222,
+            'root' => '/home/L6aHm5Ff/',
+            'timeout' => 30,
+        ],
+
     ],
 
     /*

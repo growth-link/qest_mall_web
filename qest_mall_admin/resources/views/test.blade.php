@@ -230,6 +230,41 @@
     </ul>
 </div>
 
+<div class="wrap" style="font-size:20px;">
+    <ul>
+        <li class="cls1">
+            <div style="font-weight:bold;height:50px;border-radius:5px;background-color:#F8D85B;padding:15px 20px;font-size:14px;color:#5c5c5c;">
+                カート
+            </div>
+        </li>
+        <li class="cls1">
+            <img src="/images/purchase/icon_triangle.png" style="margin-top:15px;">
+        </li>
+        <li class="cls1">
+            <div style="font-weight:bold;height:50px;border-radius:5px;background-color:#F7F7F7;padding:15px 20px;font-size:14px;color:#5c5c5c;">
+                ログイン
+            </div>
+        </li>
+        <li class="cls1">
+            <img src="/images/purchase/icon_triangle.png" style="margin-top:15px;">
+        </li>
+        <li class="cls1">
+            <div style="font-weight:bold;height:50px;border-radius:5px;background-color:#F7F7F7;padding:5px 20px;font-size:14px;color:#5c5c5c;">
+                お支払い<br>
+                配送方法
+            </div>
+        </li>
+        <li class="cls1">
+            <img src="/images/purchase/icon_triangle.png" style="margin-top:15px;">
+        </li>
+        <li class="cls1">
+            <div style="font-weight:bold;height:50px;border-radius:5px;background-color:#F7F7F7;padding:15px 20px;font-size:14px;color:#5c5c5c;">
+                注文確定
+            </div>
+        </li>
+    </ul>
+</div>
+
 <div class="card m-5">
     <div class="card-header">メール送信</div>
     <div class="card-body">

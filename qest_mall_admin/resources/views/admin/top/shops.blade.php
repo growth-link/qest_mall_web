@@ -56,8 +56,8 @@
     <!-- 検索フィールド -->
     <div style="width:96%;height:30px;">
         <form action="" method="GET">
-            <input name="search" type="text" style="width:200px;padding:5px;border:0px;background-color:#eeeeee;float:left;" placeholder="ショップ名/ショップID" value="{{$search}}">
-            <button style="float:left;border:0px;border-radius:5px;padding:5px 10px;;background-color:#555555;color:white;font-weight:bold;margin-left:10px;">検索</button>
+            <input name="search" type="text" style="width:200px;padding:7px;border:0px;border-radius:5px 0px 0px 5px; background-color:#eeeeee;float:left;" placeholder="ショップ名/ショップID" value="{{$search ?? ""}}">
+            <button style="float:left;border:0px;border-radius:0px 5px 5px 0px;padding:5px 10px;background-color:#555555;color:white;font-weight:bold;">検索</button>
         </form>
 
         <select style="float:right;border:0px;border-radius:0px 5px 5px 0px;width:200px;padding:5px 10px;background-color:#eeeeee;color:#333333;font-weight:bold;" 
@@ -89,7 +89,7 @@
                         @endif
                     </td>
                     <td style="text-align:center;">
-                        <a href="#">閲覧</a>
+                        <a href="{{ route('admin.shop_top', ['shop_id']); }}">閲覧</a>
                     </td>
                 </tr>
             @endforeach

@@ -23,7 +23,7 @@
   <p>2022.08.25</p>
   <p style="margin-left: 12px;">12:00:00</p>
   <p style="margin-left: 96px; width: 840px;">参加申請が届いています</p>
-  <a href="" style="text-decoration:underline;">クーポン管理へ</a>
+  <a href="{{ route('admin.coupons'); }}" style="text-decoration:underline;">クーポン管理へ</a>
 </div>
 
 <p style="margin-left: 16px; margin-bottom: 12px; font-size: 16px; font-weight: bold;">モールステータス</p>
@@ -118,11 +118,11 @@
     <div style="background: #F7F7F7; width: 320px; height: 36px; position: relative; right: 1px; bottom: 1px; margin-bottom: 14px;">
       <p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 16px; font-weight: bold;">クーポン管理</p>
     </div>
-    <a href="" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px; margin-bottom: 14px;">クーポン一覧・編集</a>
+    <a href="{{ route('admin.coupons'); }}" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px; margin-bottom: 14px;">クーポン一覧・編集</a>
     <div style="margin-top: 14px; margin-bottom: 14px;">
-      <a href="" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">参加申請一覧</a>
+      <a href="{{ route('admin.entry_items'); }}" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">参加申請一覧</a>
     </div>
-      <a href="" style="line-height: 1em; font-weight: bold; color: #333333; background: #FFDF58; width: 200px; height: 36px; padding: 11px; border-radius: 18px / 18px; text-align: center; position: absolute; left: 58px; bottom: 18px;">新規クーポン追加</a>
+      <a href="{{ route('admin.coupons.create') }}" style="line-height: 1em; font-weight: bold; color: #333333; background: #FFDF58; width: 200px; height: 36px; padding: 11px; border-radius: 18px / 18px; text-align: center; position: absolute; left: 58px; bottom: 18px;">新規クーポン追加</a>
   </div>
 
   <div style="width: 650px; height: 240px; border: 1px solid #CECECE; margin-left: 16px; position: relative; background: #FEFEFE;">
@@ -144,12 +144,12 @@
     <div style="background: #F7F7F7; width: 320px; height: 36px; position: relative; right: 1px; bottom: 1px; margin-bottom: 14px;">
       <p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 16px; font-weight: bold;">売上・会計管理</p>
     </div>
-    <a href="" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">売上統計</a>
+    <a href="{{ route("statistics") }}" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">売上統計</a>
     <div style="margin-top: 14px;">
-      <a href="" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">会計履歴</a>
+      <a href="{{ route("histories") }}" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">会計履歴</a>
     </div>
     <div style="margin-top: 14px;">
-      <a href="" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">月次会計</a>
+      <a href="{{ route("monthly") }}" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">月次会計</a>
     </div>
   </div>
 </div>

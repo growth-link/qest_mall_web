@@ -10,7 +10,7 @@
                 <input type="text" style="width:300px;" name="keyword" placeholder="キーワード検索">
             </form>
         </div>
-        <div style="float:left;text-align:center;width:70px;" onclick="location.href='#'">
+        <div style="float:left;text-align:center;width:70px;" onclick="location.href='{{route('cart')}}'">
             <img src="/images/user/icon_cart.png">
             <p style="font-size:10px;">カート</p>
         </div>
@@ -22,15 +22,18 @@
             <img src="/images/user/icon_favorite.png">
             <p style="font-size:10px;">お気に入り</p>
         </div>
-        <div style="float:left;text-align:center;width:70px;" onclick="location.href='#'">
+        <div style="float:left;text-align:center;width:70px;" onclick="location.href='{{route('purchase_histories');}}'">
             <img src="/images/user/icon_history.png">
             <p style="font-size:10px;">購入履歴</p>
         </div>
+        {{-- @if($is_login)
         <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('user_info') }}'">
             マイメニュー
         </button>
-        <button class="primary_btn" style="float:left;">
+        @else --}}
+        <button class="primary_btn" style="float:left;" onclick="location.href='#'">
             ログイン
         </button>
+        {{-- @endif --}}
     </div>
 </div>

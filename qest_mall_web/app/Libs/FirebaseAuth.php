@@ -16,20 +16,20 @@ class FirebaseAuth
         // Firebaseのユーザー登録処理（パスワード）
         Log::Info("test");
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-b3c8b-firebase-adminsdk-ps17n-fd602151bd.json');
         return true;
     }
 
     public function adminAuth($id, $password) {
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-b3c8b-firebase-adminsdk-ps17n-fd602151bd.json');
         return true;
     }
 
     public function login($id, $password) {
         // TODO Firebaseログイン処理
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         $signInResult = $auth->signInWithEmailAndPassword($email, $clearTextPassword);
         return true;
     }
@@ -119,11 +119,53 @@ class FirebaseAuth
         }
     }
 
+
+    // ユーザーのログインチェック
+    public function checkLogin(Request $request, $redirectName = null) {
+        $factory = (new Factory)
+            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+        $this->auth = $factory->createAuth();
+        
+        if($request->session()->has("id_token")) {
+            // セッションがあればログイン処理
+            $idTokenString = $request->session()->get("id_token");
+            try {
+                $verifiedIdToken = $this->auth->verifyIdToken($idTokenString);
+            } catch (FailedToVerifyToken $e) {
+                echo 'The token is invalid: '.$e->getMessage();
+                return redirect()->route("login");
+            }
+
+            $uid = $verifiedIdToken->claims()->get('sub');
+            $user = $this->auth->getUser($uid);
+
+            if(empty($redirectName)) {
+                return redirect()->route("top");
+            } else {
+                return redirect()->route($redirectName);
+            }
+        } else {
+            return redirect()->route("login");
+        }
+    }
+
+    public function isLogin(Request $request) {
+        $factory = (new Factory)
+            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+        $this->auth = $factory->createAuth();
+    
+        if($request->session()->has("id_token")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // 匿名アカウント作成（初回アクセス）
     public function createAuthAnonymous(Request $request) {
         Log::Info("匿名アカウント作成");
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-b3c8b-firebase-adminsdk-ps17n-fd602151bd.json');
         $this->auth = $factory->createAuth();
         $signInResult = $this->auth->signInAnonymously();
         Log::Info($signInResult->data());
@@ -140,7 +182,7 @@ class FirebaseAuth
     {
         Log::Info("匿名ログイン");
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
 
         $this->auth = $factory->createAuth();
         

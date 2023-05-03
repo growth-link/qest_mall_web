@@ -8,5 +8,5 @@ return [
     ],
     'user' => [
         'recommend_item_max' => 30 // おすすめ商品の最大値
-    ]
+    ],
 ];

@@ -1,0 +1,5 @@
+dispatch:
+  - url: "*stg.qest-mall.jp/*"
+    service: web
+  - url: "*stg-magazine.qest-mall.jp/*"
+    service: magazine

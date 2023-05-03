@@ -9,6 +9,8 @@ use App\Models\Tag;
 use App\Models\Item;
 use App\Models\Shop;
 use App\Models\Brand;
+use App\Models\ItemImage;
+use App\Models\Coupon;
 use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
@@ -436,8 +438,10 @@ class ItemController extends Controller
     public function itemDetail(Request $request) {
         // \Log::Info("====================================");
         // \Log::Info("itemDetail");
-        // \Log::Info($item);
+        //\Log::Info($item);
 
+        $item = Item::where("id", $request->item)->first();
+        $item_imgs = ItemImage::where("item_id", $item->id)->get();
 
         $keyword = $request->keyword;
         $sort = $request->sort;
@@ -459,6 +463,11 @@ class ItemController extends Controller
         } else {
             $sort = null;
         }
+
+        $items = $query->latest()->paginate(60);
+
+        // TODO:人気商品ランキング取得
+        $rank_items = $items->take(10);
 
         if(isset($keyword)){
             // 複数キーワード検索
@@ -483,17 +492,27 @@ class ItemController extends Controller
             $items = $query->latest()->paginate(60); // 全件取得
         }
 
-        $major_categoris = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
-        $sub_categoris = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
         $tags = Tag::all(); // タグ取得
 
+        $coupons = Coupon::all(); // 利用可能クーポン取得
+
+        $shop = Shop::query()
+                ->where('id', $item->shop_id)
+                ->first();
+
         return view('user.item.pc.items_detail',compact(
-            'items',
+            'item',
+            'item_imgs',
             'sort',
             'keyword',
-            'major_categoris',
-            'sub_categoris',
+            'major_categories',
+            'sub_categories',
             'tags',
+            'shop',
+            'rank_items',
+            'coupons'
         ));
     }
 

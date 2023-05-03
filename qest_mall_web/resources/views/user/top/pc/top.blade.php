@@ -69,7 +69,7 @@
                                             {{ $item->shop->shop_name }}
                                         </a>
                                     </div>
-                                    <div class="item-name">
+                                    <div class="item-name" style="height:30px;overflow-y:hidden;">
                                         <p>{{ $item->name }}</p>
                                     </div>
                                     <div class="price">

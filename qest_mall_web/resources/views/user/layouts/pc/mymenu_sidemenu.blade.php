@@ -7,7 +7,7 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="#" class="menu-title">
+                                <a href="{{ route("user_info"); }}" class="menu-title">
                                     基本情報
                                 </a>
                                 <div class="next-page">
@@ -15,7 +15,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="#" class="menu-title">
+                                <a href="{{ route("notice_settings") }}" class="menu-title">
                                     通知設定
                                 </a>
                                 <div class="next-page">

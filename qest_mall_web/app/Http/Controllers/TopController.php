@@ -17,6 +17,8 @@ class TopController extends Controller
 {
     public function top(Request $request) {
 
+        \FBAuth::createAuthAnonymous($request);
+
         // TODO:認証テスト用コード（認証機能が出来次第削除）
         // $request->session()->put('user_id_token', 'test');
         $request->session()->forget('user_id_token');
