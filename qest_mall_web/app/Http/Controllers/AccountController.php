@@ -23,15 +23,20 @@ class AccountController extends Controller
     // 基本情報Top
     public function mypageUserInfo(Request $request) {
         $menu_type = 1;
+        \Log::Info("test");
 
-        return view("user.my_menu.pc.user_info",compact(
+        return view("user.my_menu.pc.user_info", compact(
             "menu_type"
         ));
     }
 
     // 通知設定一覧
     public function mypageNoticeSettings(Request $request) {
-        return view("user.my_menu.pc.notice_settings");
+        $menu_type = 2;
+
+        return view("user.my_menu.pc.notice_settings", compact(
+            "menu_type"
+        ));
     }
 
     // メールマガジン確認・停止(クエストモール)
@@ -46,7 +51,11 @@ class AccountController extends Controller
 
     // クレジットカード登録一覧
     public function mypageCreditCards(Request $request) {
-        return view("user.my_menu.pc.credit_cards");
+        $menu_type = 3;
+
+        return view("user.my_menu.pc.credit_cards", compact(
+            "menu_type"
+        ));
     }
 
     // クレジットカード編集
@@ -56,42 +65,70 @@ class AccountController extends Controller
 
     // 購入履歴一覧
     public function mypagePurchaseHistorys(Request $request) {
-        return view("user.my_menu.pc.purchase_histories");
+        $menu_type = 4;
+
+        return view("user.my_menu.pc.purchase_histories",compact(
+            "menu_type"
+        ));
     }
 
     // 注文詳細
     public function mypagePurchaseHistorysDetail(Request $request) {
-        return view("user.my_menu.pc.purchase-histories_detail");
+        $menu_type = 4;
+
+        return view("user.my_menu.pc.purchase-histories_detail",compact(
+            "menu_type"
+        ));
     }
 
     // ご利用明細
     public function mypagePurchaseHistorysDetailUsageDetail(Request $request) {
-        return view("user.my_menu.pc.purchase-histories_detail_usage");
+        $menu_type = 4;
+        
+        return view("user.my_menu.pc.purchase-histories_detail_usage",compact(
+            "menu_type"
+        ));
     }
 
     // クーポン一覧
     public function mypageCoupons(Request $request) {
-        return view("user.my_menu.pc.coupons");
+        $menu_type = 5;
+
+        return view("user.my_menu.pc.coupons",compact(
+            "menu_type"
+        ));
     }
 
     // ポイント情報
     public function mypagePointInfo(Request $request) {
-        return view("user.my_menu.pc.point_info");
+        $menu_type = 6;
+
+        return view("user.my_menu.pc.point_info",compact(
+            "menu_type"
+        ));
     }
 
     // お気に入り
     public function mypageFavoritesItems(Request $request) {
         $items = Item::latest()->take(2)->get(); // 対象商品
         $shops = Shop::orderBy('shop_name')->get();
+        $menu_type = 7;
 
         return view("user.my_menu.pc.favorites_items",compact(
-            "items"
+            "items",
+            "menu_type"
         ));
     }
 
     // お気に入りショップ
     public function mypageFavoritesShops(Request $request) {
-        return view("user.my_menu.pc.favorites_shops");
+        $menu_type = 7;
+        $shops = Shop::orderBy('shop_name')->get();
+
+        return view("user.my_menu.pc.favorites_shops",compact(
+            "shops",
+            "menu_type"
+        ));
     }
 
     // 退会

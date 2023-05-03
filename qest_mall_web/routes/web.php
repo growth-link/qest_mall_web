@@ -250,12 +250,10 @@ Route::group(['middleware' => 'basicauth'], function() {
     */
 
     // PC
-    Route::get('/mypage/user-info', [MyMenuController::class, 'userInfo'])->name('mypage.user_info');
     Route::post('/mypage/quit', [MyMenuController::class, 'quit'])->name('quit');
     Route::get('/mypage/quit/done', [MyMenuController::class, 'quitDone'])->name('quit_done');
 
     // SP
-    Route::get('/sp/mypage/user-info', [MyMenuController::class, 'spUserInfo'])->name('sp.user_info');
     Route::post('/sp/mypage/quit', [MyMenuController::class, 'spQuit'])->name('sp.quit');
     Route::get('/sp/mypage/quit/done', [MyMenuController::class, 'spQuitDone'])->name('sp.quit_done');
 

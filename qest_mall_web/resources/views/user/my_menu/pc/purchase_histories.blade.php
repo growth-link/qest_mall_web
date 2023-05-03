@@ -6,11 +6,11 @@
 {{-- Content Box --}}
 <div class="content-box">
     <div style="display:flex;">
-        @include('user.layouts.pc.mymenu_sidemenu')
+        @include('user.layouts.pc.mymenu_sidemenu',['menu_type' => $menu_type])
 
         {{-- Main Content --}}
         <div class="main-content">
-            <h2 class="page-title">基本情報</h2>
+            <h2 class="page-title">購入履歴</h2>
 
             <div class="main-content-box">
             </div>

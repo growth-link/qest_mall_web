@@ -6,7 +6,7 @@
 {{-- Content Box --}}
 <div class="content-box">
     <div style="display:flex;">
-        @include('user.layouts.pc.mymenu_sidemenu')
+        @include('user.layouts.pc.mymenu_sidemenu',['menu_type' => $menu_type])
 
         {{-- Main Content --}}
         <div class="main-content">
