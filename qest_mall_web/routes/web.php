@@ -112,21 +112,21 @@ Route::group(['middleware' => 'basicauth'], function() {
     */
 
     // PC
-    Route::get('/mypage/user-info', [AccountController::class, 'mypageUserInfo'])->name("user_info"); // 基本情報Top
-    Route::get('/mypage/notice-settings', [AccountController::class, 'mypageNoticeSettings'])->name("notice_settings"); // 通知設定一覧
-    Route::get('/mypage/notice-settings/mall-mail', [AccountController::class, 'mypageNoticeSettingsMallMail'])->name("mall_mail"); // メールマガジン確認・停止(クエストモール)
-    Route::get('/mypage/notice-settings/shop-mail', [AccountController::class, 'mypageNoticeSettingsShopMail'])->name("shop_mail"); // メールマガジン確認・停止(ショップ)
-    Route::get('/mypage/credit-cards', [AccountController::class, 'mypageCreditCards'])->name("credit_cards"); // クレジットカード登録一覧
-    Route::get('/mypage/credit-cards/edit', [AccountController::class, 'mypageCreditCardsEdit']); // クレジットカード編集
-    Route::get('/mypage/purchase-histories', [AccountController::class, 'mypagePurchaseHistorys'])->name("purchase_histories");; // 購入履歴一覧
-    Route::get('/mypage/purchase-histories/detail', [AccountController::class, 'mypagePurchaseHistorysDetail'])->name("purchase_histories.detail"); // 注文詳細
-    Route::get('/mypage/purchase-histories/detail/usage-detail', [AccountController::class, 'mypagePurchaseHistorysDetailUsageDetail'])->name("purchase_histories.detail.usage"); // ご利用明細
+    Route::get('/mypage/user-info', [AccountController::class, 'mypageUserInfo'])->name("mypage.user_info"); // 基本情報Top
+    Route::get('/mypage/notice-settings', [AccountController::class, 'mypageNoticeSettings'])->name("mypage.notice_settings"); // 通知設定一覧
+    Route::get('/mypage/notice-settings/mall-mail', [AccountController::class, 'mypageNoticeSettingsMallMail'])->name("mypage.mall_mail"); // メールマガジン確認・停止(クエストモール)
+    Route::get('/mypage/notice-settings/shop-mail', [AccountController::class, 'mypageNoticeSettingsShopMail'])->name("mypage.shop_mail"); // メールマガジン確認・停止(ショップ)
+    Route::get('/mypage/credit-cards', [AccountController::class, 'mypageCreditCards'])->name("mypage.credit_cards"); // クレジットカード登録一覧
+    Route::get('/mypage/credit-cards/edit', [AccountController::class, 'mypageCreditCardsEdit'])->name("mypage.credit_cards.edit"); // クレジットカード編集
+    Route::get('/mypage/purchase-histories', [AccountController::class, 'mypagePurchaseHistorys'])->name("mypage.purchase_histories");; // 購入履歴一覧
+    Route::get('/mypage/purchase-histories/detail', [AccountController::class, 'mypagePurchaseHistorysDetail'])->name("mypage.purchase_histories.detail"); // 注文詳細
+    Route::get('/mypage/purchase-histories/detail/usage-detail', [AccountController::class, 'mypagePurchaseHistorysDetailUsageDetail'])->name("mypage.purchase_histories.detail.usage"); // ご利用明細
     Route::get('/mypage/coupons', [AccountController::class, 'mypageCoupons'])->name("mypage.coupons"); // クーポン一覧
     Route::get('/mypage/point-info', [AccountController::class, 'mypagePointInfo'])->name("mypage.point_info"); // ポイント情報
     Route::get('/mypage/favorites/items', [AccountController::class, 'mypageFavoritesItems'])->name("mypage.favorite_items"); // お気に入り
     Route::get('/mypage/favorites/shops', [AccountController::class, 'mypageFavoritesShops'])->name("mypage.favorite_shops"); // お気に入りショップ
-    Route::get('/mypage/quit', [AccountController::class, 'mypageQuit']); // 退会
-    Route::get('/mypage/quit/done', [AccountController::class, 'mypageQuitDone']); // 退会完了
+    Route::get('/mypage/quit', [AccountController::class, 'mypageQuit'])->name("mypage.quit"); // 退会
+    Route::get('/mypage/quit/done', [AccountController::class, 'mypageQuitDone'])->name("mypage.quit_done"); // 退会完了
 
     // sp
     Route::get('/sp/mypage/user-info', [AccountController::class, 'spMypageUserInfo']); // 基本情報Top
@@ -215,12 +215,12 @@ Route::group(['middleware' => 'basicauth'], function() {
     */
 
     // PC
-    Route::get('/notices', [NoticeController::class, 'notices']);
-    Route::get('/notices/detail', [NoticeController::class, 'noticesDetail']);
+    Route::get('/notices', [NoticeController::class, 'notices'])->name("notices");
+    Route::get('/notices/detail', [NoticeController::class, 'noticesDetail'])->name("notice_detail");
 
     // SP
-    Route::get('/sp/notices', [NoticeController::class, 'spNotices']);
-    Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail']);
+    Route::get('/sp/notices', [NoticeController::class, 'spNotices'])->name("sp.notices");
+    Route::get('/sp/notices/detail', [NoticeController::class, 'spNoticesDetail'])->name("sp.notice_detail");
 
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
@@ -250,7 +250,7 @@ Route::group(['middleware' => 'basicauth'], function() {
     */
 
     // PC
-    Route::get('/mypage/user-info', [MyMenuController::class, 'userInfo'])->name('user_info');
+    Route::get('/mypage/user-info', [MyMenuController::class, 'userInfo'])->name('mypage.user_info');
     Route::post('/mypage/quit', [MyMenuController::class, 'quit'])->name('quit');
     Route::get('/mypage/quit/done', [MyMenuController::class, 'quitDone'])->name('quit_done');
 

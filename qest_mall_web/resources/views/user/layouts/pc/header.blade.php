@@ -14,15 +14,15 @@
             <img src="/images/user/icon_cart.png">
             <p style="font-size:10px;">カート</p>
         </div>
-        <div style="float:left;text-align:center;width:70px;" onclick="location.href='#'">
+        <div style="float:left;text-align:center;width:70px;" onclick="location.href='{{ route('notices') }}'">
             <img src="/images/user/icon_notice.png">
             <p style="font-size:10px;">お知らせ</p>
         </div>
-        <div style="float:left;text-align:center;width:70px;" onclick="location.href='#'">
+        <div style="float:left;text-align:center;width:70px;" onclick="location.href='{{route('mypage.favorite_items');}}'">
             <img src="/images/user/icon_favorite.png">
             <p style="font-size:10px;">お気に入り</p>
         </div>
-        <div style="float:left;text-align:center;width:70px;" onclick="location.href='{{route('purchase_histories');}}'">
+        <div style="float:left;text-align:center;width:70px;" onclick="location.href='{{route('mypage.purchase_histories');}}'">
             <img src="/images/user/icon_history.png">
             <p style="font-size:10px;">購入履歴</p>
         </div>

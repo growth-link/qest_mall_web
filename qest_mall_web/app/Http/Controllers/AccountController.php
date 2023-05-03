@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Coupon;
+use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\Tag;
+use App\Models\Item;
+use App\Models\Shop;
+use App\Models\Brand;
+use App\Models\ItemImage;
+use Illuminate\Support\Facades\Log;
 
 class AccountController extends Controller
 {
@@ -14,7 +22,11 @@ class AccountController extends Controller
     */
     // 基本情報Top
     public function mypageUserInfo(Request $request) {
-        return view("user.my_menu.pc.user_info");
+        $menu_type = 1;
+
+        return view("user.my_menu.pc.user_info",compact(
+            "menu_type"
+        ));
     }
 
     // 通知設定一覧
@@ -68,12 +80,17 @@ class AccountController extends Controller
     }
 
     // お気に入り
-    public function mypageFavouritesItems(Request $request) {
-        return view("user.my_menu.pc.favorites_items");
+    public function mypageFavoritesItems(Request $request) {
+        $items = Item::latest()->take(2)->get(); // 対象商品
+        $shops = Shop::orderBy('shop_name')->get();
+
+        return view("user.my_menu.pc.favorites_items",compact(
+            "items"
+        ));
     }
 
     // お気に入りショップ
-    public function mypageFavouritesShops(Request $request) {
+    public function mypageFavoritesShops(Request $request) {
         return view("user.my_menu.pc.favorites_shops");
     }
 

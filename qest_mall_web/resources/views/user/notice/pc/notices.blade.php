@@ -24,7 +24,7 @@
         <hr>
         @endforeach
     </div>
-        <div class="wrap" style="font-size:20px;">
+        {{-- <div class="wrap" style="font-size:20px;">
             <ul>
                 <li class="cls1">＜</li>
                 <li class="cls1">1</li>
@@ -34,5 +34,5 @@
                 <li class="cls1">5</li>
                 <li class="cls1">＞</li>
             </ul>
-        </div>
+        </div> --}}
 @endsection

@@ -10,7 +10,7 @@
 
         {{-- Main Content --}}
         <div class="main-content">
-            <h2 class="page-title">基本情報</h2>
+            <h2 class="page-title">通知設定</h2>
 
             <div class="main-content-box">
             </div>

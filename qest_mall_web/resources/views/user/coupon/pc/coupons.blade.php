@@ -56,7 +56,7 @@
 
             {{-- 参加ショップ --}}
             <section class="main-content-box">
-                <h1 class="section-title">参加ショップ</h1>
+                <h1 class="section-title">新着ショップ</h1>
                 <div class="five-slick latest-shop-slick">
                     @foreach ($shops as  $shop)
                         <div>
