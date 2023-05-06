@@ -39,9 +39,9 @@
     <nav class="sidebar">
         <ul>
             <li class="sidebar-title"><a>売上・会計管理</a></li>
-            <li><a href="#">統計情報</a></li>
+            <li><a href="{{ route('statistics'); }}">統計情報</a></li>
             <li><a href="{{ route('histories'); }}" class="selected">会計履歴</a></li>
-            <li><a href="#">月別精算明細</a></li>
+            <li><a href="{{ route('monthly'); }}">月別精算明細</a></li>
         </ul>
     </nav>
 </div>
@@ -156,7 +156,7 @@
 
 
 <form action="" method="GET">
-    <div style="width:80%;float:left;">
+    <div style="width:80%;float:left;height:700px;overflow-y:scroll;">
         <span class="ECM_CheckboxInput-LabelText" style="margin-top:20px;margin-bottom:30px;">会計履歴</span>
 
         <div style="margin-bottom:20px;">
@@ -241,8 +241,40 @@
                         </div>
                     </td>
                 </tr>
-                @foreach($headers as $header)
+                {{-- @foreach($headers as $header) --}}
+
+                @foreach($details as $detail)
                 <tr>
+                    <td class="td-center">
+                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
+                            売上
+                        </div>
+                    </td>
+                    <td class="td-center">
+                        {{ $detail->start_at->format('Y/m/d') }}
+                    </td>
+                    <td class="td-center">
+                        {{ $detail->end_at->format('Y/m/d') }}
+                    </td>
+                    <td class="td-left">
+                        {{ $subject_type[$detail->subject_type]; }}
+                    </td>
+                    <td class="td-center">
+                        {{ $tax_type[$detail->tax_type]; }}
+                    </td>
+                    <td class="td-right">
+                        {{ number_format($detail->price); }}
+                    </td>
+                    <td class="td-center">
+                        {{ sprintf('%09d', $detail->sq_no); }}
+                    </td>
+                    <td class="td-center">
+                        {{ sprintf('%06d', $detail->payment_id); }}
+                    </td>
+                    <td class="td-center"></td>
+                </tr>
+                @endforeach
+                {{-- <tr>
                     <td class="td-center">
                         <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
                             売上
@@ -441,7 +473,7 @@
                     <td class="td-center">000000008</td>
                     <td class="td-center">000121</td>
                     <td class="td-center"></td>
-                </tr>
+                </tr> --}}
 
                 <!-- 小計 -->
                 <tr>
@@ -502,7 +534,7 @@
                     </td>
                     <td class="td-center">¥{{ number_format("6930") }}</td>
                 </tr>
-                @endforeach
+                {{-- @endforeach --}}
 
                 <tr>
                     <td colspan="9">
@@ -570,7 +602,7 @@
                         </div>
                     </td>
                 </tr>
-                @foreach($headers as $header)
+                {{-- @foreach($headers as $header) --}}
                 <tr>
                     <td class="td-center">
                         <div style="min-width:30px;text-align:center;background-color:FF7790;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
@@ -578,10 +610,10 @@
                         </div>
                     </td>
                     <td class="td-center">
-                        2023-04-28
+                        2023-05-04
                     </td>
                     <td class="td-center">
-                        2023-04-28
+                        2023-05-04
                     </td>
                     <td class="td-left">
                         その他販促協力金
@@ -590,7 +622,7 @@
                         10%
                     </td>
                     <td class="td-right">
-                        {{ number_format("1100") }}
+                        {{ number_format("1500") }}
                     </td>
                     <td class="td-center">000000001</td>
                     <td class="td-center"></td>
@@ -603,10 +635,10 @@
                         </div>
                     </td>
                     <td class="td-center">
-                        2023-04-28
+                        2023-05-04
                     </td>
                     <td class="td-center">
-                        2023-04-28
+                        2023-05-04
                     </td>
                     <td class="td-left">
                         イベント用WAONポイント負担金
@@ -615,7 +647,7 @@
                         10%
                     </td>
                     <td class="td-right">
-                        {{ number_format("4000") }}
+                        {{ number_format("2500") }}
                     </td>
                     <td class="td-center">000000002</td>
                     <td class="td-center"></td>
@@ -628,10 +660,10 @@
                         </div>
                     </td>
                     <td class="td-center">
-                        2023-04-28
+                        2023-05-04
                     </td>
                     <td class="td-center">
-                        2023-04-28
+                        2023-05-04
                     </td>
                     <td class="td-left">
                         クーポン券負担金
@@ -640,13 +672,13 @@
                         10%
                     </td>
                     <td class="td-right">
-                        {{ number_format("3200") }}
+                        {{ number_format("3500") }}
                     </td>
                     <td class="td-center">000000003</td>
                     <td class="td-center"></td>
                     <td class="td-center"></td>
                 </tr>
-                @endforeach
+                {{-- @endforeach --}}
             </tbody>
         </table>
     </div>

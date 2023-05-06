@@ -5,18 +5,21 @@
 @endcomponent
 @section('content')
 
+Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticeSendLists'])->name('notices.send_lists'); // ショップ管理 - お知らせ配信リスト
+Route::get('/shop-mng/notice-send-lists/create', [NoticeController::class, 'noticeSendListsCreate'])->name('notices.send_lists.create'); // ショップ管理 - お知らせ配信リスト追加
+Route::get('/shop-mng/notice-send-lists/edit', [NoticeController::class, 'noticeSendListsEdit'])->name('notices.send_lists.edit'); // ショップ管理 - お知らせ配信リスト編集
 <!-- サイドバー -->
 <div style="width:20%;float:left;">
     <nav class="sidebar">
         <ul>
             <li class="sidebar-title"><a>ショップ管理</a></li>
-            <li><a href="#">ショップ一覧・編集</a></li>
-            <li><a href="#">公開申請一覧</a></li>
-            <li><a href="#">変更申請一覧</a></li>
+            <li><a href="{{ route('admin.mall.shops'); }}">ショップ一覧・編集</a></li>
+            <li><a href="{{ route('admin.mall.release_request'); }}">公開申請一覧</a></li>
+            <li><a href="{{ route('admin.mall.change_request'); }}">変更申請一覧</a></li>
             <li><a href="{{ route('admin.shop.shops.create'); }}" class="selected">新規ショップ追加</a></li>
-            <li><a href="#">お知らせ配信リスト</a></li>
-            <li><a href="#">お知らせ作成・編集</a></li>
-            <li><a href="#">お知らせ配信履歴</a></li>
+            <li><a href="{{ route('admin.notices.send_lists'); }}">お知らせ配信リスト</a></li>
+            <li><a href="{{ route('admin.notices.send_lists.create'); }}">お知らせ作成・編集</a></li>
+            <li><a href="{{ route('admin.notices.send_lists.edit'); }}">お知らせ配信履歴</a></li>
         </ul>
     </nav>
 </div>

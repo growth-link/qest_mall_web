@@ -14,7 +14,7 @@ class FirebaseTestController extends Controller
     public function loginAnonymous()
     {
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-183a2-firebase-adminsdk-weg8g-a7289804a9.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
         $this->auth = $factory->createAuth();
         $anonymous = $this->auth->signInAnonymously();
         return view('index');

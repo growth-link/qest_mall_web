@@ -5,19 +5,21 @@
                 <img src="/images/admin/icon_home.png" style="width:15px;height:15px;margin-left:10px;margin-top:5px;">
             </a>
         </li>
+
         <li class="dropdown">
             <a href="#">モール基本情報<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu" style="width:250px;">
-                <li><a href="#">基本情報</a></li>
-                <li><a href="#">出典規約</a></li>
-                <li><a href="#">利用規約/個人情報保護方針</a></li>
-                <li><a href="#">管理ユーザー</a></li>
-                <li><a href="#">スタッフマスタ</a></li>
-                <li><a href="#">トップバナー編集</a></li>
+                <li><a href="{{ route('admin.basic-info'); }}">基本情報</a></li>
+                <li><a href="{{ route('admin.terms-of-open'); }}">出典規約</a></li>
+                <li><a href="{{ route('admin.terms-of-service'); }}">利用規約/個人情報保護方針</a></li>
+                <li><a href="{{ route('admin.adminUsers'); }}">管理ユーザー</a></li>
+                <li><a href="{{ route('admin.staff'); }}">スタッフマスタ</a></li>
+                <li><a href="{{ route('admin.ad-banners'); }}">トップバナー編集</a></li>
             </ul>
             <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
             <div class="dropdown-cover"></div>
         </li>
+
         <li class="dropdown">
             <a href="#">商品情報<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu"  style="width:250px;">
@@ -26,6 +28,7 @@
             <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
             <div class="dropdown-cover"></div>
         </li>
+        
         <li class="dropdown">
             <a href="#">顧客管理<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu" style="width:250px;">
@@ -57,7 +60,13 @@
             <button class="primary_btn_radius_menu dropdown">ショップ管理</button>
             {{-- <a href="#">商品情報<i class="fas fa-chevron-down"></i></a> --}}
             <ul class="dropdown-menu"  style="width:200px;left:-50px;">
-                <li><a href="{{ route('admin.item.items') }}">出品商品一覧</a></li>
+                <li><a href="{{ route('admin.mall.shops'); }}">ショップ一覧・編集</a></li>
+                <li><a href="{{ route('admin.mall.release_request'); }}">公開申請一覧</a></li>
+                <li><a href="{{ route('admin.mall.change_request'); }}">変更申請一覧</a></li>
+                <li><a href="{{ route('admin.shop.shops.create'); }}" class="selected">新規ショップ追加</a></li>
+                <li><a href="{{ route('admin.notices.send_lists'); }}">お知らせ配信リスト</a></li>
+                <li><a href="{{ route('admin.notices.send_lists.create'); }}">お知らせ作成・編集</a></li>
+                <li><a href="{{ route('admin.notices.send_lists.edit'); }}">お知らせ配信履歴</a></li>
             </ul>
             <div class="dropdown-cover"></div>
         </li>

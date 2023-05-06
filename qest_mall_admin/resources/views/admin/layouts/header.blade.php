@@ -12,6 +12,7 @@
     </a>
     <select style="float:right;border-radius:2px;padding:5px;">
         <option value="1">テストクエストモール店</option>
+        <option value="2">クエストモール店</option>
     </select>
     {{-- <p style="margin:0;margin-top:3px;font-weight:bold;color:white;float:right;margin-left:20px;">LIBREクエストモール店</p> --}}
 </div>

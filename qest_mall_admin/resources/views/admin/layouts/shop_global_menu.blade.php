@@ -18,6 +18,7 @@
             <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
             <div class="dropdown-cover"></div>
         </li>
+        
         <li class="dropdown">
             <a href="#">商品情報<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu"  style="width:250px;">
@@ -26,6 +27,7 @@
             <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
             <div class="dropdown-cover"></div>
         </li>
+
         <li class="dropdown">
             <a href="#">顧客管理<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu" style="width:250px;">

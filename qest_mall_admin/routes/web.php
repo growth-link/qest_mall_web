@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\ProceedController;
 use App\Http\Controllers\Admin\PurchaseController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\BasicController;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\MailController;
@@ -63,13 +64,15 @@ Route::group(['middleware' => 'basicauth'], function() {
     | モール基本管理
     |--------------------------------------------------------------------------
     */
-    Route::get('/basic-mng/basic-info', [BasicController::class, 'basicInfo'])->name('basic-info'); // 基本情報
-    Route::get('/basic-mng/terms-of-open', [BasicController::class, 'termsOpen'])->name('terms-of-open'); // 出典規約
-    Route::get('/basic-mng/terms-of-service', [BasicController::class, 'termsService'])->name('terms-of-service'); // 利用規約/個人情報保護方針
-    Route::get('/basic-mng/admin-users', [BasicController::class, 'adminUsers'])->name('adminUsers'); // 管理ユーザー
-    Route::get('/basic-mng/staff', [BasicController::class, 'staff'])->name('staff'); // スタッフマスタ
-    Route::get('/basic-mng/top-banners', [BasicController::class, 'topBanners'])->name('top-banners'); // トップバナー編集
-    Route::get('/basic-mng/ad-banners', [BasicController::class, 'adBanners'])->name('ad-banners'); // 広告バナー編集
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+        Route::get('/basic-mng/basic-info', [BasicController::class, 'basicInfo'])->name('basic-info'); // 基本情報
+        Route::get('/basic-mng/terms-of-open', [BasicController::class, 'termsOpen'])->name('terms-of-open'); // 出典規約
+        Route::get('/basic-mng/terms-of-service', [BasicController::class, 'termsService'])->name('terms-of-service'); // 利用規約/個人情報保護方針
+        Route::get('/basic-mng/admin-users', [BasicController::class, 'adminUsers'])->name('adminUsers'); // 管理ユーザー
+        Route::get('/basic-mng/staff', [BasicController::class, 'staff'])->name('staff'); // スタッフマスタ
+        Route::get('/basic-mng/top-banners', [BasicController::class, 'topBanners'])->name('top-banners'); // トップバナー編集
+        Route::get('/basic-mng/ad-banners', [BasicController::class, 'adBanners'])->name('ad-banners'); // 広告バナー編集
+    });
     
 
     /*
@@ -107,13 +110,13 @@ Route::group(['middleware' => 'basicauth'], function() {
     */
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
-        Route::get('/shop-mng/shops', [ShopController::class, 'shopManageShops'])->name('mall.notices'); // ショップ一覧
-        Route::get('/shop-mng/shops/items', [ShopController::class, 'shopManageShopsItems'])->name('mall.notices'); // 商品一覧
-        Route::get('/shop-mng/shops/contract', [ShopController::class, 'shopManageShopsContract'])->name('mall.notices'); // 契約情報
-        Route::get('/shop-mng/shops/contract/corporate-info/edit', [ShopController::class, 'shopManageShopsContractCorporateInfoEdit'])->name('mall.notices'); // 登録法人情報編集
-        Route::get('/shop-mng/shops/contract/contract-info/edit', [ShopController::class, 'shopManageShopsContractContractInfoEdit'])->name('mall.notices'); // 契約情報編集
-        Route::get('/shop-mng/release-requests', [ShopController::class, 'shopManageChangeRequests'])->name('mall.notices'); // 公開申請一覧
-        Route::get('/shop-mng/change-requests', [ShopController::class, 'shopManageChangeRequests'])->name('mall.notices'); // 変更申請一覧
+        Route::get('/shop-mng/shops', [ShopController::class, 'shopManageShops'])->name('mall.shops'); // ショップ一覧
+        Route::get('/shop-mng/shops/items', [ShopController::class, 'shopManageShopsItems'])->name('mall.items'); // 商品一覧
+        Route::get('/shop-mng/shops/contract', [ShopController::class, 'shopManageShopsContract'])->name('mall.contcact'); // 契約情報
+        Route::get('/shop-mng/shops/contract/corporate-info/edit', [ShopController::class, 'shopManageShopsContractCorporateInfoEdit'])->name('mall.corporate.edit'); // 登録法人情報編集
+        Route::get('/shop-mng/shops/contract/contract-info/edit', [ShopController::class, 'shopManageShopsContractContractInfoEdit'])->name('mall.contract.edit'); // 契約情報編集
+        Route::get('/shop-mng/release-requests', [ShopController::class, 'shopManageChangeRequests'])->name('mall.release_request'); // 公開申請一覧
+        Route::get('/shop-mng/change-requests', [ShopController::class, 'shopManageChangeRequests'])->name('mall.change_request'); // 変更申請一覧
         Route::get('/shop-mng/shops/create', [ShopController::class, 'shopShopsCreate'])->name('shop.shops.create'); // 新規ショップ追加
     });
 

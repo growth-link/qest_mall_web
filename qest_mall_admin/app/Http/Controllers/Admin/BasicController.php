@@ -21,12 +21,12 @@ class BasicController extends Controller
 
     // 出典規約
     public function termsOpen(Request $request) {
-        return view("admin/basic/terms_open", []);
+        return view("admin/basic/terms_of_open", []);
     }
 
     // 利用規約/個人情報保護方針
     public function termsService(Request $request) {
-        return view("admin/basic/terms_service", []);
+        return view("admin/basic/terms_of_service", []);
     }
 
     // 管理ユーザー
@@ -41,12 +41,12 @@ class BasicController extends Controller
 
     // トップバナー編集
     public function topBanners(Request $request) {
-        return view("admin/basic/topBanners", []);
+        return view("admin/basic/top_banners", []);
     }
 
     // 広告バナー編集
     public function adBanners(Request $request) {
-        return view("admin/basic/adBanners", []);
+        return view("admin/basic/ad_banners", []);
     }
 }
 
