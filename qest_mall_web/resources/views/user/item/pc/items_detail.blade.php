@@ -20,6 +20,10 @@
                 @endforeach
             </div>
 
+            
+
+            <hr style="border:1px solid rgba(0,0,0,.87);">
+
             {{-- 利用可能なクーポン --}}
             <section class="main-content-box rank-item">
                 <h2 class="section-title">この商品で利用可能なクーポン</h2>
@@ -80,6 +84,7 @@
                     <div class="shop-text">
                         <h2 class="section-title">
                             {{ $shop->shop_name }}
+                            <button class="inquiry_btn_radius">ショップに問い合わせる</button>
                         </h2>
                         <div class="flex-box">
                             <label class="ECM_CheckboxInput">
@@ -95,18 +100,15 @@
                                 <span class="ECM_CheckboxInput-LabelText">お気に入りショップに登録する</span>
                             </label>
                         </div>
+                        <ul class="shop-info-link">
+                            <li><a href="{{ route('shop_info', $shop) }}">店舗情報</a></li>
+                            <li><a>返品特約について</a></li>
+                            <li><a>特商法に基づく表示</a></li>
+                            <li><a>配送方法について</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="shop-info-bottom">
-                    <button class="inquiry_btn_radius">ショップに問い合わせる</button>
-                    <ul class="shop-info-link">
-                        <li><a href="{{ route('sp.shop_info', $shop) }}">店舗情報</a></li>
-                        <li><a>返品特約について</a></li>
-                    </ul>
-                    <ul class="shop-info-link">
-                        <li><a>特商法に基づく表示</a></li>
-                        <li><a>配送方法について</a></li>
-                    </ul>
                     <p>{{ $shop->introduction }}</p>
                 </div>
             </section>

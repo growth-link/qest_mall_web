@@ -12,6 +12,7 @@ use App\Models\Item;
 use App\Models\Shop;
 use App\Models\Brand;
 use App\Models\ItemImage;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Log;
 
 class PurchaseController extends Controller
@@ -25,6 +26,7 @@ class PurchaseController extends Controller
         // TODO
         $shop_carts = ['c1'=>'red',
         ];
+        $shop_carts = Cart::where("user_id", 1)->get();
 
         return view('user.purchase.pc.cart', compact(
             'items',

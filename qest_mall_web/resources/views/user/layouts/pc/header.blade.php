@@ -31,7 +31,7 @@
             マイメニュー
         </button>
         @else --}}
-        <button class="primary_btn" style="float:left;" onclick="location.href='#'">
+        <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('login') }}'">
             ログイン
         </button>
         {{-- @endif --}}
