@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Item
- *
+ * 
  * @property int $id
  * @property int|null $shop_id
  * @property string|null $jan_code
@@ -50,13 +50,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $one_stories_url
  * @property int|null $filter_color_id
  * @property int|null $filter_tag_id
+ * @property int $stock
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- *
+ * 
  * @property Brand|null $brand
  * @property Category|null $category
  * @property Shop|null $shop
+ * @property Collection|APurchaseHistory[] $a_purchase_histories
  * @property Collection|ItemImage[] $item_images
  *
  * @package App\Models
@@ -75,7 +77,10 @@ class Item extends Model
 		'open_price' => 'int',
 		'normal_price' => 'int',
 		'tax' => 'int',
+		'start_datetime' => 'datetime',
+		'end_datetime' => 'datetime',
 		'can_reserve' => 'bool',
+		'reserve_start_datetime' => 'datetime',
 		'is_postage_free' => 'bool',
 		'delivery_type_id' => 'int',
 		'item_size_id' => 'int',
@@ -89,13 +94,8 @@ class Item extends Model
 		'has_option' => 'bool',
 		'has_check' => 'bool',
 		'filter_color_id' => 'int',
-		'filter_tag_id' => 'int'
-	];
-
-	protected $dates = [
-		'start_datetime',
-		'end_datetime',
-		'reserve_start_datetime'
+		'filter_tag_id' => 'int',
+		'stock' => 'int'
 	];
 
 	protected $fillable = [
@@ -133,7 +133,8 @@ class Item extends Model
 		'has_check',
 		'one_stories_url',
 		'filter_color_id',
-		'filter_tag_id'
+		'filter_tag_id',
+		'stock'
 	];
 
 	public function brand()
@@ -151,13 +152,13 @@ class Item extends Model
 		return $this->belongsTo(Shop::class);
 	}
 
+	public function a_purchase_histories()
+	{
+		return $this->hasMany(APurchaseHistory::class);
+	}
+
 	public function item_images()
 	{
 		return $this->hasMany(ItemImage::class);
-	}
-
-	public function is_sumbnail_image()
-	{
-		return $this->hasOne(ItemImage::class)->where('is_sumbnail', true);
 	}
 }

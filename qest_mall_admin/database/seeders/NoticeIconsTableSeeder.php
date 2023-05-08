@@ -21,51 +21,51 @@ class NoticeIconsTableSeeder extends Seeder
         \DB::table('notice_icons')->insert(array (
             0 => 
             array (
+                'icon_url' => '/images/icon_maintenance.png',
                 'id' => 1,
                 'title' => 'メンテナンス',
-                'icon_url' => '/images/icon_maintenance.png',
             ),
             1 => 
             array (
+                'icon_url' => '/images/icon_warning.png',
                 'id' => 2,
                 'title' => 'お知らせ（注意）',
-                'icon_url' => '/images/icon_warning.png',
             ),
             2 => 
             array (
+                'icon_url' => '/images/icon_information.png',
                 'id' => 3,
                 'title' => 'お知らせ（インフォメーション）',
-                'icon_url' => '/images/icon_information.png',
             ),
             3 => 
             array (
+                'icon_url' => '/images/icon_security.png',
                 'id' => 4,
                 'title' => 'セキュリティ',
-                'icon_url' => '/images/icon_security.png',
             ),
             4 => 
             array (
+                'icon_url' => '/images/icon_important.png',
                 'id' => 5,
                 'title' => '重要',
-                'icon_url' => '/images/icon_important.png',
             ),
             5 => 
             array (
+                'icon_url' => '/images/icon_disaster.png',
                 'id' => 6,
                 'title' => '災害情報',
-                'icon_url' => '/images/icon_disaster.png',
             ),
             6 => 
             array (
+                'icon_url' => '/images/icon_delivery.png',
                 'id' => 7,
                 'title' => '配送遅延',
-                'icon_url' => '/images/icon_delivery.png',
             ),
             7 => 
             array (
+                'icon_url' => '/images/icon_coupon.png',
                 'id' => 8,
                 'title' => 'クーポン',
-                'icon_url' => '/images/icon_coupon.png',
             ),
         ));
         

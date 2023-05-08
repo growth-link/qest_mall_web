@@ -16,15 +16,38 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * 
  * @property int $id
  * @property string|null $shop_name
+ * @property string|null $shop_name_kana
  * @property string|null $shop_tt_code
  * @property int|null $visibility_status
+ * @property string|null $distributor
+ * @property string|null $officer_name
+ * @property string|null $officer_name_kana
+ * @property int $is_same_officer
+ * @property string|null $personal_info_officer_name
+ * @property string|null $personal_info_officer_name_kana
+ * @property string|null $tel
+ * @property string|null $mail
+ * @property int|null $zip_code
+ * @property int|null $prefecture_id
+ * @property string|null $city
+ * @property string|null $address
+ * @property string|null $building
+ * @property int|null $industry_id
+ * @property string|null $category
+ * @property string|null $introduction
  * @property int|null $image_id
+ * @property string|null $banner_url
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
  * 
  * @property Image|null $image
+ * @property Prefecture|null $prefecture
+ * @property BusinessCalendar $business_calendar
  * @property Collection|Item[] $items
+ * @property Collection|ShopDeliveryArea[] $shop_delivery_areas
+ * @property Collection|ShopDeliveryCharge[] $shop_delivery_charges
+ * @property SpecifiedCommercialTransaction $specified_commercial_transaction
  *
  * @package App\Models
  */
@@ -35,14 +58,36 @@ class Shop extends Model
 
 	protected $casts = [
 		'visibility_status' => 'int',
+		'is_same_officer' => 'int',
+		'zip_code' => 'int',
+		'prefecture_id' => 'int',
+		'industry_id' => 'int',
 		'image_id' => 'int'
 	];
 
 	protected $fillable = [
 		'shop_name',
+		'shop_name_kana',
 		'shop_tt_code',
 		'visibility_status',
-		'image_id'
+		'distributor',
+		'officer_name',
+		'officer_name_kana',
+		'is_same_officer',
+		'personal_info_officer_name',
+		'personal_info_officer_name_kana',
+		'tel',
+		'mail',
+		'zip_code',
+		'prefecture_id',
+		'city',
+		'address',
+		'building',
+		'industry_id',
+		'category',
+		'introduction',
+		'image_id',
+		'banner_url'
 	];
 
 	public function image()
@@ -50,8 +95,33 @@ class Shop extends Model
 		return $this->belongsTo(Image::class);
 	}
 
+	public function prefecture()
+	{
+		return $this->belongsTo(Prefecture::class);
+	}
+
+	public function business_calendar()
+	{
+		return $this->hasOne(BusinessCalendar::class);
+	}
+
 	public function items()
 	{
 		return $this->hasMany(Item::class);
+	}
+
+	public function shop_delivery_areas()
+	{
+		return $this->hasMany(ShopDeliveryArea::class);
+	}
+
+	public function shop_delivery_charges()
+	{
+		return $this->hasMany(ShopDeliveryCharge::class);
+	}
+
+	public function specified_commercial_transaction()
+	{
+		return $this->hasOne(SpecifiedCommercialTransaction::class);
 	}
 }

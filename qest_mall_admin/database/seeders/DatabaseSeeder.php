@@ -58,5 +58,22 @@ class DatabaseSeeder extends Seeder
         $this->call(TopBannersTableSeeder::class);
         $this->call(TagsTableSeeder::class);
         \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        $this->call(APurchaseHistoriesTableSeeder::class);
+        $this->call(BusinessCalendarsTableSeeder::class);
+        $this->call(CartsTableSeeder::class);
+        $this->call(CouponLpsTableSeeder::class);
+        $this->call(CouponTargetItemsTableSeeder::class);
+        $this->call(DeliverySizeTypesTableSeeder::class);
+        $this->call(FavoritesTableSeeder::class);
+        $this->call(FavoritesShopTableSeeder::class);
+        $this->call(PaymentItemsTableSeeder::class);
+        $this->call(ProceedHistoriesDetailTableSeeder::class);
+        $this->call(ProceedHistoriesHeaderTableSeeder::class);
+        $this->call(ShopDeliveryAreaSetsTableSeeder::class);
+        $this->call(ShopDeliveryAreasTableSeeder::class);
+        $this->call(ShopDeliveryChargesTableSeeder::class);
+        $this->call(SizesTableSeeder::class);
+        $this->call(SpecifiedCommercialTransactionsTableSeeder::class);
+        $this->call(StatisticsTableSeeder::class);
     }
 }

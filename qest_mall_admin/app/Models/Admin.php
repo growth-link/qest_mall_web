@@ -30,8 +30,8 @@ class Admin extends Model
 	use SoftDeletes;
 	protected $table = 'admins';
 
-	protected $dates = [
-		'email_verified_at'
+	protected $casts = [
+		'email_verified_at' => 'datetime'
 	];
 
 	protected $hidden = [

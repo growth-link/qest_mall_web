@@ -34,14 +34,11 @@ class TopBanner extends Model
 	protected $casts = [
 		'display_order' => 'int',
 		'top_banner_type' => 'int',
-		'image_id' => 'int'
-	];
-
-	protected $dates = [
-		'display_start_date',
-		'display_end_date',
-		'display_start_time',
-		'display_end_time'
+		'image_id' => 'int',
+		'display_start_date' => 'datetime',
+		'display_end_date' => 'datetime',
+		'display_start_time' => 'datetime',
+		'display_end_time' => 'datetime'
 	];
 
 	protected $fillable = [

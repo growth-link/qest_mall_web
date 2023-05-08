@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $parent_id
  * @property string|null $category_name
  * @property int|null $image_id
+ * @property bool|null $fashion_minor_category_flag
  * 
  * @property Image|null $image
  * @property Category|null $category
@@ -31,13 +32,15 @@ class Category extends Model
 
 	protected $casts = [
 		'parent_id' => 'int',
-		'image_id' => 'int'
+		'image_id' => 'int',
+		'fashion_minor_category_flag' => 'bool'
 	];
 
 	protected $fillable = [
 		'parent_id',
 		'category_name',
-		'image_id'
+		'image_id',
+		'fashion_minor_category_flag'
 	];
 
 	public function image()

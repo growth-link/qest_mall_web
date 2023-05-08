@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class ProceedHistoriesDetail
  * 
  * @property int $id
+ * @property string|null $order_no
  * @property int|null $type
  * @property Carbon|null $start_at
  * @property Carbon|null $end_at
@@ -49,6 +50,7 @@ class ProceedHistoriesDetail extends Model
 	];
 
 	protected $fillable = [
+		'order_no',
 		'type',
 		'start_at',
 		'end_at',

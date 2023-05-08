@@ -219,7 +219,7 @@
         </div>
 
 
-        <table id="histories_table" style="width:96%;font-weight:normal;">
+        <table id="histories_table" style="width:92%;font-weight:normal;">
             <thead>
                 <tr style="background-color:#f2f2f2;padding:10px;">
                     <th style="width:80px;">種別</th>
@@ -246,8 +246,8 @@
                 @foreach($details as $detail)
                 <tr>
                     <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            売上
+                        <div style="min-width:30px;text-align:center;background-color:{{$colors[$detail->type]}};font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
+                            {{ $tags[$detail->type] }}
                         </div>
                     </td>
                     <td class="td-center">
@@ -493,7 +493,7 @@
                     <td class="td-left">
                         <span style="font-weight:bold;font-size:17px;">小計</span>
                     </td>
-                    <td class="td-center">¥{{ number_format("6690") }}</td>
+                    <td class="td-right">¥{{ number_format("6690") }}</td>
                 </tr>
                 <tr>
                     <td class="td-center">
@@ -512,7 +512,7 @@
                     <td class="td-left">
                         <span style="font-weight:bold;font-size:17px;">消費税</span>
                     </td>
-                    <td class="td-center">¥{{ number_format("440") }}</td>
+                    <td class="td-right">¥{{ number_format("440") }}</td>
                 </tr>
                 <tr>
                     <td class="td-center">
@@ -532,7 +532,7 @@
                     <td class="td-left">
                         <span style="font-weight:bold;font-size:17px;">合計</span>
                     </td>
-                    <td class="td-center">¥{{ number_format("6930") }}</td>
+                    <td class="td-right">¥{{ number_format("6930") }}</td>
                 </tr>
                 {{-- @endforeach --}}
 
