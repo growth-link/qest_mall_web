@@ -30,11 +30,8 @@ class CouponTargetItem extends Model
 
 	protected $casts = [
 		'coupon_id' => 'int',
-		'item_id' => 'int'
-	];
-
-	protected $dates = [
-		'updaated_at'
+		'item_id' => 'int',
+		'updaated_at' => 'datetime'
 	];
 
 	protected $fillable = [

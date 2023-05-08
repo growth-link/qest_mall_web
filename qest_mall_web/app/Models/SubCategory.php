@@ -6,7 +6,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $sp_top_banner_url
  * 
  * @property Image|null $image
- * @property Collection|Item[] $items
  *
  * @package App\Models
  */
@@ -46,10 +44,5 @@ class SubCategory extends Model
 	public function image()
 	{
 		return $this->belongsTo(Image::class);
-	}
-
-	public function items()
-	{
-		return $this->hasMany(Item::class);
 	}
 }

@@ -123,7 +123,7 @@ class FirebaseAuth
     // ユーザーのログインチェック
     public function checkLogin(Request $request, $redirectName = null) {
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-b3c8b-firebase-adminsdk-ps17n-fd602151bd.json');
         $this->auth = $factory->createAuth();
         
         if($request->session()->has("id_token")) {
@@ -151,7 +151,7 @@ class FirebaseAuth
 
     public function isLogin(Request $request) {
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-admin-dev-firebase-adminsdk-8j2vc-794917d832.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-b3c8b-firebase-adminsdk-ps17n-fd602151bd.json');
         $this->auth = $factory->createAuth();
     
         if($request->session()->has("id_token")) {

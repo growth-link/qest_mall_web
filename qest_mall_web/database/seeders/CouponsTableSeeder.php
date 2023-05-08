@@ -22,8 +22,8 @@ class CouponsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'url' => NULL,
                 'image_id' => 49,
+                'url' => NULL,
             ),
         ));
         

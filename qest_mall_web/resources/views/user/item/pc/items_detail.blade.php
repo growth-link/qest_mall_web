@@ -20,6 +20,30 @@
                 @endforeach
             </div>
 
+            <div style="width:100%;height:200px;">
+                <div style="float:left;width:30%;">
+                    <div style="font-weight:bold;font-size:17px;">{{$item->name ?? ""}}</div>
+                    <div style="font-weight:bold;font-size:17px;margin-top:10px;">{{$item->normal_price ?? ""}}円（税込）</div>
+                    <div style="font-weight:bold;font-size:12px;margin-top:10px;">納期目安:2日~14日</div>
+                </div>
+                <div style="float:left;width:70%;text-align:right;">
+                    <div style="width:100%;height:100px;"></div>
+                    <button class="primary_radius_button" style="padding: 15px 30px;
+                    border: 0px;
+                    border-radius: 30px;
+                    font-size: 17px;
+                    font-weight: bold;
+                    background-color: #FBDB5B;">カートに追加する</button>
+                    <button class="primary_btn_radius_menu" style="padding: 15px 30px;
+                    margin-left:10px;
+                    border: 0px;
+                    border-radius: 30px;
+                    font-size: 17px;
+                    font-weight: bold;
+                    background-color: #FBDB5B;">商品を購入する</button>
+                </div>
+            </div>
+
             
 
             <hr style="border:1px solid rgba(0,0,0,.87);">

@@ -76,7 +76,7 @@ class AccountController extends Controller
     public function mypagePurchaseHistorysDetail(Request $request) {
         $menu_type = 4;
 
-        return view("user.my_menu.pc.purchase-histories_detail",compact(
+        return view("user.my_menu.pc.purchase_histories_detail",compact(
             "menu_type"
         ));
     }
@@ -85,7 +85,7 @@ class AccountController extends Controller
     public function mypagePurchaseHistorysDetailUsageDetail(Request $request) {
         $menu_type = 4;
         
-        return view("user.my_menu.pc.purchase-histories_detail_usage",compact(
+        return view("user.my_menu.pc.purchase_histories_detail_usage",compact(
             "menu_type"
         ));
     }

@@ -27,8 +27,8 @@ class User extends Model
 {
 	protected $table = 'users';
 
-	protected $dates = [
-		'email_verified_at'
+	protected $casts = [
+		'email_verified_at' => 'datetime'
 	];
 
 	protected $hidden = [

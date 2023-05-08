@@ -11,6 +11,7 @@
         padding: 40px 20%;
         display: flex;
         justify-content: center;
+        z-index:10000;
     }
     .sns-container {
         display: table;

@@ -15,16 +15,16 @@ class AuthController extends Controller
     */
 
     public function login(Request $request) {
-        if(\FBAuth::isAdminLogin($request)) {
-            return redirect()->route("admin.mode_select");
+        if(\FBAuth::isLogin($request)) {
+            return redirect()->route("top");
         } else {
-            return view("admin/auth/login");
+            return redirect()->route("login");
         }
     }
 
     public function checkLogin(Request $request) {
-        $result = \FBAuth::adminLogin($request, $request->login_id, $request->password);
-        if(\FBAuth::isAdminLogin($request)) {
+        $result = \FBAuth::login($request, $request->login_id, $request->password);
+        if(\FBAuth::isLogin($request)) {
             return redirect()->route("admin.mode_select");
         } else {
             return redirect()->route("admin.login");

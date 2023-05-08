@@ -21,38 +21,38 @@ class AdsTableSeeder extends Seeder
         \DB::table('ads')->insert(array (
             0 => 
             array (
-                'id' => 1,
                 'ad_type' => 1,
-                'url' => 'https://www.aeon.jp/sc/aeonmallapp/',
+                'id' => 1,
                 'image_id' => 50,
+                'url' => 'https://www.aeon.jp/sc/aeonmallapp/',
             ),
             1 => 
             array (
-                'id' => 2,
                 'ad_type' => 2,
-                'url' => 'https://www.aeon.jp/sc/aeonmallapp/',
+                'id' => 2,
                 'image_id' => 50,
+                'url' => 'https://www.aeon.jp/sc/aeonmallapp/',
             ),
             2 => 
             array (
-                'id' => 3,
                 'ad_type' => 3,
-                'url' => 'https://www.opa-club.com/',
+                'id' => 3,
                 'image_id' => 51,
+                'url' => 'https://www.opa-club.com/',
             ),
             3 => 
             array (
-                'id' => 4,
                 'ad_type' => 4,
-                'url' => 'https://www.waon.net/',
+                'id' => 4,
                 'image_id' => 52,
+                'url' => 'https://www.waon.net/',
             ),
             4 => 
             array (
-                'id' => 5,
                 'ad_type' => 5,
-                'url' => 'https://www.aeon.jp/sc/aeonmallapp/',
+                'id' => 5,
                 'image_id' => 53,
+                'url' => 'https://www.aeon.jp/sc/aeonmallapp/',
             ),
         ));
         

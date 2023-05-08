@@ -1,4 +1,4 @@
-<div style="width:100%;height:60px;padding:10px 1%;border-bottom:1px solid #cccccc;">
+<div style="width:100%;height:60px;padding:10px 1%;border-bottom:1px solid #cccccc;background-color:white;position:fixed;">
     <a href="{{ route('top') }}">
         <img src="/images/qest_mall_gray.png" style="height:35px;">
     </a>
@@ -31,9 +31,13 @@
             マイメニュー
         </button>
         @else --}}
-        <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('login') }}'">
+        {{-- <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('login') }}'">
             ログイン
-        </button>
+        </button> --}}
         {{-- @endif --}}
+        <button class="primary_btn" style="float:left;" onclick="location.href=''">
+            マイメニュー
+        </button>
     </div>
 </div>
+<div style="width:100%;height:60px;padding:10px 1%;border-bottom:1px solid #cccccc;"></div>

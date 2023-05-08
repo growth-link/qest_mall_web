@@ -21,13 +21,13 @@ class DeliveryTypeTableSeeder extends Seeder
         \DB::table('delivery_type')->insert(array (
             0 => 
             array (
-                'id' => 1,
                 'delivery_type_name' => 'ヤマト宅急便',
+                'id' => 1,
             ),
             1 => 
             array (
-                'id' => 2,
                 'delivery_type_name' => 'ゆうパック',
+                'id' => 2,
             ),
         ));
         

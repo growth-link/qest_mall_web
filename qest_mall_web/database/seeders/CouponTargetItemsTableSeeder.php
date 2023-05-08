@@ -22,10 +22,10 @@ class CouponTargetItemsTableSeeder extends Seeder
             0 => 
             array (
                 'coupon_id' => 1,
-                'item_id' => 1,
                 'created_at' => '2023-03-15 16:53:15',
-                'updaated_at' => '2023-03-15 16:53:15',
                 'deleted_at' => '2023-03-15 16:53:15',
+                'item_id' => 1,
+                'updaated_at' => '2023-03-15 16:53:15',
             ),
         ));
         

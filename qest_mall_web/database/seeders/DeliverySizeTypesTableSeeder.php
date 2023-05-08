@@ -21,33 +21,33 @@ class DeliverySizeTypesTableSeeder extends Seeder
         \DB::table('delivery_size_types')->insert(array (
             0 => 
             array (
-                'id' => 1,
                 'delivery_size_type_name' => 'コンパクト',
+                'id' => 1,
             ),
             1 => 
             array (
-                'id' => 2,
                 'delivery_size_type_name' => '60',
+                'id' => 2,
             ),
             2 => 
             array (
-                'id' => 3,
                 'delivery_size_type_name' => '80',
+                'id' => 3,
             ),
             3 => 
             array (
-                'id' => 4,
                 'delivery_size_type_name' => '100',
+                'id' => 4,
             ),
             4 => 
             array (
-                'id' => 5,
                 'delivery_size_type_name' => '120',
+                'id' => 5,
             ),
             5 => 
             array (
-                'id' => 6,
                 'delivery_size_type_name' => '140',
+                'id' => 6,
             ),
         ));
         
