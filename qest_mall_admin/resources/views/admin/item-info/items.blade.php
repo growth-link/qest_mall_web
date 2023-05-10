@@ -16,7 +16,7 @@
 
         <ul style="position:absolute;bottom:0px;">
             <li class="sidebar-title"><a>CSVアップロード</a></li>
-            <li><a href="" class="selected">商品一括登録</a></li>
+            <li><a href="">商品一括登録</a></li>
             <li><a href="">在庫数一括更新</a></li>
         </ul>
     </nav>

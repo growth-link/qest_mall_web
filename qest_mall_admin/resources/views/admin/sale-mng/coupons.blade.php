@@ -1,6 +1,11 @@
 @extends("admin.layout")
-@component('admin.layouts.header')
-@endcomponent
+@if(session('is_mall'))
+  @component('admin.layouts.mall_shop_header')
+  @endcomponent
+@else
+  @component('admin.layouts.shop_header')
+  @endcomponent
+@endif
 @component('admin.layouts.mall_global_menu')
 @endcomponent
 @section('content')

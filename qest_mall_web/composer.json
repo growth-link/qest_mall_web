@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "ext-sodium": "*",
+        "barryvdh/laravel-dompdf": "^2.0",
         "diglactic/laravel-breadcrumbs": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "kreait/firebase-php": "^6.9",
@@ -16,7 +17,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "league/csv": "^9.9",
-        "phpseclib/phpseclib": "^3.0"
+        "phpseclib/phpseclib": "^3.0",
+        "symfony/yaml": "^6.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -57,6 +59,7 @@
             "composer update",
             "npm install",
             "npm run dev",
+            "composer dump-autoload",
             "composer install --dev`",
             "php artisan config:clear",
             "php artisan cache:clear",

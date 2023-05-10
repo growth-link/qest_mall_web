@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "ext-sodium": "*",
+        "barryvdh/laravel-dompdf": "^2.0",
         "diglactic/laravel-breadcrumbs": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "kreait/firebase-php": "^6.9",
@@ -60,6 +61,7 @@
             "npm install",
             "npm run dev",
             "composer install --dev`",
+            "composer dump-autoload",
             "php artisan config:clear",
             "php artisan cache:clear",
             "php artisan config:cache",

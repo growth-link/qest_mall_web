@@ -1,6 +1,11 @@
 @extends("layout")
-@component('user.layouts.pc.header')
-@endcomponent
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/pc/drop_down_menu.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/mall_top.css') }}">
@@ -17,6 +22,7 @@
 
 {{-- Content Box --}}
 <div class="content-box">
+    {{$is_login}}
     {{-- Qest mall magazine --}}
     <div class="qmm">
         <h2 class="qmm-title">Qest mall magazine

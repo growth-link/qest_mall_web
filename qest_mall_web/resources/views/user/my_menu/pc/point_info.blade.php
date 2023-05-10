@@ -9,9 +9,11 @@
         @include('user.layouts.pc.mymenu_sidemenu',['menu_type' => $menu_type])
 
         {{-- Main Content --}}
-        <div class="main-content">
+        <div class="main-content" style="margin-left:auto;">
             <h2 class="page-title">ポイント情報</h2>
 
+            <div class="main-content-box">
+            </div>
         </div>
     </div>
 </div>

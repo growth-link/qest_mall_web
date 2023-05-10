@@ -5,6 +5,16 @@
 <link rel="stylesheet" href="{{ asset('css/pc/my_menu.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/common.css') }}">
 {{-- Content Box --}}
+<style>
+    .price-text {
+        font-weight:bold;
+        margin-left:10px;
+        margin-top:20px;
+        font-size:17px;
+        text-align:right;
+        color:rgb(216, 45, 45);
+    }
+</style>
 <div class="content-box">
     <div style="display:flex;">
         @include('user.layouts.pc.mymenu_sidemenu',['menu_type' => $menu_type])

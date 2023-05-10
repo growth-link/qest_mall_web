@@ -5,6 +5,17 @@
 <link rel="stylesheet" href="{{ asset('css/pc/my_menu.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/common.css') }}">
 {{-- Content Box --}}
+
+<style>
+    .price-text {
+        font-weight:bold;
+        margin-left:10px;
+        margin-top:20px;
+        font-size:17px;
+        text-align:right;
+        color:rgb(216, 45, 45);
+    }
+</style>
 <div class="content-box">
     <div style="display:flex;">
         @include('user.layouts.pc.mymenu_sidemenu',['menu_type' => $menu_type])
@@ -21,7 +32,7 @@
                         <div style="float:left;width:70%;">
                             <div style="font-weight:bold;margin-left:10px;">【会計テスト用】天然水 ミネラルウォーター 500ml 1セット(6本) </div>
                             <span style="margin-left:10px;color:#cccccc;">mil mil</span>
-                            <div style="font-weight:bold;margin-left:10px;font-size:17px;text-align:right;">送料 550円 <span style="font-size:20px;margin-left:20px;">2200円</span></div>
+                            <div style="" class="price-text">送料 550円 <span style="font-size:20px;margin-left:20px;">2200円</span></div>
                         </div>
                     </div>
 
@@ -32,7 +43,7 @@
                         <div style="float:left;width:70%;">
                             <div style="font-weight:bold;margin-left:10px;">【会計テスト用】繰り返し使える 3Dビューティマスク(ホワイト) 5枚</div>
                             <span style="margin-left:10px;color:#cccccc;">mil mil</span>
-                            <div style="font-weight:bold;margin-left:10px;font-size:17px;text-align:right;">送料 550円 <span style="font-size:20px;margin-left:20px;">3240円</span></div>
+                            <div class="price-text">送料 550円 <span style="font-size:20px;margin-left:20px;">3240円</span></div>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,4 @@
 @extends("layout")
-@component('admin.layouts.header')
-@endcomponent
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <style>
@@ -254,11 +252,32 @@
 
 @endsection
 @section("script")
+<script type="text/javascript" src="https://xxx/PaygentToken.js" charset="UTF-8"></script>
     <script>
         function showModal() {
             $('.modal').modal({
                 centered: false
             }).modal('show');
+        }
+
+        function send() {
+            var form = document.card_form;
+            var paygentToken = new PaygentToken();
+            paygentToken.createToken(
+                '52026',
+                'live_000000000000000000000000', {
+                    card_number:form.card_number.value,
+                    expire_year:form.expire_year.value,
+                    expire_month: form.expire_month.value,
+                    cvc:form.cvc.value,
+                    name:form.name.value
+                },
+                execPurchase
+            //PaygentTokenオブジェクトの生成
+            //第1引数:マーチャントID //第2引数:トークン生成鍵 //第3引数:クレジットカード情報
+            //クレジットカード番号 //有効期限-YY //有効期限-MM //セキュリティーコード //カード名義
+            //第4引数:コールバック関数(トークン取得後に実行)
+            );
         }
     </script>
 @endsection

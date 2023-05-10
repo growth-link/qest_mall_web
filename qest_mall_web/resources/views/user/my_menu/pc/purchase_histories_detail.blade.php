@@ -95,10 +95,9 @@
                     </div>
                 </div>
             </div>
-
+{{-- 
             <div  style="padding:20px;height:350px;">
-            </div>
-
+            </div> --}}
 
 
             {{-- <div class="main-content-box" style="padding:20px;height:350px;">
@@ -298,6 +297,43 @@
                     </div>
                 </div>
             </div> --}}
+
+            <div style="width:100%;height:80px;">
+                <div style="width:48%;float:left;">
+                    <span style="font-weight:bold;color:#aaaaaa;font-size:20px;">発送状況</span>
+                    <hr>
+                </div>
+                <div style="width:48%;float:left;margin-left:2%;">
+                    <span style="font-weight:bold;color:#aaaaaa;font-size:20px;">配送情報</span>
+                    <hr>
+                </div>
+            </div>
+
+            <div style="width:100%;margin-top:50px;">
+                <span style="font-weight:bold;color:#aaaaaa;font-size:20px;">請求先情報</span>
+                <div style="width:100%;height:100px;background-color:#dddddd;"></div>
+            </div>
+
+            <div style="width:100%;margin-top:20px;">
+                <span style="font-weight:bold;color:#aaaaaa;font-size:20px;">お届け先情報</span>
+                <div style="width:100%;height:100px;background-color:#dddddd;"></div>
+            </div>
+
+            <div style="width:100%;margin-top:20px;">
+                <span style="font-weight:bold;color:#aaaaaa;font-size:20px;">お支払い情報</span>
+                <div style="width:100%;height:100px;background-color:#dddddd;"></div>
+            </div>
+
+            <div style="width:100%;margin-top:20px;">
+                <div style="width:48%;float:left;">
+                    <span style="font-weight:bold;color:#aaaaaa;font-size:20px;">WAONポイント利用金額</span>
+
+                </div>
+                <div style="width:48%;float:left;margin-left:2%;">
+                    <span style="font-weight:bold;color:#aaaaaa;font-size:20px;">クーポン利用</span>
+
+                </div>
+            </div>
         </div>
 
         {{-- Right sMenu --}}
@@ -355,7 +391,7 @@
             width:90%;
             margin-top:20px;
                     margin-left:10%;
-            background-color: #EBEBEB;">ご利用明細を表示する</button>
+            background-color: #EBEBEB;" onclick="location.href='/pdf/statement'">ご利用明細を表示する</button>
 
             <button class="primary_radius_button" style="padding: 15px 30px;
             border: 0px;
@@ -365,9 +401,8 @@
             width:90%;
             margin-top:20px;
             margin-left:10%;
-            background-color: #EBEBEB;">ショップに問い合わせる</button>
+            background-color: #EBEBEB;" onclick="location.href='mailto::shop@qest-mall.jp'">ショップに問い合わせる</button>
         </div>
-        
 
     </div>
 </div>

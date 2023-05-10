@@ -40,14 +40,14 @@
         <div style="width:640px;height:70px;margin:0 auto;">
             <p style="color:red;float:none;"></p>
             <div style="width:400px;margin:0 auto;margin-bottom:10px;text-align:left;font-weight:bold;color:#333333;">ユーザーID</div>
-            <input id="email" type="text" class="login-form-input" required autofocus><br>
+            <input id="login_id" name="login_id" type="text" class="login-form-input" required autofocus><br>
         </div>
 
         <!-- パスワード -->
         <div style="width:640px;height:70px;margin:0 auto;margin-top:50px;">
             {{-- <p style="color:red;float:none;">エラーメッセージ：$errors->get('email')</p> --}}
             <div style="width:400px;margin:0 auto;margin-bottom:10px;text-align:left;font-weight:bold;color:#333333;">パスワード</div>
-            <input id="password" type="password" class="login-form-input" required autocomplete="current-password">
+            <input id="password" name="password" type="password" class="login-form-input" required autocomplete="current-password">
         </div>
 
         <!-- Remember Me -->
@@ -75,7 +75,7 @@
 
     <hr style="width:70%;margin:0 auto;border:1px solid #cccccc;">
 
-    <form method="POST" action="{{ route('check_login') }}">
+    <form method="POST" action="{{ route('register.send_mail') }}">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -83,15 +83,63 @@
         <!-- ログインID -->
         <div style="width:640px;height:70px;margin:0 auto;">
             <p style="color:red;float:none;"></p>
-            <div style="width:400px;margin:0 auto;margin-bottom:10px;text-align:left;font-weight:bold;color:#333333;">ユーザーID</div>
+            <div style="width:400px;margin:0 auto;margin-bottom:10px;text-align:left;font-weight:bold;color:#333333;">メールアドレス</div>
             <input id="email" type="text" class="login-form-input" required autofocus><br>
         </div>
 
         <button class="login-btn">新規会員登録</button>
 
-        <div style="width:640px;height:70px;margin:0 auto;margin-top:50px;">
-            <a href="{{ route('password_reset') }}" style="color:#1D54A7;text-decoration:none;">パスワードを忘れた場合</a>
+        <div style="width:640px;height:70px;margin:0 auto;margin-top:10px;">
+            <span style="color:#777777;">※「@qest-mall.jp」からのメールを受信許可してください</a>
         </div>
     </form>
 </div>
 
+
+
+<!-- モーダル -->
+<div id="second_cert_modal" class="ui modal mini">
+    <img src="/images/user/icon_modal_close.png" style="position:absolute;right:10px;top:10px;" onclick="closeModal();">
+    <div class="content">
+        <section>
+            <span class="ECM_CheckboxInput-LabelText">2段階認証</span>
+        </section>
+
+
+        <section style="margin-top:20px;">
+        </section>
+
+        <section style="margin-top:20px;">
+            <div class="ui input">
+                <input type="text" placeholder="Search...">
+            </div>
+        </section>
+
+        <section style="margin-top:20px;">
+            <div class="ui input">
+                <input type="text" placeholder="Search...">
+            </div>
+        </section>
+
+
+        <section>
+            <div class="modal-section-title">除外キーワード</div>
+            <input type="text" class="switch_TextInput" placeholder="指定なし" style="width:50%;">
+        </section>
+
+        <section style="text-align:center;">
+            <button class="primary_btn_radius">
+                認証してログインする
+            </button>
+        </section>
+    </div>
+</div>
+@section("script")
+<script>
+    function showSecondCertModal() {
+        $('#second_cert_modal').modal({
+            centered: false
+        }).modal('show');
+    }
+</script>
+@endsection

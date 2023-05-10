@@ -10,9 +10,9 @@
     <a href="{{ route('admin.notices') }}">
         <i class="bell outline icon" style="color:white;float:right;font-size:20px;margin-top:3px;margin-left:20px;"></i>
     </a>
-    <select style="float:right;border-radius:2px;padding:5px;">
+    {{-- <select style="float:right;border-radius:2px;padding:5px;">
         <option value="1">テストクエストモール店</option>
         <option value="2">クエストモール店</option>
-    </select>
+    </select> --}}
     {{-- <p style="margin:0;margin-top:3px;font-weight:bold;color:white;float:right;margin-left:20px;">LIBREクエストモール店</p> --}}
 </div>

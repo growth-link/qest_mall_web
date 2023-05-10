@@ -95,6 +95,12 @@ Breadcrumbs::for('faq' ,function($trail){
     $trail->push('よくあるご質問（FAQ）', route('faq'));
 });
 
+// 企業情報
+Breadcrumbs::for('corporate-info' ,function($trail){
+    $trail->parent('sp.top');
+    $trail->push('企業情報', route('corporate-info'));
+});
+
 /*
 |--------------------------------------------------------------------------
 | SP
@@ -186,4 +192,10 @@ Breadcrumbs::for('sp.shop_brand_search' ,function($trail){
 Breadcrumbs::for('sp.faq' ,function($trail){
     $trail->parent('sp.top');
     $trail->push('よくあるご質問（FAQ）', route('sp.faq'));
+});
+
+// 企業情報
+Breadcrumbs::for('sp.corporate-info' ,function($trail){
+    $trail->parent('sp.top');
+    $trail->push('よくあるご質問（FAQ）', route('sp.corporate-info'));
 });

@@ -9,6 +9,8 @@ use App\Models\Statistic;
 use App\Models\ProceedHistoriesHeader;
 use App\Models\ProceedHistoriesDetail;
 
+use App\Models\Shop;
+
 use League\Csv\Writer;
 //use phpseclib\Net\SFTP;
 
@@ -16,11 +18,39 @@ class ProceedController extends Controller
 {
     // 統計情報
     public function proceedStatistics(Request $request) {
+        $shop_id = $request->query('shop_id');
+        if($shop_id != null) {
+            $shop = Shop::query()
+                        ->where("id", $shop_id)
+                        ->first();
+            if($shop) {
+                $request->session()->put('shop', $shop);
+                $request->session()->put('account_type', 1);
+            }
+        }
+
+        $request->session()->put('is_mall', true);
+        $company_id = $request->session()->get("company_id");
+
+        $shops = Shop::query()->get();
+        $request->session()->put('shops', $shops);
+
         return view("admin/proceed/statistics");
     }
 
     // 会計履歴
     public function proceedHistories(Request $request) {
+        $shop_id = $request->query('shop_id');
+        if($shop_id != null) {
+            $shop = Shop::query()
+                        ->where("id", $shop_id)
+                        ->first();
+            if($shop) {
+                $request->session()->put('shop', $shop);
+                $request->session()->put('account_type', 1);
+            }
+        }
+
         //$statistics = Statistic::get();
         $proceed_histories_header = ProceedHistoriesHeader::get();
         $proceed_histories_detail = ProceedHistoriesDetail::get();

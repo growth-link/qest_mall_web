@@ -1,4 +1,4 @@
-<div style="width:100%;height:60px;padding:10px 1%;border-bottom:1px solid #cccccc;background-color:white;position:fixed;">
+<div style="width:100%;height:60px;padding:10px 1%;border-bottom:1px solid #cccccc;background-color:white;position:fixed;z-index:1000;">
     <a href="{{ route('top') }}">
         <img src="/images/qest_mall_gray.png" style="height:35px;">
     </a>
@@ -26,16 +26,7 @@
             <img src="/images/user/icon_history.png">
             <p style="font-size:10px;">購入履歴</p>
         </div>
-        {{-- @if($is_login)
-        <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('user_info') }}'">
-            マイメニュー
-        </button>
-        @else --}}
-        {{-- <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('login') }}'">
-            ログイン
-        </button> --}}
-        {{-- @endif --}}
-        <button class="primary_btn" style="float:left;" onclick="location.href=''">
+        <button class="primary_btn" style="float:left;" onclick="location.href='{{ route('mypage.user_info') }}'">
             マイメニュー
         </button>
     </div>

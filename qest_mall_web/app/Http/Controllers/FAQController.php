@@ -28,4 +28,16 @@ class FAQController extends Controller
             'tags',
         ));
     }
+
+    ///////////////////////////////////////////////
+    // 企業情報
+    public function corporateInfo() {
+        return view('user.faq.pc.corporate_info', compact(
+        ));
+    }
+
+    public function spCorporateInfo() {
+        return view('user.faq.sp.corporate_info', compact(
+        ));
+    }
 }

@@ -6,14 +6,15 @@
             </a>
         </li>
         <li class="dropdown">
-            <a href="#">モール基本情報<i class="fas fa-chevron-down"></i></a>
+            <a href="#">ショップ基本管理<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu" style="width:250px;">
-                <li><a href="#">基本情報</a></li>
-                <li><a href="#">出典規約</a></li>
-                <li><a href="#">利用規約/個人情報保護方針</a></li>
+                <li><a href="#">契約情報</a></li>
+                <li><a href="#">ショップ情報</a></li>
+                <li><a href="#">配送マスタ</a></li>
                 <li><a href="#">管理ユーザー</a></li>
-                <li><a href="#">スタッフマスタ</a></li>
-                <li><a href="#">トップバナー編集</a></li>
+                <li><a href="#">営業日カレンダー</a></li>
+                <li><a href="#">返品・返金について</a></li>
+                <li><a href="#">特定商取引法に基づく表記</a></li>
             </ul>
             <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
             <div class="dropdown-cover"></div>
@@ -22,7 +23,27 @@
         <li class="dropdown">
             <a href="#">商品情報<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu"  style="width:250px;">
-                <li><a href="{{ route('admin.item.items') }}">出品商品一覧</a></li>
+                <li><a href="{{ route('admin.item.items') }}">商品一覧・編集</a></li>
+                <li><a href="{{ route('admin.item.items') }}">商品登録</a></li>
+            </ul>
+            <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
+            <div class="dropdown-cover"></div>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">クーポン管理<i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu"  style="width:250px;">
+                <li><a href="{{ route('admin.item.items') }}">クーポン一覧・編集</a></li>
+            </ul>
+            <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
+            <div class="dropdown-cover"></div>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">売上・会計管理<i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu"  style="width:250px;">
+                <li><a href="{{ route('statistics') }}">売上統計</a></li>
+                <li><a href="{{ route('monthly') }}">月次会計</a></li>
             </ul>
             <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
             <div class="dropdown-cover"></div>
@@ -31,13 +52,9 @@
         <li class="dropdown">
             <a href="#">顧客管理<i class="fas fa-chevron-down"></i></a>
             <ul class="dropdown-menu" style="width:250px;">
-                <li><a href="#">会員一覧</a></li>
+                <li><a href="#">顧客一覧</a></li>
                 <li><a href="#">メルマガ作成</a></li>
                 <li><a href="#">メルマガ配信履歴</a></li>
-                <li><a href="#">メルマガ配信リスト</a></li>
-                <li><a href="#">お知らせ作成・編集</a></li>
-                <li><a href="#">お知らせ配信履歴</a></li>
-                <li><a href="#">お知らせ配信リスト</a></li>
             </ul>
             <img class="arrow" src="/images/admin/arrow_down.png" style="margin-left:10px;margin-top:12px;">
             <div class="dropdown-cover"></div>

@@ -6,6 +6,7 @@
         color: #333333;
         font-size: 9px;
         padding-bottom: 20px;
+        z-index: 1100;
     }
     .footer-container {
         padding: 40px 20%;
@@ -66,7 +67,7 @@
             </div>
             <div class="site-map-section">
                 <p><a href="{{ route('faq') }}">よくある質問（FAQ）</a></p>
-                <p><a href="#">企業情報</a></p>
+                <p><a href="{{ route('corporate-info') }}">企業情報</a></p>
                 <p><a href="{{ route('contract') }}">利用規約/個人情報保護方針</a></p>
                 <p><a href="#">WAON POINT 規約</a></p>
             </div>

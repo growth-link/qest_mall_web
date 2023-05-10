@@ -16,6 +16,8 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\MyMenuController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PdfController;
 
 use App\Http\Controllers\MailController;
 
@@ -69,18 +71,18 @@ Route::group(['middleware' => 'basicauth'], function() {
     Route::post('/login', [LoginController::class, 'checkLogin'])->name('check_login');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/password-reset', [LoginController::class, 'passwordReset'])->name('password_reset');
-    Route::get('/register/send-mail', [LoginController::class, 'registerSendMail'])->name('register.send_mail');
-    Route::get('/register', [LoginController::class, 'register'])->name('register');
-    Route::get('/register/confirm', [LoginController::class, 'registerConfirm'])->name('register.confirm');
+    Route::post('/register/send-mail', [RegisterController::class, 'registerSendMail'])->name('register.send_mail'); //新規会員登録メール送信
+    Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    Route::get('/register/confirm', [RegisterController::class, 'registerConfirm'])->name('register.confirm');
 
     // sp
     Route::get('/sp/login', [LoginController::class, 'spLogin'])->name('sp.login');
     Route::post('/sp/login', [LoginController::class, 'spCheckLogin'])->name('sp.check_login');
     Route::get('/sp/logout', [LoginController::class, 'spLogout'])->name('sp.logout');
     Route::get('/sp/password-reset', [LoginController::class, 'spPasswordReset'])->name('sp.password_reset');
-    Route::get('/sp/register/send-mail', [LoginController::class, 'spRegisterSendMail'])->name('sp.register.send_mail');
-    Route::get('/sp/register/', [LoginController::class, 'spRegisterConfirm'])->name('sp.register');
-    Route::get('/sp/register/confirm', [LoginController::class, 'spRegisterConfirm'])->name('sp.register.confirm');
+    Route::get('/sp/register/send-mail', [RegisterController::class, 'spRegisterSendMail'])->name('sp.register.send_mail');
+    Route::get('/sp/register/', [RegisterController::class, 'spRegisterConfirm'])->name('sp.register');
+    Route::get('/sp/register/confirm', [RegisterController::class, 'spRegisterConfirm'])->name('sp.register.confirm');
 
     /*
     |--------------------------------------------------------------------------
@@ -233,15 +235,17 @@ Route::group(['middleware' => 'basicauth'], function() {
     // });
     /*
     |--------------------------------------------------------------------------
-    | FAQ
+    | FAQ その他
     |--------------------------------------------------------------------------
     */
 
     // PC
     Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
+    Route::get('/corporate-info', [FAQController::class, 'corporateInfo'])->name('corporate-info');
 
     // SP
     Route::get('/sp/faq', [FAQController::class, 'spFaq'])->name('sp.faq');
+    Route::get('/sp/corporate-info', [FAQController::class, 'spCorporateInfo'])->name('sp.corporate-info');
 
     /*
     |--------------------------------------------------------------------------
@@ -271,4 +275,12 @@ Route::group(['middleware' => 'basicauth'], function() {
 
     // SP
     Route::get('/sp/cart', [PurchaseController::class, 'spCart'])->name('sp.cart');
+
+    /*
+    |--------------------------------------------------------------------------
+    | PDF
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/pdf/statement', [PdfController::class, 'createStatement']);
+    Route::get('/pdf/payment-statement', [PdfController::class, 'createPaymentStatement']);
 });

@@ -1,8 +1,7 @@
 <!-- 管理画面ログイン -->
 @extends("admin.layout")
 @component('admin.layouts.header')
-@endcomponent
-@component('admin.layouts.mall_global_menu')
+
 @endcomponent
 
 @section('content')
@@ -63,10 +62,10 @@
         <select style="float:right;border:0px;border-radius:0px 5px 5px 0px;width:200px;padding:5px 10px;background-color:#eeeeee;color:#333333;font-weight:bold;" 
             name="sort" id="sort" onchange="location.href='?sort=' + (this.value)">
             <option value="shop_name" @if($sort == "shop_name") selected @endif>ショップ名</option>
-            <option value="shop_tt_code" @if($sort == "shop_id") selected @endif>ショップID</option>
+            <option value="shop_tt_code" @if($sort == "shop_tt_code") selected @endif>ショップID</option>
             <option value="visibility_status" @if($sort == "visibility_status") selected @endif>ステータス</option>
         </select>
-        <div style="width:80px;padding:3px 10px;border:0px;border-radius:5px 0px 0px 5px;background-color:#aaaaaa;float:right;font-weight:bold;">並び替え</div>
+        <div style="width:80px;padding:4px 10px;border:0px;border-radius:5px 0px 0px 5px;background-color:#aaaaaa;float:right;font-weight:bold;">並び替え</div>
     </div>
 
     <table style="width:96%;margin-top:20px;border-collapse:collapse;">
@@ -89,14 +88,14 @@
                         @endif
                     </td>
                     <td style="text-align:center;">
-                        <a href="{{ route('admin.shop_top', ['shop_id']); }}">閲覧</a>
+                        <a href="{{ route('admin.shop_top', ['shop_id' => $shop->id]); }}">閲覧</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
-    <div class="wrap" style="font-size:20px;">
+    {{-- <div class="wrap" style="font-size:20px;">
         <ul>
             <li class="cls1">＜</li>
             <li class="cls1">1</li>
@@ -106,7 +105,7 @@
             <li class="cls1">5</li>
             <li class="cls1">＞</li>
         </ul>
-    </div>
+    </div> --}}
 </div>
 @endsection
 

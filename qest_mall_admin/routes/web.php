@@ -15,26 +15,27 @@ use App\Http\Controllers\Admin\BasicController;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\MailController;
-
-/*
-|--------------------------------------------------------------------------
-| 管理画面ログイン
-|--------------------------------------------------------------------------
-*/
-Route::get('/', function () { return redirect()->to('/admin/login'); });
-
-// Route::name('admin.')->group(['prefix'=>'admin'], function() {
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
-    Route::get('/', [AdminController::class, 'index'] )->name('index');
-    Route::get('/login', [AuthController::class, 'login'])->name('login'); // ログイン
-    Route::post('/login', [AuthController::class, 'checkLogin'])->name('check_login');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-    Route::get('/password-reset', [AuthController::class, 'passwordReset'])->name('password_reset'); // パスワード再設定
-});
+use App\Http\Controllers\PdfController;
 
 
 Route::group(['middleware' => 'basicauth'], function() {
+
+    /*
+    |--------------------------------------------------------------------------
+    | 管理画面ログイン
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/', function () { return redirect()->to('/admin/login'); });
+
+    // Route::name('admin.')->group(['prefix'=>'admin'], function() {
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+        Route::get('/', [AdminController::class, 'index'] )->name('index');
+        Route::get('/login', [AuthController::class, 'login'])->name('login'); // ログイン
+        Route::post('/login', [AuthController::class, 'checkLogin'])->name('check_login');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::get('/password-reset', [AuthController::class, 'passwordReset'])->name('password_reset'); // パスワード再設定
+    });
 
     /*
     |--------------------------------------------------------------------------
@@ -227,4 +228,12 @@ Route::group(['middleware' => 'basicauth'], function() {
     Route::get('/order-mng/cancel-requests', [PurchaseController::class, 'cancelRequests'])->name("cancel-requests"); // キャンセル依頼一覧
     Route::get('/order-mng/return-requests', [PurchaseController::class, 'returnRequests'])->name("return-requests"); // 返品依頼一覧
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | PDF
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/pdf/statement', [PdfController::class, 'createStatement']);
+    Route::get('/pdf/payment-statement', [PdfController::class, 'createPaymentStatement']);
 });

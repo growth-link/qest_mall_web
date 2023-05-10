@@ -15,6 +15,8 @@ class AuthController extends Controller
     */
 
     public function login(Request $request) {
+        \Log::Info('access:login');
+
         if(\FBAuth::isAdminLogin($request)) {
             return redirect()->route("admin.mode_select");
         } else {

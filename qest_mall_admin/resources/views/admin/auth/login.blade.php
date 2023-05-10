@@ -1,6 +1,6 @@
 <!-- 管理画面ログイン -->
 @extends("admin.layout")
-@component('admin.layouts.header')
+@component('admin.layouts.no_login_header')
 @endcomponent
 @section('content')
 <style>

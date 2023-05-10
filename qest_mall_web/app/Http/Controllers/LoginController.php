@@ -14,6 +14,13 @@ class LoginController extends Controller
     }
 
     public function checkLogin(Request $request) {
+        $result = \FBAuth::login($request, $request->login_id, $request->password);
+        if(\FBAuth::isLogin($request)) {
+            return redirect()->route("top");
+        } else {
+            return redirect()->route("admin.login");
+        }
+
         return view('user.login.pc.login');
     }
 

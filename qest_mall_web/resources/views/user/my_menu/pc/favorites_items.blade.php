@@ -9,15 +9,18 @@
         @include('user.layouts.pc.mymenu_sidemenu',['menu_type' => $menu_type])
 
         {{-- Main Content --}}
-        <div class="main-content">
+        <div class="main-content" style="margin-left:auto;">
             <h2 class="page-title">お気に入り編集</h2>
 
-            {{-- 新着商品 --}}
-            <section class="latest-item">
-                <div class="item-container">
-                    @include('user.layouts.pc.components.item.items')
-                </div>
-            </section>
+            <div class="main-content-box">
+                {{-- 新着商品 --}}
+                <section class="latest-item">
+                    <div class="item-container">
+                        @include('user.layouts.pc.components.item.items')
+                    </div>
+                </section>
+            </div>
+            
         </div>
     </div>
 </div>

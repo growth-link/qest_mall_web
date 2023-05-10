@@ -10,6 +10,8 @@ use Kreait\Firebase\Exception\Auth\FailedToVerifyToken;
 use Kreait\Firebase\Exception\FirebaseException;
 use Throwable;
 
+use App\Models\User;
+
 class FirebaseAuth
 {
     public function auth($id, $password) {
@@ -26,11 +28,30 @@ class FirebaseAuth
         return true;
     }
 
-    public function login($id, $password) {
+    public function login(Request $request, string $login_id, string $password) {
         // TODO Firebaseログイン処理
         $factory = (new Factory)
             ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
-        $signInResult = $auth->signInWithEmailAndPassword($email, $clearTextPassword);
+        $this->auth = $factory->createAuth();
+        try {
+            $signInResult = $this->auth->signInWithEmailAndPassword($login_id, $password);
+        } catch (FirebaseException $e) {
+            return redirect()->route("login");
+        } catch (Throwable $e) {
+
+        }
+
+        // セッションへの保存
+        $request->session()->put("id_token", $signInResult->idToken());
+        $request->session()->put("refresh_token", $signInResult->refreshToken());
+
+        $user = User::where("refresh_token", $signInResult->idToken())->first();
+        if($user != null) {
+            $request->session()->put("user", $user);
+        }
+
+        \Log::Info($signInResult->data());
+
         return true;
     }
 
@@ -182,23 +203,29 @@ class FirebaseAuth
     {
         Log::Info("匿名ログイン");
         $factory = (new Factory)
-            ->withServiceAccount('../firebase/dev/qest-mall-dev-firebase-adminsdk-a7n16-8e8ab03d73.json');
+            ->withServiceAccount('../firebase/dev/qest-mall-dev-b3c8b-firebase-adminsdk-ps17n-fd602151bd.json');
 
         $this->auth = $factory->createAuth();
         
         $idTokenString = $request->session()->get("id_token");
 
+        $verifiedIdToken = null;
         try {
             $verifiedIdToken = $this->auth->verifyIdToken($idTokenString);
         } catch (FailedToVerifyToken $e) {
             echo 'The token is invalid: '.$e->getMessage();
         }
 
-        $uid = $verifiedIdToken->claims()->get('sub');
+        if($verifiedIdToken != null) {
+            $uid = $verifiedIdToken->claims()->get('sub');
 
-        $user = $this->auth->getUser($uid);
-        \Log::Info("uid:".$uid);
-        \Log::Info("user:".$user->uid);
+            $user = User::where("remember_token", $uid)->first();
+            //$user = $this->auth->getUser($uid);
+            if($user != null) {
+                \Log::Info("uid:".$uid);
+                \Log::Info("user:".$user->id);
+            }
+        }
 
         return true;
     }

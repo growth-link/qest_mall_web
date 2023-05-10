@@ -19,6 +19,13 @@ class TopController extends Controller
 
         \FBAuth::createAuthAnonymous($request);
 
+        if($request->session()->has("id_token")) {
+            \FBAuth::loginAnonymous($request);
+        } else {
+            \FBAuth::createAuthAnonymous($request);
+        }
+        //\FBAuth::auth("test", "test");
+
         // TODO:認証テスト用コード（認証機能が出来次第削除）
         // $request->session()->put('user_id_token', 'test');
         $request->session()->forget('user_id_token');
@@ -27,15 +34,18 @@ class TopController extends Controller
         $browsing_history_items = [];
         $recommend_items = [];
 
+        $is_login = false;
         // ログインチェック
         if ($request->session()->has('user_id_token')) {
             // TODO:閲覧履歴からのおすすめ商品取得
             $recommend_by_history_items = Item::where('deleted_at', null)->take(10)->get();
             // TODO:閲覧商品履歴取得
             $browsing_history_items = Item::where('deleted_at', null)->take(10)->get();
+            $is_login = true;
         } else {
             // TODO:おすすめ商品取得
             $recommend_items = Item::where('deleted_at', null)->take(10)->get();
+            $is_login = false;
         }
 
         $top_banners = TopBanner::orderBy('display_order', 'asc')->get(); // トップバナー取得
@@ -71,6 +81,7 @@ class TopController extends Controller
             'ads',
             'major_categories',
             'sub_categories',
+            'is_login'
         ));
     }
 

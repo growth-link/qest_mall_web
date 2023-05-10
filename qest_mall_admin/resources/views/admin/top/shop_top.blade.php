@@ -1,30 +1,24 @@
 @extends("layout")
-@component('admin.layouts.header')
-@endcomponent
+@if(session('is_mall'))
+  @component('admin.layouts.mall_shop_header')
+  @endcomponent
+@else
+  @component('admin.layouts.shop_header')
+  @endcomponent
+@endif
 @component('admin.layouts.shop_global_menu')
 @endcomponent
 @section('content')
 
 <a href="{{ route('admin.notices') }}" style="font-size: 12px; display: block; margin-top: 14px; margin-right: 16px; position: absolute; right: 0;">お知らせ一覧へ</a><br>
 
-<div style="margin-left: 16px; list-style: none; display: flex; font-size: 13px; height: 19px; margin-bottom: 12px; margin-top: 1em;">
+{{-- <div style="margin-left: 16px; list-style: none; display: flex; font-size: 13px; height: 19px; margin-bottom: 12px; margin-top: 1em;">
   <p>2022.08.25</p>
   <p style="margin-left: 12px;">12:00:00</p>
   <p style="margin-left: 96px; width: 840px;">アップデートのお知らせ</p>
   <a href="" style="text-decoration:underline;">詳細</a>
-</div>
-<div style="margin-left: 16px; list-style: none; display: flex; font-size: 13px; height: 19px; margin-bottom: 12px;">
-  <p>2022.08.25</p>
-  <p style="margin-left: 12px;">12:00:00</p>
-  <p style="margin-left: 96px; width: 840px;">メンテナンスのお知らせ</p>
-  <a href="" style="text-decoration:underline;">詳細</a>
-</div>
-<div style="margin-left: 16px; list-style: none; display: flex; font-size: 13px; height: 19px; margin-bottom: 40px;">
-  <p>2022.08.25</p>
-  <p style="margin-left: 12px;">12:00:00</p>
-  <p style="margin-left: 96px; width: 840px;">障害情報のお知らせ</p>
-  <a href="" style="text-decoration:underline;">詳細</a>
-</div>
+</div> --}}
+<div style="width:95%;margin-left:3%;">
 
 <p style="margin-left: 16px; margin-bottom: 12px; font-size: 16px; font-weight: bold;">モールステータス</p>
 
@@ -167,5 +161,6 @@
       <a href="" style="font-size: 14px; font-weight: bold; color: #333333; margin-left: 18px;">月次会計</a>
     </div>
   </div>
+</div>
 </div>
 @endsection
