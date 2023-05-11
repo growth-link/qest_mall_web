@@ -35,7 +35,7 @@
     }
 </style>
 <!-- サイドバー -->
-<div style="width:20%;float:left;">
+<div style="width:20%;float:left;top:100px;position:sticky;">
     <nav class="sidebar">
         <ul>
             <li class="sidebar-title"><a>売上・会計管理</a></li>
@@ -219,6 +219,7 @@
         </div>
 
 
+        <!-- 各会計データ -->
         <table id="histories_table" style="width:92%;font-weight:normal;">
             <thead>
                 <tr style="background-color:#f2f2f2;padding:10px;">
@@ -237,13 +238,12 @@
                 <tr>
                     <td colspan="9">
                         <div style="width:98%;background-color:#f2f2f2;color:royalblue;margin:5px 10px;padding:5px 10px;font-size:12px;">
-                            注文番号：000121-0000001-01122022
+                            注文番号：1-2305-00000000001
                         </div>
                     </td>
                 </tr>
-                {{-- @foreach($headers as $header) --}}
 
-                @foreach($details as $detail)
+                @foreach($details1 as $detail)
                 <tr>
                     <td class="td-center">
                         <div style="min-width:30px;text-align:center;background-color:{{$colors[$detail->type]}};font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
@@ -274,207 +274,6 @@
                     <td class="td-center"></td>
                 </tr>
                 @endforeach
-                {{-- <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            売上
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2022-12-01
-                    </td>
-                    <td class="td-center">
-                        2023-05-01
-                    </td>
-                    <td class="td-left">
-                        商品代金(10%)
-                    </td>
-                    <td class="td-center">
-                        10%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("2000") }}
-                    </td>
-                    <td class="td-center">000000001</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr>
-                <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            売上
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2022-12-01
-                    </td>
-                    <td class="td-center">
-                        2023-05-01
-                    </td>
-                    <td class="td-left">
-                        商品代金(8%)
-                    </td>
-                    <td class="td-center">
-                        10%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("3000") }}
-                    </td>
-                    <td class="td-center">000000002</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr>
-                <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            売上
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2022-12-01
-                    </td>
-                    <td class="td-center">
-                        2023-05-01
-                    </td>
-                    <td class="td-left">
-                        配送料
-                    </td>
-                    <td class="td-center">
-                        10%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("550") }}
-                    </td>
-                    <td class="td-center">000000003</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr>
-                <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            売上
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2022-12-01
-                    </td>
-                    <td class="td-center">
-                        2023-05-01
-                    </td>
-                    <td class="td-left">
-                        配送料
-                    </td>
-                    <td class="td-center">
-                        8%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("550") }}
-                    </td>
-                    <td class="td-center">000000004</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr>
-                <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            売上
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2022-12-01
-                    </td>
-                    <td class="td-center">
-                        2023-05-01
-                    </td>
-                    <td class="td-left">
-                        消費税額(10%)
-                    </td>
-                    <td class="td-center">
-                        8%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("200") }}
-                    </td>
-                    <td class="td-center">000000005</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr>
-                <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:6FC538;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            売上
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2022-12-01
-                    </td>
-                    <td class="td-center">
-                        2023-05-01
-                    </td>
-                    <td class="td-left">
-                        消費税額(8%)
-                    </td>
-                    <td class="td-center">
-                        8%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("240") }}
-                    </td>
-                    <td class="td-center">000000006</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr>
-                <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:62ADC4;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            決済
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2023-04-28
-                    </td>
-                    <td class="td-center">
-                        2023-04-28
-                    </td>
-                    <td class="td-left">
-                        その他カード決済金額
-                    </td>
-                    <td class="td-center">
-                        10%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("6945") }}
-                    </td>
-                    <td class="td-center">000000007</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr>
-                <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:62ADC4;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            決済
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2023-04-28
-                    </td>
-                    <td class="td-center">
-                        2023-04-28
-                    </td>
-                    <td class="td-left">
-                        WAONポイント利用金額
-                    </td>
-                    <td class="td-center">
-                        10%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("255") }}
-                    </td>
-                    <td class="td-center">000000008</td>
-                    <td class="td-center">000121</td>
-                    <td class="td-center"></td>
-                </tr> --}}
-
                 <!-- 小計 -->
                 <tr>
                     <td class="td-center">
@@ -534,6 +333,7 @@
                     </td>
                     <td class="td-right">¥{{ number_format("6930") }}</td>
                 </tr>
+
                 {{-- @endforeach --}}
 
                 <tr>
@@ -568,31 +368,6 @@
                     <td class="td-center"></td>
                     <td class="td-center"></td>
                 </tr>
-                {{-- <tr>
-                    <td class="td-center">
-                        <div style="min-width:30px;text-align:center;background-color:FF7790;font-size:12px;color:white;border-radius:5px;margin:20px 10px;padding:0px 2px;">
-                            手数料
-                        </div>
-                    </td>
-                    <td class="td-center">
-                        2023-04-28
-                    </td>
-                    <td class="td-center">
-                        2023-04-28
-                    </td>
-                    <td class="td-left">
-                        商品代金
-                    </td>
-                    <td class="td-center">
-                        10%
-                    </td>
-                    <td class="td-right">
-                        {{ number_format("2000") }}
-                    </td>
-                    <td class="td-center">000000001</td>
-                    <td class="td-center"></td>
-                    <td class="td-center">2023-04-01 07:00:00</td>
-                </tr> --}}
 
 
                 <tr>

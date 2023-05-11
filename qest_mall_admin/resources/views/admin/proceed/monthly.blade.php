@@ -179,7 +179,7 @@
 
 
 
-                <table style="width:90%;margin-left:5%;margin-top:20px;margin-top:10px;">
+                <table style="width:90%;margin-left:5%;margin-top:20px;margin-top:100px;">
                     <tr>
                         <td class="table-cell-head" style="font-weight:bold;">手数料</td>
                         <td class="table-cell-body"></td>

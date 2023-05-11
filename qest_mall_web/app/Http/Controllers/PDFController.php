@@ -13,7 +13,7 @@ class PdfController extends Controller
         // タイトル
         $title = 'ご利用明細書';
 
-        $orderNumber = '1-2208-00000000001';// 注文番号
+        $orderNumber = '1-2305-00000000001';// 注文番号
 
         // ヘッダ
         $header = [
@@ -25,8 +25,8 @@ class PdfController extends Controller
         $details = [
             'order_number' => $orderNumber,
             'payment_method' => 'クレジットカード（VISA）',
-            'purchase_date' => '2022年8月30日',
-            'shipping_date' => '2022年9月1日',
+            'purchase_date' => '2023年5月06日',
+            'shipping_date' => '2023年5月17日',
         ];
 
         // 商品明細
@@ -34,33 +34,33 @@ class PdfController extends Controller
             [
                 'id' => 3,
                 'name' => '天然水ミネラルウォーター 500ml 1セット(6本)',
-                'quantity' => 2,
-                'price' => 1100,
-                'tax_rate' => 0.08,
-                'subtotal' => 1100 * 2,
+                'quantity' => 1,
+                'price' => 2000,
+                'tax_rate' => 0.10,
+                'subtotal' => 2200,
             ],
             [
                 'id' => 4,
-                'name' => 'コットンベース Tシャツ',
+                'name' => '【会計テスト用】繰り返し使える 3Dビューティマスク(ホワイト) 5枚',
                 'quantity' => 1,
-                'price' => 4900,
-                'tax_rate' => 0.10,
-                'subtotal' => 4900 * 1,
+                'price' => 3000,
+                'tax_rate' => 0.08,
+                'subtotal' => 3240,
             ],
         ];
 
         // 返品商品明細
         $returned_items = [
-            [
-                'id' => 3,
-                'name' => '返品：天然水ミネラルウォーター 500ml 1セット(6本)',
-                'quantity' => 1,
-                'price' => 1100,
-                'tax_rate' => 0.08,
-                'subtotal' => -1 * 1100 * 1,
-            ],
+            // [
+            //     'id' => 3,
+            //     'name' => '返品：天然水ミネラルウォーター 500ml 1セット(6本)',
+            //     'quantity' => 1,
+            //     'price' => 1100,
+            //     'tax_rate' => 0.08,
+            //     'subtotal' => -1 * 1100 * 1,
+            // ],
         ];
-        $is_returned = count($returned_items) > 0;
+        $is_returned = false;//= count($returned_items) > 0;
 
         // 商品明細(結合)
         $merged_items = array_merge($items, $returned_items);
@@ -78,10 +78,11 @@ class PdfController extends Controller
                 $subtotal_10per += $item['subtotal'];
             }
         }
-        $shipping_fee = 0;
-        $discount_amount = 1000;
-        $used_points = 100;
-        $total_amount = $subtotal + $shipping_fee - $discount_amount - $used_points;
+        $shipping_fee = 1100;
+        $discount_amount = 0;//1000;
+        $wrapping_fee = 1100;
+        $used_points = 500;
+        $total_amount = $subtotal + $shipping_fee + $wrapping_fee - $discount_amount - $used_points;
         $invoice = [
             'subtotal' => $subtotal,
             'shipping_fee' => $shipping_fee,
@@ -134,7 +135,7 @@ class PdfController extends Controller
 
         // ショップ情報
         $shop_info = [
-            'shop_name' => 'LIBRE クエストモール店',
+            'shop_name' => 'mil mil',
             'sales_person' => '田中 太郎',
             'phone_number' => '0123-45-6789',
             'address' => '〒115-0001 東京都中央区銀座１−１−１銀座ビル２F',

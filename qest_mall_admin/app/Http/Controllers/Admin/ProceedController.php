@@ -53,7 +53,18 @@ class ProceedController extends Controller
 
         //$statistics = Statistic::get();
         $proceed_histories_header = ProceedHistoriesHeader::get();
-        $proceed_histories_detail = ProceedHistoriesDetail::get();
+        $details1 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000001")->get();
+        $details2 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000002")->get();
+        $details3 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000003")->get();
+        $details4 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000004")->get();
+        $details5 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000005")->get();
+        $details6 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000006")->get();
+        $details7 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000007")->get();
+        $details8 = ProceedHistoriesDetail::where("order_no", "1-2305-00000000008")->get();
+
+        $month1 = ProceedHistoriesDetail::where("order_no", "1")->get();
+        $month2 = ProceedHistoriesDetail::where("order_no", "2")->get();
+        $month3 = ProceedHistoriesDetail::where("order_no", "3")->get();
 
         $colors = [
             "#6FC538", // 売上
@@ -91,13 +102,25 @@ class ProceedController extends Controller
             "消費税額（8%）",
             "イオンカード決済",
             "一般カード決済",
+            "販売営業料", // 9
+            "システム利用料", // 10
+            "販促費", // 11
+            "イオンカード手数料", // 12
+            "その他クレジットカード手数料" // 13
         );
 
 
         return view("admin/proceed/histories", [
             //"statistics" => $statistics
             "headers" => $proceed_histories_header,
-            "details" => $proceed_histories_detail,
+            "details1" => $details1,
+            "details2" => $details2,
+            "details3" => $details3,
+            "details4" => $details4,
+            "details5" => $details5,
+            "details6" => $details6,
+            "details7" => $details7,
+            "details8" => $details8,
             "colors" => $colors,
             "subject_type" => $subject_type,
             "tax_type" => $tax_type,

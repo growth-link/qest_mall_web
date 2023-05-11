@@ -252,7 +252,7 @@
         {{-- 商品明細 START --}}
         <div class="bill-item-detail cf" <?php if (count($items) >= 20 || ($returned['is_returned'] && count($items) >= 16)) : ?>style="page-break-after: always;"<?php endif; ?>>
             <h2>商品明細</h2>
-            <table>
+            <table style="width:100%;">
                 <thead>
                     <tr>
                         <th class="th--name tal">商品名</th>
@@ -288,6 +288,10 @@
                     <p>
                         <span class="bill-invoice__key">送料(税込)</span>
                         <span class="bill-invoice__value">{{ number_format($invoice['shipping_fee']) }}円</span>
+                    </p>
+                    <p>
+                        <span class="bill-invoice__key">ラッピング包装代(税込)</span>
+                        <span class="bill-invoice__value">{{ number_format(1100) }}円</span>
                     </p>
                     <p>
                         <span class="bill-invoice__key">割引額(クーポン利用)</span>

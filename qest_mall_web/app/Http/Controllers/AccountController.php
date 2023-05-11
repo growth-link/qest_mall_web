@@ -75,9 +75,11 @@ class AccountController extends Controller
     // 注文詳細
     public function mypagePurchaseHistorysDetail(Request $request) {
         $menu_type = 4;
+        $purchase_id = $request->query('purchase_id');
 
         return view("user.my_menu.pc.purchase_histories_detail",compact(
-            "menu_type"
+            "menu_type",
+            "purchase_id"
         ));
     }
 

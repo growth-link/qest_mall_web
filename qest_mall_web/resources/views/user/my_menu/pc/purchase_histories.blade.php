@@ -60,7 +60,8 @@
                     font-size: 12px;
                     font-weight: bold;
                     background-color: #dddddd;
-                    color: #888888;margin-left:10px;margin-top:10px;" onclick="location.href='{{ route("mypage.purchase_histories.detail"); }}'">注文詳細を表示</button>
+                    color: #888888;margin-left:10px;margin-top:10px;"
+                     onclick="location.href='{{ route("mypage.purchase_histories.detail", ["purchase_id" => 1]); }}'">注文詳細を表示</button>
 
                     <div style="bottom:0px;margin-top:150px;">
                         <div style="margin-left:10px;color:#aaaaaa;">注文番号</div>
@@ -97,7 +98,8 @@
                     font-size: 12px;
                     font-weight: bold;
                     background-color: #dddddd;
-                    color: #888888;margin-left:10px;margin-top:10px;" onclick="location.href='{{ route("mypage.purchase_histories.detail"); }}'">注文詳細を表示</button>
+                    color: #888888;margin-left:10px;margin-top:10px;" 
+                    onclick="location.href='{{ route("mypage.purchase_histories.detail", ["purchase_id" => 2]); }}'">注文詳細を表示</button>
 
                     <div style="bottom:0px;margin-top:150px;">
                         <div style="margin-left:10px;color:#aaaaaa;">注文番号</div>
@@ -115,7 +117,7 @@
                         </div>
                         <div style="float:left;width:70%;">
                             <div style="font-weight:bold;margin-left:10px;">【会計テスト用】天然水 ミネラルウォーター 500ml 1セット(6本) </div>
-                            <span style="margin-left:10px;color:#cccccc;">mil mil</span>
+                            <span style="margin-left:10px;color:#cccccc;">天のめぐみ</span>
                             <div style="font-weight:bold;margin-left:10px;font-size:17px;text-align:right;">送料 650円 <span style="font-size:20px;margin-left:20px;">4400円</span></div>
                         </div>
                     </div>
@@ -133,7 +135,8 @@
                     font-size: 12px;
                     font-weight: bold;
                     background-color: #dddddd;
-                    color: #888888;margin-left:10px;margin-top:10px;" onclick="location.href='{{ route("mypage.purchase_histories.detail"); }}'">注文詳細を表示</button>
+                    color: #888888;margin-left:10px;margin-top:10px;" 
+                    onclick="location.href='{{ route("mypage.purchase_histories.detail", ["purchase_id" => 3]); }}'">注文詳細を表示</button>
 
                     <div style="bottom:0px;margin-top:150px;">
                         <div style="margin-left:10px;color:#aaaaaa;">注文番号</div>
@@ -179,7 +182,8 @@
                     font-size: 12px;
                     font-weight: bold;
                     background-color: #dddddd;
-                    color: #888888;margin-left:10px;margin-top:10px;" onclick="location.href='{{ route("mypage.purchase_histories.detail"); }}'">注文詳細を表示</button>
+                    color: #888888;margin-left:10px;margin-top:10px;" 
+                    onclick="location.href='{{ route("mypage.purchase_histories.detail", ["purchase_id" => 4]); }}'">注文詳細を表示</button>
 
                     <div style="bottom:0px;margin-top:150px;">
                         <div style="margin-left:10px;color:#aaaaaa;">注文番号</div>
@@ -225,7 +229,8 @@
                     font-size: 12px;
                     font-weight: bold;
                     background-color: #dddddd;
-                    color: #888888;margin-left:10px;margin-top:10px;" onclick="location.href='{{ route("mypage.purchase_histories.detail"); }}'">注文詳細を表示</button>
+                    color: #888888;margin-left:10px;margin-top:10px;" 
+                    onclick="location.href='{{ route("mypage.purchase_histories.detail", ["purchase_id" => 5]); }}'">注文詳細を表示</button>
 
                     <div style="bottom:0px;margin-top:150px;">
                         <div style="margin-left:10px;color:#aaaaaa;">注文番号</div>
@@ -260,7 +265,47 @@
                     font-size: 12px;
                     font-weight: bold;
                     background-color: #dddddd;
-                    color: #888888;margin-left:10px;margin-top:10px;" onclick="location.href='{{ route("mypage.purchase_histories.detail"); }}'">注文詳細を表示</button>
+                    color: #888888;margin-left:10px;margin-top:10px;" 
+                    onclick="location.href='{{ route("mypage.purchase_histories.detail", ["purchase_id" => 6]); }}'">注文詳細を表示</button>
+
+                    <div style="bottom:0px;margin-top:150px;">
+                        <div style="margin-left:10px;color:#aaaaaa;">注文番号</div>
+                        <div style="margin-left:10px;color:#aaaaaa;">1-2305-000000008</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 会計5 -->
+            <div class="main-content-box" style="padding:20px;height:350px;">
+                <div style="width:70%;float:left;">
+                    <div style="width:100%;height:160px;">
+                        <div style="float:left;width:25%;">
+                            <img src="http://localhost:8001/images/item/no_image_logo.png" style="width:100%;">
+                        </div>
+                        <div style="float:left;width:70%;">
+                            <div style="font-weight:bold;margin-left:10px;">【会計テスト用】天然水 ミネラルウォーター 500ml 1セット(6本) </div>
+                            <span style="margin-left:10px;color:#cccccc;">mil mil</span>
+                            <div style="font-weight:bold;margin-left:10px;font-size:17px;text-align:right;">送料 550円 <span style="font-size:20px;margin-left:20px;">2200円</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 会計情報 -->
+                <div style="width:1px;background-color:#cccccc;height:300px;float:left;"></div>
+                <div style="width:28%;float:left;">
+                    <div style="margin-left:10px;color:#aaaaaa;">購入日</div>
+                    <div style="margin-left:10px;color:#aaaaaa;">2023年5月6日</div>
+
+                    <button style="padding: 10px 30px;
+                    border: 0px;
+                    border-radius: 20px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    background-color: #dddddd;
+                    color: #888888;margin-left:10px;margin-top:10px;" 
+                    onclick="location.href='{{ route("mypage.purchase_histories.detail", ["purchase_id" => 6]); }}'">注文詳細を表示</button>
 
                     <div style="bottom:0px;margin-top:150px;">
                         <div style="margin-left:10px;color:#aaaaaa;">注文番号</div>

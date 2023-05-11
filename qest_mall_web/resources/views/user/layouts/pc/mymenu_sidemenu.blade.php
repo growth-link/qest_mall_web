@@ -1,5 +1,5 @@
         {{-- Left Menu --}}
-        <div class="mymenu-left-menu" style="position:fixed;width:300px;z-index:999;">
+        <div class="mymenu-left-menu" style="position:fixed;width:300px;z-index:999;x">
 
             <div class="my-menu-left-box">
                 {{-- 商品カテゴリー --}}

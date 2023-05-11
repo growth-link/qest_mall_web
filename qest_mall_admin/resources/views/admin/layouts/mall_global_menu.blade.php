@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar" style="top:50px;position:sticky;">
     <ul class="menu" style="margin-right:auto;">
         <li>
             <a href="{{ route('admin.mall_top'); }}">
