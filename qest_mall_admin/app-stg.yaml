@@ -24,6 +24,5 @@ env_variables:
   DB_DATABASE: qest-mall-stg-db
   DB_USERNAME: root
   DB_PASSWORD: .xf$|U,5;NZl@iJ5
-  DB_SOCKET: "/cloudsql/qest-mall-dev:asia-northeast1:qest-mall-db"
+  DB_SOCKET: "/cloudsql/qest-mall-stg:asia-northeast1:qest-mall-stg-db"
   BUCKET_NAME: "qest-mall-stg.appspot.com"
-

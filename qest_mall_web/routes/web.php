@@ -120,7 +120,7 @@ Route::group(['middleware' => 'basicauth'], function() {
     Route::get('/mypage/notice-settings/shop-mail', [AccountController::class, 'mypageNoticeSettingsShopMail'])->name("mypage.shop_mail"); // メールマガジン確認・停止(ショップ)
     Route::get('/mypage/credit-cards', [AccountController::class, 'mypageCreditCards'])->name("mypage.credit_cards"); // クレジットカード登録一覧
     Route::get('/mypage/credit-cards/edit', [AccountController::class, 'mypageCreditCardsEdit'])->name("mypage.credit_cards.edit"); // クレジットカード編集
-    Route::get('/mypage/purchase-histories', [AccountController::class, 'mypagePurchaseHistorys'])->name("mypage.purchase_histories");; // 購入履歴一覧
+    Route::get('/mypage/purchase-histories', [AccountController::class, 'mypagePurchaseHistorys'])->name("mypage.purchase_histories"); // 購入履歴一覧
     Route::get('/mypage/purchase-histories/detail', [AccountController::class, 'mypagePurchaseHistorysDetail'])->name("mypage.purchase_histories.detail"); // 注文詳細
     Route::get('/mypage/purchase-histories/detail/usage-detail', [AccountController::class, 'mypagePurchaseHistorysDetailUsageDetail'])->name("mypage.purchase_histories.detail.usage"); // ご利用明細
     Route::get('/mypage/coupons', [AccountController::class, 'mypageCoupons'])->name("mypage.coupons"); // クーポン一覧
@@ -131,15 +131,15 @@ Route::group(['middleware' => 'basicauth'], function() {
     Route::get('/mypage/quit/done', [AccountController::class, 'mypageQuitDone'])->name("mypage.quit_done"); // 退会完了
 
     // sp
-    Route::get('/sp/mypage/user-info', [AccountController::class, 'spMypageUserInfo']); // 基本情報Top
-    Route::get('/sp/mypage/notice-settings', [AccountController::class, 'spMypageNoticeSettings']); // 通知設定一覧
-    Route::get('/sp/mypage/notice-settings/mall-mail', [AccountController::class, 'spMypageNoticeSettingsMallMail']); // メールマガジン確認・停止(クエストモール)
-    Route::get('/sp/mypage/notice-settings/shop-mail', [AccountController::class, 'spMypageNoticeSettingsShopMail']); // メールマガジン確認・停止(ショップ)
-    Route::get('/sp/mypage/credit-cards', [AccountController::class, 'spMypageCreditCards']); // クレジットカード登録一覧
-    Route::get('/sp/mypage/credit-cards/edit', [AccountController::class, 'spMypageCreditCardsEdit']); // クレジットカード編集
-    Route::get('/sp/mypage/purchase-historys', [AccountController::class, 'spMypagePurchaseHistorys']); // 購入履歴一覧
-    Route::get('/sp/mypage/purchase-historys/detail', [AccountController::class, 'spMypagePurchaseHistorysDetail']); // 注文詳細
-    Route::get('/sp/mypage/purchase-historys/detail/usage-detail', [AccountController::class, 'spMypagePurchaseHistorysDetailUsageDetail']); // ご利用明細
+    Route::get('/sp/mypage/user-info', [AccountController::class, 'spMypageUserInfo'])->name("sp.mypage.user_info"); // 基本情報Top
+    Route::get('/sp/mypage/notice-settings', [AccountController::class, 'spMypageNoticeSettings'])->name("sp.mypage.notice_settings"); // 通知設定一覧
+    Route::get('/sp/mypage/notice-settings/mall-mail', [AccountController::class, 'spMypageNoticeSettingsMallMail'])->name("sp.mypage.mall_mail");; // メールマガジン確認・停止(クエストモール)
+    Route::get('/sp/mypage/notice-settings/shop-mail', [AccountController::class, 'spMypageNoticeSettingsShopMail'])->name("sp.mypage.shop_mail"); // メールマガジン確認・停止(ショップ)
+    Route::get('/sp/mypage/credit-cards', [AccountController::class, 'spMypageCreditCards'])->name("sp.mypage.credit_cards"); // クレジットカード登録一覧
+    Route::get('/sp/mypage/credit-cards/edit', [AccountController::class, 'spMypageCreditCardsEdit'])->name("sp.mypage.credit_cards.edit"); // クレジットカード編集
+    Route::get('/sp/mypage/purchase-historys', [AccountController::class, 'spMypagePurchaseHistorys'])->name("sp.mypage.purchase_histories"); // 購入履歴一覧
+    Route::get('/sp/mypage/purchase-historys/detail', [AccountController::class, 'spMypagePurchaseHistorysDetail'])->name("sp.mypage.purchase_histories.detail"); // 注文詳細
+    Route::get('/sp/mypage/purchase-historys/detail/usage-detail', [AccountController::class, 'spMypagePurchaseHistorysDetailUsageDetail'])->name("sp.mypage.purchase_histories.detail.usage"); // ご利用明細
     Route::get('/sp/mypage/coupons', [AccountController::class, 'spMypageCoupons']); // クーポン一覧
     Route::get('/sp/mypage/point-info', [AccountController::class, 'spMypagePointInfo']); // ポイント情報
     Route::get('/sp/mypage/favourites/items', [AccountController::class, 'spMypageFavouritesItems']); // お気に入り

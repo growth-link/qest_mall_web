@@ -19,7 +19,7 @@ class BasicAuthMiddleware
         $username = $request->getUser();
         $password = $request->getPassword();
 
-        if ($username == 'test' && $password == 'test') {
+        if ($username == 'qest-mall-basic' && $password == 'test6264') {
             return $next($request);
         }
 

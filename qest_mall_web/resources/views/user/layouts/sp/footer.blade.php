@@ -55,7 +55,7 @@
             <p><a href="{{ route('sp.shops') }}">ショップ一覧</a></p>
             <p><a href="{{ route('sp.brands') }}">ブランド一覧</a></p>
             <p><a href="{{ route('sp.faq') }}">よくある質問（FAQ）</a></p>
-            <p><a href="{{ route('ps.corporate-info') }}">企業情報</a></p>
+            <p><a href="{{ route('sp.corporate-info') }}">企業情報</a></p>
             <p><a href="{{ route('sp.contract') }}">利用規約/個人情報保護方針</a></p>
             <p><a href="#">WAON POINT 規約</a></p>
         </div>

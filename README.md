@@ -83,6 +83,9 @@ $ ./cloud-sql-proxy --credentials-file /Users/pianopia/Downloads/qest-mall-test-
 // 検証
 $ ./cloud-sql-proxy --credentials-file /Users/pianopia/Downloads/qest-mall-test-33ce6b52cf9c.json --address 0.0.0.0 --port 13306 qest-mall-test:asia-northeast1:qest-mall-test-db
 
+// STG
+$ ./cloud-sql-proxy --credentials-file /Users/pianopia/Downloads/qest-mall-stg-9cc270a97e33.json --address 0.0.0.0 --port 13306 qest-mall-stg:asia-northeast1:qest-mall-stg-db
+
 // 本番
 $ ./cloud-sql-proxy --credentials-file /Users/pianopia/Downloads/qest-mall-prd-f19522c227ca.json --address 0.0.0.0 --port 13306 qest-mall-prd:asia-northeast1:qest-mall-db
 ```

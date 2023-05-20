@@ -29,20 +29,18 @@
     }
 </style>
 
-<li><a href="{{ route('orders'); }}">受注履歴一覧</a></li>
-                <li><a href="{{ route('new-orders'); }}">新規注文一覧</a></li>
-                <li><a href="{{ route('before-sends'); }}">発送準備一覧</a></li>
-                <li><a href="{{ route('cancel-requests'); }}">キャンセル依頼一覧</a></li>
-                <li><a href="{{ route('return-requests'); }}">返品処理依頼一覧</a></li>
+
 
 <!-- サイドバー -->
 <div style="width:20%;float:left;">
     <nav class="sidebar">
         <ul>
-            <li class="sidebar-title"><a>売上・会計管理</a></li>
-            <li><a href="{{ route('statistics'); }}">統計情報</a></li>
-            <li><a href="{{ route('histories'); }}" class="selected">会計履歴</a></li>
-            <li><a href="{{ route('monthly'); }}">月別精算明細</a></li>
+            <li class="sidebar-title"><a>受注管理</a></li>
+            <li><a href="{{ route('orders'); }}">受注履歴一覧</a></li>
+            <li><a href="{{ route('new-orders'); }}">新規注文一覧</a></li>
+            <li><a href="{{ route('before-sends'); }}">発送準備一覧</a></li>
+            <li><a href="{{ route('cancel-requests'); }}">キャンセル依頼一覧</a></li>
+            <li><a href="{{ route('return-requests'); }}">返品処理依頼一覧</a></li>
         </ul>
     </nav>
 </div>

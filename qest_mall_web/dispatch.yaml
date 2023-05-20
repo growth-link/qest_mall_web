@@ -1,0 +1,12 @@
+# dispatch:
+#   - url: "stg.qest-mall.jp/*"
+#     service: web
+#   - url: "stg-admin.qest-mall.jp/*"
+#     service: admin
+
+
+dispatch:
+  - url: "qest-mall.jp/*"
+    service: web
+  - url: "admin.qest-mall.jp/*"
+    service: admin
