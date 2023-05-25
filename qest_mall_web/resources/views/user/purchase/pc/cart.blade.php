@@ -59,17 +59,28 @@
 
                             <div style="width:100%;min-height:250px;">
                                 <div style="width:70%;float:left;">
+                                    @if($item->amount != 0)
                                     <div style="width:100%;height:160px;">
                                         <div style="float:left;width:25%;">
                                             <img src="" style="width:100%;">
                                         </div>
                                         <div style="float:left;width:70%;margin-left:5%;">
                                             <div style="font-weight:bold;">{{$item->name}}</div>
-                                            <span style="color:#cccccc;">{{$shop->shop_name}}</span>
-                                            <div style="width:100%;height:10px;">発送予定から</div>
+                                            <div style="color:#cccccc;">{{$shop->shop_name}}</div>
+                                            <div style="width:100%;height:20px;">発送予定：注文確定から{{$shop->id}}営業日以内</div><!-- LTODO -->
+                                            <div style="color:#cccccc;height:20px;">カラー：{{$item->has_color ?? ""}}</div>
+                                            <div style="color:#cccccc;heiht:20px;">サイズ：{{$item->has_size ?? ""}}</div>
+                                            <div style="float:left;width:70%;">
+                                                <span style="font-weight:bold;">数量</span>
+                                                <input type="number" style="width:50px;height:40px;border:1px solid #CECECE;margin-left:20px;text-align:right;" value="{{ $item->amount ?? 0 }}">
+                                                <span>個</span>
+                                                <span style="margin: 0px 2px;">|</span>
+                                                <a href="">削除</a>
+                                            </div>
                                             <div style="font-weight:bold;margin-left:10px;font-size:17px;text-align:right;right:20px;">送料 円 <span style="font-size:20px;margin-left:20px;"></span><span style="font-size:12px;margin-left:5px;">{{ $item->normal_price }}円（税込）</span></div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                                 <div style="float:left;width:20%;border:1px solid gray;right:8%;top:110px;border: 1px solid #EBEBEB;padding:20px;">
             

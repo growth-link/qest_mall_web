@@ -34,6 +34,7 @@
                     <div style="font-weight:bold;font-size:17px;">{{$item->name ?? ""}}</div>
                     <div style="font-weight:bold;font-size:17px;margin-top:10px;">{{$item->normal_price ?? ""}}円（税込）</div>
                     <div style="font-weight:bold;font-size:12px;margin-top:10px;">納期目安:2日~14日</div>
+                    <div style="font-weight:bold;font-size:12px;margin-top:10px;">納期目安:2日~14日</div>
                 </div>
                 <div style="float:left;width:70%;text-align:right;">
                     <div style="width:100%;height:100px;"></div>
