@@ -38,11 +38,16 @@ class AuthController extends Controller
         return redirect()->route("admin.login");
     }
 
-    public function passwordReset() {
+    public function passwordReset(Request $request) {
         return view("admin/auth/reset_password");
     }
 
-    public function storePassword() {
+    // パスワード再設定メール送信完了
+    public function passwordSendMail(Request $request) {
+        return view("admin/auth/password_send_mail");
+    }
+
+    public function storePassword(Request $request) {
         return view("admin/auth/reset_password");
     }
 

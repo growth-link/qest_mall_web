@@ -72,13 +72,5 @@
             <a href="{{ route('admin.password_reset') }}" style="color:#1D54A7;text-decoration:none;">パスワードを忘れた場合</a>
         </div>
     </form>
-
-    {{-- <div style="width:640px;height:30px;margin:0 auto;margin-top:10px;font-weight:bold;color:#444444;">
-        IDを忘れてしまった場合はOPA担当窓口へお問い合わせください
-    </div>
-    <div style="width:400px;height:100px;padding:10px;margin:0 auto;border:0px;border-radius:10px;background-color:#eeeeee;">
-        <p style="font-weight:bold;color:gray;margin-top:10px;">QESTMall担当窓口</p>
-        <p style="font-weight:bold;font-size:28px;color:gray;margin-top:10px;">000-000-0000</p>
-    </div> --}}
 </div>
 

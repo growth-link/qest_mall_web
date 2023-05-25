@@ -51,6 +51,17 @@ form {
     color: #f2f2f2;
 }
 
+.primary_btn_radius_lightgray {
+    padding: 7px 40px;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #EFEFEF;
+    color: #333333;
+}
+
+
 .secondary_btn_radius {
     color: #6C6C6C;
     padding: 10px 30px;
@@ -370,7 +381,7 @@ input:checked + .radio-label::before {
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 9999;
+    z-index: 10000;
 }
 
 .dropdown-cover {
@@ -436,7 +447,7 @@ input:checked + .radio-label::before {
     top: 0;
     left: 0;
     overflow-y: auto;
-    position:sticky;
+    /* position:sticky; */
 }
 
 .sidebar ul {
@@ -475,6 +486,7 @@ a:hover {
 
 .sidebar a.selected {
     background-color: #ccc;
+    position: initial;
 }
 
 

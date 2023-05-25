@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProceedController;
 use App\Http\Controllers\Admin\PurchaseController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\BasicController;
+use App\Http\Controllers\Admin\ShopManageController;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\MailController;
@@ -35,6 +36,7 @@ Route::group(['middleware' => 'basicauth'], function() {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::get('/password-reset', [AuthController::class, 'passwordReset'])->name('password_reset'); // パスワード再設定
+        Route::post('/password-send-mail', [AuthController::class, 'passwordSendMail'])->name('password.send_mail'); // パスワード再設定
     });
 
     /*
@@ -67,6 +69,8 @@ Route::group(['middleware' => 'basicauth'], function() {
     */
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::get('/basic-mng/basic-info', [BasicController::class, 'basicInfo'])->name('basic-info'); // 基本情報
+            Route::get('/basic-mng/corporate-info/edit', [BasicController::class, 'corporateInfoEdit'])->name('corporate-info.edit'); // 基本情報
+
         Route::get('/basic-mng/terms-of-open', [BasicController::class, 'termsOpen'])->name('terms-of-open'); // 出典規約
         Route::get('/basic-mng/terms-of-service', [BasicController::class, 'termsService'])->name('terms-of-service'); // 利用規約/個人情報保護方針
         Route::get('/basic-mng/admin-users', [BasicController::class, 'adminUsers'])->name('adminUsers'); // 管理ユーザー
@@ -166,8 +170,8 @@ Route::group(['middleware' => 'basicauth'], function() {
     |--------------------------------------------------------------------------
     */
 
-    // Route::get('/basic-mng/contract', [CouponController::class, 'coupons']); // 契約情報　
-    // Route::get('/basic-mng/shop-info', [CouponController::class, 'coupons']);
+    Route::get('/basic-mng/contract', [ShopManageController::class, 'contract']); // 契約情報　
+    Route::get('/basic-mng/shop-info', [ShopManageController::class, 'shopInfo']);
 
     /*
     |--------------------------------------------------------------------------

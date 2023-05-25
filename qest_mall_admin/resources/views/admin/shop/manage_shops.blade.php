@@ -5,9 +5,6 @@
 @endcomponent
 @section('content')
 
-Route::get('/shop-mng/notice-send-lists', [NoticeController::class, 'noticeSendLists'])->name('notices.send_lists'); // ショップ管理 - お知らせ配信リスト
-Route::get('/shop-mng/notice-send-lists/create', [NoticeController::class, 'noticeSendListsCreate'])->name('notices.send_lists.create'); // ショップ管理 - お知らせ配信リスト追加
-Route::get('/shop-mng/notice-send-lists/edit', [NoticeController::class, 'noticeSendListsEdit'])->name('notices.send_lists.edit'); // ショップ管理 - お知らせ配信リスト編集
 <!-- サイドバー -->
 <div style="width:20%;float:left;">
     <nav class="sidebar">
@@ -57,7 +54,7 @@ Route::get('/shop-mng/notice-send-lists/edit', [NoticeController::class, 'notice
 
 <form action="" method="POST">
 <div style="width:80%;float:left;">
-    <span class="ECM_CheckboxInput-LabelText" style="margin-top:20px;">登録法人情報編集</span>
+    {{-- <span class="ECM_CheckboxInput-LabelText" style="margin-top:20px;">登録法人情報編集</span>
 
     <div class="ui input">
         <input type="text" placeholder="Search...">
@@ -118,7 +115,7 @@ Route::get('/shop-mng/notice-send-lists/edit', [NoticeController::class, 'notice
 
     <button class="primary_btn_radius">
         入力内容を確認
-    </button>
+    </button> --}}
 </div>
 
 

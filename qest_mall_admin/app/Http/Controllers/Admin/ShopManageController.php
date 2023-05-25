@@ -12,10 +12,10 @@ use App\Models\ProceedHistoriesDetail;
 use League\Csv\Writer;
 
 
-class BasicController extends Controller
+class ShopManageController extends Controller
 {
-    // 基本情報
-    public function basicInfo(Request $request) {
+    // 契約情報
+    public function contract(Request $request) {
         // ログインチェック
         $is_login = false;
         if ($request->session()->has('user_id_token')) {
@@ -24,36 +24,34 @@ class BasicController extends Controller
             $is_login = false;
         }
 
-        return view("admin/basic/basic_info", []);
-    }
 
-    // OPA登録法人情報編集
-    public function corporateInfoEdit(Request $request) {
-        // ログインチェック
-        $is_login = false;
-        if ($request->session()->has('user_id_token')) {
-            $is_login = true;
-        } else {
-            $is_login = false;
-        }
-
-        return view("admin/basic/corporate_info_edit",[]);
-    }
-
-    // 出典規約
-    public function termsOpen(Request $request) {
-        // ログインチェック
-        $is_login = false;
-        if ($request->session()->has('user_id_token')) {
-            $is_login = true;
-        } else {
-            $is_login = false;
-        }
 
         return view("admin/basic/terms_of_open", compact(
             'is_login'
         ));
     }
+
+    // 基本情報
+    public function shopInfo(Request $request) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
+        $shop_basic = Shop::query()->where("shop_id", $request->shop_id)->first();
+        $info = MngInfo::query()->where("shop_id", $request->shop_id)->first();
+
+        return view("admin/basic/basic-mng/basic_info", [
+            'is_login',
+            'shop_basic',
+            'info'
+        ]);
+    }
+
+    
 
     // 利用規約/個人情報保護方針
     public function termsService(Request $request) {
