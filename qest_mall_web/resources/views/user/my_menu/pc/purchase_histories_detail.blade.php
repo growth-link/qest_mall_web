@@ -1,6 +1,12 @@
 @extends("layout")
 @section('content')
-@include('user.layouts.pc.header')
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 <link rel="stylesheet" href="{{ asset('css/pc/mall_top.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/my_menu.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/common.css') }}">
@@ -163,32 +169,28 @@
         {{-- Right sMenu --}}
         <div style="position:fixed;width:20%;border:1px solid gray;right:8%;top:110px;border: 1px solid #EBEBEB;padding:20px;">
             
-            <div style="font-weight:bold;margin-bottom:10px;">購入日：2023年5月7日</div>
+            <div style="font-weight:bold;margin-bottom:10px;">購入日：</div>
 
             <div style="width:100%;height:20px;color:gray;margin-top:10px;">
                 <div style="float:left;">商品小計</div>
-                <div style="float:right;">5440円</div>
+                <div style="float:right;"></div>
             </div>
             <div style="width:100%;height:20px;color:gray;margin-top:10px;">
                 <div style="float:left;">オプション</div>
-                <div style="float:right;">1,100円</div>
+                <div style="float:right;"></div>
             </div>
             <div style="width:100%;height:20px;color:gray;margin-top:10px;">
                 <div style="float:left;">送料</div>
-                <div style="float:right;">1,100円</div>
+                <div style="float:right;"></div>
             </div>
-            {{-- <div style="width:100%;height:20px;color:gray;margin-top:10px;">
-                <div style="float:left;">割引クーポン利用</div>
-                <div style="float:right;">-800円</div>
-            </div> --}}
             <div style="width:100%;height:20px;color:gray;margin-top:10px;">
                 <div style="float:left;">WAONポイント利用</div>
-                <div style="float:right;">-500円</div>
+                <div style="float:right;"></div>
             </div>
             
             <div style="width:100%;height:20px;font-weight:bold;margin-top:20px;">
                 <div style="float:left;">お支払い金額</div>
-                <div style="float:right;">7,140円</div>
+                <div style="float:right;"></div>
             </div>
 
 

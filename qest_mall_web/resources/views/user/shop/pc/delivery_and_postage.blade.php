@@ -1,6 +1,12 @@
 @extends("layout")
 @section('content')
-@include('user.layouts.pc.header')
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 <link rel="stylesheet" href="{{ asset('css/pc/shop_info.css') }}">
 {{-- Content Box --}}
 <div class="content-box">

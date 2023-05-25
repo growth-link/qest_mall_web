@@ -105,6 +105,7 @@ Route::group(['middleware' => 'basicauth'], function() {
     Route::get('/', [TopController::class, 'top'])->name('top');
 
     // sp
+    Route::get('/sp', [TopController::class, 'spTop']);
     Route::get('/sp/top', [TopController::class, 'spTop'])->name('sp.top');
 
     /*
@@ -242,10 +243,12 @@ Route::group(['middleware' => 'basicauth'], function() {
     // PC
     Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
     Route::get('/corporate-info', [FAQController::class, 'corporateInfo'])->name('corporate-info');
+    Route::get('/waonpoint-term', [FAQController::class, 'waonpointInfo'])->name('waonpoint-info');
 
     // SP
     Route::get('/sp/faq', [FAQController::class, 'spFaq'])->name('sp.faq');
     Route::get('/sp/corporate-info', [FAQController::class, 'spCorporateInfo'])->name('sp.corporate-info');
+    Route::get('/sp/waonpoint-term', [FAQController::class, 'waonpointInfo'])->name('sp.waonpoint-info');
 
     /*
     |--------------------------------------------------------------------------
@@ -271,6 +274,7 @@ Route::group(['middleware' => 'basicauth'], function() {
     */
     // PC
     Route::get('/cart', [PurchaseController::class, 'cart'])->name('cart'); // カート
+    Route::post('/cart', [PurchaseController::class, 'addCart'])->name('addCart');
     Route::get('/cart/purchase/{cart_id}', [PurchaseController::class, 'cartPurchase'])->name('cart.purchase'); // 購入手続き
 
     // SP

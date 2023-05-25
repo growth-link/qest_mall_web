@@ -33,14 +33,14 @@ class AuthController extends Controller
 
     public function logout(Request $request) {
         \FBAuth::logout($request);
-        return redirect()->route("admin.login");
+        return redirect()->route("admin.logout");
     }
 
-    public function passwordReset() {
+    public function passwordReset(Request $request) {
         return view("admin/auth/reset_password");
     }
 
-    public function storePassword() {
+    public function storePassword(Request $request) {
         return view("admin/auth/reset_password");
     }
 

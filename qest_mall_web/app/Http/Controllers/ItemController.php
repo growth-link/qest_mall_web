@@ -38,6 +38,14 @@ class ItemController extends Controller
     ///////////////////////////////////////////////
     // 商品一覧(キーワード検索)
     public function itemKeyword(Request $request) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         $sort = $request->sort;
         $keyword = $request->keyword;
         $shop_id = $request->shop_id;
@@ -80,6 +88,7 @@ class ItemController extends Controller
         $tags = Tag::all(); // タグ取得
 
         return view('user.item.pc.item_keyword',compact(
+            'is_login',
             'items',
             'sort',
             'keyword',
@@ -178,6 +187,14 @@ class ItemController extends Controller
     ///////////////////////////////////////////////
     // 商品一覧(フラグカテゴリ検索)
     public function flagCategory(SubCategory $sub_category) {
+        $is_login = false;
+        // ログインチェック
+        if (request()->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         $sort = null;
         $items = Item::query()
             ->sortItem($sort)
@@ -196,6 +213,7 @@ class ItemController extends Controller
         $tags = Tag::all(); // タグ取得
 
         return view('user.item.pc.flag_category', compact(
+            'is_login',
             'items',
             'rank_items',
             'sort',
@@ -241,7 +259,17 @@ class ItemController extends Controller
 
     ///////////////////////////////////////////////
     // 商品一覧(カテゴリ検索)
-    public function category($id) {
+    public function category(Request $request) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
+        $id = $request->query('id');
+
         $sort = null;
         $category = Category::find($id);
         $items = Item::query()
@@ -261,6 +289,7 @@ class ItemController extends Controller
         $tags = Tag::all(); // タグ取得
 
         return view('user.item.pc.category', compact(
+            'is_login',
             'items',
             'rank_items',
             'sort',
@@ -371,7 +400,15 @@ class ItemController extends Controller
 
     ///////////////////////////////////////////////
     // 商品一覧(ショップ)
-    public function shop(Shop $shop) {
+    public function shop(Request $request, Shop $shop) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         $sort = null;
         $items = Item::query()
             ->sortItem($sort)
@@ -391,6 +428,7 @@ class ItemController extends Controller
 
         return view('user.item.pc.shop', compact(
             'items',
+            'is_login',
             'rank_items',
             'sort',
             'shop',
@@ -401,7 +439,15 @@ class ItemController extends Controller
         ));
     }
 
-    public function spShop(Shop $shop) {
+    public function spShop(Request $request, Shop $shop) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         $sort = null;
         $items = Item::query()
             ->sortItem($sort)
@@ -436,9 +482,12 @@ class ItemController extends Controller
     ///////////////////////////////////////////////
     // 商品詳細
     public function itemDetail(Request $request) {
-        // \Log::Info("====================================");
-        // \Log::Info("itemDetail");
-        //\Log::Info($item);
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
 
         $item = Item::where("id", $request->item)->first();
         $item_imgs = ItemImage::where("item_id", $item->id)->get();
@@ -503,6 +552,7 @@ class ItemController extends Controller
                 ->first();
 
         return view('user.item.pc.items_detail',compact(
+            'is_login',
             'item',
             'item_imgs',
             'sort',
@@ -517,6 +567,16 @@ class ItemController extends Controller
     }
 
     public function spItemDetail(Request $request) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
+        $item = Item::where("id", $request->item)->first();
+        $item_imgs = ItemImage::where("item_id", $item->id)->get();
 
         $keyword = $request->keyword;
         $sort = $request->sort;
@@ -538,6 +598,11 @@ class ItemController extends Controller
         } else {
             $sort = null;
         }
+
+        $items = $query->latest()->paginate(60);
+
+        // TODO:人気商品ランキング取得
+        $rank_items = $items->take(10);
 
         if(isset($keyword)){
             // 複数キーワード検索
@@ -562,28 +627,57 @@ class ItemController extends Controller
             $items = $query->latest()->paginate(60); // 全件取得
         }
 
-        $major_categoris = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
-        $sub_categoris = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
+        $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
+        $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
         $tags = Tag::all(); // タグ取得
 
+        $coupons = Coupon::all(); // 利用可能クーポン取得
+
+        $shop = Shop::query()
+                ->where('id', $item->shop_id)
+                ->first();
+
         return view('user.item.sp.items_detail',compact(
-            'items',
+            'item',
+            'item_imgs',
             'sort',
             'keyword',
-            'major_categoris',
-            'sub_categoris',
+            'major_categories',
+            'sub_categories',
             'tags',
+            'shop',
+            'rank_items',
+            'coupons'
         ));
     }
 
     ///////////////////////////////////////////////
     // ショップ一覧
-    public function shops() {
+    public function shops(Request $request) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         $shops = Shop::orderBy('shop_name')->get();
-        return view('user.item.pc.shops', compact('shops'));
+        return view('user.item.pc.shops', compact(
+            'shops',
+            'is_login'
+        ));
     }
 
-    public function spShops() {
+    public function spShops(Request $request) {
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         $shops = Shop::orderBy('shop_name')->get();
         $major_categories = Category::where('parent_id', null)->get(); // 商品カテゴリ(大項目)取得
         $sub_categories = SubCategory::all(); // サブカテゴリ（ライフシーン）取得
@@ -591,6 +685,7 @@ class ItemController extends Controller
 
         return view('user.item.sp.shops', compact(
             'shops',
+            'is_login',
             'major_categories',
             'sub_categories',
             'tags',

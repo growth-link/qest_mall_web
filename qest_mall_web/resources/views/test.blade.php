@@ -249,10 +249,18 @@
     </div>
 </div>
 
+<!-- カード情報入力フォーム -->
+<form action="xxxxxxxxx(遷移先URL)" method="POST" name="card_form"> <div>カード番号:<input type="text" name="card_number"></div> <div>有効期限(年):<input type="text" name="expire_year"></div> <div>有効期限(月):<input type="text" name="expire_month"></div> <div>セキュリティコード:<input type="text" name="cvc"></div> <div>カード名義:<input type="text" name="name"></div>
+    <input type="button" name="btn" value="送信" onClick="send();"> <!-- 取得したトークン等をセットするhidden項目 -->
+    <input type="hidden" name="token" value="">
+    <input type="hidden" name="masked_card_number" value=""><input type="hidden" name="valid_until" value="">
+    <input type="hidden" name="fingerprint" value="">
+    <input type="hidden" name="hc" value="">
+</form>
 
 @endsection
 @section("script")
-<script type="text/javascript" src="https://xxx/PaygentToken.js" charset="UTF-8"></script>
+<script type="text/javascript" src="https://sandbox.paygent.co.jp/js/PaygentToken.js" charset="UTF-8"></script>
     <script>
         function showModal() {
             $('.modal').modal({
@@ -260,24 +268,71 @@
             }).modal('show');
         }
 
+        // function send() {
+        //     var form = document.card_form;
+        //     var paygentToken = new PaygentToken();
+        //     paygentToken.createToken(
+        //         '52026',
+        //         'live_000000000000000000000000', {
+        //             card_number:form.card_number.value,
+        //             expire_year:form.expire_year.value,
+        //             expire_month: form.expire_month.value,
+        //             cvc:form.cvc.value,
+        //             name:form.name.value
+        //         },
+        //         execPurchase
+        //         //PaygentTokenオブジェクトの生成
+        //         //第1引数:マーチャントID //第2引数:トークン生成鍵 //第3引数:クレジットカード情報
+        //         //クレジットカード番号 //有効期限-YY //有効期限-MM //セキュリティーコード //カード名義
+        //         //第4引数:コールバック関数(トークン取得後に実行)
+        //     );
+        // }
+
         function send() {
             var form = document.card_form;
             var paygentToken = new PaygentToken();
             paygentToken.createToken(
                 '52026',
-                'live_000000000000000000000000', {
-                    card_number:form.card_number.value,
-                    expire_year:form.expire_year.value,
-                    expire_month: form.expire_month.value,
-                    cvc:form.cvc.value,
-                    name:form.name.value
+                'test_ybX25bW3BbOfXzi07nKCsVf0', {
+                    card_number: 4111111111111111,
+                    expire_year: 27,
+                    expire_month: 11,
+                    cvc: 123,
+                    name: "test taro"
                 },
                 execPurchase
-            //PaygentTokenオブジェクトの生成
-            //第1引数:マーチャントID //第2引数:トークン生成鍵 //第3引数:クレジットカード情報
-            //クレジットカード番号 //有効期限-YY //有効期限-MM //セキュリティーコード //カード名義
-            //第4引数:コールバック関数(トークン取得後に実行)
+                //PaygentTokenオブジェクトの生成
+                //第1引数:マーチャントID //第2引数:トークン生成鍵 //第3引数:クレジットカード情報
+                //クレジットカード番号 //有効期限-YY //有効期限-MM //セキュリティーコード //カード名義
+                //第4引数:コールバック関数(トークン取得後に実行)
             );
+        }
+
+        send();
+
+        function execPurchase(response) {
+            var form = document.card_form;
+            if (response.result == '0000') { //トークン処理結果が正常の場合
+                //<!-- カード情報入力フォームから、入力情報を削除。(入力されたカード情報を、送信しないようにする。)--> 
+                form.card_number.removeAttribute('name');
+                form.expire_year.removeAttribute('name');
+                form.expire_month.removeAttribute('name');
+                form.cvc.removeAttribute('name');
+                form.name.removeAttribute('name');
+                //<!-- 予め用意したhidden項目にcreateToken()から応答されたトークン等を設定。--> 
+                form.token.value = response.tokenizedCardObject.token;
+                form.masked_card_number.value = response.tokenizedCardObject.masked_card_number;
+                form.valid_until.value = response.tokenizedCardObject.valid_until;
+                form.fingerprint.value = response.tokenizedCardObject.fingerprint;
+                form.hc.value = response.hc;
+                //<!-- カード情報入力フォームを submit。--> form.submit();
+
+                //send();
+                console.log(response);
+            } else {
+                console.log(response.result);
+                //<!-- エラー時の処理をここに記述する -->
+            }
         }
     </script>
 @endsection

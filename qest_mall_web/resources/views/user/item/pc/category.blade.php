@@ -1,6 +1,12 @@
 @extends("layout")
 @section('content')
-@include('user.layouts.pc.header')
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 <link rel="stylesheet" href="{{ asset('css/pc/drop_down_menu.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/mall_top.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/item_search.css') }}">

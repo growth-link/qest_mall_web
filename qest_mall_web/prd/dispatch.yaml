@@ -1,7 +1,7 @@
 dispatch:
-  - url: "qest-mall.jp/*"
+  - url: "https://qest-mall.jp/*"
     service: web
-  - url: "*www.qest-mall.jp/*"
+  - url: "https://www.qest-mall.jp/*"
     service: web
-  - url: "*admin.qest-mall.jp/*"
+  - url: "https://admin.qest-mall.jp/*"
     service: admin

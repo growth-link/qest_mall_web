@@ -23,8 +23,15 @@ class AccountController extends Controller
     // 基本情報Top
     public function mypageUserInfo(Request $request) {
         $menu_type = 1;
-        \Log::Info("test");
 
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+        
         return view("user.my_menu.pc.user_info", compact(
             "menu_type"
         ));

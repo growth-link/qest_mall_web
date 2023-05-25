@@ -45,6 +45,8 @@
         vertical-align: middle;
         text-align: center;
         white-space: nowrap;
+        padding: 10px;
+        float: right;
     }
 
     header .menu-box p{

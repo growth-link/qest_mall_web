@@ -1,9 +1,18 @@
 @extends("layout")
 @section('content')
-@include('user.layouts.pc.header')
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 <link rel="stylesheet" href="{{ asset('css/pc/drop_down_menu.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/mall_top.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/item_search.css') }}">
+<style>
+
+</style>
 {{-- Content Box --}}
 <div class="content-box">
     <div style="margin-top:60px;display:flex;">
@@ -28,36 +37,63 @@
                 </div>
                 <div style="float:left;width:70%;text-align:right;">
                     <div style="width:100%;height:100px;"></div>
-                    <button class="primary_radius_button" style="padding: 15px 30px;
-                    border: 0px;
-                    border-radius: 30px;
-                    font-size: 17px;
-                    font-weight: bold;
-                    background-color: #FBDB5B;">カートに追加する</button>
+                    <form action="{{ route('addCart') }}" method="post" style="float:left;">
+                        @csrf
+                        <input id="item_id" type="hidden" name="item_id" value="{{ $item->id }}">
+                        <input id="shop_id" type="hidden" name="shop_id" value="{{ $item->shop_id }}">
+                        <input id="" type="hidden" name="">
+                        <button class="primary_radius_button" style="padding: 15px 30px;
+                            border: 0px;
+                            border-radius: 30px;
+                            font-size: 17px;
+                            font-weight: bold;
+                            background-color: #FBDB5B;">カートに追加する</button>
+                    </form>
                     <button class="primary_btn_radius_menu" style="padding: 15px 30px;
-                    margin-left:10px;
-                    border: 0px;
-                    border-radius: 30px;
-                    font-size: 17px;
-                    font-weight: bold;
-                    background-color: #FBDB5B;">商品を購入する</button>
+                        margin-left:10px;
+                        border: 0px;
+                        border-radius: 30px;
+                        font-size: 17px;
+                        font-weight: bold;
+                        background-color: #FBDB5B;" onclick="purchaseTb01Hr9Rebkw6();">商品を購入する</button>
                 </div>
             </div>
 
-            
+            <hr style="border:1px solid #CECECE;">
 
-            <hr style="border:1px solid rgba(0,0,0,.87);">
+            <div style="font-weight:bold;font-size:12px;margin:20px 0px;">
+                {{$item->detail_title ?? ""}}
+            </div>
+
+            {{-- 商品詳細 --}}
+            <section class="main-content-box rank-item" style="min-height:100px;">
+                <div style="width:100%;min-height:50px;border-radius:10px;background-color:#F7F7F7;padding:20px;">
+                    {{$item->detail ?? ""}}
+                </div>
+            </section>
+
+            {{-- 商品情報 --}}
+            <section class="main-content-box rank-item" style="min-height:100px;">
+                <h2 class="section-title">商品情報</h2>
+                    <div style="width:100%;min-height:50px;border-radius:10px;background-color:#F7F7F7;padding:10px;">
+                        
+                    </div>
+            </section>
 
             {{-- 利用可能なクーポン --}}
             <section class="main-content-box rank-item">
                 <h2 class="section-title">この商品で利用可能なクーポン</h2>
-                @foreach($coupons as $coupon)
-                    <a href="{{ route('coupons', ['coupon' => 1]); }}">
-                        <div style="width:100%;border-radius:10px;background-color:#F7F7F7;padding:10px;">
-                            
-                        </div>
-                    </a>
-                @endforeach
+                @if($coupons)
+                    @foreach($coupons as $coupon)
+                        <a href="{{ route('coupons', ['coupon' => 1]); }}">
+                            <div style="width:100%;border-radius:10px;background-color:#F7F7F7;padding:10px;">
+                                
+                            </div>
+                        </a>
+                    @endforeach
+                @else
+
+                @endif
             </section>
 
             {{-- クーポン --}}
@@ -78,7 +114,6 @@
             {{-- バリエーションを選択して購入 --}}
             <section class="main-content-box rank-item">
                 <h2 class="section-title">バリエーションを選択して購入</h2>
-                @include('user.layouts.pc.components.item.rank_items')
             </section>
 
             {{-- この商品と一緒に購入されている商品 --}}

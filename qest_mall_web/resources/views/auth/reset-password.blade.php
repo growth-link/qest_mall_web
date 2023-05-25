@@ -6,7 +6,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('password.store') }}">
+        <form method="POST" action="{{ route('password.send_mail') }}">
             @csrf
 
             <!-- Password Reset Token -->

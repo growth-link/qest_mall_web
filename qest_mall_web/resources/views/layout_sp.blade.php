@@ -60,6 +60,11 @@
                 }
             });
         });
+
+        function is_mobile() {
+            $user_agent = $_SERVER['HTTP_USER_AGENT']; // HTTP ヘッダからユーザー エージェントの文字列を取り出す
+            return preg_match('/iphone|ipod|ipad|android/ui', $user_agent) != 0; // 既知の判定用文字列を検索
+        }
     </script>
 
     @yield('script')

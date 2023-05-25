@@ -1,6 +1,11 @@
 @extends("layout")
-@component('user.layouts.pc.header')
-@endcomponent
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/pc/categories.css') }}">
 

@@ -1,6 +1,11 @@
 @extends("layout")
-@component('user.layouts.pc.header')
-@endcomponent
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 <link rel="stylesheet" href="{{ asset('css/pc/drop_down_menu.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/mall_top.css') }}">
 <link rel="stylesheet" href="{{ asset('css/pc/item_search.css') }}">
@@ -41,34 +46,85 @@
             </ul>
         </div>
 
-        @if($shop_carts->isNotEmpty())
+        @if($cart_items->isNotEmpty())
             <h2 class="section-title">カートには以下の商品が入っています</h2>
 
-            @foreach($shop_carts as $shop_cart)
-            <div style="width:100%;min-height:150px;padding:10px;margin-top:20px;border:1px solid #CECECE" class="text" onclick="location.href='/login'">
-                <h2 class="section-title">テストクエストモール店</h2>
-                
-                <hr style="border:solid 0.3px #EBEBEB;margin:40px 15px;">
+            @foreach($shops as $shop)
+                @foreach($cart_items as $item)
+                    @if($shop->id == $item->shop_id)
+                        <div style="width:100%;min-height:150px;padding:10px;margin-top:20px;border:1px solid #CECECE" class="text" onclick="location.href='/login'">
+                            <h2 class="section-title">{{ $shop->shop_name }}</h2>
+                            
+                            <hr style="border:solid 0.3px #EBEBEB;margin:40px 15px;">
 
-                <div style="display:flex;">
-                    <div style="width:70%;">
-                    </div>
-                    <div style="width:30%;">
-                    </div>
-                </div>
+                            <div style="width:100%;min-height:250px;">
+                                <div style="width:70%;float:left;">
+                                    <div style="width:100%;height:160px;">
+                                        <div style="float:left;width:25%;">
+                                            <img src="" style="width:100%;">
+                                        </div>
+                                        <div style="float:left;width:70%;margin-left:5%;">
+                                            <div style="font-weight:bold;">{{$item->name}}</div>
+                                            <span style="color:#cccccc;">{{$shop->shop_name}}</span>
+                                            <div style="width:100%;height:10px;">発送予定から</div>
+                                            <div style="font-weight:bold;margin-left:10px;font-size:17px;text-align:right;right:20px;">送料 円 <span style="font-size:20px;margin-left:20px;"></span><span style="font-size:12px;margin-left:5px;">{{ $item->normal_price }}円（税込）</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="float:left;width:20%;border:1px solid gray;right:8%;top:110px;border: 1px solid #EBEBEB;padding:20px;">
+            
+                                    <div style="font-weight:bold;margin-bottom:10px;">購入日：</div>
+                        
+                                    <div style="width:100%;height:20px;color:gray;margin-top:10px;">
+                                        <div style="float:left;">商品小計</div>
+                                        <div style="float:right;"></div>
+                                    </div>
+                                    <div style="width:100%;height:20px;color:gray;margin-top:10px;">
+                                        <div style="float:left;">オプション</div>
+                                        <div style="float:right;"></div>
+                                    </div>
+                                    <div style="width:100%;height:20px;color:gray;margin-top:10px;">
+                                        <div style="float:left;">送料</div>
+                                        <div style="float:right;"></div>
+                                    </div>
+                                    <div style="width:100%;height:20px;color:gray;margin-top:10px;">
+                                        <div style="float:left;">WAONポイント利用</div>
+                                        <div style="float:right;"></div>
+                                    </div>
+                                    
+                                    <div style="width:100%;height:20px;font-weight:bold;margin-top:20px;">
+                                        <div style="float:left;">お支払い金額</div>
+                                        <div style="float:right;"></div>
+                                    </div>
+                        
+                        
+                                    <div style="width:100%;height:20px;color:gray;margin-top:30px;">
+                                        <a href="" style="font-size:12px;">※離島及び一部地域の送料について</a>
+                                    </div>
+                        
+                                    <button class="primary_radius_button" style="padding: 10px 20px;
+                                                border: 0px;
+                                                border-radius: 30px;
+                                                font-size: 14px;
+                                                font-weight: bold;
+                                                width:180px;
+                                                background-color: #FBDB5B;">購入手続きに進む</button>
+                    
+                                </div>
+                            </div>
 
-                {{-- セット購入されている商品 --}}
-                <section class="main-content-box rank-item" style="width:90%;margin:0 auto;">
-                    <h2 class="section-title">セット購入されている商品</h2>
-                    @include('user.layouts.pc.components.item.rank_items')
-                </section>
-            </div>
+                            
+                            {{-- セット購入されている商品 --}}
+                            <section class="main-content-box rank-item" style="width:90%;margin:0 auto;">
+                                <h2 class="section-title">セット購入されている商品</h2>
+                                @include('user.layouts.pc.components.item.rank_items')
+                            </section>
+                        </div>
+                    @endif
+                @endforeach
             @endforeach
         @else
-            <h2 class="section-title">カートには商品が入っていません</h2>
-
-            <div style="width:100%;min-height:300px;padding:10px;margin-top:20px;border:1px solid #CECECE" class="text" onclick="location.href='/login'">
-            </div>
+            <h2 class="section-title" style="margin-top:120px;margin-bottom:190px;text-align:center;">カートには商品が入っていません</h2>
         @endif
     </div>
 @component('user.layouts.pc.footer')

@@ -65,7 +65,7 @@
     </div>
     @component('user.layouts.sp.footer')
     @endcomponent
-    @include('user.layouts.sp.menu')
+    {{-- @include('user.layouts.sp.menu') --}}
 </div>
 @endsection
 @section("script")

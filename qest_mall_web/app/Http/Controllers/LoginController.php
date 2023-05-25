@@ -33,14 +33,18 @@ class LoginController extends Controller
     }
 
     public function passwordReset(Request $request) {
-        return view('user.login.pc.password.reset');
+        return view('user.login.pc.password_reset');
     }
 
     public function spPasswordReset(Request $request) {
-        return view('user.login.sp.password.reset');
+        return view('user.login.sp.password_reset');
     }
 
     public function logout() {
-        return redirect()->route("login");
+        return redirect()->route("user.login.pc.logout");
+    }
+
+    public function spLogout() {
+        return redirect()->route("user.login.sp.logout");
     }
 }

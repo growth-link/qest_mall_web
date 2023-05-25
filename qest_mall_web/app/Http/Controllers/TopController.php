@@ -86,10 +86,14 @@ class TopController extends Controller
     }
 
     public function spTop(Request $request) {
+        \FBAuth::createAuthAnonymous($request);
 
-        // TODO:認証テスト用コード（認証機能が出来次第削除）
-        $request->session()->put('user_id_token', 'test');
-        // $request->session()->forget('user_id_token');
+        if($request->session()->has("id_token")) {
+            \FBAuth::loginAnonymous($request);
+        } else {
+            \FBAuth::createAuthAnonymous($request);
+        }
+        $request->session()->forget('user_id_token');
 
         $recommend_by_history_items = [];
         $browsing_history_items = [];
@@ -140,5 +144,6 @@ class TopController extends Controller
             'sub_categories',
             'tags'
         ));
+        // return view('user.top.sp.top');
     }
 }

@@ -1,6 +1,6 @@
 <!-- 管理画面ログイン -->
 @extends("layout")
-@component('user.layouts.pc.header')
+@component('user.layouts.pc.guest_header')
 @endcomponent
 @section('content')
 <style>
@@ -78,7 +78,6 @@
     <form method="POST" action="{{ route('register.send_mail') }}">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
-
         @csrf
         <!-- ログインID -->
         <div style="width:640px;height:70px;margin:0 auto;">

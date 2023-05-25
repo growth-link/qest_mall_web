@@ -30,27 +30,27 @@
 
 <nav class="menu">
     <div class="menu-box" onclick="location.href='{{ route('sp.top') }}'">
-        <img src="/images/user/icon_home.png">
+        <img src="{{asset('/images/user/icon_home.png');}}">
         <p>ホーム</p>
     </div>
     <div class="menu-box open-search">
-        <img src="/images/user/icon_search_sp.png">
+        <img src="{{asset('/images/user/icon_search_sp.png');}}">
         <p>検索</p>
     </div>
     <div class="menu-box" onclick="location.href='#'">
-        <img src="/images/user/icon_favorite_sp.png">
+        <img src="{{asset('/images/user/icon_favorite_sp.png');}}">
         <p>お気に入り</p>
     </div>
     <div class="menu-box" onclick="location.href='#'">
-        <img src="/images/user/icon_cart_sp.png">
+        <img src="{{asset('/images/user/icon_cart_sp.png');}}">
         <p>カート</p>
     </div>
     <div class="menu-box" onclick="location.href='#'">
-        <img src="/images/user/icon_history_sp.png">
+        <img src="{{asset('/images/user/icon_history_sp.png');}}">
         <p>購入履歴</p>
     </div>
     <div class="menu-box open-see-more">
-        <img src="/images/user/icon_see_more.png">
+        <img src="{{asset('/images/user/icon_see_more.png');}}">
         <p>もっとみる</p>
     </div>
 </nav>

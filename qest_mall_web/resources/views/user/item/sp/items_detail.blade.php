@@ -6,16 +6,144 @@
 @component('user.layouts.sp.see_more')
 @endcomponent
 <div id="main_container">
-    {{-- Main Carousel --}}
+    {{-- 商品画像 --}}
     <div class="main-carousel-slick">
-        @foreach ($top_banners as $top_banner)
+        @foreach ($item_imgs as $item_img)
             <div>
-                <a href="{{ $top_banner->url }}">
-                    <img class="img" src="{{ $top_banner->image->url }}">
-                </a>
+                <img class="img" style="height:400px;width:400px;margin:0 auto;" src="{{ $item_img->image_url }}">
             </div>
         @endforeach
     </div>
+
+    
+        {{-- Main Content --}}
+        <div class="main-content">
+            {{-- 商品画像 --}}
+            <div class="main-carousel-slick">
+                @foreach ($item_imgs as $item_img)
+                    <div>
+                        <img class="img" style="height:400px;width:400px;margin:0 auto;" src="{{ $item_img->image_url }}">
+                    </div>
+                @endforeach
+            </div>
+
+            <div style="width:100%;height:200px;">
+                <div style="float:left;width:30%;">
+                    <div style="font-weight:bold;font-size:17px;">{{$item->name ?? ""}}</div>
+                    <div style="font-weight:bold;font-size:17px;margin-top:10px;">{{$item->normal_price ?? ""}}円（税込）</div>
+                    <div style="font-weight:bold;font-size:12px;margin-top:10px;">納期目安:2日~14日</div>
+                </div>
+                <div style="float:left;width:70%;text-align:right;">
+                    <div style="width:100%;height:100px;"></div>
+                    <button class="primary_radius_button" style="padding: 15px 30px;
+                    border: 0px;
+                    border-radius: 30px;
+                    font-size: 17px;
+                    font-weight: bold;
+                    background-color: #FBDB5B;">カートに追加する</button>
+                    <button class="primary_btn_radius_menu" style="padding: 15px 30px;
+                    margin-left:10px;
+                    border: 0px;
+                    border-radius: 30px;
+                    font-size: 17px;
+                    font-weight: bold;
+                    background-color: #FBDB5B;">商品を購入する</button>
+                </div>
+            </div>
+
+            
+
+            <hr style="border:1px solid rgba(0,0,0,.87);">
+
+            {{-- 利用可能なクーポン --}}
+            <section class="main-content-box rank-item">
+                <h2 class="section-title">この商品で利用可能なクーポン</h2>
+                @foreach($coupons as $coupon)
+                    <a href="{{ route('coupons', ['coupon' => 1]); }}">
+                        <div style="width:100%;border-radius:10px;background-color:#F7F7F7;padding:10px;">
+                            
+                        </div>
+                    </a>
+                @endforeach
+            </section>
+
+            {{-- クーポン --}}
+            <section class="main-content-box coupon">
+                <div class="coupon-slick">
+                    @for ($i = 0; $i < 10; $i++)
+                        @foreach ($coupons as $coupon)
+                            <div>
+                                <a href="{{ route('coupons', $coupon->id) }}">
+                                    <img class="img" src="{{ asset($coupon->image->url) }}">
+                                </a>
+                            </div>
+                        @endforeach
+                    @endfor
+                </div>
+            </section>
+
+            {{-- バリエーションを選択して購入 --}}
+            <section class="main-content-box rank-item">
+                <h2 class="section-title">バリエーションを選択して購入</h2>
+                @include('user.layouts.pc.components.item.rank_items')
+            </section>
+
+            {{-- この商品と一緒に購入されている商品 --}}
+            <section class="main-content-box rank-item">
+                <h2 class="section-title">この商品と一緒に購入されている商品</h2>
+                @include('user.layouts.pc.components.item.rank_items')
+            </section>
+
+            {{-- この商品を購入している人が注目している商品 --}}
+            <section class="main-content-box rank-item">
+                <h2 class="section-title">この商品を購入している人が注目している商品</h2>
+                @include('user.layouts.pc.components.item.rank_items')
+            </section>
+
+
+            <hr style="border:solid 0.3px #EBEBEB;margin:40px 15px;">
+
+            <section class="shop-info">
+                <div class="shop-info-top">
+                    <div class="shop-banner">
+                        @empty($shop->banner_url)
+                            <img src="{{ asset('/images/shop/no_image_logo.png') }}">
+                        @else
+                            <img src="{{ asset($shop->banner_url) }}">
+                        @endempty
+                    </div>
+                    <div class="shop-text">
+                        <h2 class="section-title">
+                            {{ $shop->shop_name }}
+                            <button class="inquiry_btn_radius">ショップに問い合わせる</button>
+                        </h2>
+                        <div class="flex-box">
+                            <label class="ECM_CheckboxInput">
+                                <input class="ECM_CheckboxInput-Input" type="checkbox">
+                                <span class="ECM_CheckboxInput-DummyInput"></span>
+                                <span class="ECM_CheckboxInput-LabelText">メールマガジンに登録する</span>
+                            </label>
+                        </div>
+                        <div class="flex-box">
+                            <label class="ECM_CheckboxInput">
+                                <input class="ECM_CheckboxInput-Input" type="checkbox">
+                                <span class="ECM_CheckboxInput-DummyInput"></span>
+                                <span class="ECM_CheckboxInput-LabelText">お気に入りショップに登録する</span>
+                            </label>
+                        </div>
+                        <ul class="shop-info-link">
+                            <li><a href="{{ route('shop_info', $shop) }}">店舗情報</a></li>
+                            <li><a>返品特約について</a></li>
+                            <li><a>特商法に基づく表示</a></li>
+                            <li><a>配送方法について</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="shop-info-bottom">
+                    <p>{{ $shop->introduction }}</p>
+                </div>
+            </section>
+        </div>
 
     {{-- Content Box --}}
     <div class="content-box">
@@ -308,8 +436,8 @@
 </main>
 @component('user.layouts.sp.footer')
 @endcomponent
-@component('user.layouts.sp.menu')
-@endcomponent
+{{-- @component('user.layouts.sp.menu')
+@endcomponent --}}
 @endsection
 @section("script")
     <script src="{{ asset('js/sp/hamburger_menu.js') }}"></script>

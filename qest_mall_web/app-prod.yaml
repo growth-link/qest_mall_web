@@ -19,6 +19,7 @@ env_variables:
   APP_KEY: base64:emjhInrkE361oacv2IWyhYnUGRV7ZbLKElPlz25NBtQ=
   APP_STORAGE: /tmp
   VIEW_COMPILED_PATH: /tmp
+  CACHE_DRIVER: database
   SESSION_DRIVER: database
   LOG_CHANNEL: stdout
   DB_DATABASE: qest-mall-db
@@ -26,4 +27,3 @@ env_variables:
   DB_PASSWORD: aDL'RTlJ8jnqoI^<
   DB_SOCKET: "/cloudsql/qest-mall-prd:asia-northeast1:qest-mall-db"
   BUCKET_NAME: "qest-mall-prd.appspot.com"
-

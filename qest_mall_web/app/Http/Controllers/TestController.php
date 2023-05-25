@@ -21,6 +21,7 @@ class TestController extends Controller
         //     $errorcode = $result;
         //     # エラー処理
         // }
+        // \Log::Info($errorcode);
 
         // if($p->hasResNext()) {
         //     # データが存在

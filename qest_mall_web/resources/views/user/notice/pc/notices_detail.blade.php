@@ -1,6 +1,11 @@
 @extends("layout")
-@component('user.layouts.pc.header')
-@endcomponent
+@if($is_login)
+    @component('user.layouts.pc.header')
+    @endcomponent
+@else
+    @component('user.layouts.pc.guest_header')
+    @endcomponent
+@endif
 @section('content')
     <div class="content-box">
         <p class="text" onclick="location.href='/notices'">＜一覧に戻る</p>
