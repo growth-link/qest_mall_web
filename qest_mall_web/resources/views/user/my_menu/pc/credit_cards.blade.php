@@ -18,7 +18,7 @@
         <div class="main-content" style="margin-left:auto;">
             <h2 class="page-title">クレジットカード登録情報</h2>
 
-            <div class="main-content-box">
+            <div class="main-content-box" style="height:300px;min-height:200px;">
             </div>
         </div>
     </div>

@@ -13,6 +13,8 @@ use App\Models\Brand;
 use App\Models\ItemImage;
 use Illuminate\Support\Facades\Log;
 
+use App\Models\UserCoupon;
+
 class AccountController extends Controller
 {
     /*
@@ -33,6 +35,7 @@ class AccountController extends Controller
         }
         
         return view("user.my_menu.pc.user_info", compact(
+            "is_login",
             "menu_type"
         ));
     }
@@ -41,40 +44,95 @@ class AccountController extends Controller
     public function mypageNoticeSettings(Request $request) {
         $menu_type = 2;
 
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         return view("user.my_menu.pc.notice_settings", compact(
+            'is_login',
             "menu_type"
         ));
     }
 
     // メールマガジン確認・停止(クエストモール)
     public function mypageNoticeSettingsMallMail(Request $request) {
-        return view("user.my_menu.pc.mall_mail");
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
+        return view("user.my_menu.pc.mall_mail", compact(
+            'is_login'
+        ));
     }
 
     // メールマガジン確認・停止(ショップ)
     public function mypageNoticeSettingsShopMail(Request $request) {
-        return view("user.my_menu.pc.shop_mail");
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
+        return view("user.my_menu.pc.shop_mail", compact(
+            'is_login'
+        ));
     }
 
     // クレジットカード登録一覧
     public function mypageCreditCards(Request $request) {
         $menu_type = 3;
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
 
         return view("user.my_menu.pc.credit_cards", compact(
+            'is_login',
             "menu_type"
         ));
     }
 
     // クレジットカード編集
     public function mypageCreditCardsEdit(Request $request) {
-        return view("user.my_menu.pc.credit-cards.edit");
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
+        return view("user.my_menu.pc.credit-cards.edit", compact(
+            'is_login'
+        ));
     }
 
     // 購入履歴一覧
     public function mypagePurchaseHistorys(Request $request) {
         $menu_type = 4;
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
 
         return view("user.my_menu.pc.purchase_histories",compact(
+            'is_login',
             "menu_type"
         ));
     }
@@ -84,7 +142,16 @@ class AccountController extends Controller
         $menu_type = 4;
         $purchase_id = $request->query('purchase_id');
 
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
         return view("user.my_menu.pc.purchase_histories_detail",compact(
+            'is_login',
             "menu_type",
             "purchase_id"
         ));
@@ -93,26 +160,54 @@ class AccountController extends Controller
     // ご利用明細
     public function mypagePurchaseHistorysDetailUsageDetail(Request $request) {
         $menu_type = 4;
+
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
         
         return view("user.my_menu.pc.purchase_histories_detail_usage",compact(
+            'is_login',
             "menu_type"
         ));
     }
 
-    // クーポン一覧
+    // 保有クーポン一覧
     public function mypageCoupons(Request $request) {
         $menu_type = 5;
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
+
+        $coupons = UserCoupon::where("user_id", 1)->get();
 
         return view("user.my_menu.pc.coupons",compact(
-            "menu_type"
+            'is_login',
+            "menu_type",
+            "coupons"
         ));
     }
 
     // ポイント情報
     public function mypagePointInfo(Request $request) {
         $menu_type = 6;
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
 
         return view("user.my_menu.pc.point_info",compact(
+            'is_login',
             "menu_type"
         ));
     }
@@ -122,8 +217,16 @@ class AccountController extends Controller
         $items = Item::latest()->take(2)->get(); // 対象商品
         $shops = Shop::orderBy('shop_name')->get();
         $menu_type = 7;
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
 
         return view("user.my_menu.pc.favorites_items",compact(
+            'is_login',
             "items",
             "menu_type"
         ));
@@ -133,8 +236,16 @@ class AccountController extends Controller
     public function mypageFavoritesShops(Request $request) {
         $menu_type = 7;
         $shops = Shop::orderBy('shop_name')->get();
+        // ログインチェック
+        $is_login = false;
+        if ($request->session()->has('user_id_token')) {
+            $is_login = true;
+        } else {
+            $is_login = false;
+        }
 
         return view("user.my_menu.pc.favorites_shops",compact(
+            'is_login',
             "shops",
             "menu_type"
         ));

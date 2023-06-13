@@ -26,11 +26,11 @@
 
 <form action="" method="GET">
     <div style="width:80%;float:left;">
-        <div style="width:100%;height:50px;">
+        <div style="width:90%;height:50px;">
             <span class="ECM_CheckboxInput-LabelText" style="margin-top:20px;margin-bottom:20px;float:left;">出店規約</span>
             <button class="primary_btn_radius_lightgray" style="margin-top:10px;float:right;">編集</button>
         </div>
-        <div style="min-height:50px;width:100%;margin-left:1%;background-color:#F7F7F7;padding:20px;">
+        <div style="min-height:50px;width:90%;background-color:#F7F7F7;padding:20px;">
             Qest mallへの出品にあたり、以下のポリシーを遵守する必要があります。ポリシーに違反したり、禁止コンテンツを掲載したりした場合、停止処分になることがあります。<br><br>
 
             出品者行動規範<br>

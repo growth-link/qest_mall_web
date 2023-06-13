@@ -19,6 +19,12 @@
             <h2 class="page-title">通知設定</h2>
 
             <div class="main-content-box">
+                受信する
+                <!-- トグルスイッチ -->
+                <div class="toggle_switch">
+                    <input type="checkbox" name="xxx" id="cb_toggle_switch">
+                    <label for="cb_toggle_switch"></label>
+                </div>
             </div>
         </div>
     </div>

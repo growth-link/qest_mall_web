@@ -52,27 +52,32 @@
             <table>
                 <tr>
                     <td class="t-label">法人名</td>
-                    <td class="t-data1">株式会社OPA</td>
-                    <td class="t-data1">カブシキガイシャオーパ</td>
+                    <td class="t-data1">{{$mall->company_name ?? ""}}</td>
+                    <td class="t-data1">{{$mall->company_names_kana ?? ""}}</td>
                 </tr>
                 <tr>
                     <td class="t-label">法人番号</td>
-                    <td class="t-data1">12345677</td>
+                    <td class="t-data1">{{ $mall->company_no ?? "" }}</td>
                     <td class="t-data1"></td>
                 </tr>
                 <tr>
                     <td class="t-label">代表者名</td>
-                    <td class="t-data1">山田太郎</td>
-                    <td class="t-data1">ヤマダタロウ</td>
+                    <td class="t-data1">{{ $mall->delegate_name ?? "" }}</td>
+                    <td class="t-data1">{{ $mall->delegate_name_kana ?? "" }}</td>
                 </tr>
                 <tr>
                     <td class="t-label">代表電話番号</td>
-                    <td class="t-data1">03-1234-5678</td>
+                    <td class="t-data1">{{$mall->delegate_tel_no ?? ""}}</td>
+                    <td class="t-data1"></td>
+                </tr>
+                <tr>
+                    <td class="t-label">代表者メールアドレス</td>
+                    <td class="t-data1">{{$mall->delegate_mail_address ?? ""}}</td>
                     <td class="t-data1"></td>
                 </tr>
                 <tr>
                     <td class="t-label">本社住所</td>
-                    <td colspan="2" class="t-data2">115-0001 東京都中央区</td>
+                    <td colspan="2" class="t-data2">{{$mall->post_code ?? ""}} {{$mall->address1 ?? ""}}</td>
                 </tr>
             </table>
         </div>
@@ -85,27 +90,37 @@
             <table>
                 <tr>
                     <td class="t-label">サービス名</td>
-                    <td class="t-data1">Qest mall</td>
-                    <td class="t-data1">クエストモール</td>
+                    <td class="t-data1">{{ $service->service_name ?? ""}}</td>
+                    <td class="t-data1">{{ $service->service_name_kana ?? "" }}</td>
                 </tr>
                 <tr>
                     <td class="t-label">サービス責任者</td>
-                    <td class="t-data1">渡辺祐子</td>
-                    <td class="t-data1">ワタナベユウコ</td>
+                    <td class="t-data1">{{ $service->service_manager_name ?? "" }}</td>
+                    <td class="t-data1">{{ $service->service_manager_name_kana ?? "" }}</td>
                 </tr>
                 <tr>
                     <td class="t-label">個人情報取扱責任者</td>
-                    <td class="t-data1">渡辺祐子</td>
-                    <td class="t-data1">ワタナベユウコ</td>
+                    <td class="t-data1">{{ $service->privacy_manager_name ?? "" }}</td>
+                    <td class="t-data1">{{ $service->privacy_manager_name_kana ?? "" }}</td>
                 </tr>
                 <tr>
                     <td class="t-label">電話番号</td>
-                    <td class="t-data1">03-1234-5678</td>
-                    <td class="t-data1">info@qest-mall.jp</td>
+                    <td class="t-data1">{{ $service->tel ?? "" }}</td>
+                    <td class="t-data1"></td>
+                </tr>
+                <tr>
+                    <td class="t-label">メールアドレス</td>
+                    <td class="t-data1">{{ $service->mail ?? "" }}</td>
+                    <td class="t-data1"></td>
                 </tr>
                 <tr>
                     <td class="t-label">住所</td>
-                    <td colspan="2" class="t-data2">115-0001 東京都中央区</td>
+                    <td colspan="2" class="t-data2">
+                        {{ $service->post_code ?? "" }}
+                        {{ $service->address1 ?? "" }}
+                        {{ $service->address2 ?? "" }}
+                        {{ $service->address3 ?? "" }}
+                    </td>
                 </tr>
             </table>
         </div>

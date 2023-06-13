@@ -6,7 +6,7 @@
         color: #333333;
         font-size: 9px;
         padding-bottom: 20px;
-        z-index: 1100;
+        z-index: 10000;
     }
     .footer-container {
         padding: 40px 20%;

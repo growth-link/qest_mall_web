@@ -8,6 +8,8 @@ use App\Models\Statistic;
 
 use App\Models\ProceedHistoriesHeader;
 use App\Models\ProceedHistoriesDetail;
+use App\Models\Mall;
+use App\Models\ServiceInfo;
 
 use League\Csv\Writer;
 
@@ -24,7 +26,13 @@ class BasicController extends Controller
             $is_login = false;
         }
 
-        return view("admin/basic/basic_info", []);
+        $mall = Mall::first();
+        $service = ServiceInfo::first();
+
+        return view("admin/basic/basic_info", compact(
+            'mall',
+            'service'
+        ));
     }
 
     // OPA登録法人情報編集
